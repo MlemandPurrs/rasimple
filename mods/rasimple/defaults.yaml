@@ -1,0 +1,763 @@
+^GainsExperience:
+	GainsExperience:
+		LevelUpNotification: LevelUp
+		Conditions:
+			200: rank-veteran
+			400: rank-veteran
+			800: rank-veteran
+			1600: rank-veteran
+		LevelUpImage: crate-effects
+	GrantCondition@RANK-ELITE:
+		RequiresCondition: rank-veteran >= 4
+		Condition: rank-elite
+	DamageMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 90
+	DamageMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 80
+	DamageMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 70
+	DamageMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 70
+	FirepowerMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 110
+	FirepowerMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 120
+	FirepowerMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 130
+	FirepowerMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 130
+	SpeedMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 105
+	SpeedMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 110
+	SpeedMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 120
+	SpeedMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 120
+	ReloadDelayMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 90
+	ReloadDelayMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 80
+	ReloadDelayMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 70
+	ReloadDelayMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 70
+	SelfHealing@ELITE:
+		-Step: 200
+		PercentageStep: 5
+		Delay: 75
+		HealIfBelow: 100
+		DamageCooldown: 150
+		RequiresCondition: rank-elite
+	WithDecoration@RANK-1:
+		Image: rank
+		Sequence: rank-veteran-1
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-veteran == 1
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+	WithDecoration@RANK-2:
+		Image: rank
+		Sequence: rank-veteran-2
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-veteran == 2
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+	WithDecoration@RANK-3:
+		Image: rank
+		Sequence: rank-veteran-3
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-veteran == 3
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+	WithDecoration@RANK-ELITE:
+		Image: rank
+		Sequence: rank-elite
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-elite
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+
+^InfantryExperienceHospitalOverrides:
+	WithDecoration@RANK-1:
+		BlinkInterval: 32
+		BlinkPatterns:
+			hospitalheal: On, Off
+	WithDecoration@RANK-2:
+		BlinkInterval: 32
+		BlinkPatterns:
+			hospitalheal: On, Off
+	WithDecoration@RANK-3:
+		BlinkInterval: 32
+		BlinkPatterns:
+			hospitalheal: On, Off
+	WithDecoration@RANK-ELITE:
+		BlinkInterval: 32
+		BlinkPatterns:
+			hospitalheal: On, Off
+
+^IronCurtainable:
+	WithColoredOverlay@IRONCURTAIN:
+		RequiresCondition: invulnerability
+	DamageMultiplier@IRONCURTAIN:
+		RequiresCondition: invulnerability
+		Modifier: 0
+	TimedConditionBar:
+		Condition: invulnerability
+	ExternalCondition@INVULNERABILITY:
+		Condition: invulnerability
+
+^Infantry:
+	Selectable:
+		Bounds: 18,18,0,-6
+		DecorationBounds: 12,17,0,-6
+	ExternalCondition@barracks:
+		Condition: barracks
+	GrantCondition@BARRACKSHEALING:
+		RequiresCondition: barracks && damaged
+		Condition: barracksheal
+	SelfHealing@BARRACKSHEALING:
+		Step: 500
+		Delay: 100
+		HealIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: barracksheal
+	GrantConditionOnPrerequisite@HOSPITAL2:
+		Condition: hospital2
+		Prerequisites: hosp.buildable
+	GrantCondition@HOSPITAL:
+		RequiresCondition: hospital || hospital2 && damaged
+		Condition: hospitalheal
+	WithDecoration@REDCROSS:
+		ReferencePoint: Bottom, Right
+		RequiresCondition: ( barracksheal || hospitalheal )
+
+^IncomeAIBoost:
+	ResourcePurifier@incomeaiboost:
+		Modifier: 20
+		RequiresCondition: owned-by-ai
+		ShowTicks: False
+	GrantConditionOnBotOwner@incomeaiboost:
+		Condition: owned-by-ai
+		Bots: normal
+
+^ProductionAIBoost:
+	ProductionTimeMultiplier@productionboost:
+		Multiplier: 120
+		Prerequisites: aitoodumb
+	ProductionCostMultiplier@productionboost:
+		Multiplier: 80
+		Prerequisites: aitoodumb
+
+^ProductionPlayerBoost:
+	ProductionCostMultiplier@IndustrialPlant:
+		Multiplier: 80
+		Prerequisites: indp, !indplowpower
+	ProductionTimeMultiplier@IndustrialPlant:
+		Multiplier: 90
+		Prerequisites: indp, !indplowpower
+
+^Vehicle:
+	Inherits@AI: ^ProductionAIBoost
+	Inherits@80: ^ProductionPlayerBoost
+	Inherits@94: ^LeavesScraps
+	Inherits@97: ^AffectedByEMP
+	Inherits@QtnkSlow: ^ThumpSnare
+	Inherits@SELLUNIT: ^SellableOnRepairPad
+	Mobile:
+		PauseOnCondition: !(!empdisable && !being-captured)
+	Passenger:
+		Weight: 2
+	WithParachute:
+		Image: maxichute
+	EdibleByLeap:
+	Repairable:
+		RepairActors: fix
+	TemporaryOwnerManager:
+	Targetable@EMPTargeting:
+		TargetTypes: EMPTank
+		RequiresCondition: empdisable
+	ExternalCondition@EMPTargeting:
+		Condition: EMPTank
+
+^Plane:
+	Inherits@AI: ^ProductionAIBoost
+	Inherits@80: ^ProductionPlayerBoost
+	Inherits@SELLUNIT: ^SellableOnRepairPad
+	-EjectOnDeath:
+	Repairable:
+		RepairActors: afld, carr.deployed
+	#	this is to ensure it can land on
+	#	the Service Depot at all
+	DeliversCash:
+		Payload: 0
+		Type: AircraftRefund
+
+^Helicopter:
+	Aircraft:
+		Crushes: crate, mine, infantry, airmine
+	Repairable:
+		RepairActors: hpad, carr.deployed
+
+^BasicBuilding:
+
+^Building:
+	Inherits@AI: ^ProductionAIBoost
+	Inherits@94: ^LeavesScraps
+	Inherits@97: ^BuildingAffectedByEMP
+	RequiresBuildableArea:
+		Adjacent: 3
+	Capturable:
+		RequiresCondition: !build-incomplete
+		Types: building-sabotage
+	Capturable@2:
+		RequiresCondition: !build-incomplete
+		Types: building-external
+	RepairableBuilding:
+		RepairStep: 1000
+	WithDamageOverlay@SmallBurn:
+		DamageTypes: Incendiary
+		Image: burn-s
+		Palette: effect
+		MinimumDamageState: Light
+		MaximumDamageState: Medium
+	WithDamageOverlay@MediumBurn:
+		DamageTypes: Incendiary
+		Image: burn-m
+		Palette: effect
+		MinimumDamageState: Medium
+		MaximumDamageState: Heavy
+	WithDamageOverlay@LargeBurn:
+		DamageTypes: Incendiary
+		Image: burn-l
+		Palette: effect
+		MinimumDamageState: Heavy
+		MaximumDamageState: Dead
+	AcceptsDeliveredCash:
+		ValidTypes: MoneyTransfer
+
+^Defense:
+	Inherits@AI: ^ProductionAIBoost
+	Building:
+		TerrainTypes: Clear,Road,Beach
+	RequiresBuildableArea:
+		Adjacent: 3
+
+^BasicHusk:
+	ConditionManager:
+
+^FakeBuilding:
+	SelfHealing:
+		Step: -100
+		Delay: 3
+		HealIfBelow: 100
+		DamageCooldown: 0
+		RequiresCondition: disabled
+
+^Husk:
+	Inherits@94: ^LeavesScraps
+	Husk:
+		AllowedTerrain: Clear, Rough, Road, Ore, Gems, Scraps, Beach, Shallow
+
+^Ship:
+	Inherits@AI: ^ProductionAIBoost
+	Inherits@80: ^ProductionPlayerBoost
+	Inherits@97: ^AffectedByEMP
+	Mobile:
+		PauseOnCondition: !(!empdisable)
+	Targetable:
+		TargetTypes: Ground, Water, Ship
+	Targetable@REPAIR:
+		RequiresCondition: damaged
+		TargetTypes: Repair, RepairShip
+	RepairableNear:
+		RepairActors: spen, syrd
+	Targetable@EMPTargeting:
+		TargetTypes: EMPTank
+		RequiresCondition: empdisable
+	ExternalCondition@EMPTargeting:
+		Condition: EMPTank
+	Sellable:
+		SellSounds: cashturn.aud
+		Cursor: sell2
+		ShowTicks: false
+		RequiresCondition: ship.sellable
+	ExternalCondition@Sellable:
+		Condition: ship.sellable
+
+^Submarine:
+	Inherits: ^Ship
+	RevealsShroud:
+		Range: 6c0
+		RequiresCondition: !underwater
+		RevealGeneratedShroud: false
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+		RequiresCondition: !underwater
+	RevealsShroud@UNDERWATER:
+		Range: 3c0
+		RequiresCondition: underwater
+	RepairableNear:
+		RepairActors: spen, syrd
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 0
+		CloakDelay: 50
+		CloakSound: subshow1.aud
+		UncloakSound: subshow1.aud
+		CloakedCondition: underwater
+		Palette: submerged
+		UncloakOn: Attack, Heal, Dock, SelfHeal, Demolish
+		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit
+		RequiresCondition: !deployed
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	Targetable:
+		TargetTypes: Ground, Water, Ship, Submarine
+		RequiresCondition: !underwater
+	Targetable@UNDERWATER:
+		TargetTypes: Underwater, Submarine
+		RequiresCondition: underwater
+	Targetable@REPAIR:
+		RequiresCondition: !underwater && damaged
+		TargetTypes: Repair, RepairShip
+	GrantConditionOnTerrain@CROSSINGFORD:
+		Condition: shallowcrossing
+		TerrainTypes: Shallow
+	GrantConditionOnDeploy:
+		DeployedCondition: deployed
+	ExternalCondition@MINEHIT:
+		Condition: minehit
+	Explodes:
+		Weapon: UnitExplodeSubmarine
+		EmptyWeapon: UnitExplodeSubmarine
+	-MustBeDestroyed:
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 3c0
+	RenderDetectionCircle:
+	Sellable:
+		SellSounds: cashturn.aud
+		Cursor: sell2
+		ShowTicks: false
+		RequiresCondition: ship.sellable && !underwater
+
+^AffectedByEMP:
+	WithColoredOverlay@EMPDISABLE:
+		RequiresCondition: empdisable
+		Palette: disabled
+	TimedConditionBar@EMPDISABLE:
+		Condition: empdisable
+		Color: FFFFFF
+	WithIdleOverlay@EMPDISABLE:
+		Sequence: emp-overlay
+		RequiresCondition: empdisable
+	ExternalCondition@EMPDISABLE:
+		Condition: empdisable
+
+^BuildingAffectedByEMP:
+	WithColoredOverlay@EMPDISABLE:
+		RequiresCondition: empdisable
+		Palette: disabled
+	TimedConditionBar@EMPDISABLE:
+		Condition: empdisable
+		Color: FFFFFF
+	WithIdleOverlay@EMPDISABLE:
+		Sequence: emp-overlay
+		RequiresCondition: empdisable
+	ExternalCondition@EMPDISABLE:
+		Condition: empdisable
+	PowerMultiplier@EMPDISABLE:
+		RequiresCondition: empdisable
+		Modifier: 0
+	GrantCondition@EMPDISABLE:
+		RequiresCondition: empdisable
+		Condition: disabled
+
+^DisableOnPowerDown:
+	WithColoredOverlay@IDISABLE:
+		RequiresCondition: disabled
+		Palette: disabled
+	GrantCondition@IDISABLE:
+		RequiresCondition: powerdown
+		Condition: disabled
+	ToggleConditionOnOrder:
+		DisabledSound: EnablePower
+		EnabledSound: DisablePower
+		Condition: powerdown
+		OrderName: PowerDown
+	WithDecoration@POWERDOWN:
+		Image: poweroff
+		Sequence: offline
+		Palette: chrome
+		RequiresCondition: powerdown
+		ReferencePoint: Center
+		Offsets:
+			repairing: 10, 0
+	PowerMultiplier@POWERDOWN:
+		RequiresCondition: powerdown
+		Modifier: 0
+	RepairableBuilding:
+		RepairCondition: repairing
+		RepairingNotification: Repairing
+	WithBuildingRepairDecoration:
+		Offsets:
+			powerdown: -10, 0
+
+^LeavesScraps:
+	GrantConditionOnPrerequisite@SCRAPMETAL:
+		Condition: global-scraps
+		Prerequisites: global-scraps
+	Explodes@SCRAPS:
+		RequiresCondition: global-scraps
+		Weapon: ScrapsExplosion
+
+^BuildingHusk:
+	Inherits@1: ^SpriteActor
+	Interactable:
+	AppearsOnRadar:
+	Building:
+		Dimensions: 1,1
+		Footprint: x
+	WithSpriteBody:
+	Health:
+		HP: 20000
+	Armor:
+		Type: Wood
+	Burns:
+		Damage: 200
+	HitShape:
+	OwnerLostAction:
+		Action: ChangeOwner
+	Targetable:
+		TargetTypes: Ground, NoAutoTarget
+		RequiresForceFire: true
+	Tooltip:
+		GenericName: Destroyed Building
+	HiddenUnderFog:
+		Type: CenterPosition
+		AlwaysVisibleStances: None
+	ScriptTriggers:
+	Explodes:
+		Weapon: BuildingExplode
+	MapEditorData:
+		Categories: Husk
+
+^DefenseHusk:
+	Inherits@1: ^BuildingHusk
+	Health:
+		HP: 10000
+	Explodes:
+		Weapon: SmallBuildingExplode
+
+^CivBuildingHusk:
+	Inherits@1: ^SpriteActor
+	Interactable:
+	AppearsOnRadar:
+	Building:
+		Dimensions: 1,1
+		Footprint: x
+	WithSpriteBody:
+	Tooltip:
+		GenericName: Civilian Building (Destroyed)
+		GenericStancePrefix: false
+		ShowOwnerRow: false
+	Targetable:
+		TargetTypes: Ground, NoAutoTarget
+		RequiresForceFire: true
+	FrozenUnderFog:
+	ScriptTriggers:
+	MapEditorData:
+		Categories: Husk
+	OwnerLostAction:
+		Action: ChangeOwner
+
+^TechBuildingHusk:
+	Inherits: ^CivBuildingHusk
+	Tooltip:
+		GenericName: Tech Building (Destroyed)
+	Targetable:
+		TargetTypes: Ground, TechHusk, NoAutoTarget
+	InfiltrateForTransform:
+		Types: TechHusk
+		ForceHealthPercentage: 25
+
+^Wall:
+	LineBuild:
+		Range: 8
+
+^Gate:
+	Inherits: ^Building
+	Health:
+		HP: 35000
+	Armor:
+		Type: Heavy
+	LineBuildNode:
+		Types: concrete, gate
+	-WithSpriteBody:
+	-EngineerRepairable:
+	-Capturable:
+	-Capturable@2:
+	-SpawnActorsOnSell:
+	-CaptureManager:
+	-CapturableProgressBar:
+	-CapturableProgressBlink:
+	-WithMakeAnimation:
+	WithGateSpriteBody:
+		PauseOnCondition: disabled
+	Tooltip:
+		Name: Gate
+	Building:
+		BuildSounds: place2.aud
+		TerrainTypes: Clear, Road
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 4
+	MapEditorData:
+		Categories: Wall
+	Gate:
+		PauseOnCondition: disabled
+		OpeningSound: cashturn.aud
+		ClosingSound: cashturn.aud
+		BlocksProjectilesHeight: 0
+
+CAMERA.small:
+	Inherits: CAMERA
+	RevealsShroud:
+		Range: 5c0
+		Type: CenterPosition
+	DetectCloaked:
+		Range: 5c0
+		CloakTypes: Cloak, Thief
+
+CRATE:
+	GiveUnitCrateAction@jeep:
+		SelectionShares: 6
+		Units: jeep
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@1tnk:
+		SelectionShares: 6
+		Units: 1tnk
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@apc:
+		SelectionShares: 6
+		Units: apc.crate
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@apc.soviet:
+		SelectionShares: 6
+		Units: apc.soviet
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@ftrk:
+		SelectionShares: 6
+		Units: ftrk
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@arty:
+		SelectionShares: 5
+		Units: arty
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@v2rl:
+		SelectionShares: 5
+		Units: v2rl
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@2tnk:
+		SelectionShares: 4
+		Units: 2tnk
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.medium, fix
+	GiveUnitCrateAction@3tnk1b:
+		SelectionShares: 4
+		Units: 3tnk.1b
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techlevel.medium, fix
+	GiveUnitCrateAction@3tnk:
+		SelectionShares: 4
+		Units: 3tnk
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techlevel.medium, fix
+	GiveUnitCrateAction@msam:
+		SelectionShares: 6
+		Units: msam
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.high, dome
+	GiveUnitCrateAction@squadlight:
+		SelectionShares: 10
+		Units: e1,e1,e1,e3,e3
+		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus
+	GiveUnitCrateAction@squadlightallies:
+		SelectionShares: 9
+		Units: e1,e1,e1,e3,e3,medi,jeep
+		ValidFactions: allies, england, france, germany
+		TimeDelay: 2250
+	GiveUnitCrateAction@squadlightsoviet:
+		SelectionShares: 9
+		Units: e1,e1,e1,e3,e3,e4,ftrk
+		ValidFactions: soviet, russia, ukraine, belarus
+		TimeDelay: 2250
+	GiveUnitCrateAction@squadheavyallies:
+		SelectionShares: 7
+		Units: e1,e1,e1,e1,e3,e3,e3,e6,medi
+		ValidFactions: allies, england, france, germany
+		TimeDelay: 4500
+	GiveUnitCrateAction@squadheavysoviet:
+		SelectionShares: 7
+		Units: e1,e1,e1,e4,e4,e3,e3,e3,e6
+		ValidFactions: soviet, russia, ukraine, belarus
+		TimeDelay: 4500
+	GiveUnitCrateAction@squadheavyalliesb:
+		SelectionShares: 6
+		Units: e1,e1,e1,medi,e3,e3,1tnk,2tnk,1tnk
+		ValidFactions: allies, england, france, germany
+		TimeDelay: 4500
+	GiveUnitCrateAction@squadheavysovietb:
+		SelectionShares: 6
+		Units: e1,e1,e1,e4,e3,e3,ftrk,ftrk,3tnk
+		ValidFactions: soviet, russia, ukraine, belarus
+		TimeDelay: 4500
+	ExplodeCrateAction@ore:
+		Weapon: OreExplosion
+		SelectionShares: 3
+	LevelUpCrateAction@superlevel:
+		Levels: 4
+		SelectionShares: 1
+	ExplodeCrateAction@nuke:
+		Weapon: MiniNuke
+		SelectionShares: 1
+
+tech.stolen:
+	AlwaysVisible:
+	ProvidesPrerequisite:
+
+^ThumpSnare:
+	WithColoredOverlay@THUMPSNARE:
+		RequiresCondition: thumpsnare
+		Palette: disabled
+	TimedConditionBar@THUMPSNARE:
+		Condition: thumpsnare
+		Color: FFFFFF
+	SpeedMultiplier@THUMPSNARE1:
+		Modifier: 97
+		RequiresCondition: thumpsnare == 1
+	SpeedMultiplier@THUMPSNARE2:
+		Modifier: 95
+		RequiresCondition: thumpsnare == 2
+	SpeedMultiplier@THUMPSNARE3:
+		Modifier: 92
+		RequiresCondition: thumpsnare == 3
+	SpeedMultiplier@THUMPSNARE4:
+		Modifier: 89
+		RequiresCondition: thumpsnare == 4
+	SpeedMultiplier@THUMPSNARE5:
+		Modifier: 86
+		RequiresCondition: thumpsnare == 5
+	SpeedMultiplier@THUMPSNARE6:
+		Modifier: 83
+		RequiresCondition: thumpsnare == 6
+	SpeedMultiplier@THUMPSNARE7:
+		Modifier: 80
+		RequiresCondition: thumpsnare == 7
+	SpeedMultiplier@THUMPSNARE8:
+		Modifier: 77
+		RequiresCondition: thumpsnare == 8
+	SpeedMultiplier@THUMPSNARE9:
+		Modifier: 75
+		RequiresCondition: thumpsnare == 9
+	SpeedMultiplier@THUMPSNARE10:
+		Modifier: 72
+		RequiresCondition: thumpsnare == 10
+	SpeedMultiplier@THUMPSNARE11:
+		Modifier: 69
+		RequiresCondition: thumpsnare == 11
+	SpeedMultiplier@THUMPSNARE12:
+		Modifier: 66
+		RequiresCondition: thumpsnare == 12
+	SpeedMultiplier@THUMPSNARE13:
+		Modifier: 63
+		RequiresCondition: thumpsnare == 13
+	SpeedMultiplier@THUMPSNARE14:
+		Modifier: 60
+		RequiresCondition: thumpsnare == 14
+	ExternalCondition@THUMPSNARE:
+		Condition: thumpsnare
+		TotalCap: 14
+
+Dummy.qtnk:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (dummy to workaround QTNK)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 1c0
+		Type: CenterPosition
+	KillsSelf:
+		Delay: 144
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+
+^ScienceBuilding:
+	SpawnActorsOnSell:
+		ActorTypes: e1,e1,e1,tecn,tecn,e6
+
+camera.minimum:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (support power proxy camera)
+	RevealsShroud:
+		Range: 1c0
+
+^KilledWithoutAirfield:
+	SelfHealing@PLANE:
+		Step: 0
+		PercentageStep: -10
+		Delay: 25
+		HealIfBelow: 101
+		DamageCooldown: 0
+		RequiresCondition: !hasairfield
+	GrantConditionOnPrerequisite@AIRFIELD:
+		Prerequisites: afld
+		Condition: hasairfield
+
+^SellableOnRepairPad:
+	Sellable:
+		RefundPercent: 25
+		SellSounds: cashturn.aud
+		Cursor: sell2
+		ShowTicks: false
+		RequiresCondition: unit.sellable
+	ProximityExternalCondition:
+		Condition: unit.docked
+		Range: 1c0
+	ExternalCondition@Sellable:
+		Condition: unit.sellable

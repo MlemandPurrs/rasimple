@@ -1,0 +1,408 @@
+^RottingInfantry:
+	WithDeathAnimation@ROT:
+		DeathSequence: rot
+		DeathTypes:
+			DefaultDeath: 1
+			BulletDeath: 2
+			SmallExplosionDeath: 3
+			ExplosionDeath: 4
+
+E1:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 1
+	Armament@PRIMARY:
+		PauseOnCondition: leaflet
+	Passenger:
+		PipType: Green
+	Cloneable:
+		Types: Soldier
+	DeliversCash:
+		Payload: 25
+		Type: InfantryRefund
+
+E2:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 3
+		Prerequisites: ~barracks, ~techlevel.infonly
+	Valued:
+		Cost: 150
+	Health:
+		HP: 4500
+	Armament@PRIMARY:
+		PauseOnCondition: leaflet
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: GrenadeLauncher
+	Passenger:
+		PipType: Green
+	Cloneable:
+		Types: Soldier
+	DeliversCash:
+		Payload: 37
+		Type: InfantryRefund
+
+E2R1:
+	Inherits: E2
+	RenderSprites:
+		Image: E2
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	-Buildable:
+
+E3:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 2
+		Description: Anti-tank/Anti-aircraft infantry.\nWhen inside Pillboxes can attack only Ground units.\n  Strong vs Vehicles, Aircraft\n  Weak vs Infantry
+	Passenger:
+		PipType: Green
+	AmmoPool:
+		Ammo: 1
+		PipCount: 0
+		AmmoCondition: ammo
+	Armament@PRIMARY:
+		PauseOnCondition: !ammo || leaflet
+	Armament@SECONDARY:
+		PauseOnCondition: !ammo || leaflet
+	ReloadAmmoPool:
+		PauseOnCondition: ammo
+	AutoTarget:
+		ScanRadius: -1
+	Cloneable:
+		Types: Soldier
+	DeliversCash:
+		Payload: 75
+		Type: InfantryRefund
+
+E4:
+	Buildable:
+		Prerequisites: ~barr, ftur, ~techlevel.low
+		BuildPaletteOrder: 9
+	Valued:
+		Cost: 400
+	Armament@PRIMARY:
+		PauseOnCondition: leaflet
+	Passenger:
+		PipType: Green
+	DeliversCash:
+		Payload: 100
+		Type: InfantryRefund
+
+E6:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 5
+		Prerequisites: ~barracks, proc, ~techlevel.infonly
+		Description: Infiltrates and captures Enemy structures.\nExternally captures Neutral structures.\nCan restore destroyed Tech buildings.\nCan repair destroyed Bridges.\n  Unarmed
+	Valued:
+		Cost: 500
+	-GrantConditionOnPrerequisite@GLOBALREUSABLEENGINEER:
+	-Captures:
+	-Captures@REUSABLE:
+	Captures@CAPTURESPLAYER:
+		CaptureTypes: building-sabotage
+		SabotageThreshold: 20
+		SabotageHPRemoval: 20
+		PlayerExperience: 0
+	Captures@CAPTURESNEUTRAL:
+		CaptureTypes: building, husk
+		PlayerExperience: 0
+		CaptureDelay: 100
+		ConsumedByCapture: false
+	Passenger:
+		PipType: Blue
+	Infiltrates@RESTORENEUTRAL:
+		Types: TechHusk
+		ValidStances: Neutral
+		EnterCursor: goldwrench
+		PlayerExperience: 25
+
+MEDI:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 9
+		Prerequisites: ~tent, dome, ~techlevel.low
+	Health:
+		HP: 6000
+	Valued:
+		Cost: 250
+	Passenger:
+		PipType: Blue
+	DeliversCash:
+		Payload: 62
+		Type: InfantryRefund
+
+MECH:
+	Inherits@ROT: ^RottingInfantry
+	Health:
+		HP: 6000
+	Buildable:
+		Prerequisites: ~tent, fix, ~techlevel.medium
+		BuildPaletteOrder: 6
+	Passenger:
+		PipType: Blue
+	DeliversCash:
+		Payload: 125
+		Type: InfantryRefund
+
+SPY:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		Prerequisites: ~tent, dome, ~techlevel.medium
+		BuildPaletteOrder: 7
+		Description: Agent of the Intelligence Service.\nCan detect cloaked units and spies.\n  Special Ability: Hijacking\nCan steal enemy Vehicles when not disguised.\n  Special Ability: Espionage\nInfiltrates enemy production structures for rank bonus.\nSteals enemy credits from Refineries.\nInfiltrates enemy Power Plants to cut off base power.\nInfiltrates Radar Domes to reset their exploration.\nInfiltrates Tech Centers to unlock Prism Tank Unit.\n  Special Ability: Disguise\nCan disguise as enemy Infantry.\nLoses disguise when attacking.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Passenger:
+		PipType: Yellow
+	CaptureManager:
+	Captures@VEHICLE:
+		CaptureTypes: vehicle
+		PlayerExperience: 50
+		RequiresCondition: !disguise
+	Armament:
+		PauseOnCondition: leaflet
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: SilencedPPK
+		MuzzleSequence: garrison-muzzle
+	DeliversCash:
+		Payload: 125
+		Type: InfantryRefund
+
+SPY.England:
+	Buildable:
+		Prerequisites: ~disabled
+
+THF:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 6
+		Description: Field operative of the Union.\n  Special Ability: Sabotage\nCan infiltrate enemy buildings to damage them.\nSteals enemy credits from Refineries.\nInfiltrates Tech Centers to unlock Behemoth Tank Unit.\n  Special Ability: Hijacking\nHijacks enemy vehicles.\n  Special Ability: Cloaking\nCloaks when standing still.\n  Unarmed
+	Tooltip:
+		Name: Saboteur
+	Health:
+		HP: 4500
+	Passenger:
+		PipType: Blue
+	CaptureManager:
+	Captures@SABOTAGE:
+		CaptureTypes: building-sabotage
+		SabotageThreshold: 1
+		SabotageHPRemoval: 20
+		PlayerExperience: 50
+	DeliversCash:
+		Payload: 125
+		Type: InfantryRefund
+
+E7:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildLimit: 1
+		Description: Elite commando infantry.\nArmed with dual pistols and C4.\nMaximum 1 can be trained.\n  Special ability: Amphibian\nCan swim through sea and river.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+		BuildPaletteOrder: 8
+		Prerequisites: ~tent, atek, ~infantry.allies, ~techlevel.high
+	Mobile:
+		Locomotor: foot-amphibious
+		Speed: 71
+		Voice: Move
+	Health:
+		HP: 5000
+	GrantConditionOnTerrain:
+		TerrainTypes: Water, River
+		Condition: swimming
+	Targetable:
+		RequiresCondition: !parachute && !swimming
+	Targetable@SEA:
+		TargetTypes: Ground, Water, Infantry
+		RequiresCondition: !parachute && swimming
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		StandSequences: stand
+		RequiresCondition: !swimming
+	WithInfantryBody@SEA:
+		RequiresCondition: swimming
+		MoveSequence: swim
+		DefaultAttackSequence: swim_shoot
+		IdleSequences: swim_idle
+		StandSequences: swim_stand
+	WithDeathAnimation:
+		RequiresCondition: !swimming
+	Passenger:
+		PipType: Red
+	WithDeathAnimation@ROT:
+		RequiresCondition: !swimming
+	DeliversCash:
+		Payload: 300
+		Type: InfantryRefund
+
+VOLK:
+	Inherits@ROT: ^RottingInfantry
+	Inherits: GNRL
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		Prerequisites: ~barr, stek, ~infantry.soviet, ~techlevel.high
+		BuildPaletteOrder: 8
+		BuildLimit: 1
+		Description: Elite commando infantry armed with anti-tank gun and C4.\nMaximum 1 can be trained\n  Special ability: Durability\nCannot be crushed unless its Mammoth Tank\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Volkov
+	Health:
+		HP: 12000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	Demolition:
+		DetonationDelay: 45
+		Voice: Demolish
+	Mobile:
+		Speed: 62
+		Voice: Move
+	Guard:
+		Voice: Move
+	Passenger:
+		PipType: Red
+		Voice: Move
+	AttackFrontal:
+	Voiced:
+		VoiceSet: VolkovVoice
+	Armament:
+		Weapon: VolkovGun
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: VolkovGun
+		MuzzleSequence: garrison-muzzle
+	DetectCloaked:
+		CloakTypes: Cloak, Hijacker
+	Chronoshiftable:
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	RenderSprites:
+		Image: VOLK
+	ExternalCondition@PRODUCED:
+		Condition: produced
+	VoiceAnnouncement:
+		RequiresCondition: produced
+		Voice: Build
+	AnnounceOnKill:
+	Crushable:
+		CrushClasses: heavywall
+	Targetable:
+		RequiresCondition: !parachute
+		TargetTypes: Ground, Infantry, Disguise, Cyborg
+	MapEditorData:
+		Categories: Infantry
+	DeliversCash:
+		Payload: 375
+		Type: InfantryRefund
+
+SHOK:
+	Inherits@ROT: ^RottingInfantry
+	Buildable:
+		BuildPaletteOrder: 7
+		Prerequisites: ~barr, tsla, ~player.soviet, ~techlevel.high
+		Description: Infantry with portable Tesla coils.\nWeapon doesnt work from within Pillboxes\ndue to structural insulation.\nCan charge powerless Tesla Coils.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
+	Valued:
+		Cost: 475
+	Health:
+		HP: 7000
+	-Armament@GARRISONED:
+	AttackFrontal:
+	Passenger:
+		PipType: Red
+	Armament@PRIMARY:
+		PauseOnCondition: leaflet
+	Armament@SECONDARY:
+		Weapon: TeslaCharge
+		LocalOffset: 427,0,341
+		Cursor: powerdown
+		OutsideRangeCursor: powerdown
+		TargetStances: Ally
+		ForceTargetStances: None
+		PauseOnCondition: leaflet
+	RevealsShroud:
+		Range: 5c0
+	DeliversCash:
+		Payload: 118
+		Type: InfantryRefund
+		Voice: Move
+
+C4:
+	RenderSprites:
+		Image: C4
+
+C5:
+	RenderSprites:
+		Image: C5
+
+C6:
+	RenderSprites:
+		Image: C6
+
+C7:
+	RenderSprites:
+		Image: C7
+
+C8:
+	RenderSprites:
+		Image: C8
+
+C9:
+	RenderSprites:
+		Image: C9
+
+C10:
+	RenderSprites:
+		Image: C10
+
+TECN:
+	Inherits@1: ^CivInfantry
+	Inherits@2: ^ArmedCivilian
+	Tooltip:
+		Name: Technician
+	Passenger:
+		Weight: 1
+		PipType: Blue
+	RenderSprites:
+		Image: TECN
+	Armament:
+		PauseOnCondition: leaflet
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: M1Carbine
+		MuzzleSequence: garrison-muzzle
+	DeliversCash:
+		Payload: 25
+		Type: InfantryRefund
+
+DOG:
+	Buildable:
+		BuildPaletteOrder: 4
+		BuildAtProductionType: Soldier
+		Prerequisites: proc, ~techlevel.infonly
+	Passenger:
+		PipType: Green
+	Health:
+		HP: 2000
+	DeliversCash:
+		Payload: 50
+		Type: InfantryRefund
+		Voice: Move
+
+Ant:
+	Buildable:
+		Prerequisites: ~disabled
+	AttackWander:
+		WanderMoveRadius: 30
+	RenderSprites:
+		PlayerPalette: scoutant
+
+#	was never supposed to be buildable, wtf
+Zombie:
+	Buildable:
+		Prerequisites: ~disabled

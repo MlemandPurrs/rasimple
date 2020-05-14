@@ -1,0 +1,797 @@
+BADR:
+	Health:
+		HP: 20000
+	Cargo:
+		MaxWeight: 15
+	Contrail@1:
+		TrailLength: 8
+		TrailWidth: 48
+		UsePlayerColor: false
+	Contrail@2:
+		TrailLength: 8
+		TrailWidth: 48
+		UsePlayerColor: false
+
+BADR.Bomber:
+	Contrail@1:
+		TrailLength: 8
+		TrailWidth: 48
+		UsePlayerColor: false
+	Contrail@2:
+		TrailLength: 8
+		TrailWidth: 48
+		UsePlayerColor: false
+
+BADR.Crate:
+	Inherits: BADR
+	ParaDrop:
+		DropRange: 0c512
+	RenderSprites:
+		Image: badr
+	-MapEditorData:
+
+BADR.buildable:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 3
+		BuildLimit: 1
+		Prerequisites: ~afld, stek, ~aircraft.soviet, ~techlevel.high
+		Description: Badger variant that carries\ntriple payload of Parabombs.\nMaximum 1 can be built.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+	Tooltip:
+		Name: Badger Bomber
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Valued:
+		Cost: 3000
+	Health:
+		HP: 20000
+	Armament@1:
+		Name: primary
+		Weapon: Parabomb.burst
+		PauseOnCondition: !ammo
+		LocalOffset: 0,0,-43
+	Armament@2:
+		Name: secondary
+		Weapon: Parabomb.burst
+		LocalOffset: 0,-1256,-43
+		PauseOnCondition: !ammo
+	Armament@3:
+		Name: tertiary
+		Weapon: Parabomb.burst
+		LocalOffset: 0,1256,-43
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		Armaments: primary, secondary, tertiary
+		FacingTolerance: 20
+		PersistentTargeting: false
+		#	this is useless, its not taking effect at all
+		#	StrafeRunLength: 3c0
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 3
+		Speed: 156
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		InitialFacing: 192
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+	AmmoPool:
+		#	is missing 1 Parabomb (the very last one) with 10 ammo q_q
+		#	is not functioning correctly with 15 ammo, why ?
+		Ammo: 10
+		PipCount: 5
+		PipType: Yellow
+		AmmoCondition: ammo
+		ReloadDelay: 35
+	RevealsShroud:
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	Contrail@1:
+		TrailLength: 8
+		TrailWidth: 48
+		Offset: -432,560,0
+		UsePlayerColor: false
+	Contrail@2:
+		TrailLength: 8
+		TrailWidth: 48
+		Offset: -432,-560,0
+		UsePlayerColor: false
+	SpawnActorOnDeath:
+		Actor: BADR.Husk
+	SmokeTrailWhenDamaged@0:
+		Offset: -432,560,0
+		Interval: 2
+	SmokeTrailWhenDamaged@1:
+		Offset: -432,-560,0
+		Interval: 2
+	GivesExperience:
+		Experience: 1500
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SelectionDecorations:
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	Rearmable:
+		RearmActors: afld, carr.deployed
+	RenderSprites:
+		Image: badr
+
+B52:
+	Inherits: BADR
+	Tooltip:
+		Name: B-52
+	SpawnActorOnDeath:
+		Actor: B52.Husk
+	RenderSprites:
+		Image: ally-bdgr
+
+B52.Crate:
+	Inherits: B52
+	ParaDrop:
+		DropRange: 0c512
+	RenderSprites:
+		Image: ally-bdgr
+	-MapEditorData:
+
+B52.Bomber:
+	Inherits: BADR.Bomber
+	Tooltip:
+		Name: B-52
+	RenderSprites:
+		Image: ally-bdgr
+
+B52.buildable:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 6
+		BuildLimit: 1
+		Prerequisites: ~afld, atek, ~aircraft.allies, ~techlevel.high
+		Description: B-52 variant modified to function as Gunship.\nMaximum 1 can be built.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+	Tooltip:
+		Name: B-52 Gunship
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Valued:
+		Cost: 3000
+	Health:
+		HP: 20000
+	Armament@PRIMARY:
+		Name: primary
+		Turret: turret-mg
+		Weapon: ChainGun
+		LocalOffset: 320,0,-60
+		MuzzleSequence: muzzle-mg
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Turret: turret-cannon
+		Weapon: 2Inch.burst
+		LocalOffset: 720,0,-80
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@TERTIARY:
+		Name: tertiary
+		Turret: turret-arty
+		Weapon: 155mm.b52
+		LocalOffset: 624,0,-108
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		Armaments: primary, secondary, tertiary
+		FacingTolerance: 120
+		PersistentTargeting: false
+	Turreted@1:
+		Turret: turret-mg
+		TurnSpeed: 255
+		Offset: 1042,0,32
+	Turreted@2:
+		Turret: turret-cannon
+		TurnSpeed: 255
+		Offset: 396,0,0
+	Turreted@3:
+		Turret: turret-arty
+		TurnSpeed: 255
+		Offset: -260,0,0
+		#	Offset: 1042,0,0
+	WithSpriteTurret@1:
+		Sequence: turret1
+		Turret: turret-mg
+	WithSpriteTurret@2:
+		Sequence: turret2
+		Turret: turret-cannon
+	WithSpriteTurret@3:
+		Sequence: turret3
+		Turret: turret-arty
+	WithMuzzleOverlay:
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 3
+		Speed: 156
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		InitialFacing: 192
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+	AmmoPool:
+		Armaments: secondary
+		Ammo: 15
+		PipCount: 5
+		AmmoCondition: ammo
+		ReloadDelay: 25
+	RevealsShroud:
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	Contrail@1:
+		TrailLength: 8
+		TrailWidth: 48
+		Offset: -432,-560,0
+		UsePlayerColor: false
+	Contrail@2:
+		TrailLength: 8
+		TrailWidth: 48
+		Offset: -432,560,0
+		UsePlayerColor: false
+	SpawnActorOnDeath:
+		Actor: B52.Husk
+	SmokeTrailWhenDamaged@0:
+		Offset: -432,560,0
+		Interval: 2
+	SmokeTrailWhenDamaged@1:
+		Offset: -432,-560,0
+		Interval: 2
+	GivesExperience:
+		Experience: 1500
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SelectionDecorations:
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	Rearmable:
+		RearmActors: afld, carr.deployed
+	RenderSprites:
+		Image: ally-bdgr
+
+TRAN:
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildPaletteOrder: 1
+		Prerequisites: ~hpad, ~aircraft.allies, ~techlevel.medium
+		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry light vehicles, one at a time.\n  Unarmed
+	Carryall:
+		LocalOffset: 0, 0, -128
+	Health:
+		HP: 20000
+
+TRAN.Soviet:
+	Inherits: TRAN
+	Buildable:
+		BuildPaletteOrder: 4
+		Prerequisites: ~hpad, ~aircraft.soviet, ~techlevel.medium
+		Icon: svyt-icon
+	Tooltip:
+		Name: Yak 24
+	RenderSprites:
+		Image: tran
+	SpawnActorOnDeath:
+		Actor: TRAN.soviet.Husk
+	-MapEditorData:
+
+IROQ:
+	Inherits: ^Helicopter
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 2
+		Prerequisites: ~hpad, ~aircraft.allies, ~!aitoodumb, ~techlevel.medium
+		Description: Light helicopter armed with dual chainguns.\nCan use Depthcharges against Submarines.\n  Strong vs Infantry, Light vehicles\n  Weak vs Tanks, Aircraft
+	Valued:
+		Cost: 1350
+	Tooltip:
+		Name: Iroquois Scout
+	Health:
+		HP: 8000
+	RevealsShroud:
+		Range: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 8c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: ChainGun
+		LocalOffset: 85,-213,-85, 85,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: ChainGun
+		LocalOffset: 85,213,-85, 85,-213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: HeliDepthCharge
+		PauseOnCondition: !ammodc
+	Armament@FOURTH:
+		Name: fourth
+		Weapon: ChainGun.aa
+		LocalOffset: 85,213,-85, 85,-213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@FIFTH:
+		Name: fifth
+		Weapon: ChainGun.aa
+		LocalOffset: 85,213,-85, 85,-213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		Armaments: primary, secondary, tertiary, fourth, fifth
+		FacingTolerance: 20
+		PersistentTargeting: false
+		AttackType: Hover
+	Aircraft:
+		InitialFacing: 224
+		TurnSpeed: 5
+		Speed: 176
+		LandableTerrainTypes: Clear,Rough,Road,Ore,Beach,Gems
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+	WithIdleOverlay@ROTORAIR:
+		Offset: 0,0,85
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 0,0,85
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	AmmoPool:
+		Armaments: primary, secondary, fourth, fifth
+		Ammo: 12
+		PipCount: 4
+		AmmoCondition: ammo
+		ReloadDelay: 9
+	AmmoPool@2:
+		Armaments: tertiary
+		PipType: Blue
+		Ammo: 4
+		PipCount: 2
+		ReloadDelay: 9
+		AmmoCondition: ammodc
+	SelectionDecorations:
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: IROQ.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -427,0,0
+	ProducibleWithLevel:
+		Prerequisites: helicopters.upgraded
+	Selectable:
+		DecorationBounds: 38,32
+	Rearmable:
+		RearmActors: hpad, carr.deployed
+
+IROQ.AI:
+	Inherits: IROQ
+	Buildable:
+		Prerequisites: ~hpad, ~aircraft.allies, ~aitoodumb, ~techlevel.medium
+	-Armament@TERTIARY:
+	-AmmoPool@2:
+	AttackAircraft:
+		Armaments: primary, secondary
+	RenderSprites:
+		Image: iroq
+	-MapEditorData:
+
+HELI:
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildPaletteOrder: 3
+		BuildDurationModifier: 60
+		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high
+		Description: Helicopter gunship with multi-purpose\nChainguns and Missiles.\n  Strong vs Everything\n  Weak vs Anti-Air, Aircraft
+	Tooltip:
+		Name: Apache
+	Health:
+		HP: 12000
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: HeliAGGun
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammogun
+	Armament@QUARTENARY:
+		Name: quartenary
+		Weapon: HeliAAGun
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammogun
+	AttackAircraft:
+		Armaments: primary, secondary, tertiary, quartenary
+	AmmoPool:
+		PipType: Red
+		ReloadDelay: 15
+	AmmoPool@2:
+		Armaments: tertiary, quartenary
+		Ammo: 12
+		PipCount: 6
+		ReloadDelay: 9
+		AmmoCondition: ammogun
+	WithMuzzleOverlay:
+	Rearmable:
+		RearmActors: hpad, carr.deployed
+
+HIND:
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildPaletteOrder: 6
+		BuildAtProductionType: Helicopter
+		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high
+		Description: Slow helicopter gunship armed with dual chainguns\nand anti-ground rockets.\n  Strong vs Infantry, Tanks\n  Weak vs fast Units, Aircraft
+	Tooltip:
+		Name: MI-24 Hind
+	Valued:
+		Cost: 1500
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: ChainGun
+		LocalOffset: 85,-213,-85, 85,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: ChainGun
+		LocalOffset: 85,213,-85, 85,-213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@FOURTH:
+		Name: fourth
+		Weapon: ChainGun.aa
+		LocalOffset: 85,-213,-85, 85,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@FIFTH:
+		Name: fifth
+		Weapon: ChainGun.aa
+		LocalOffset: 85,213,-85, 85,-213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: MaverickHind
+		LocalOffset: 0,-640,0, 0,640,0
+		LocalYaw: -40, 24
+		PauseOnCondition: !ammorock
+	-AmmoPool:
+	AmmoPool@GUNS:
+		Armaments: primary, secondary, fourth, fifth
+		Ammo: 24
+		PipCount: 6
+		ReloadDelay: 6
+		AmmoCondition: ammo
+	AmmoPool@ROCKETS:
+		Armaments: tertiary
+		Ammo: 8
+		PipCount: 4
+		ReloadDelay: 16
+		PipType: Red
+		AmmoCondition: ammorock
+	AttackAircraft:
+		Armaments: primary, secondary, tertiary, fourth, fifth
+		FacingTolerance: 20
+	Aircraft:
+		Speed: 130
+		TurnSpeed: 5
+		InitialFacing: 192
+	Rearmable:
+		RearmActors: hpad, carr.deployed
+	Health:
+		HP: 12000
+
+U2:
+	Health:
+		HP: 15000
+	Contrail@1:
+		TrailLength: 6
+		TrailWidth: 48
+		UsePlayerColor: false
+	Contrail@2:
+		TrailLength: 6
+		TrailWidth: 48
+		UsePlayerColor: false
+
+YAK:
+	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildPaletteOrder: 1
+		Prerequisites: ~afld, ~aircraft.soviet, ~!aitoodumb, ~techlevel.medium
+		Description: Strafing Attack Plane armed with\ndual machine guns.\nBombs Submarines with Depthcharges.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+	Health:
+		HP: 8000
+	Aircraft:
+		TakeOffOnCreation: False
+		InitialFacing: 192
+	AttackAircraft:
+		Armaments: primary, secondary, tertiary, fourth, fifth
+		FacingTolerance: 20
+		PersistentTargeting: false
+	Armament@PRIMARY:
+		Weapon: ChainGun.Yak.Left
+		LocalOffset: 256,-213,0
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: ChainGun.Yak.Right
+		LocalOffset: 256,213,0
+		MuzzleSequence: muzzle
+		FireDelay: 1
+		PauseOnCondition: !ammo
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: BombingRun.dc
+		LocalOffset: 300,0,0
+		PauseOnCondition: !ammodc
+	Armament@FOURTH:
+		Name: fourth
+		Weapon: ChainGun.Yak.AA.Left
+		LocalOffset: 256,-213,0
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@FIFTH:
+		Name: fifth
+		Weapon: ChainGun.Yak.AA.Right
+		LocalOffset: 256,213,0
+		MuzzleSequence: muzzle
+		FireDelay: 1
+		PauseOnCondition: !ammo
+	-AmmoPool:
+	AmmoPool@1:
+		Armaments: primary, secondary, fourth, fifth
+		Ammo: 32
+		PipCount: 4
+		ReloadDelay: 11
+		AmmoCondition: ammo
+	AmmoPool@2:
+		Armaments: tertiary
+		Ammo: 6
+		PipCount: 2
+		PipType: Blue
+		ReloadDelay: 11
+		AmmoCondition: ammodc
+	Rearmable:
+		RearmActors: afld, carr.deployed
+	Contrail:
+		TrailLength: 10
+		TrailWidth: 48
+		UsePlayerColor: false
+
+YAK.AI:
+	Inherits: YAK
+	Buildable:
+		Prerequisites: ~afld, ~aircraft.soviet, ~aitoodumb, ~techlevel.medium
+	Aircraft:
+		TakeOffOnCreation: True
+	-Armament@TERTIARY:
+	-AmmoPool@2:
+	AttackAircraft:
+		Armaments: primary, secondary
+	RenderSprites:
+		Image: yak
+	-MapEditorData:
+
+SPIT:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 4
+		Prerequisites: ~afld, ~aircraft.allies, ~techlevel.medium
+		Description: Ground attack bomber.\nCannot attack Air units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Spitfire Attack Bomber
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 6000
+	RevealsShroud:
+		MinRange: 9c0
+		Range: 11c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 9c0
+		Type: GroundPosition
+	Armament@FIRST:
+		Name: primary
+		Weapon: BombingRun.ag
+		LocalOffset: 300,0,0
+		PauseOnCondition: !ammo	
+	AttackAircraft:
+		FacingTolerance: 20
+		PersistentTargeting: false
+		OpportunityFire: False
+	Aircraft:
+		CruiseAltitude: 2560
+		InitialFacing: 192
+		TurnSpeed: 4
+		Speed: 178
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+	AmmoPool@1:
+		Ammo: 6
+		PipCount: 2
+		PipType: Yellow
+		ReloadDelay: 11
+		AmmoCondition: ammo
+	SelectionDecorations:
+	WithMuzzleOverlay:
+	Contrail:
+		Offset: -853,0,0
+		TrailLength: 10
+		TrailWidth: 48
+		UsePlayerColor: false
+	SpawnActorOnDeath:
+		Actor: YAK.Allies.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,0
+		Interval: 2
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	Selectable:
+		DecorationBounds: 30,28,0,2
+	Rearmable:
+		RearmActors: afld, carr.deployed
+	RenderSprites:
+		Image: ally-yak
+
+MIG:
+	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildPaletteOrder: 2
+		BuildDurationModifier: 60
+		Prerequisites: ~afld, stek, ~aircraft.soviet, ~!aitoodumb, ~techlevel.high
+		Description: Fast Multi-Role Attack Plane.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+	Health:
+		HP: 10000
+	Aircraft:
+		TakeOffOnCreation: False
+		TakeoffSounds: migtoff1.aud
+		InitialFacing: 192
+	Valued:
+		Cost: 1800
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MaverickAA
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		PersistentTargeting: false
+	Rearmable:
+		RearmActors: afld, carr.deployed
+	Contrail@1:
+		TrailLength: 6
+		TrailWidth: 48
+		UsePlayerColor: false
+	Contrail@2:
+		TrailLength: 6
+		TrailWidth: 48
+		UsePlayerColor: false
+
+MIG.AI:
+	Inherits: MIG
+	Buildable:
+		Prerequisites: ~afld, stek, ~aircraft.soviet, ~aitoodumb, ~techlevel.high
+	Aircraft:
+		TakeOffOnCreation: True
+	RenderSprites:
+		Image: mig
+	-MapEditorData:
+
+TORN:
+	Inherits: ^Plane
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	Buildable:
+		Queue: Aircraft, MWFAir
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 5
+		Prerequisites: ~afld, atek, ~aircraft.allies, ~techlevel.high
+		Description: Fast Interceptor Plane\nwith Anti-air missiles.\nCannot attack Ground units.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Tornado Interceptor
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 10000
+	RevealsShroud:
+		MinRange: 11c0
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	Armament:
+		Weapon: HellfireAA.rapid
+		LocalOffset: 0,-640,0, 0,640,0
+		LocalYaw: -40, 24
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		FacingTolerance: 20
+		PersistentTargeting: false
+		OpportunityFire: False
+	Aircraft:
+		CruiseAltitude: 2560
+		InitialFacing: 192
+		TurnSpeed: 4
+		Speed: 223
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+	AmmoPool:
+		Ammo: 6
+		AmmoCondition: ammo
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SelectionDecorations:
+	Contrail@1:
+		Offset: -598,-683,0
+		TrailLength: 8
+		TrailWidth: 48
+		UsePlayerColor: false
+	Contrail@2:
+		Offset: -598,683,0
+		TrailLength: 8
+		TrailWidth: 48
+		UsePlayerColor: false
+	SpawnActorOnDeath:
+		Actor: MIG.Allies.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	ProducibleWithLevel:
+		Prerequisites: aircraft.upgraded
+	Rearmable:
+		RearmActors: afld, carr.deployed
+	RenderSprites:
+		Image: ally-mig
+
+MH60:
+	Buildable:
+		Prerequisites: ~disabled

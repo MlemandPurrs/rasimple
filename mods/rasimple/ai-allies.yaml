@@ -1,0 +1,180 @@
+Player:
+	SupportPowerBotModule@allies:
+		RequiresCondition: enable-ai-player && player.allies
+		Decisions:
+			UseParatroopers:
+				OrderName: AlliedParatroopers
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+			UseNuclear:
+				OrderName: NukeMissile
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+	BaseBuilderBotModule@allies:
+		RequiresCondition: enable-ai-player && player.allies
+		MinimumExcessPower: 60
+		MaximumExcessPower: 160
+		ExcessPowerIncrement: 40
+		ExcessPowerIncreaseThreshold: 4
+		CheckForWaterRadius: 8
+		ConstructionYardTypes: fact
+		RefineryTypes: proc.ercc
+		PowerTypes: powr,apwr
+		BarracksTypes: tent
+		VehiclesFactoryTypes: weap
+		ProductionTypes: tent,weap,hpad,afld
+		NavalProductionTypes: syrd
+		SiloTypes: silo
+		PlaceDefenseTowardsEnemyChance: 75
+		MaxBaseRadius: 26
+		BuildingDelays:
+			syrd: 4500
+			agun: 6000
+			atek: 7500
+		BuildingLimits:
+			proc.ercc: 4
+			tent: 2
+			dome: 1
+			weap: 3
+			syrd: 1
+			hpad: 4
+			atek: 1
+			fix: 1
+			pdox: 1
+			mslo: 1
+			agun: 6
+			gun: 6
+			pbox: 8
+			hbox: 4
+			gap: 4
+			fact: 3
+			afld: 2
+			spro: 1
+		BuildingFractions:
+			proc.ercc: 15
+			tent: 2
+			dome: 1
+			weap: 6
+			hpad: 4
+			syrd: 1
+			pbox: 7
+			hbox: 3
+			gun: 7
+			gap: 2
+			fix: 1
+			agun: 5
+			atek: 1
+			mslo: 1
+			pdox: 1
+			afld: 1
+			spro: 1
+	CaptureManagerBotModule@mech:
+		RequiresCondition: enable-ai-player && player.allies
+		CapturingActorTypes: mech
+		CapturableActorTypes: 2tnk.husk,3tnk.husk,4tnk.husk,harv.fullhusk,harv.emptyhusk,harv.soviet.fullhusk,harv.soviet.emptyhusk
+		CheckCaptureTargetsForVisibility: true
+		MaximumCaptureTargetOptions: 15
+	SquadManagerBotModule@allies:
+		RequiresCondition: enable-ai-player && player.allies
+		SquadSize: 16
+		SquadSizeRandomBonus: 16
+		RushInterval: 400
+		AttackScanRadius: 16
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, pt, dd, ca, heli, iroq.ai, e6, mech, spit
+		ConstructionYardTypes: fact
+	SquadManagerBotModule@allies.sea:
+		RequiresCondition: enable-ai-player && player.allies
+		SquadSize: 4
+		SquadSizeRandomBonus: 4
+		RushInterval: 400
+		AttackScanRadius: 24
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, heli, iroq.ai, e6, mech, spit
+		NavalUnitsTypes: pt,dd,ca
+		ConstructionYardTypes: fact
+		NavalProductionTypes: syrd
+	SquadManagerBotModule@allies.air:
+		RequiresCondition: enable-ai-player && player.allies
+		SquadSize: 2
+		SquadSizeRandomBonus: 2
+		RushInterval: 400
+		AttackScanRadius: 48
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, snip, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, pt, dd, ca, e6, mech
+		ConstructionYardTypes: fact
+	UnitBuilderBotModule@allies:
+		RequiresCondition: enable-ai-player
+		UnitQueues: Vehicle, Infantry
+		UnitsToBuild:
+			e1: 65
+			e2: 15
+			e3: 30
+			dog: 15
+			harv: 15
+			jeep: 20
+			apc: 30
+			stnk: 5
+			1tnk: 40
+			2tnk: 50
+			arty: 15
+			ctnk: 10
+			msam: 1
+			e7: 1
+			e6: 2
+			mech: 2
+			mcv.ai: 1
+		UnitLimits:
+			dog: 4
+			harv: 8
+			jeep: 4
+			e7: 1
+			e6: 2
+			mech: 2
+			mcv.ai: 1
+			stnk: 3
+			ctnk: 5
+			msam: 2
+	UnitBuilderBotModule@allies.sea:
+		RequiresCondition: enable-ai-player && player.allies
+		IdleBaseUnitsMaximum: 6
+		UnitQueues: Ship
+		UnitsToBuild:
+			pt: 50
+			dd: 30
+			ca: 20
+		UnitLimits:
+			pt: 8
+			dd: 6
+			ca: 4
+	UnitBuilderBotModule@allies.air:
+		RequiresCondition: enable-ai-player && player.allies
+		IdleBaseUnitsMaximum: 4
+		UnitQueues: Aircraft
+		UnitsToBuild:
+			iroq.ai: 30
+			heli: 50
+			spit: 20
+		UnitLimits:
+			iroq.ai: 4
+			heli: 6
+			spit: 2

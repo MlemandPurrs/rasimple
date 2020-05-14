@@ -1,0 +1,397 @@
+
+mcv:
+    Inherits: emp-overlay
+
+harv:
+    Inherits: emp-overlay
+
+harv.soviet:
+    Inherits: emp-overlay
+	idle: harvempty
+		Facings: 32
+		UseClassicFacingFudge: True
+	harvest: harvempty
+		Start: 32
+		Length: 8
+		Facings: 8
+	empty-idle: harvempty
+		Facings: 32
+		UseClassicFacingFudge: True
+	empty-harvest: harvempty
+		Start: 32
+		Length: 8
+		Facings: 8
+	half-idle: harvhalf
+		Facings: 32
+		UseClassicFacingFudge: True
+	half-harvest: harvhalf
+		Start: 32
+		Length: 8
+		Facings: 8
+	full-idle: harv
+		Facings: 32
+		UseClassicFacingFudge: True
+	full-harvest: harv
+		Start: 32
+		Length: 8
+		Facings: 8
+	dock: harv
+		Start: 96
+		Length: 8
+	dock-loop: harv
+		Start: 104
+		Length: 7
+	turret: btr-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: sovharvicon
+
+hhusk.soviet:
+	idle: hhusk
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -1023
+	turret: btr-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+
+hhusk2.soviet:
+	idle: hhusk2
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -1023
+	turret: btr-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+
+truk:
+    Inherits: emp-overlay
+
+jeep:
+    Inherits: emp-overlay
+
+ftrk:
+    Inherits: emp-overlay
+	turret-mg: apc-tur3
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle-mg: minigun
+		Length: 6
+		Facings: 8
+
+apc:
+    Inherits: emp-overlay
+
+1tnk:
+    Inherits: emp-overlay
+	turret: 1tnk-tur
+		Start: 0
+		Facings: 32
+		UseClassicFacingFudge: True
+
+2tnk:
+    Inherits: emp-overlay
+	mg-muzzle: minigun
+		Length: 6
+		Facings: 8
+
+3tnk.1b:
+	Inherits: emp-overlay
+	idle: 3tnk-1b
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret: 3tnk-1b
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: gunfire2
+		Length: 5
+	icon: 3tnkonebarlicon
+
+3tnk.1b.destroyed:
+	idle: 3tnk-1b
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+	turret: 3tnk-1b
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+  
+3tnk:
+    Inherits: emp-overlay   
+
+4tnk:
+    Inherits: emp-overlay
+
+5tnk:
+	Inherits: emp-overlay
+	idle: behe
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret: 5tnk-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: cruiser-muzzle
+		Length: 20
+		Facings: 8
+	muzzle-mg: minigun
+		Length: 6
+		Facings: 8
+	icon: 5tnkicon
+
+5tnk.destroyed:
+	idle: behe
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+	turret: 5tnk-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+
+arty:
+    Inherits: emp-overlay
+
+v2rl:
+    Inherits: emp-overlay
+
+mnly:
+    Inherits: emp-overlay
+	turret: apc-tur3
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	hapcicon: hapcicon
+
+mrj:
+    Inherits: emp-overlay
+
+stnk:
+    Inherits: emp-overlay
+	idle: papc
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: stnkicon
+
+ctnk:
+    Inherits: emp-overlay
+
+ttnk:
+    Inherits: emp-overlay
+
+qtnk:
+    Inherits: emp-overlay
+
+dtrk:
+    Inherits: emp-overlay
+    truk-body: truk
+		Facings: 32
+		UseClassicFacingFudge: True
+
+mgg:
+    Inherits: emp-overlay
+    spinner-idle:
+        Tick: 90
+    spinner:
+        Tick: 90
+    turret: ssam
+        Facings: 32
+        UseClassicFacingFudge: False
+    muzzle: mgg
+        Length: 2
+	msam-icon: msamicon
+
+ss:
+    Inherits: emp-overlay
+
+advsub:
+    Inherits: emp-overlay
+	idle:
+		Facings: 16
+	move:
+		Start: 16
+		Length: 8
+		Facings: 16
+	muzzle: gunfire2
+		Length: 2
+	icon: gsubicon
+
+msub:
+    Inherits: emp-overlay
+	turret: ssam-mini
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon: ssubicon
+
+advmsub:
+    Inherits: emp-overlay
+	idle:
+		Facings: 16
+	move:
+		Start: 16
+		Length: 8
+		Facings: 16
+	icon: msubicon
+
+pt:
+    Inherits: emp-overlay
+	turret: pttur
+		Facings: 32
+	turret-dc: mgun
+		Facings: 32
+	mg-muzzle: minigun
+		Length: 6
+		Facings: 8
+
+rshp:
+    Inherits: emp-overlay
+	idle: pt
+		Facings: 16
+	turret: crane-tur
+		Facings: 32
+	icon: rshpicon
+
+dd:
+    Inherits: emp-overlay
+	turret-dc: mgun
+		Facings: 32
+	mg-muzzle: minigun
+		Length: 6
+		Facings: 8
+
+ca:
+    Inherits: emp-overlay
+
+lst:
+    Inherits: emp-overlay
+
+fsub:
+	Inherits: emp-overlay
+	idle:
+		Facings: 16
+	turret: ftnk-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon: fsubicon
+
+iroq:
+	idle:
+		Facings: 32
+		UseClassicFacingFudge: True
+	rotor: lrotor2blade
+		Length: 4
+	slow-rotor: lrotor2blade
+		Start: 4
+		Length: 8
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: iroqicon
+
+heli:
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+
+tran:
+    svyt-icon: tran2icon
+
+smig:
+	idle:
+		Facings: 16
+
+ally-bdgr:
+	idle:
+		Facings: 16
+	turret1: btr-tur-flip
+		Start: 0
+		Facings: 32
+		ZOffset: -24
+	turret2: apc-tur-flip
+		Start: 0
+		Facings: 32
+		ZOffset: -24
+	turret3: arty-tur-flip
+		Start: 0
+		Facings: 32
+		ZOffset: -24
+	muzzle: gunfire2
+		Length: 2
+	muzzle-mg: minigun
+		Length: 6
+		Facings: 8
+	icon: b52icon
+
+ally-u2:
+	idle:
+		Facings: 16
+
+ally-yak:
+	idle:
+		Facings: 16
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: yakallyicon
+
+ally-mig:
+	idle:
+		Facings: 16
+	icon: migallyicon
+
+badr:
+	icon: badricon
+
+dummy.visual:
+	 idle: blank32
+		Facings: 32
+
+carr.usa:
+	Inherits: emp-overlay
+	idle: acar
+		Facings: 32
+	icon: acaricon
+
+carr.usa.deployed:
+    Inherits: emp-overlay
+	idle: acar
+		Start: 24
+		Length: 1
+		ZOffset: -1023
+	active: acar
+		Start: 24
+		Length: 1
+		ZOffset: -1023
+	icon: carricon
+
+prsm:
+	Inherits: emp-overlay
+	idle: prsm
+		Facings: 32
+		UseClassicFacingFudge: True
+	turret: prsm-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon: prsmicon
+
+prsm.destroyed:
+	idle: prsm
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
+	turret: prsm-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+		ZOffset: -512
