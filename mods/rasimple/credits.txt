@@ -1,4 +1,4 @@
-Red Alert Plus Developer:
+Red Alert Simple Developer:
 - MlemandPurrs
 
 Thanks to the OpenRA Development team
@@ -30,6 +30,6 @@ penev92, SilentPun, Violet-n-Red, tomsons26,
 and anyone else i may have forgotten to put here...
 
 note: the credits above was accurate for the fullscale
-mod some stuff may not appear on Lite.
+RA+ mod some stuff may not appear on here.
 
 <3 Cat
