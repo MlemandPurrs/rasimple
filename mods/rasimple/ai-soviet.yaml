@@ -67,7 +67,7 @@ Player:
 		ExcessPowerIncreaseThreshold: 4
 		CheckForWaterRadius: 8
 		ConstructionYardTypes: fact
-		RefineryTypes: proc.soviet
+		RefineryTypes: proc
 		PowerTypes: powr,apwr
 		BarracksTypes: barr
 		VehiclesFactoryTypes: weap
@@ -83,7 +83,7 @@ Player:
 			hsam: 9000
 			stek: 7500
 		BuildingLimits:
-			proc.soviet: 4
+			proc: 4
 			barr: 2
 			dome.soviet: 1
 			weap: 3
@@ -100,7 +100,7 @@ Player:
 			fact: 3
 			hpad: 2
 		BuildingFractions:
-			proc.soviet: 15
+			proc: 15
 			barr: 2
 			dome.soviet: 1
 			weap: 6

@@ -11,14 +11,14 @@ Player:
 	HarvesterBotModule@aiplayer:
 		RequiresCondition: enable-ai-player
 		HarvesterTypes: harv, harv.soviet
-		RefineryTypes: proc.ercc, proc.soviet, proc.russia
+		RefineryTypes: proc
 	BuildingRepairBotModule@aiplayer:
 		RequiresCondition: enable-ai-player
 	McvManagerBotModule@aiplayer:
 		RequiresCondition: enable-ai-player
 		McvTypes: mcv,mcv.ai
 		ConstructionYardTypes: fact
-		McvFactoryTypes: weap,weap.france,weap.germany
+		McvFactoryTypes: weap
 		MaxBaseRadius: 40
 	CaptureManagerBotModule@engineer:
 		RequiresCondition: enable-ai-player

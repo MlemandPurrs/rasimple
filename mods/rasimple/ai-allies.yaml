@@ -40,7 +40,7 @@ Player:
 		ExcessPowerIncreaseThreshold: 4
 		CheckForWaterRadius: 8
 		ConstructionYardTypes: fact
-		RefineryTypes: proc.ercc
+		RefineryTypes: proc
 		PowerTypes: powr,apwr
 		BarracksTypes: tent
 		VehiclesFactoryTypes: weap
@@ -54,7 +54,7 @@ Player:
 			agun: 6000
 			atek: 7500
 		BuildingLimits:
-			proc.ercc: 4
+			proc: 4
 			tent: 2
 			dome: 1
 			weap: 3
@@ -73,7 +73,7 @@ Player:
 			afld: 2
 			spro: 1
 		BuildingFractions:
-			proc.ercc: 15
+			proc: 15
 			tent: 2
 			dome: 1
 			weap: 6
