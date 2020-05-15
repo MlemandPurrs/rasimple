@@ -566,6 +566,9 @@ pbox:
 	make: pboxmake
 		Length: *
         Tick: 80
+	muzzle: minigun
+		Length: 6
+		Facings: 8
 
 pbox.husk:
 	idle: pbox-dead
@@ -575,6 +578,9 @@ hbox:
 	make: hboxmake
 		Length: *
         Tick: 80
+	muzzle: minigun
+		Length: 6
+		Facings: 8
 
 hbox.husk:
 	Defaults:

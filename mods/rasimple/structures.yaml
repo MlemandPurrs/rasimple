@@ -201,6 +201,49 @@ KENN:
 		Range: 3c0
 	Sellable:
 		RequiresCondition: !build-incomplete && !being-demolished
+	Exit@0:
+		RequiresCondition: !being-captured
+		SpawnOffset: -280,400,0
+		ExitCell: -1,1
+		ProductionTypes: Dog, Infantry
+		Priority: 3
+	-Exit@1:
+	-Exit@2:
+	-Exit@fallback1:
+	-Exit@fallback2:
+	-Exit@fallback3:
+	-Exit@fallback4:
+	-Exit@fallback5:
+	Exit@1:
+		SpawnOffset: -280,400,0
+		ExitCell: 0,1
+		ProductionTypes: Dog, Infantry
+		Priority: 2
+	Exit@2:
+		SpawnOffset: -280,400,0
+		ExitCell: -1,0
+		ProductionTypes: Dog, Infantry
+		Priority: 2
+	Exit@fallback1:
+		SpawnOffset: -280,400,0
+		ExitCell: -1,-1
+		ProductionTypes: Dog, Infantry
+	Exit@fallback2:
+		SpawnOffset: -280,400,0
+		ExitCell: 0,-1
+		ProductionTypes: Dog, Infantry
+	Exit@fallback3:
+		SpawnOffset: -280,400,0
+		ExitCell: 1,-1
+		ProductionTypes: Dog, Infantry
+	Exit@fallback4:
+		SpawnOffset: -280,400,0
+		ExitCell: 1,0
+		ProductionTypes: Dog, Infantry
+	Exit@fallback5:
+		SpawnOffset: -280,400,0
+		ExitCell: 1,1
+		ProductionTypes: Dog, Infantry
 
 PROC:
 	Inherits@AI: ^IncomeAIBoost
@@ -1210,7 +1253,7 @@ VGATE:
 PBOX:
 	Buildable:
 		BuildPaletteOrder: 2
-		Prerequisites: barracks, ~fact, ~techlevel.low
+		Prerequisites: ~disabled
 		Description: Static defense with a fireport for\na garrisoned soldier.\nInitially has Rifle Infantry in it.\nImmune to EMP.\nCan detect cloaked units when manned.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
 		Cost: 500
@@ -1239,10 +1282,36 @@ PBOX:
 		Actor: pbox.husk
 		OwnerType: InternalName
 
+PBOX.static:
+	Inherits: PBOX
+	Buildable:
+		BuildPaletteOrder: 2
+		Prerequisites: barracks, ~fact, ~techlevel.low
+		Description: Static defense with a Machinegun emplacement.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+	-CustomSellValue:
+	-Cargo:
+	-AttackGarrisoned:
+	DetectCloaked:
+		RequiresCondition: !build-incomplete
+	Turreted:
+		TurnSpeed: 255
+		Offset: 0,0,64
+	Armament:
+		Weapon: Vulcan
+		MuzzleSequence: muzzle
+		LocalOffset: 448,0,0
+	AttackTurreted:
+	WithMuzzleOverlay:
+	BodyOrientation:
+		QuantizedFacings: 8
+	RenderSprites:
+		Image: pbox
+	-MapEditorData:
+
 HBOX:
 	Buildable:
 		BuildPaletteOrder: 5
-		Prerequisites: tent, dome, ~structures.allies, ~techlevel.medium
+		Prerequisites: ~disabled
 		Description: Camouflaged static defense with a fireport\nfor a garrisoned soldier.\nInitially has Rocket Soldier in it.\nImmune to EMP.\nCan detect cloaked units when manned.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
 		Cost: 800
@@ -1275,6 +1344,38 @@ HBOX:
 	SpawnActorOnDeath:
 		Actor: hbox.husk
 		OwnerType: InternalName
+
+HBOX.static:
+	Inherits: HBOX
+	Buildable:
+		BuildPaletteOrder: 5
+		Prerequisites: barracks, dome, ~structures.allies, ~techlevel.medium
+		Description: Camouflaged static defense with a sniper inside.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+	-CustomSellValue:
+	-Cargo:
+	-AttackGarrisoned:
+	DetectCloaked:
+		RequiresCondition: !build-incomplete
+	Turreted:
+		TurnSpeed: 255
+		Offset: 0,0,64
+	Armament:
+		Weapon: Sniper
+		MuzzleSequence: muzzle
+		LocalOffset: 448,0,0
+	AttackTurreted:
+	WithMuzzleOverlay:
+	BodyOrientation:
+		QuantizedFacings: 8
+	-Cloak:
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 60
+		IsPlayerPalette: true
+		PauseOnCondition: cloak-force-disabled || build-incomplete
+	RenderSprites:
+		Image: hbox
+	-MapEditorData:
 
 FTUR:
 	Inherits@IDISABLE: ^DisableOnPowerDown

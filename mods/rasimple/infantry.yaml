@@ -52,7 +52,7 @@ E3:
 	Inherits@ROT: ^RottingInfantry
 	Buildable:
 		BuildPaletteOrder: 2
-		Description: Anti-tank/Anti-aircraft infantry.\nWhen inside Pillboxes can attack only Ground units.\nWhen inside Pillboxes uses dumbfire missiles\nthat cannot be jammed and have more range.\n  Strong vs Vehicles, Aircraft\n  Weak vs Infantry
+		Description: Anti-tank/Anti-aircraft infantry.\n  Strong vs Vehicles, Aircraft\n  Weak vs Infantry
 	Passenger:
 		PipType: Green
 	AmmoPool:
@@ -300,7 +300,7 @@ SHOK:
 	Buildable:
 		BuildPaletteOrder: 7
 		Prerequisites: ~barr, tsla, ~player.soviet, ~techlevel.high
-		Description: Infantry with portable Tesla coils.\nWeapon doesnt work from within Pillboxes\ndue to structural insulation.\nCan charge powerless Tesla Coils.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
+		Description: Infantry with portable Tesla coils.\nCan charge powerless Tesla Coils.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
 	Valued:
 		Cost: 475
 	Health:
