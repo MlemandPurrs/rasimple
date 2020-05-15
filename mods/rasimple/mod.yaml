@@ -50,7 +50,7 @@ Packages:
 MapFolders:
     ra|maps: System
 	rasimple|maps: System
-	~^maps/v.1.3.7-beta-lite: User
+	~^maps/rasimple: User
 
 Rules:
 	ra|rules/misc.yaml

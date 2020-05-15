@@ -7,6 +7,7 @@ LST:
 		PipCount: 16
 		PassengerConditions:
 			dtrk: demo-inside
+		LoadedCondition: loaded	
 	RepairableNear:
 		RepairActors: syrd, spen
 	Explodes@demotruck:
@@ -14,6 +15,8 @@ LST:
 		EmptyWeapon: MiniNuke
 		DamageSource: Killer
 		RequiresCondition: demo-inside
+	Sellable:
+		RequiresCondition: ship.sellable && !loaded
 
 PT:
 	Buildable:

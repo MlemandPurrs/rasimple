@@ -721,7 +721,7 @@ PrisTBurst:
 	TargetActorCenter: false
 	Projectile: Bullet
 		Speed: 204
-		LaunchAngle: -85
+		LaunchAngle: -35
 
 ParaBomb.burst:
 	Inherits: ParaBomb

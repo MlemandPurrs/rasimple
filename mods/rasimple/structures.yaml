@@ -9,7 +9,7 @@ FACT:
 		Produces: Building,Defense,Fakestructure,Dummy
 		PauseOnCondition: disabled || build-incomplete
 	ProvidesPrerequisite@allies:
-		Factions: allies, usa, england, france, germany
+		Factions: allies, england, france, germany
 		Prerequisite: structures.allies
 	ProvidesPrerequisite@soviet:
 		Factions: soviet, russia, ukraine, belarus
@@ -416,7 +416,7 @@ FIX:
 	Buildable:
 		BuildPaletteOrder: 8
 		Prerequisites: weap, ~techlevel.medium
-		Description: Repairs Vehicles for credits.\nVehicle and Aircraft can\nbe sold here for half value.
+		Description: Repairs Vehicles for credits.\nVehicle and Aircraft can\nbe sold here for half value.\n (their value scaling with health)
 	Building:
 		Footprint: =+= +++ =+=
 		Dimensions: 3,3
@@ -947,7 +947,7 @@ SYRD:
 	Buildable:
 		BuildPaletteOrder: 3
 		Prerequisites: anypower, ~structures.allies, ~techlevel.low, ~!global-disablenavy
-		Description: Produces and repairs\nShips and Transports.\nNearby Ships can be sold for half their value.\n  Special Ability: Sonar Pulse\n Reveals all submarines in target\narea for a short time.
+		Description: Produces and repairs\nShips and Transports.\nNearby Navy can be sold for half their value.\n (their value scaling with health)\n  Special Ability: Sonar Pulse\n Reveals all submarines in target\narea for a short time.
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
@@ -1017,7 +1017,7 @@ SPEN:
 	Buildable:
 		BuildPaletteOrder: 3
 		Prerequisites: anypower, ~structures.soviet, ~techlevel.low, ~!global-disablenavy
-		Description: Produces and repairs\nSubmarines and Transports.\nNearby Ships can be sold for half their value.\n  Special Ability: Sonar Pulse\n Reveals all submarines in target\narea for a short time.
+		Description: Produces and repairs\nSubmarines and Transports.\nNearby Navy can be sold for half their value.\n (their value scaling with health)\n  Special Ability: Sonar Pulse\n Reveals all submarines in target\narea for a short time.
 	DetectCloaked:
 		CloakTypes: Underwater
 		Range: 7c512
@@ -1421,7 +1421,7 @@ GUN:
 	Turreted@normal:
 		Turret: default-turret
 		TurnSpeed: 12
-		InitialFacing: 224
+		InitialFacing: 307
 	-Armament:
 	Armament@default:
 		Turret: default-turret
@@ -1450,6 +1450,10 @@ GUN:
 	SpawnActorOnDeath:
 		Actor: gun.husk
 		OwnerType: InternalName
+	-ActorPreviewPlaceBuildingPreview:
+	SequencePlaceBuildingPreview:
+		Sequence: place
+		SequencePalette: placebuilding
 
 PDOX:
 	Buildable:
@@ -1512,7 +1516,6 @@ MSLO:
 	NukePower@Normal:
 		OrderName: NukeMissile
 		PauseOnCondition: disabled
-		RequiresCondition: !kazakh.player
 		Cursor: nuke
 		Icon: abomb
 		ChargeInterval: 13500
@@ -1536,37 +1539,6 @@ MSLO:
 		ClockSequence: clock
 		CircleSequence: circles
 		SupportPowerPaletteOrder: 1
-	NukePower@Advanced:
-		OrderName: AdvNukeMissile
-		PauseOnCondition: disabled
-		RequiresCondition: kazakh.player
-		Cursor: nuke
-		Icon: abomb
-		ChargeInterval: 11500
-		Description: Atom Bomb
-		LongDesc: Launches a devastating atomic bomb at target location
-		BeginChargeSpeechNotification: AbombPrepping
-		EndChargeSpeechNotification: AbombReady
-		SelectTargetSpeechNotification: SelectTarget
-		InsufficientPowerSpeechNotification: InsufficientPower
-		IncomingSpeechNotification: AbombLaunchDetected
-		MissileWeapon: atomic
-		MissileDelay: 5
-		SpawnOffset: 1c0,427,0
-		DisplayTimerStances: Ally, Neutral, Enemy
-		DisplayBeacon: True
-		DisplayRadarPing: True
-		BeaconPoster: atomicon
-		FlashType: Nuke
-		CameraRange: 10c0
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		SupportPowerPaletteOrder: 1
-	GrantConditionOnFaction:
-		Condition: kazakh.player
-		Factions: kazakh
-		ResetOnOwnerChange: True
 	-SpawnActorsOnSell:
 	ProvidesPrerequisite@buildingname:
 	Power:
@@ -1639,10 +1611,9 @@ MINE:
 		Type: CenterPosition
 	Building:
 		Footprint: +
-	#	Dimensions: 1,2
 	ActorSpawner:
-	#	Interactable:
-	#	Bounds: 24, 24, 0, -12
+	SeedsResource:
+		Interval: 50
 
 GMINE:
 	ConditionManager:
@@ -1650,10 +1621,9 @@ GMINE:
 		Type: CenterPosition
 	Building:
 		Footprint: +
-	#	Dimensions: 1,2
 	ActorSpawner:
-	#	Interactable:
-	#	Bounds: 24, 24, 0, -12
+	SeedsResource:
+		Interval: 50
 
 DRILLMINE:
 	Inherits@1: ^SpriteActor
@@ -1671,7 +1641,7 @@ DRILLMINE:
 	RadarColorFromTerrain:
 		Terrain: Ore
 	SeedsResource:
-		Interval: 45
+		Interval: 25
 	WithIdleAnimation:
 		Interval: 175
 	RenderSprites:

@@ -277,10 +277,14 @@ TRAN:
 		BuildPaletteOrder: 1
 		Prerequisites: ~hpad, ~aircraft.allies, ~techlevel.medium
 		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry light vehicles, one at a time.\n  Unarmed
+	Cargo:
+		LoadedCondition: loaded	
 	Carryall:
 		LocalOffset: 0, 0, -128
 	Health:
 		HP: 20000
+	Sellable:
+		RequiresCondition: unit.sellable && !loaded
 
 TRAN.Soviet:
 	Inherits: TRAN

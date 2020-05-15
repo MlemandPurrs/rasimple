@@ -203,6 +203,8 @@ APC:
 		Condition: produced
 	Passenger:
 		PipType: Green
+	Sellable:
+		RequiresCondition: unit.sellable && !loaded
 
 APC.crate:
 	Inherits: APC
@@ -261,6 +263,7 @@ APC.soviet:
 		Types: Infantry
 		MaxWeight: 5
 		PipCount: 5
+		LoadedCondition: loaded
 		LoadingCondition: notmobile
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
@@ -272,6 +275,8 @@ APC.soviet:
 		Chance: 50
 	RenderSprites:
 		Image: mnly
+	Sellable:
+		RequiresCondition: unit.sellable && !loaded
 
 1TNK:
 	Buildable:
@@ -552,6 +557,7 @@ CTNK:
 		BuildPaletteOrder: 8
 		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
+		Description: Experimental Tank armed with\nquad anti-ground missiles.\n  Special ability: Chrono Teleport\nCan instantly reallocate to areas within range.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft
 	Armament@PRIMARY:
 		PauseOnCondition: empdisable
 	Armament@SECONDARY:
@@ -581,10 +587,20 @@ CTNK:
 STNK:
 	Buildable:
 		BuildPaletteOrder: 13
-		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
+		Prerequisites: tent, atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
+		Description: Lightly armored infantry transport armed\nwith MG and anti-ground missiles.\nSpecial ability: Phase Cloaking\nInvisible when out of combat.\n  Strong vs Light armor\n  Weak vs Infantry, Tanks, Aircraft
 	Valued:
 		Cost: 850
+	-Tooltip:
+	Tooltip@sidebar:
+		Name: Phase Transport
+		RequiresCondition: !produced
+	Tooltip@ingame:
+		Name: Phase APC
+		RequiresCondition: produced
+	ExternalCondition@PRODUCED:
+		Condition: produced
 	Mobile:
 		PauseOnCondition: !(!empdisable && !notmobile && !being-captured)
 	Armament:
@@ -604,19 +620,23 @@ STNK:
 		Types: Infantry
 		MaxWeight: 3
 		PipCount: 3
+		LoadedCondition: loaded
 	Targetable:
 		TargetTypes: Ground, Vehicle, VehicleDisguise
 		RequiresCondition: !parachute
 	Passenger:
 		PipType: Red
 	Cloak:
-		PauseOnCondition: cloak-force-disabled && empdisable
+		UncloakOn: Attack, Unload, Dock, Damage, Heal
+		PauseOnCondition: cloak-force-disabled && empdisable 
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 8c0
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 4c0
+	Sellable:
+		RequiresCondition: unit.sellable && !loaded
 
 MGG:
 	Buildable:

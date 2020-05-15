@@ -843,6 +843,9 @@ gun2:
 	make: gunmake
 		Length: *
 		Tick: 70
+	place: gunmake
+		Start: 19
+		Length: 1
 	turret-normal: gun
 		Facings: 32
 		UseClassicFacingFudge: True
