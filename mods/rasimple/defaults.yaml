@@ -197,8 +197,6 @@
 	Targetable@EMPTargeting:
 		TargetTypes: EMPTank
 		RequiresCondition: empdisable
-	ExternalCondition@EMPTargeting:
-		Condition: EMPTank
 
 ^Plane:
 	Inherits@AI: ^ProductionAIBoost
@@ -295,8 +293,6 @@
 	Targetable@EMPTargeting:
 		TargetTypes: EMPTank
 		RequiresCondition: empdisable
-	ExternalCondition@EMPTargeting:
-		Condition: EMPTank
 	Sellable:
 		SellSounds: cashturn.aud
 		Cursor: sell2

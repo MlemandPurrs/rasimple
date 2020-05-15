@@ -214,6 +214,43 @@ SubMissileAA:
 		Explosions: med_explosion_air
 		ImpactSounds: kaboom25.aud
 
+SubMissileAA.cluster:
+	Inherits: SubMissileAA
+	#	-Burst:
+	Warhead@Burst: FireCluster
+		Weapon: FlakFX
+		RandomClusterCount: 4
+		Dimensions: 3,3
+		Footprint: xxx x_x xxx
+		ValidTargets: Air
+
+FlakFX:
+	ValidTargets: Ground, Water, Trees
+	ReloadDelay: 20
+	Range: 0c128
+	Projectile: Bullet
+		Speed: 85
+		LaunchAngle: 96
+		Image: DRAGON
+		Shadow: True
+		Blockable: false
+		AirburstAltitude: 1c908
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 2000
+		ValidTargets: Air
+		Versus:
+			None: 40
+			Wood: 10
+			Light: 60
+			Heavy: 10
+			Concrete: 20
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion_air
+		ImpactSounds: aacanon3.aud
+		ValidTargets: Air
+
 SubMissile.2shot:
 	Inherits: SubMissile
 	BurstDelays: 77
@@ -784,3 +821,9 @@ ParaBomb.burst:
 	Burst: 5
 	BurstDelays: 8
 	TargetActorCenter: true
+
+Nike.6shot:
+	Inherits: Nike
+	ReloadDelay: 90
+	Burst: 6
+	BurstDelays: 15

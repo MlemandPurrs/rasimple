@@ -326,7 +326,7 @@ CARR.Deployed:
 		Facing: 192
 	Production:
 		Produces: MWFAir
-		PauseOnCondition: disabled || build-incomplete
+		PauseOnCondition: disabled
 	ProductionQueue:
 		Type: MWFAir
 		Group: Plane
@@ -573,8 +573,9 @@ MSUB.AA:
 	-Armament@PRIMARY:
 	-Armament@SECONDARY:
 	Armament@PRIMARY:
-		Weapon: SubMissileAA
-		LocalOffset: 0,-171,101, 0,171,101
+		Weapon: SubMissileAA.cluster
+		#	LocalOffset: 0,-171,101, 0,171,101
+		LocalOffset: 0,0,101
 		FireDelay: 2
 		PauseOnCondition: empdisable
 	-AttackFrontal:

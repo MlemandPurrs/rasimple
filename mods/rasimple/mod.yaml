@@ -1,7 +1,7 @@
 
 Metadata:
 	Title: Red Alert Simple
-	Version: v.1.0
+	Version: v1.0-fixes
 	Website: https://www.openra.net
 	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
 
@@ -50,7 +50,7 @@ Packages:
 MapFolders:
     ra|maps: System
 	rasimple|maps: System
-	~^maps/rasimple: User
+	~^maps/v1.0-fixes: User
 
 Rules:
 	ra|rules/misc.yaml

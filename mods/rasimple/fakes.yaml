@@ -791,12 +791,12 @@ FACF:
 		Type: Rectangle
 			TopLeft: -1536, -1536
 			BottomRight: 1536, 1536
-	#	Transforms:
-	#	RequiresCondition: factundeploy && !build-incomplete
-	#	PauseOnCondition: being-captured || being-demolished
-	#	IntoActor: mcvf
-	#	Offset: 1,1
-	#	Facing: 96
+	Transforms:
+		RequiresCondition: factundeploy && !build-incomplete
+		PauseOnCondition: being-captured || being-demolished
+		IntoActor: mcvf
+		Offset: 1,1
+		Facing: 96
 	GrantConditionOnPrerequisite@GLOBALFACTUNDEPLOY:
 		Condition: factundeploy
 		Prerequisites: global-factundeploy
@@ -833,3 +833,39 @@ FGAP:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
+
+MCVF:
+	Inherits: MCV
+	Buildable:
+		BuildPaletteOrder: 13
+		Prerequisites: ~disabled
+		Description: Looks like a Mobile Construction Vehicle.\nCan deploy into a fake Construction Yard.
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake MCV
+		GenericName: Mobile Construction Vehicle
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Valued:
+		Cost: 625
+	WithDecoration@fake:
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+		ReferencePoint: Top
+		ZOffset: 256
+	Explodes:
+		Weapon: Demolish
+		DamageThreshold: 50
+	-Transforms:
+	Transforms:
+		IntoActor: facf
+		Offset: -1,-1
+		Facing: 96
+		TransformSounds: placbldg.aud, build5.aud
+		NoTransformNotification: BuildingCannotPlaceAudio
+	-SpawnActorOnDeath:
+	RenderSprites:
+		Image: MCV
+	Voiced:
+		VoiceSet: CivilianFemaleVoice

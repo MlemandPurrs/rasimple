@@ -1,6 +1,7 @@
 
 mcv:
     Inherits: emp-overlay
+    fake-icon: mcvficon
 
 harv:
     Inherits: emp-overlay

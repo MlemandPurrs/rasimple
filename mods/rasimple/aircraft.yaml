@@ -291,6 +291,7 @@ TRAN.Soviet:
 	Buildable:
 		BuildPaletteOrder: 4
 		Prerequisites: ~hpad, ~aircraft.soviet, ~techlevel.medium
+		Description: Fast Infantry Transport Helicopter.\n  Unarmed
 		Icon: svyt-icon
 	Tooltip:
 		Name: Yak 24
@@ -298,6 +299,7 @@ TRAN.Soviet:
 		Image: tran
 	SpawnActorOnDeath:
 		Actor: TRAN.soviet.Husk
+	-Carryall:
 	-MapEditorData:
 
 IROQ:
