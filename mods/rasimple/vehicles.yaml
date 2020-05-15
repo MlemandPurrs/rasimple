@@ -621,6 +621,7 @@ STNK:
 		MaxWeight: 3
 		PipCount: 3
 		LoadedCondition: loaded
+		LoadingCondition: notmobile
 	Targetable:
 		TargetTypes: Ground, Vehicle, VehicleDisguise
 		RequiresCondition: !parachute
@@ -628,7 +629,9 @@ STNK:
 		PipType: Red
 	Cloak:
 		UncloakOn: Attack, Unload, Dock, Damage, Heal
-		PauseOnCondition: cloak-force-disabled && empdisable 
+		PauseOnCondition: cloak-force-disabled && empdisable
+		#	for some reason this doesnt function when put to PauseOn
+		RequiresCondition: !notmobile
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 8c0

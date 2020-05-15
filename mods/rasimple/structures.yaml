@@ -1278,6 +1278,7 @@ HBOX:
 	Cargo:
 		InitialUnits: e3
 		LoadedCondition: hasinside
+		LoadingCondition: entering
 	AttackGarrisoned:
 		RequiresCondition: !build-incomplete
 		Armaments: garrisoned
@@ -1289,6 +1290,7 @@ HBOX:
 		RequiresCondition: hasinside && !build-incomplete
 	Cloak:
 		PauseOnCondition: cloak-force-disabled || build-incomplete
+		RequiresCondition: !entering
 	-WithColoredOverlay@EMPDISABLE:
 	-TimedConditionBar@EMPDISABLE:
 	-WithIdleOverlay@EMPDISABLE:

@@ -55,6 +55,12 @@ PT:
 	WithSpriteTurret@SECONDARY:
 		Turret: secondary
 		Sequence: turret-dc
+	HitShape:
+		TargetableOffsets: 341,0,0, -341,0,0
+		Type: Capsule
+			Radius: 288
+			PointA: 0, -341
+			PointB: 0, 341
 
 RSHP:
 	Inherits: ^Ship
@@ -130,6 +136,12 @@ RSHP:
 		RequiresCondition: replenishsmine
 	ExternalCondition@MINEREPLENISH:
 		Condition: replenishsmine
+	HitShape:
+		TargetableOffsets: 341,0,0, -341,0,0
+		Type: Capsule
+			Radius: 288
+			PointA: 0, -341
+			PointB: 0, 341
 
 DD:
 	Buildable:
@@ -170,6 +182,12 @@ DD:
 		Turret: secondary
 		Sequence: turret-dc
 	WithMuzzleOverlay:
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 320
+			PointA: 0, -448
+			PointB: 0, 448
 
 CA:
 	Buildable:
@@ -187,6 +205,12 @@ CA:
 	RenderRangeCircle:
 	ReloadArmamentsBar:
 		Color: FFFF00
+	HitShape:
+		TargetableOffsets: 576,0,0, -576,0,0
+		Type: Capsule
+			Radius: 341
+			PointA: 0, -576
+			PointB: 0, 576
 
 CARR:
 	Inherits: ^Ship
@@ -222,6 +246,12 @@ CARR:
 	RenderSprites:
 		Image: carr.usa
 		Scale: 0.9
+	HitShape:
+		TargetableOffsets: 753,0,0, 0,0,0, -753,0,0
+		Type: Capsule
+			Radius: 341
+			PointA: 0, -753
+			PointB: 0, 753
 
 CARR.Deployed:
 	Inherits: ^Building
@@ -321,12 +351,23 @@ CARR.Deployed:
 	RenderSprites:
 		Image: carr.usa.deployed
 		Scale: 0.9
-	Targetable:
-		TargetTypes: Ground, Water, Ship
 	DetectCloaked:
 		CloakTypes: Underwater
-		Range: 5c0
+		Range: 7c0
 	RenderDetectionCircle:
+	HitShape:
+		UseTargetableCellsOffsets: true
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 512
+	#	HitShape:
+	#	TargetableOffsets: 653,0,0, -653,0,0
+	#	Type: Capsule
+	#	Radius: 341
+	#	PointA: 0, -653
+	#	PointB: 0, 653
+	ActorLostNotification:
+		Notification: NavalUnitLost
 
 SS:
 	Buildable:
@@ -374,6 +415,12 @@ SS.new:
 		DecorationBounds: 38,38
 	RenderSprites:
 		Image: ss
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 256
+			PointA: 0, -448
+			PointB: 0, 448
 
 SS.AG:
 	Inherits: SS.new
@@ -424,11 +471,18 @@ SS.AG:
 		Palette: submerged
 		UncloakOn: Attack, Heal, Unload, Dock, SelfHeal, Demolish
 		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit || is-shooting
+		RequiresCondition: !notmobile
 	GrantConditionOnAttack@UNCLOAK:
 		Condition: is-shooting
 		ArmamentNames: secondary
 		RevokeDelay: 50
 	-GrantConditionOnDeploy:
+	HitShape:
+		TargetableOffsets: 576,0,0, -576,0,0
+		Type: Capsule
+			Radius: 341
+			PointA: 0, -576
+			PointB: 0, 576
 
 MSUB:
 	Buildable:
@@ -494,7 +548,13 @@ MSUB.new:
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 5c0
-	
+	HitShape:
+		TargetableOffsets: 576,0,0, -576,0,0
+		Type: Capsule
+			Radius: 341
+			PointA: 0, -576
+			PointB: 0, 576
+
 MSUB.AA:
 	Inherits: MSUB.new
 	Buildable:
@@ -531,6 +591,12 @@ MSUB.AA:
 		Image: MSUB
 	ReloadArmamentsBar:
 		Color: FFFF00
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 256
+			PointA: 0, -448
+			PointB: 0, 448
 
 FSUB:
 	Inherits: ^Submarine
@@ -589,6 +655,12 @@ FSUB:
 		Condition: is-shooting
 		ArmamentNames: secondary
 		RevokeDelay: 50
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 320
+			PointA: 0, -448
+			PointB: 0, 448
 
 MINS:
 	Inherits: ^Mine

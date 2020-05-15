@@ -11,6 +11,14 @@
 	Projectile: Bullet
 		Speed: 1c682
 
+^AntiGroundMissile:
+	Projectile: Missile
+		ContrailLength: 8
+
+^AntiAirMissile:
+	Projectile: Missile
+		ContrailLength: 8
+
 25mm:
 	Range: 4c768
 
@@ -22,10 +30,55 @@
 		Versus:
 			Heavy: 115
 
+120mm:
+	Range: 5c512
+
 Dragon.Ltnk:
 	Inherits: Dragon
 	Range: 4c768
 	ReloadDelay: 300
+
+Dragon.garrison:
+	Inherits: Dragon
+	Projectile: Missile
+		#	this completely breaks it
+		#	HomingActivationDelay: 50
+		#	performs somewhat better with this
+		CruiseAltitude: 512
+		#	doesnt change anything
+		LockOnProbability: 0
+		
+#	bullet based is working properly.
+#	negatives: dumb-fire, cannot be jammed.
+#	basically becomes an overpriced Gun Turret that performs worser.
+Dragon.pbox:
+	Inherits: ^Cannon
+	ReloadDelay: 50
+	Range: 6c512
+	Report: missile6.aud	
+	Projectile: Bullet
+		Speed: 213
+		Inaccuracy: 128
+		Blockable: false
+		ContrailLength: 10
+		Image: DRAGON
+		Shadow: True
+		TrailImage: smokey
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: Ground, Water, Air
+		Versus:
+			None: 10
+			Wood: 74
+			Light: 34
+			Heavy: 100
+			Concrete: 50
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom25.aud
+	Warhead@4EffWater: CreateEffect
+		Explosions: med_splash
+		ImpactSounds: splash9.aud
 
 M1Carbine.Tank:
 	Inherits: M1Carbine
@@ -722,6 +775,7 @@ PrisTBurst:
 	Projectile: Bullet
 		Speed: 204
 		LaunchAngle: -35
+		Inaccuracy: 768
 
 ParaBomb.burst:
 	Inherits: ParaBomb

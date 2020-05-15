@@ -11,8 +11,6 @@ E1:
 	Inherits@ROT: ^RottingInfantry
 	Buildable:
 		BuildPaletteOrder: 1
-	Armament@PRIMARY:
-		PauseOnCondition: leaflet
 	Passenger:
 		PipType: Green
 	Cloneable:
@@ -30,8 +28,6 @@ E2:
 		Cost: 150
 	Health:
 		HP: 4500
-	Armament@PRIMARY:
-		PauseOnCondition: leaflet
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: GrenadeLauncher
@@ -56,7 +52,7 @@ E3:
 	Inherits@ROT: ^RottingInfantry
 	Buildable:
 		BuildPaletteOrder: 2
-		Description: Anti-tank/Anti-aircraft infantry.\nWhen inside Pillboxes can attack only Ground units.\n  Strong vs Vehicles, Aircraft\n  Weak vs Infantry
+		Description: Anti-tank/Anti-aircraft infantry.\nWhen inside Pillboxes can attack only Ground units.\nWhen inside Pillboxes uses dumbfire missiles\nthat cannot be jammed and have more range.\n  Strong vs Vehicles, Aircraft\n  Weak vs Infantry
 	Passenger:
 		PipType: Green
 	AmmoPool:
@@ -64,9 +60,11 @@ E3:
 		PipCount: 0
 		AmmoCondition: ammo
 	Armament@PRIMARY:
-		PauseOnCondition: !ammo || leaflet
+		PauseOnCondition: !ammo
 	Armament@SECONDARY:
-		PauseOnCondition: !ammo || leaflet
+		PauseOnCondition: !ammo
+	Armament@GARRISONED:
+		Weapon: Dragon.pbox
 	ReloadAmmoPool:
 		PauseOnCondition: ammo
 	AutoTarget:
@@ -83,8 +81,6 @@ E4:
 		BuildPaletteOrder: 9
 	Valued:
 		Cost: 400
-	Armament@PRIMARY:
-		PauseOnCondition: leaflet
 	Passenger:
 		PipType: Green
 	DeliversCash:
@@ -161,8 +157,6 @@ SPY:
 		CaptureTypes: vehicle
 		PlayerExperience: 50
 		RequiresCondition: !disguise
-	Armament:
-		PauseOnCondition: leaflet
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: SilencedPPK
@@ -315,8 +309,6 @@ SHOK:
 	AttackFrontal:
 	Passenger:
 		PipType: Red
-	Armament@PRIMARY:
-		PauseOnCondition: leaflet
 	Armament@SECONDARY:
 		Weapon: TeslaCharge
 		LocalOffset: 427,0,341
@@ -324,7 +316,6 @@ SHOK:
 		OutsideRangeCursor: powerdown
 		TargetStances: Ally
 		ForceTargetStances: None
-		PauseOnCondition: leaflet
 	RevealsShroud:
 		Range: 5c0
 	DeliversCash:
@@ -370,8 +361,6 @@ TECN:
 		PipType: Blue
 	RenderSprites:
 		Image: TECN
-	Armament:
-		PauseOnCondition: leaflet
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: M1Carbine
