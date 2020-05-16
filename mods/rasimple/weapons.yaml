@@ -94,6 +94,8 @@ SCUD:
 		RandomClusterCount: 3
 		Dimensions: 3,3
 		Footprint: xxx xxx xxx
+		ValidTargets: Ground
+		InvalidTargets: Water
 
 TeslaZap:
 	Range: 8c0
@@ -108,11 +110,15 @@ FireballLauncher:
 	MinRange: 1c513
 	Projectile: Bullet
 		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		InvalidTargets: Flamer
 	Warhead@Flames: FireCluster
 		Weapon: BurnFx
 		RandomClusterCount: 3
 		Dimensions: 3,3
 		Footprint: xxx xxx xxx
+		ValidTargets: Ground
+		InvalidTargets: Water
 
 FireballLauncher.Single:
 	Inherits: FireballLauncher
@@ -131,6 +137,8 @@ Flamer:
 		RandomClusterCount: 1
 		Dimensions: 1,1
 		Footprint: x
+		ValidTargets: Ground
+		InvalidTargets: Water
 
 BigFlamer:
 	Inherits: ^FireWeapon
@@ -150,6 +158,8 @@ BigFlamer:
 		RandomClusterCount: 1
 		Dimensions: 1,1
 		Footprint: x
+		ValidTargets: Ground
+		InvalidTargets: Water
 
 Repair:
 	Warhead@1Dam: SpreadDamage
@@ -615,15 +625,15 @@ ASMine:
 Flamespray:
 	ValidTargets: Ground, Water, Trees
 	ReloadDelay: 50
-	Range: 1c512
+	Range: 2c256
 	Projectile: Bullet
 		Speed: 341
-	InvalidTargets: Wall
 	Report: flamer2.aud
 	Warhead@1Dam: SpreadDamage
 		Spread: 468
 		Damage: 4000
 		ValidTargets: Ground, Water, Trees
+		InvalidTargets: Wall, Flamer
 		Versus:
 			None: 120
 			Wood: 100
@@ -631,20 +641,32 @@ Flamespray:
 			Heavy: 50
 			Concrete: 50
 		DamageTypes: Prone50Percent, TriggerProne, FireDeath, Incendiary
-		ImpactSounds: firebl3.aud
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
 		InvalidTargets: Structure, Wall
+	#	just for the sound, with invisible blank dummy
+	#	this doesnt seem to be working
+	Warhead@3Eff: CreateEffect
+		Explosions: invisblank
+		ImpactSounds: firebl3.aud
+		ImpactActors: false
+	Warhead@Flames: FireCluster
+		Weapon: BurnFx
+		RandomClusterCount: 1
+		Dimensions: 1,1
+		Footprint: x
+		ValidTargets: Ground
+		InvalidTargets: Water
 
 Flamespray.dual:
 	ValidTargets: Ground, Water, Trees
 	ReloadDelay: 50
-	Range: 1c512
+	Range: 1c768
 	Projectile: Bullet
 		Speed: 341
 	Burst: 2
 	BurstDelays: 25
-	InvalidTargets: Wall
+	InvalidTargets: Wall, Flamer
 	Report: flamer2.aud
 	Warhead@1Dam: SpreadDamage
 		Spread: 468
@@ -657,10 +679,21 @@ Flamespray.dual:
 			Heavy: 50
 			Concrete: 50
 		DamageTypes: Prone50Percent, TriggerProne, FireDeath, Incendiary
-		ImpactSounds: firebl3.aud
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
 		InvalidTargets: Structure, Wall
+	#	just for the sound, with invisible blank dummy
+	Warhead@3Eff: CreateEffect
+		Explosions: invisblank
+		ImpactSounds: firebl3.aud
+		ImpactActors: false
+	Warhead@Flames: FireCluster
+		Weapon: BurnFx
+		RandomClusterCount: 1
+		Dimensions: 1,1
+		Footprint: x
+		ValidTargets: Ground
+		InvalidTargets: Water
 		
 Sniper:
 	Range: 9c0
@@ -743,7 +776,7 @@ Colt45:
 	Burst: 10
 
 BurnFX:
-	ValidTargets: Ground, Water, Trees
+	ValidTargets: Ground, Trees
 	InvalidTargets: Air
 	ReloadDelay: 20
 	Range: 0c128

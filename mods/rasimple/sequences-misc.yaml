@@ -1,4 +1,7 @@
 
+explosion:
+	invisblank: blank1
+
 emp-overlay:
 	emp-overlay: empfx01
 		Length: *

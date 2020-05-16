@@ -76,7 +76,7 @@ JEEP:
 	Passenger:
 		PipType: Green
 	DetectCloaked:
-		Range: 2c0
+		Range: 2c512
 	RenderDetectionCircle:
 
 JEEP.Scout:
@@ -717,7 +717,7 @@ DTRK:
 		RequiresCondition: truk
 	Disguise:
 		DisguisedCondition: disguise
-		ValidStances: Ally, Neutral, Enemy
+		ValidStances: Neutral, Enemy
 		TargetTypes: DemoDisguise
 		DisguisedAsConditions:
 			truk: truk

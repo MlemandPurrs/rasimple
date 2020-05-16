@@ -201,12 +201,7 @@ KENN:
 		Range: 3c0
 	Sellable:
 		RequiresCondition: !build-incomplete && !being-demolished
-	Exit@0:
-		RequiresCondition: !being-captured
-		SpawnOffset: -280,400,0
-		ExitCell: -1,1
-		ProductionTypes: Dog, Infantry
-		Priority: 3
+	-Exit@0:
 	-Exit@1:
 	-Exit@2:
 	-Exit@fallback1:
@@ -214,6 +209,11 @@ KENN:
 	-Exit@fallback3:
 	-Exit@fallback4:
 	-Exit@fallback5:
+	Exit@0:
+		SpawnOffset: -280,400,0
+		ExitCell: -1,1
+		ProductionTypes: Dog, Infantry
+		Priority: 3
 	Exit@1:
 		SpawnOffset: -280,400,0
 		ExitCell: 0,1
@@ -535,8 +535,9 @@ DOME:
 		Range: 5c0
 		RequiresCondition: !disabled
 	DetectCloaked:
-		Range: 5c0
+		Range: 6c0
 		RequiresCondition: !disabled
+	RenderDetectionCircle:
 	WithDeathAnimation:
 		DeathSequence: dead
 		UseDeathTypeSuffix: false
@@ -1268,8 +1269,9 @@ PBOX:
 		PortYaws: 0, 176, 341, 512, 682, 853
 		PortCones: 88, 88, 88, 88, 88, 88
 	DetectCloaked:
-		Range: 3c0
+		Range: 3c768
 		RequiresCondition: hasinside && !build-incomplete
+	RenderDetectionCircle:
 	-WithColoredOverlay@EMPDISABLE:
 	-TimedConditionBar@EMPDISABLE:
 	-WithIdleOverlay@EMPDISABLE:
@@ -1328,8 +1330,9 @@ HBOX:
 		PortYaws: 0, 176, 341, 512, 682, 853
 		PortCones: 88, 88, 88, 88, 88, 88
 	DetectCloaked:
-		Range: 3c0
+		Range: 3c768
 		RequiresCondition: hasinside && !build-incomplete
+	RenderDetectionCircle:
 	Cloak:
 		PauseOnCondition: cloak-force-disabled || build-incomplete
 		RequiresCondition: !entering
@@ -1417,8 +1420,9 @@ FTUR:
 		PauseOnCondition: disabled
 	WithMuzzleOverlay:
 	DetectCloaked:
-		Range: 3c0
+		Range: 3c768
 		RequiresCondition: !disabled && !build-incomplete
+	RenderDetectionCircle:
 	-SpawnActorsOnSell:
 	SpawnActorOnDeath:
 		Actor: ftur.husk
@@ -1432,8 +1436,9 @@ TSLA:
 	Valued:
 		Cost: 1200
 	DetectCloaked:
-		Range: 3c0
+		Range: 3c768
 		RequiresCondition: !disabled
+	RenderDetectionCircle:
 	-SpawnActorsOnSell:
 	-Targetable:
 	#	this ensures TeslaCharge weapon can target the Tesla Coil
@@ -1492,8 +1497,9 @@ GUN:
 	Valued:
 		Cost: 700
 	DetectCloaked:
-		Range: 3c0
+		Range: 3c768
 		RequiresCondition: !disabled && !lowpower && !build-incomplete
+	RenderDetectionCircle:
 	Turreted@normal:
 		Turret: default-turret
 		TurnSpeed: 12

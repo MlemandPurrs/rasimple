@@ -91,7 +91,7 @@ RSHP:
 		Range: 5c0
 	Turreted:
 		TurnSpeed: 7
-		Offset: -461,0,150
+		Offset: -461,0,-80
 	Armament:
 		Weapon: Repair
 		Cursor: repair
@@ -188,6 +188,7 @@ DD:
 			Radius: 320
 			PointA: 0, -448
 			PointB: 0, 448
+	RenderRangeCircle:
 
 CA:
 	Buildable:
@@ -623,11 +624,11 @@ FSUB:
 		Speed: 42
 	Armament:
 		Weapon: FireballLauncher.Single
-		LocalOffset: 512,128,42, 512,-128,42
+		LocalOffset: 512,0,88
 		PauseOnCondition: empdisable
 	Turreted:
 		TurnSpeed: 255
-		Offset: 525,0,50
+		Offset: 525,0,-46
 	WithSpriteTurret:
 		RequiresCondition: !underwater
 	AttackFrontal:

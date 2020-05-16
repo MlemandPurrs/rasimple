@@ -121,8 +121,6 @@ BADR.buildable:
 	SelectionDecorations:
 	ProducibleWithLevel:
 		Prerequisites: aircraft.upgraded
-	Rearmable:
-		RearmActors: afld, carr.deployed
 	RenderSprites:
 		Image: badr
 
@@ -266,8 +264,6 @@ B52.buildable:
 	SelectionDecorations:
 	ProducibleWithLevel:
 		Prerequisites: aircraft.upgraded
-	Rearmable:
-		RearmActors: afld, carr.deployed
 	RenderSprites:
 		Image: ally-bdgr
 
@@ -590,8 +586,6 @@ YAK:
 		PipType: Blue
 		ReloadDelay: 11
 		AmmoCondition: ammodc
-	Rearmable:
-		RearmActors: afld, carr.deployed
 	Contrail:
 		TrailLength: 10
 		TrailWidth: 48
@@ -678,8 +672,6 @@ SPIT:
 		Prerequisites: aircraft.upgraded
 	Selectable:
 		DecorationBounds: 30,28,0,2
-	Rearmable:
-		RearmActors: afld, carr.deployed
 	RenderSprites:
 		Image: ally-yak
 
@@ -705,8 +697,6 @@ MIG:
 		PauseOnCondition: !ammo
 	AttackAircraft:
 		PersistentTargeting: false
-	Rearmable:
-		RearmActors: afld, carr.deployed
 	Contrail@1:
 		TrailLength: 6
 		TrailWidth: 48
@@ -795,8 +785,6 @@ TORN:
 		Interval: 2
 	ProducibleWithLevel:
 		Prerequisites: aircraft.upgraded
-	Rearmable:
-		RearmActors: afld, carr.deployed
 	RenderSprites:
 		Image: ally-mig
 

@@ -24,6 +24,7 @@ E2:
 	Buildable:
 		BuildPaletteOrder: 3
 		Prerequisites: ~barracks, ~techlevel.infonly
+		Description: Infantry armed with grenades.\nAlways explodes on death.\n  Strong vs Buildings, Infantry\n  Weak vs Vehicles, Aircraft
 	Valued:
 		Cost: 150
 	Health:
@@ -79,7 +80,7 @@ E4:
 	Buildable:
 		Prerequisites: ~barr, ftur, ~techlevel.low
 		BuildPaletteOrder: 9
-		Description: Close-range anti-structure unit.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+		Description: Close-range anti-structure unit.\nMay explode on death 30% chance.\n  Immune to Fire-based weaponry.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
 	Valued:
 		Cost: 400
 	Mobile:
@@ -87,7 +88,7 @@ E4:
 	Armament@PRIMARY:
 		Weapon: Flamespray
 		MuzzleSequence: muzzle
-		LocalOffset: 700,0,400
+		LocalOffset: 500,0,300
 		FireDelay: 4
 	Armament@GARRISONED:
 		Weapon: Flamespray
@@ -102,6 +103,14 @@ E4:
 	DeliversCash:
 		Payload: 100
 		Type: InfantryRefund
+	Targetable:
+		RequiresCondition: !parachute
+		TargetTypes: Ground, Infantry, Disguise, Flamer
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+		DamageSource: Killer
+		Chance: 30
 
 E6:
 	Inherits@ROT: ^RottingInfantry
@@ -390,6 +399,7 @@ DOG:
 		BuildPaletteOrder: 4
 		BuildAtProductionType: Soldier
 		Prerequisites: proc, ~techlevel.infonly
+		Description: Anti-infantry unit.\nCan detect Spy and Saboteurs.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
 	Passenger:
 		PipType: Green
 	Health:
@@ -398,6 +408,9 @@ DOG:
 		Payload: 50
 		Type: InfantryRefund
 		Voice: Move
+	DetectCloaked:
+		Range: 2c512
+	RenderDetectionCircle:
 
 Ant:
 	Buildable:

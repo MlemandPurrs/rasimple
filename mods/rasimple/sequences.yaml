@@ -266,7 +266,7 @@ rshp:
     Inherits: emp-overlay
 	idle: pt
 		Facings: 16
-	turret: crane-tur
+	turret: repair-tur
 		Facings: 32
 	icon: rshpicon
 
@@ -288,7 +288,7 @@ fsub:
 	Inherits: emp-overlay
 	idle:
 		Facings: 16
-	turret: ftnk-tur
+	turret: flame-tur
 		Facings: 32
 		UseClassicFacingFudge: True
 	icon: fsubicon
