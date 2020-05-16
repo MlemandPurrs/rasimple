@@ -110,7 +110,7 @@ Player:
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, heli, iroq.ai, e6, mech, spit
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, heli, iroq.ai, e6, mech, spit, mrj
 		NavalUnitsTypes: pt,dd,ca
 		ConstructionYardTypes: fact
 		NavalProductionTypes: syrd
@@ -120,7 +120,7 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, snip, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, pt, dd, ca, e6, mech
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, snip, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, pt, dd, ca, e6, mech, mrj
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@allies:
 		RequiresCondition: enable-ai-player
@@ -143,6 +143,7 @@ Player:
 			e6: 2
 			mech: 2
 			mcv.ai: 1
+			mrj: 1
 		UnitLimits:
 			dog: 4
 			harv: 8
@@ -154,6 +155,7 @@ Player:
 			stnk: 3
 			ctnk: 5
 			msam: 2
+			mrj: 1
 	UnitBuilderBotModule@allies.sea:
 		RequiresCondition: enable-ai-player && player.allies
 		IdleBaseUnitsMaximum: 6
