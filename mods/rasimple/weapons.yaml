@@ -612,6 +612,30 @@ ASMine:
 		ImpactSounds: mineblo1.aud
 		ValidTargets: Underwater
 
+Flamespray:
+	ValidTargets: Ground, Water, Trees
+	ReloadDelay: 50
+	Range: 1c512
+	Projectile: Bullet
+		Speed: 341
+	InvalidTargets: Wall
+	Report: flamer2.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 468
+		Damage: 4000
+		ValidTargets: Ground, Water, Trees
+		Versus:
+			None: 120
+			Wood: 100
+			Light: 100
+			Heavy: 50
+			Concrete: 50
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath, Incendiary
+		ImpactSounds: firebl3.aud
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Structure, Wall
+
 Flamespray.dual:
 	ValidTargets: Ground, Water, Trees
 	ReloadDelay: 50
@@ -623,24 +647,21 @@ Flamespray.dual:
 	InvalidTargets: Wall
 	Report: flamer2.aud
 	Warhead@1Dam: SpreadDamage
-		Spread: 400
-		Damage: 8000
+		Spread: 468
+		Damage: 4000
 		ValidTargets: Ground, Water, Trees
 		Versus:
-			None: 80
-			Wood: 75
-			Light: 75
-			Heavy: 20
-			Concrete: 20
+			None: 120
+			Wood: 100
+			Light: 100
+			Heavy: 50
+			Concrete: 50
 		DamageTypes: Prone50Percent, TriggerProne, FireDeath, Incendiary
+		ImpactSounds: firebl3.aud
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
 		InvalidTargets: Structure, Wall
-	Warhead@3Eff: CreateEffect
-		Explosions: napalm
-		ImpactSounds: firebl3.aud
-		ImpactActors: false
-
+		
 Sniper:
 	Range: 9c0
 	Warhead@1Dam: SpreadDamage

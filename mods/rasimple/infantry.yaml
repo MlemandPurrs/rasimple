@@ -79,8 +79,24 @@ E4:
 	Buildable:
 		Prerequisites: ~barr, ftur, ~techlevel.low
 		BuildPaletteOrder: 9
+		Description: Close-range anti-structure unit.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
 	Valued:
 		Cost: 400
+	Mobile:
+		PauseOnCondition: dont-move
+	Armament@PRIMARY:
+		Weapon: Flamespray
+		MuzzleSequence: muzzle
+		LocalOffset: 700,0,400
+		FireDelay: 4
+	Armament@GARRISONED:
+		Weapon: Flamespray
+		MuzzleSequence: muzzle
+		FireDelay: 4
+	WithMuzzleOverlay:
+	GrantConditionOnAttack:
+		Condition: dont-move
+		RevokeDelay: 12
 	Passenger:
 		PipType: Green
 	DeliversCash:
