@@ -501,7 +501,7 @@ MSAM:
 	Valued:
 		Cost: 750
 	Tooltip:
-		Name: Mobile Sam
+		Name: Mobile SAM
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
@@ -535,11 +535,12 @@ MSAM:
 	RenderRangeCircle:
 
 MRJ:
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		BuildPaletteOrder: 14
 		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
-		Description: Jams nearby enemy radar domes\nand deflects incoming missiles.\nDoesnt appear on enemy Radar.\n  Unarmed
+		Description: Jams nearby enemy radar domes\nand deflects incoming missiles.\nDoesnt appear on enemy Radar.\n  Armed with basic gun.
 	WithIdleOverlay@SPINNER:
 		PauseOnCondition: empdisable
 	ProximityExternalCondition@JAMMER:
@@ -551,6 +552,20 @@ MRJ:
 		PipType: Blue
 	AppearsOnRadar:
 		ValidStances: Ally
+	Turreted:
+		TurnSpeed: 5
+		Offset: 246,-60,148
+	Armament:
+		Weapon: M1Carbine
+		MuzzleSequence: muzzle
+		LocalOffset: 128,0,43
+		PauseOnCondition: empdisable
+	AttackFrontal:
+		PauseOnCondition: empdisable
+	#	AttackTurreted:
+	#	PauseOnCondition: empdisable
+	WithSpriteTurret:
+	WithMuzzleOverlay:
 
 CTNK:
 	Buildable:

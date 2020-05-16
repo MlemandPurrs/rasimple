@@ -422,6 +422,8 @@ HELI:
 		Name: Apache
 	Health:
 		HP: 12000
+	Valued:
+		Cost: 1800
 	Armament@TERTIARY:
 		Name: tertiary
 		Weapon: HeliAGGun

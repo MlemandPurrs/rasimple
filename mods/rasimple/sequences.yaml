@@ -175,6 +175,12 @@ mnly:
 
 mrj:
     Inherits: emp-overlay
+	turret: mgun
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
 
 stnk:
     Inherits: emp-overlay
