@@ -72,7 +72,6 @@ hhusk2.soviet:
 
 truk:
     Inherits: emp-overlay
-	fake-icon: truficon
 
 jeep:
     Inherits: emp-overlay
@@ -88,7 +87,6 @@ ftrk:
 
 apc:
     Inherits: emp-overlay
-	rank2-icon: apcr2icon
 
 1tnk:
     Inherits: emp-overlay
@@ -96,14 +94,12 @@ apc:
 		Start: 0
 		Facings: 32
 		UseClassicFacingFudge: True
-    fake-icon: 1tnficon
 
 2tnk:
     Inherits: emp-overlay
 	mg-muzzle: minigun
 		Length: 6
 		Facings: 8
-    fake-icon: 2tnficon
 
 3tnk.1b:
 	Inherits: emp-overlay
@@ -117,7 +113,6 @@ apc:
 	muzzle: gunfire2
 		Length: 5
 	icon: 3tnkonebarlicon
-	rank2-icon: 3tnkonebarlr2icon
 
 3tnk.1b.destroyed:
 	idle: 3tnk-1b
@@ -132,7 +127,6 @@ apc:
   
 3tnk:
     Inherits: emp-overlay   
-	rank2-icon: 3tnkr2icon
 
 4tnk:
     Inherits: emp-overlay
@@ -165,12 +159,9 @@ apc:
 
 arty:
     Inherits: emp-overlay
-    fake-icon: artficon
-	rank2-icon: artyr2icon
 
 v2rl:
     Inherits: emp-overlay
-	rank2-icon: v2rlr2icon
 
 mnly:
     Inherits: emp-overlay
@@ -180,41 +171,6 @@ mnly:
 	muzzle: minigun
 		Length: 6
 		Facings: 8
-	hapcicon: hapcicon
-	cmbticon: mnlycmbticon
-	sprticon: mnlysprticon
-	flam-tur: hapc-tur
-		Facings: 32
-	flam-muzzle:
-		Combine:
-			flame-n:
-				Length: *
-				Offset: 3,6
-			flame-nw:
-				Length: *
-				Offset: 8,7
-			flame-w:
-				Length: *
-				Offset: 8,2
-			flame-sw:
-				Length: *
-				Offset: 7,-2
-			flame-s:
-				Length: *
-				Offset: 3,-2
-			flame-se:
-				Length: *
-				Offset: -5,-2
-			flame-e:
-				Length: *
-				Offset: -7,2
-			flame-ne:
-				Length: *
-				Offset: -7,8
-		Facings: 8
-		Length: 13
-	rep-tur: repair-tur
-		Facings: 32
 
 mrj:
     Inherits: emp-overlay
@@ -265,7 +221,6 @@ mgg:
     muzzle: mgg
         Length: 2
 	msam-icon: msamicon
-	fake-icon: mggficon
 
 ss:
     Inherits: emp-overlay
@@ -324,7 +279,6 @@ dd:
 	mg-muzzle: minigun
 		Length: 6
 		Facings: 8
-	rank2-icon: ddr2icon
 
 ca:
     Inherits: emp-overlay
@@ -350,7 +304,6 @@ heli:
 	muzzle: minigun
 		Length: 6
 		Facings: 8
-	rank2-icon: helir2icon
 
 tran:
     svyt-icon: tran2icon
@@ -402,7 +355,6 @@ badr:
 	icon: badricon
 
 yak:
-	rank2-icon: yakr2icon
 
 dummy.visual:
 	 idle: blank32

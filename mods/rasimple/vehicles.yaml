@@ -169,7 +169,7 @@ FTRK.Scout:
 APC:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
-		Prerequisites: tent, ~vehicles.allies, ~!player.germany, ~techlevel.low
+		Prerequisites: tent, ~vehicles.allies, ~techlevel.low
 		BuildPaletteOrder: 3
 		Description: Tough infantry transport.\nCan transport up to 5 Infantry.\nCan be Airlifted when empty.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
@@ -205,28 +205,6 @@ APC:
 		PipType: Green
 	Sellable:
 		RequiresCondition: unit.sellable && !loaded
-
-APC.Germany:
-	Inherits: APC
-	Buildable:
-		Prerequisites: tent, ~vehicles.allies, ~player.germany, ~!vehicles.upgraded, ~techlevel.low
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 1
-	RenderSprites:
-		Image: apc
-	-MapEditorData:
-
-APC.Germany.R2:
-	Inherits: APC.Germany
-	Buildable:
-		Prerequisites: tent, ~vehicles.allies, ~player.germany, ~vehicles.upgraded, ~techlevel.low
-		Icon: rank2-icon
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 2
-	RenderSprites:
-		Image: apc
 
 APC.crate:
 	Inherits: APC
@@ -304,7 +282,7 @@ APC.soviet:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 4
-		Prerequisites: ~vehicles.allies, ~!player.england, ~!player.france, ~!player.germany, ~techlevel.low
+		Prerequisites: ~vehicles.allies, ~techlevel.low
 	Valued:
 		Cost: 600
 	Health:
@@ -352,65 +330,11 @@ APC.soviet:
 	-Buildable:
 	-MapEditorData:
 
-1TNK.England:
-	Inherits: 1TNK
-	Buildable:
-		Prerequisites: ~vehicles.allies, ~player.england, ~techlevel.low
-	Valued:
-		Cost: 650
-	-Armament@PRIMARY:
-	Armament@PRIMARY:
-		Name: primary
-		Weapon: 25mm.britain
-		Recoil: 85
-		RecoilRecovery: 25
-		LocalOffset: 768,0,90
-		MuzzleSequence: muzzle
-		PauseOnCondition: empdisable
-	SpawnActorOnDeath:
-		Actor: 1TNK.England.Husk
-	RenderSprites:
-		Image: 1tnk
-	-MapEditorData:
-
-1TNK.France:
-	Inherits: 1TNK
-	Buildable:
-		Prerequisites: ~vehicles.allies, ~player.france, ~techlevel.low
-	-Armament@PRIMARY:
-	Armament@PRIMARY:
-		Name: primary
-		Weapon: 25mm.france
-		Recoil: 85
-		RecoilRecovery: 25
-		LocalOffset: 768,0,90
-		MuzzleSequence: muzzle
-		PauseOnCondition: empdisable
-	SpawnActorOnDeath:
-		Actor: 1TNK.France.Husk
-	RenderSprites:
-		Image: 1tnk
-	-MapEditorData:
-
-1TNK.Germany:
-	Inherits: 1TNK
-	Buildable:
-		Prerequisites: ~vehicles.allies, ~player.germany, ~techlevel.low
-	Health:
-		HP: 33000
-	Mobile:
-		Speed: 90
-	SpawnActorOnDeath:
-		Actor: 1TNK.Germany.Husk
-	RenderSprites:
-		Image: 1tnk
-	-MapEditorData:
-
 2TNK:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 5
-		Prerequisites: fix, ~vehicles.allies, ~!player.england, ~!player.france, ~!player.germany, ~techlevel.medium
+		Prerequisites: fix, ~vehicles.allies, ~techlevel.medium
 	Valued:
 		Cost: 700
 	Health:
@@ -449,64 +373,11 @@ APC.soviet:
 	-Buildable:
 	-MapEditorData:
 
-2TNK.England:
-	Inherits: 2TNK
-	Buildable:
-		Prerequisites: fix, ~vehicles.allies, ~player.england, ~techlevel.medium
-	Valued:
-		Cost: 750
-	-Armament@PRIMARY:	
-	Armament@PRIMARY:
-		Name: primary
-		Weapon: 90mm.britain
-		Recoil: 85
-		RecoilRecovery: 38
-		LocalOffset: 720,0,80
-		MuzzleSequence: muzzle
-		PauseOnCondition: empdisable
-	SpawnActorOnDeath:
-		Actor: 2TNK.England.Husk
-	RenderSprites:
-		Image: 2tnk
-	-MapEditorData:
-
-2TNK.France:
-	Inherits: 2TNK
-	Buildable:
-		Prerequisites: fix, ~vehicles.allies, ~player.france, ~techlevel.medium
-	Armament@PRIMARY:
-		Name: primary
-		Weapon: 90mm.france
-		Recoil: 85
-		RecoilRecovery: 38
-		LocalOffset: 720,0,80
-		MuzzleSequence: muzzle
-		PauseOnCondition: empdisable
-	SpawnActorOnDeath:
-		Actor: 2TNK.France.Husk
-	RenderSprites:
-		Image: 2tnk
-	-MapEditorData:
-
-2TNK.Germany:
-	Inherits: 2TNK
-	Buildable:
-		Prerequisites: fix, ~vehicles.allies, ~player.germany, ~techlevel.medium
-	Health:
-		HP: 44000
-	Mobile:
-		Speed: 77
-	SpawnActorOnDeath:
-		Actor: 2TNK.Germany.Husk
-	RenderSprites:
-		Image: 2tnk
-	-MapEditorData:
-
 3TNK.1B:
 	Inherits: 3TNK
 	Buildable:
 		BuildPaletteOrder: 4
-		Prerequisites: ~vehicles.soviet, ~!player.russia, ~!player.ukraine, ~!player.belarus, ~techlevel.low
+		Prerequisites: ~vehicles.soviet, ~techlevel.low
 		Description: Soviet Main Battle Tank.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: Heavy Tank 1-B
@@ -531,64 +402,11 @@ APC.soviet:
 	SpawnActorOnDeath:
 		Actor: 3TNK.1B.Husk
 
-3TNK.1B.Russia:
-	Inherits: 3TNK.1B
-	Buildable:
-		Prerequisites: ~vehicles.soviet, ~player.russia, ~!vehicles.upgraded, ~techlevel.low
-	RenderSprites:
-		Image: 3tnk.1b
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 1
-	-MapEditorData:
-
-3TNK.1B.Russia.R2:
-	Inherits: 3TNK.1B.Russia
-	Buildable:
-		Prerequisites: ~vehicles.soviet, ~player.russia, ~vehicles.upgraded, ~techlevel.low
-		Icon: rank2-icon
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 2
-	RenderSprites:
-		Image: 3tnk.1b
-
-3TNK.1B.Ukraine:
-	Inherits: 3TNK.1B
-	Buildable:
-		Prerequisites: ~vehicles.soviet, ~player.ukraine, ~techlevel.low
-		BuildDurationModifier: 70
-	Mobile:
-		Speed: 80
-	SpawnActorOnDeath:
-		Actor: 3TNK.1B.Ukraine.Husk
-	RenderSprites:
-		Image: 3tnk.1b
-	-MapEditorData:
-
-3TNK.1B.Belarus:
-	Inherits: 3TNK.1B
-	Buildable:
-		Prerequisites: ~vehicles.soviet, ~player.belarus, ~techlevel.low
-	Health:
-		HP: 40500
-	ProductionCostMultiplier@NationBonus:
-		Multiplier: 90
-		Prerequisites: !indp
-	ProductionCostMultiplier@NationBonusExtra:
-		Multiplier: 90
-		Prerequisites: indp, indplowpower
-	SpawnActorOnDeath:
-		Actor: 3TNK.1B.Belarus.Husk
-	RenderSprites:
-		Image: 3tnk.1b
-	-MapEditorData:
-
 3TNK:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 5
-		Prerequisites: fix, ~vehicles.soviet, ~!player.russia, ~!player.ukraine, ~!player.belarus, ~techlevel.medium
+		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium
 		Description: Soviet Main Battle Tank, with dual cannons.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
 	Armament:
 		PauseOnCondition: empdisable
@@ -597,63 +415,20 @@ APC.soviet:
 	Passenger:
 		PipType: Yellow
 
-3TNK.Russia:
+3TNK.R1:
 	Inherits: 3TNK
-	Buildable:
-		Prerequisites: fix, ~vehicles.soviet, ~player.russia, ~!vehicles.upgraded, ~techlevel.medium
 	RenderSprites:
 		Image: 3tnk
 	ProducibleWithLevel:
 		Prerequisites: techlevel.infonly
 		InitialLevels: 1
-	-MapEditorData:
-
-3TNK.Russia.R2:
-	Inherits: 3TNK.Russia
-	Buildable:
-		Prerequisites: fix, ~vehicles.soviet, ~player.russia, ~vehicles.upgraded, ~techlevel.medium
-		Icon: rank2-icon
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 2
-	RenderSprites:
-		Image: 3tnk
-
-3TNK.Ukraine:
-	Inherits: 3TNK
-	Buildable:
-		Prerequisites: fix, ~vehicles.soviet, ~player.ukraine, ~techlevel.medium
-		BuildDurationModifier: 70
-	Mobile:
-		Speed: 80
-	SpawnActorOnDeath:
-		Actor: 3TNK.Ukraine.Husk
-	RenderSprites:
-		Image: 3tnk
-	-MapEditorData:
-
-3TNK.Belarus:
-	Inherits: 3TNK
-	Buildable:
-		Prerequisites: fix, ~vehicles.soviet, ~player.belarus, ~techlevel.medium
-	Health:
-		HP: 54000
-	ProductionCostMultiplier@NationBonus:
-		Multiplier: 90
-		Prerequisites: !indp
-	ProductionCostMultiplier@NationBonusExtra:
-		Multiplier: 90
-		Prerequisites: indp, indplowpower
-	SpawnActorOnDeath:
-		Actor: 3TNK.Belarus.Husk
-	RenderSprites:
-		Image: 3tnk
+	-Buildable:
 	-MapEditorData:
 
 4TNK:
 	Buildable:
 		BuildPaletteOrder: 8
-		Prerequisites: fix, stek, ~vehicles.soviet, ~!player.ukraine, ~!player.belarus, ~techlevel.high
+		Prerequisites: fix, stek, ~vehicles.soviet, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Big and slow tank, with anti-air capability.\nCan crush concrete walls.\nSelf-repairs when below 50% of maximum Health.\n  Strong vs Vehicles, Infantry, Buildings\n  Weak vs Artillery
 	Passenger:
@@ -666,43 +441,11 @@ APC.soviet:
 	AttackTurreted:
 		PauseOnCondition: empdisable
 
-4TNK.Ukraine:
-	Inherits: 4TNK
-	Buildable:
-		Prerequisites: fix, stek, ~vehicles.soviet, ~player.ukraine, ~techlevel.high
-	Mobile:
-		Speed: 62
-	Turreted:
-		TurnSpeed: 3
-	SpawnActorOnDeath:
-		Actor: 4TNK.Ukraine.Husk
-	RenderSprites:
-		Image: 4tnk
-	-MapEditorData:
-
-4TNK.Belarus:
-	Inherits: 4TNK
-	Buildable:
-		Prerequisites: fix, stek, ~vehicles.soviet, ~player.belarus, ~techlevel.high
-	ProductionCostMultiplier@NationBonus:
-		Multiplier: 90
-		Prerequisites: !indp
-	ProductionCostMultiplier@NationBonusExtra:
-		Multiplier: 90
-		Prerequisites: indp, indplowpower
-	Health:
-		HP: 81000
-	SpawnActorOnDeath:
-		Actor: 4TNK.Belarus.Husk
-	RenderSprites:
-		Image: 4tnk
-	-MapEditorData:
-
 ARTY:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 6
-		Prerequisites: dome, ~vehicles.allies, ~!player.france, ~techlevel.medium
+		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
 	Armament:
 		PauseOnCondition: empdisable
 	AttackFrontal:
@@ -715,33 +458,11 @@ ARTY:
 	Passenger:
 		PipType: Yellow
 
-ARTY.France:
-	Inherits: ARTY
-	Buildable:
-		Prerequisites: dome, ~vehicles.allies, ~player.france, ~!vehicles.upgraded, ~techlevel.medium
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 1
-	RenderSprites:
-		Image: arty
-	-MapEditorData:
-
-ARTY.France.R2:
-	Inherits: ARTY.France
-	Buildable:
-		Prerequisites: dome, ~vehicles.allies, ~player.france, ~vehicles.upgraded, ~techlevel.medium
-		Icon: rank2-icon
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 2
-	RenderSprites:
-		Image: arty
-
 V2RL:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 6
-		Prerequisites: dome, ~vehicles.soviet, ~!player.ukraine, ~techlevel.medium
+		Prerequisites: dome, ~vehicles.soviet, ~techlevel.medium
 	Armament:
 		Name: primary
 		PauseOnCondition: empdisable
@@ -752,32 +473,10 @@ V2RL:
 	Passenger:
 		PipType: Yellow
 
-V2RL.Ukraine:
-	Inherits: V2RL
-	Buildable:
-		Prerequisites: dome, ~vehicles.soviet, ~player.ukraine, ~!vehicles.upgraded, ~techlevel.medium
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 1
-	RenderSprites:
-		Image: v2rl
-	-MapEditorData:
-
-V2RL.Ukraine.R2:
-	Inherits: V2RL.Ukraine
-	Buildable:
-		Prerequisites: dome, ~vehicles.soviet, ~player.ukraine, ~vehicles.upgraded, ~techlevel.medium
-		Icon: rank2-icon
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 2
-	RenderSprites:
-		Image: v2rl
-
 MNLY:
 	Buildable:
 		BuildPaletteOrder: 7
-		Prerequisites: fix, ~!player.germany, ~!player.ukraine, ~techlevel.medium
+		Prerequisites: fix, ~techlevel.medium
 		Description: Carries and lays up to 5 Land Mines\nto destroy unwary enemy units.\nCan detect mines.\n  Unarmed
 	Valued:
 		Cost: 700
@@ -788,65 +487,6 @@ MNLY:
 		RearmActors: fix
 	Passenger:
 		PipType: Blue
-
-MNLY.Support:
-	Inherits: MNLY
-	Buildable:
-		BuildPaletteOrder: 7
-		Prerequisites: fix, ~player.germany, ~techlevel.medium
-		Description: Repairs nearby friendly Vehicles.\nCarries and lays up to 5 Land Mines\nto destroy unwary enemy units.\nCan detect mines.\n  Unarmed
-		Icon: sprticon
-	Tooltip:
-		Name: Support Minelayer
-	RenderSprites:
-		Image: mnly
-	Armament:
-		Weapon: Repair
-		Cursor: repair
-		OutsideRangeCursor: repair
-		TargetStances: Ally
-		ForceTargetStances: None
-		PauseOnCondition: empdisable
-	AttackTurreted:
-		PauseOnCondition: empdisable
-	WithSpriteTurret:
-		Sequence: rep-tur
-	Turreted:
-		TurnSpeed: 5
-	AmmoPool:
-		Armaments: 
-	AutoTarget:
-	AutoTargetPriority@DEFAULT:
-		ValidTargets: Vehicle, Ship
-
-MNLY.Combat:
-	Inherits: MNLY
-	Buildable:
-		BuildPaletteOrder: 7
-		Prerequisites: fix, ~player.ukraine, ~techlevel.medium
-		Description: Armed with an close-range Flamethrower.\nCarries and lays up to 5 Land Mines\nto destroy unwary enemy units.\nCan detect mines.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
-		Icon: cmbticon
-	Tooltip:
-		Name: Combat Minelayer
-	RenderSprites:
-		Image: mnly
-	Armament:
-		Weapon: Flamespray
-		LocalOffset: 568,0,131
-		MuzzleSequence: flam-muzzle
-		PauseOnCondition: empdisable
-	AttackFrontal:
-		PauseOnCondition: empdisable
-	WithMuzzleOverlay:
-	WithSpriteTurret:
-		Sequence: flam-tur
-	Turreted:
-		TurnSpeed: 5
-	AmmoPool:
-		Armaments: 
-	AutoTarget:
-	AutoTargetPriority@DEFAULT:
-		ValidTargets: Infantry, Structure
 
 MSAM:
 	Inherits: ^Vehicle
@@ -897,8 +537,8 @@ MSAM:
 MRJ:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
-		BuildPaletteOrder: 8
-		Prerequisites: atek, ~vehicles.allies, ~player.england, ~techlevel.high
+		BuildPaletteOrder: 14
+		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Jams nearby enemy radar domes\nand deflects incoming missiles.\nDoesnt appear on enemy Radar.\n  Armed with basic gun.
 	WithIdleOverlay@SPINNER:
@@ -930,7 +570,7 @@ MRJ:
 CTNK:
 	Buildable:
 		BuildPaletteOrder: 8
-		Prerequisites: atek, ~vehicles.allies, ~player.germany, ~techlevel.high
+		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Experimental Tank armed with\nquad anti-ground missiles.\n  Special ability: Chrono Teleport\nCan instantly reallocate to areas within range.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft
 	Armament@PRIMARY:
@@ -961,8 +601,8 @@ CTNK:
 
 STNK:
 	Buildable:
-		BuildPaletteOrder: 8
-		Prerequisites: tent, atek, ~vehicles.allies, ~player.france, ~techlevel.high
+		BuildPaletteOrder: 13
+		Prerequisites: tent, atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Lightly armored infantry transport armed\nwith MG and anti-ground missiles.\nSpecial ability: Phase Cloaking\nInvisible when out of combat.\n  Strong vs Light armor\n  Weak vs Infantry, Tanks, Aircraft
 	Valued:
@@ -1048,11 +688,13 @@ MGG:
 TTNK:
 	Buildable:
 		BuildPaletteOrder: 9
-		Prerequisites: stek, ~vehicles.soviet, ~player.russia, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
 		Description: Tank with mounted Tesla coil.\nTesla briefly short-circuits Vehicle and Ships.\n  Immune to EMP\n  Strong vs Infantry, Vehicles, Buildings\n  Weak vs Aircraft
 		BuildDurationModifier: 60
 	Mobile:
 		PauseOnCondition: !(!being-captured)
+	Passenger:
+		PipType: Red
 	WithIdleOverlay@SPINNER:
 		Sequence: spinner-not
 		RequiresCondition:	!is-shooting
@@ -1064,13 +706,11 @@ TTNK:
 		RevokeDelay: 32
 	GrantConditionWhileAiming@ORBUSAGE:
 		Condition: is-shooting2
-	Passenger:
-		PipType: Red
 
 DTRK:
 	Buildable:
-		BuildPaletteOrder: 9
-		Prerequisites: stek, ~vehicles.soviet, ~player.ukraine, ~techlevel.high
+		BuildPaletteOrder: 14
+		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
 		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted\nalso Detonates if the Transport its in sinks.\n Can disguise as Supply Truck, friendly or enemy.
 	Selectable:
 		Class: DemoDisguise
@@ -1113,8 +753,8 @@ DTRK:
 
 QTNK:
 	Buildable:
-		BuildPaletteOrder: 9
-		Prerequisites: stek, ~vehicles.soviet, ~player.belarus, ~techlevel.high
+		BuildPaletteOrder: 13
+		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
 		Description: Mutually assured Destruction vehicle that quakes the ground.\nIts delicate components require the effects of Iron Curtain be repelled in order to function.\nDeals disruptive seismic damage to nearby Structures and Infantry during buildup,\nand significant damage on moment of detonation to Structures,\nwhile its dealing negligible damage to Vehicles but slowing them down.\n  Strong vs Buildings\n  Weak vs Infantry, Aircraft, Vehicles
 	Passenger:
 		Weight: 4
@@ -1143,7 +783,7 @@ QTNK:
 		Queue: Vehicle
 		BuildPaletteOrder: 15
 		BuildLimit: 1
-		Prerequisites: stek, ~vehicles.soviet, ~tech.stolen, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~tech.stolen, ~player.soviet, ~techlevel.high
 		Description: Tank of majestic proportions.\nMaximum one can be built.\nCan crush concrete walls.\nSelf-repairs when below 50% of maximum Health.\nNuclear powered, detonates violently on death!\n  Strong vs everything on Ground\n  Weak vs Aircraft, fast Units
 	Valued:
 		Cost: 3000
@@ -1220,7 +860,7 @@ PRSM:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 12
-		Prerequisites: atek, ~vehicles.allies, ~tech.stolen, ~techlevel.high
+		Prerequisites: atek, ~vehicles.allies, ~tech.stolen, ~player.allies, ~techlevel.high
 		Description: Experimental vehicle armed with an Laser.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft
 	Valued:
 		Cost: 1500
