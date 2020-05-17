@@ -123,6 +123,8 @@ BADR.buildable:
 		Prerequisites: aircraft.upgraded
 	RenderSprites:
 		Image: badr
+	Rearmable:
+		RearmActors: afld, afld.ukraine, carr.new.deployed
 
 B52:
 	Inherits: BADR
@@ -266,10 +268,12 @@ B52.buildable:
 		Prerequisites: aircraft.upgraded
 	RenderSprites:
 		Image: ally-bdgr
+	Rearmable:
+		RearmActors: afld, afld.ukraine, carr.new.deployed
 
 TRAN:
 	Buildable:
-		Queue: Aircraft, MWFAir
+		Queue: Aircraft, MWFAir, MWFHeli
 		BuildPaletteOrder: 1
 		Prerequisites: ~hpad, ~aircraft.allies, ~techlevel.medium
 		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry light vehicles, one at a time.\n  Unarmed
@@ -302,7 +306,7 @@ IROQ:
 	Inherits: ^Helicopter
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
-		Queue: Aircraft, MWFAir
+		Queue: Aircraft, MWFAir, MWFHeli
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 2
 		Prerequisites: ~hpad, ~aircraft.allies, ~!aitoodumb, ~techlevel.medium
@@ -409,7 +413,7 @@ IROQ.AI:
 
 HELI:
 	Buildable:
-		Queue: Aircraft, MWFAir
+		Queue: Aircraft, MWFAir, MWFHeli
 		BuildPaletteOrder: 3
 		BuildDurationModifier: 60
 		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high
@@ -449,7 +453,7 @@ HELI:
 
 HIND:
 	Buildable:
-		Queue: Aircraft, MWFAir
+		Queue: Aircraft, MWFAir, MWFHeli
 		BuildPaletteOrder: 6
 		BuildAtProductionType: Helicopter
 		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high
@@ -590,6 +594,8 @@ YAK:
 		TrailLength: 10
 		TrailWidth: 48
 		UsePlayerColor: false
+	Rearmable:
+		RearmActors: afld, afld.ukraine, carr.new.deployed
 
 YAK.AI:
 	Inherits: YAK
@@ -674,6 +680,8 @@ SPIT:
 		DecorationBounds: 30,28,0,2
 	RenderSprites:
 		Image: ally-yak
+	Rearmable:
+		RearmActors: afld, afld.ukraine, carr.new.deployed
 
 MIG:
 	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
@@ -705,6 +713,8 @@ MIG:
 		TrailLength: 6
 		TrailWidth: 48
 		UsePlayerColor: false
+	Rearmable:
+		RearmActors: afld, afld.ukraine, carr.new.deployed
 
 MIG.AI:
 	Inherits: MIG
@@ -787,6 +797,8 @@ TORN:
 		Prerequisites: aircraft.upgraded
 	RenderSprites:
 		Image: ally-mig
+	Rearmable:
+		RearmActors: afld, afld.ukraine, carr.new.deployed
 
 MH60:
 	Buildable:

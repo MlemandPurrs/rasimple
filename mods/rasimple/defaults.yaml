@@ -592,7 +592,7 @@ CRATE:
 		SelectionShares: 4
 		Units: 3tnk.1b
 		ValidFactions: soviet, russia, ukraine, belarus
-		Prerequisites: techlevel.medium, fix
+		Prerequisites: techlevel.low, fix
 	GiveUnitCrateAction@3tnk:
 		SelectionShares: 4
 		Units: 3tnk
