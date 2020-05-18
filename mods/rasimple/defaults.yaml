@@ -184,6 +184,7 @@
 	Inherits@97: ^AffectedByEMP
 	Inherits@QtnkSlow: ^ThumpSnare
 	Inherits@SELLUNIT: ^SellableOnRepairPad
+	Inherits@CRATEFX: ^UnitExternalConditionals
 	Mobile:
 		PauseOnCondition: !(!empdisable && !being-captured)
 	Passenger:
@@ -281,6 +282,7 @@
 	Inherits@AI: ^ProductionAIBoost
 	Inherits@80: ^ProductionPlayerBoost
 	Inherits@97: ^AffectedByEMP
+	Inherits@CRATEFX: ^UnitExternalConditionals
 	Mobile:
 		PauseOnCondition: !(!empdisable)
 	Targetable:
@@ -646,6 +648,152 @@ CRATE:
 	ExplodeCrateAction@nuke:
 		Weapon: MiniNuke
 		SelectionShares: 1
+	GrantExternalConditionCrateAction@invuln:
+		Range: 1c512
+		MaxExtraCollectors: 9
+		Duration: 400
+	GrantExternalConditionCrateAction@armor:
+		Range: 1c512
+		SelectionShares: 5
+		MaxExtraCollectors: 9
+		Sequence: armor
+		Sound: cannon1.aud
+		Condition: armor.crate
+		Duration: 400
+	GrantExternalConditionCrateAction@firepower:
+		Range: 1c512
+		SelectionShares: 5
+		MaxExtraCollectors: 9
+		Sequence: fpower
+		Sound: firebl3.aud
+		Condition: frenzyison
+		Duration: 400
+	GrantExternalConditionCrateAction@speed:
+		Range: 1c512
+		SelectionShares: 5
+		MaxExtraCollectors: 9
+		Sequence: speed
+		Sound: missile1.aud
+		Condition: speed.crate
+		Duration: 400
+	GrantExternalConditionCrateAction@cloak:
+		Range: 1c512
+		SelectionShares: 5
+		MaxExtraCollectors: 9	
+		Sequence: stealth
+		Sound: appear1.aud
+		Condition: invis.crate
+		Duration: 400
+	GrantExternalConditionCrateAction@emp:
+		Range: 1c512
+		SelectionShares: 5
+		MaxExtraCollectors: 9	
+		Sequence: hide-map
+		Sound: tesla1.aud
+		Condition: empdisable
+		Duration: 400
+	SupportPowerCrateAction@pbombs:
+		Proxy: crate.parabombs
+		SelectionShares: 1
+		TimeDelay: 7500
+		Sequence: parabombs
+	SupportPowerCrateAction@nuke:
+		Proxy: crate.nuke
+		SelectionShares: 1
+		TimeDelay: 13500
+		Sequence: nuke
+	SupportPowerCrateAction@chrono:
+		Proxy: crate.chrono
+		SelectionShares: 1
+		TimeDelay: 3000
+		Sequence: chrono
+	GiveUnitCrateAction@giantant:
+		Units: ant
+		Owner: Creeps
+		SelectionShares: 3
+	GiveUnitCrateAction@supertank:
+		SelectionShares: 1
+		Units: 5tnk
+		Prerequisites: techcenter
+	GiveUnitCrateAction@horde:
+		SelectionShares: 1
+		Units: tecn,tecn,tecn,tecn,tecn,tecn,tecn,tecn
+
+crate.parabombs:
+	AlwaysVisible:
+	AirstrikePower@ParabombsOneShot:
+		OrderName: CrateParabombs
+		Icon: parabombs
+		Description: Parabombs (Single Use)
+		LongDesc: A squad of Badgers drop parachuted\nbombs on your target.
+		SelectTargetSpeechNotification: SelectTarget
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		UnitType: badr.bomber
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		Cursor: airstrike
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 2
+		ChargeInterval: 0
+		OneShot: true
+
+crate.nuke:
+	AlwaysVisible:
+	NukePower@NukeMissileOneShot:
+		OrderName: CrateNuke
+		Cursor: nuke
+		Icon: abomb
+		ChargeInterval: 0
+		Description: Atom Bomb
+		LongDesc: Launches a devastating atomic bomb at target location
+		BeginChargeSpeechNotification: AbombPrepping
+		EndChargeSpeechNotification: AbombReady
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		IncomingSpeechNotification: AbombLaunchDetected
+		SkipAscent: True
+		MissileWeapon: atomic
+		MissileDelay: 5
+		SpawnOffset: 1c0,427,0
+		DisplayTimerStances: Ally, Neutral, Enemy
+		DisplayBeacon: True
+		DisplayRadarPing: True
+		BeaconPoster: atomicon
+		FlashType: Nuke
+		CameraRange: 10c0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		SupportPowerPaletteOrder: 1
+		OneShot: true
+
+crate.chrono:
+	AlwaysVisible:
+	#	BodyOrientation:
+	#	QuantizedFacings: 1
+	ChronoshiftPower@ChronoshiftOneShot:
+		OrderName: CrateChrono
+		Icon: chrono
+		ChargeInterval: 0
+		Description: Chronoshift
+		LongDesc: Teleports a small group of units\nacross the map for 20 seconds.
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: ChronosphereCharging
+		EndChargeSpeechNotification: ChronosphereReady
+		Duration: 400
+		KillCargo: true
+		DisplayRadarPing: True
+		SupportPowerPaletteOrder: 4
+		OneShot: true
 
 tech.stolen:
 	AlwaysVisible:
@@ -757,3 +905,90 @@ camera.minimum:
 		Range: 1c0
 	ExternalCondition@Sellable:
 		Condition: unit.sellable
+
+^UnitExternalConditionals:
+	WithColoredOverlay@ARMOR:
+		Palette: armor
+		RequiresCondition: armor.crate
+	TimedConditionBar@ARMOR:
+		Color: 4494E4
+		Condition: armor.crate
+	ExternalCondition@ARMOR:
+		Condition: armor.crate
+	DamageMultiplier@ARMOR:
+		Modifier: 80
+		RequiresCondition: armor.crate
+	SpeedMultiplier@ARMOR:
+		Modifier: 70
+		RequiresCondition: armor.crate
+	WithColoredOverlay@FIREPOWER:
+		Palette: firepower
+		RequiresCondition: frenzyison
+	TimedConditionBar@FIREPOWER:
+		Color: D47810
+		Condition: frenzyison
+	ExternalCondition@FIREPOWER:
+		Condition: frenzyison
+	FirepowerMultiplier@FRENZY1:
+		RequiresCondition: !frenzy1disabler && frenzyison
+		Modifier: 110
+	GrantConditionOnDamageState@DAMAGED:
+		Condition: frenzy1disabler
+		ValidDamageStates: Light, Medium, Heavy, Critical
+	FirepowerMultiplier@FRENZY2:
+		RequiresCondition: frenzy2enabler && frenzyison
+		Modifier: 120
+	GrantConditionOnDamageState@FRENZY2:
+		Condition: frenzy2enabler
+		ValidDamageStates: Light
+	FirepowerMultiplier@FRENZY3:
+		RequiresCondition: frenzy3enabler && frenzyison
+		Modifier: 130
+	GrantConditionOnDamageState@FRENZY3:
+		Condition: frenzy3enabler
+		ValidDamageStates: Medium
+	FirepowerMultiplier@FRENZY4:
+		RequiresCondition: frenzy4enabler && frenzyison
+		Modifier: 140
+	GrantConditionOnDamageState@FRENZY4:
+		Condition: frenzy4enabler
+		ValidDamageStates: Heavy
+	FirepowerMultiplier@FRENZY5:
+		RequiresCondition: frenzy5enabler && frenzyison
+		Modifier: 150
+	GrantConditionOnDamageState@FRENZY5:
+		Condition: frenzy5enabler
+		ValidDamageStates: Critical
+	WithColoredOverlay@SPEED:
+		Palette: speed
+		RequiresCondition: speed.crate
+	TimedConditionBar@SPEED:
+		Color: F8E947
+		Condition: speed.crate
+	ExternalCondition@SPEED:
+		Condition: speed.crate
+	SelfHealing@SPEED:
+		Step: 0
+		PercentageStep: -20
+		HealIfBelow: 101
+		Delay: 399
+		DamageCooldown: 399
+		RequiresCondition: speed.crate
+	SpeedMultiplier@SPEED:
+		Modifier: 130
+		RequiresCondition: speed.crate
+	WithColoredOverlay@INVISIBLE:
+		Palette: invis
+		RequiresCondition: invis.crate
+	Cloak:
+		InitialDelay: 0
+		CloakDelay: 50
+		UncloakOn: Attack, Unload, Infiltrate, Demolish
+		CloakTypes: Cloak
+		IsPlayerPalette: true
+		RequiresCondition: invis.crate
+	TimedConditionBar@INVISIBLE:
+		Color: 200738
+		Condition: invis.crate
+	ExternalCondition@INVISIBLE:
+		Condition: invis.crate

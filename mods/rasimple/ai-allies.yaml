@@ -66,8 +66,8 @@ Player:
 			mslo: 1
 			agun: 6
 			gun: 6
-			pbox: 8
-			hbox: 4
+			pbox.static: 8
+			hbox.static: 4
 			gap: 4
 			fact: 3
 			afld: 2
@@ -79,8 +79,8 @@ Player:
 			weap: 6
 			hpad: 4
 			syrd: 1
-			pbox: 7
-			hbox: 3
+			pbox.static: 7
+			hbox.static: 3
 			gun: 5
 			gap: 2
 			fix: 1
