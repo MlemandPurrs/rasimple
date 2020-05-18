@@ -319,7 +319,7 @@ CARR.Deployed:
 		Scale: 1.2
 	Production:
 		Produces: MWFHeli
-		PauseOnCondition: disabled || build-incomplete
+		PauseOnCondition: disabled
 	ProductionQueue:
 		Type: MWFHeli
 		Group: Helicopter

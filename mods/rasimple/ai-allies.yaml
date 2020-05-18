@@ -81,7 +81,7 @@ Player:
 			syrd: 1
 			pbox: 7
 			hbox: 3
-			gun: 7
+			gun: 5
 			gap: 2
 			fix: 1
 			agun: 5
@@ -110,7 +110,7 @@ Player:
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, heli, iroq.ai, e6, mech, spit, mrj
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk
 		NavalUnitsTypes: pt,dd,ca
 		ConstructionYardTypes: fact
 		NavalProductionTypes: syrd
@@ -120,10 +120,10 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, snip, jeep, apc, 1tnk, 2tnk, arty, atnk, e7, pt, dd, ca, e6, mech, mrj
+		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@allies:
-		RequiresCondition: enable-ai-player
+		RequiresCondition: enable-ai-player && player.allies
 		UnitQueues: Vehicle, Infantry
 		UnitsToBuild:
 			e1: 65
