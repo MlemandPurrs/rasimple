@@ -274,7 +274,7 @@ APC.soviet:
 		EmptyWeapon: VisualExplode
 		Chance: 50
 	RenderSprites:
-		Image: mnly
+		Image: apc
 	Sellable:
 		RequiresCondition: unit.sellable && !loaded
 

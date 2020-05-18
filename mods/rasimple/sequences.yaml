@@ -86,6 +86,10 @@ ftrk:
 		Facings: 8
 
 apc:
+	turret: apc-tur3
+		Facings: 32
+		UseClassicFacingFudge: True
+	hapcicon: hapcicon
     Inherits: emp-overlay
 
 1tnk:
