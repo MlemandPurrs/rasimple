@@ -1,6 +1,8 @@
 
 explosion:
 	invisblank: blank1
+	mininuke: miniatomsfx
+		Length: *
 
 emp-overlay:
 	emp-overlay: empfx01

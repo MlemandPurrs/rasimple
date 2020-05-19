@@ -424,3 +424,9 @@ prsm.destroyed:
 		Facings: 32
 		UseClassicFacingFudge: True
 		ZOffset: -512
+
+nsub:
+    Inherits: emp-overlay
+	idle:
+		Facings: 16
+	icon: nsubicon

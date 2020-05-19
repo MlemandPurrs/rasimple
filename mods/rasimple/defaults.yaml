@@ -325,6 +325,7 @@
 		UncloakSound: subshow1.aud
 		CloakedCondition: underwater
 		Palette: submerged
+		IsPlayerPalette: false
 		UncloakOn: Attack, Heal, Dock, SelfHeal, Demolish
 		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit
 		RequiresCondition: !deployed
@@ -932,7 +933,7 @@ camera.minimum:
 	FirepowerMultiplier@FRENZY1:
 		RequiresCondition: !frenzy1disabler && frenzyison
 		Modifier: 110
-	GrantConditionOnDamageState@DAMAGED:
+	GrantConditionOnDamageState@FRENZY1:
 		Condition: frenzy1disabler
 		ValidDamageStates: Light, Medium, Heavy, Critical
 	FirepowerMultiplier@FRENZY2:

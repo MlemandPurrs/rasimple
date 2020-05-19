@@ -6,3 +6,27 @@
 		PlayerIndex:
 			Creeps: 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 123, 123, 123, 123
 		AllowModifiers: True
+	PaletteFromRGBA@armor:
+		Name: armor
+		R: 68
+		G: 148
+		B: 228
+		A: 128
+	PaletteFromRGBA@frenzy:
+		Name: firepower
+		R: 212
+		G: 120
+		B: 16
+		A: 128
+	PaletteFromRGBA@turbo:
+		Name: speed
+		R: 248
+		G: 233
+		B: 71
+		A: 128
+	PaletteFromRGBA@invis:
+		Name: invis
+		R: 32
+		G: 7
+		B: 56
+		A: 128

@@ -700,21 +700,21 @@ TTNK:
 		RequiresCondition:	!is-shooting
 	WithAttackOverlay@ATTACKER:
 		Sequence: spinner
-		RequiresCondition:	is-shooting && is-shooting2
+		RequiresCondition:	is-shooting
 	GrantConditionOnAttack@ORBUSAGE:
 		Condition: is-shooting
 		RevokeDelay: 32
-	GrantConditionWhileAiming@ORBUSAGE:
-		Condition: is-shooting2
 
 DTRK:
 	Buildable:
 		BuildPaletteOrder: 14
 		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
-		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted\nalso Detonates if the Transport its in sinks.\n Can disguise as Supply Truck, friendly or enemy.
+		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted.\n Can disguise as Supply Truck, friendly or enemy.
 	Selectable:
 		Class: DemoDisguise
 	-Tooltip:
+	Valued:
+		Cost: 2400
 	Targetable:
 		TargetTypes: Ground, Vehicle, DemoDisguise
 		RequiresCondition: !parachute

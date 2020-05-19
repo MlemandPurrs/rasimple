@@ -881,3 +881,172 @@ Nike.6shot:
 	ReloadDelay: 90
 	Burst: 6
 	BurstDelays: 15
+
+TorpNuke:
+	ReloadDelay: 1500
+	Range: 16c768
+	MinRange: 3c512
+	Report: torpedo1.aud
+	ValidTargets: Water, Underwater
+	Projectile: Missile
+		Image: torpedo
+		Arm: 0
+		Speed: 100
+		TrailImage: bubbles
+		HorizontalRateOfTurn: 1
+		RangeLimit: 17c512
+		BoundToTerrainType: Water
+		Palette: shadow
+		MaximumLaunchAngle: 0
+		CruiseAltitude: 0
+		CloseEnough: 341
+	Warhead@1Dam_Impact: SpreadDamage
+		Spread: 0c512
+		Damage: 10000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: Air, Ground, Water, Underwater, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Eff_Water: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: h2obomb2.aud
+		ValidTargets: Water, Underwater
+		Delay: 1
+		ImpactActors: false
+	Warhead@3Eff_Impact: CreateEffect
+		Explosions: mininuke
+		ImpactSounds: kaboom1.aud
+		ValidTargets: Air, Ground, Water, Underwater, Bridge
+		Delay: 3
+		ImpactActors: false
+	Warhead@4Dam_Areanuke: SpreadDamage
+		Spread: 1c512
+		Damage: 5000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 7
+		ValidTargets: Air, Ground, Water, Bridge
+		InvalidTargets: Underwater
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@5Eff_Areanuke: CreateEffect
+		ImpactSounds: kaboom22.aud
+		Delay: 7
+		ImpactActors: false
+	Warhead@6Eff_Water: CreateEffect
+		Explosions: med_splash
+		ValidTargets: Water, Underwater
+		Delay: 16
+		ImpactActors: false
+	Warhead@7Eff_Water: CreateEffect
+		Explosions: water_piffs
+		ValidTargets: Water, Underwater
+		Delay: 17
+		ImpactActors: false
+	Warhead@8Dam_Areanuke: SpreadDamage
+		Spread: 2c384
+		Damage: 2500
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 8
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+
+SubNuke:
+	ReloadDelay: 1500
+	Range: 16c768
+	MinRange: 3c512
+	Report: missile1.aud
+	ValidTargets: Ground, Bridge
+	InvalidTargets: Water
+	Projectile: Bullet
+		Speed: 140
+		Blockable: false
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 298
+		Image: V2
+		Shadow: True
+		LaunchAngle: 135
+	Warhead@1Dam_Impact: SpreadDamage
+		Spread: 0c768
+		Damage: 10000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Eff_Water: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: h2obomb2.aud
+		ValidTargets: Water, Underwater
+		Delay: 1
+		ImpactActors: false
+	Warhead@3Eff_Impact: CreateEffect
+		Explosions: mininuke
+		ImpactSounds: kaboom1.aud
+		ValidTargets: Air, Ground, Water, Underwater, Bridge
+		Delay: 3
+		ImpactActors: false
+	Warhead@4Dam_Areanuke: SpreadDamage
+		Spread: 1c512
+		Damage: 5000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 4
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@5Eff_Areanuke: CreateEffect
+		ImpactSounds: kaboom22.aud
+		Delay: 7
+		ImpactActors: false
+	Warhead@6Smu_Areanuke: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Vehicle, Tank, Structure, Wall, Husk, Trees
+		Size: 1
+		Delay: 4
+	Warhead@7Dam_Areanuke: SpreadDamage
+		Spread: 2c384
+		Damage: 2500
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 8
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@8Res_Areanuke: DestroyResource
+		Size: 2
+		Delay: 15

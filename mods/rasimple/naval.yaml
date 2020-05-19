@@ -5,16 +5,9 @@ LST:
 	Cargo:
 		MaxWeight: 16
 		PipCount: 16
-		PassengerConditions:
-			dtrk: demo-inside
 		LoadedCondition: loaded	
 	RepairableNear:
 		RepairActors: syrd, spen
-	Explodes@demotruck:
-		Weapon: MiniNuke
-		EmptyWeapon: MiniNuke
-		DamageSource: Killer
-		RequiresCondition: demo-inside
 	Sellable:
 		RequiresCondition: ship.sellable && !loaded
 
@@ -219,7 +212,7 @@ CARR:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 6
-		Prerequisites: ~spen, dome, ~player.soviet, ~techlevel.medium
+		Prerequisites: ~spen, dome, stek, ~ships.soviet, ~techlevel.high
 		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto Produce, Rearm and Repair\nHelicopters at Sea.\nRepairs Ships when deployed.\n  Unarmed
 	Valued:
 		Cost: 1500
@@ -371,8 +364,8 @@ CARR.New:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 6
-		Prerequisites: ~syrd, dome, atek, ~techlevel.medium
-		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto produce, repair and rearm\nAircrafts at Sea.\nDetects Submarines when deployed.\n  Unarmed
+		Prerequisites: ~syrd, dome, atek, ~ships.allies, ~techlevel.high
+		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto produce, repair and rearm Aircrafts.\nDetects Submarines when deployed.\n  Unarmed
 	Valued:
 		Cost: 2000
 	Tooltip:
@@ -540,7 +533,7 @@ SS.new:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 2
-		Prerequisites: ~spen, ~techlevel.low
+		Prerequisites: ~spen, ~ships.soviet, ~techlevel.low
 		Description: Submerged anti-ship unit\narmed with torpedoes.\nCan detect other submarines.\n  Strong vs Naval units\n  Weak vs Ground units, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 	Valued:
 		Cost: 775
@@ -589,8 +582,8 @@ SS.AG:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 5
-		Prerequisites: ~spen, stek, ~techlevel.high
-		Description: Submerged multi-role unit\narmed with torpedoes and grenadelauncher.\nCan carry two Infantry.\nCan detect other submarines.\n  Strong vs Infantry, Buildings\n  Weak vs Tanks, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.
+		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
+		Description: Submerged multi-role unit\narmed with torpedoes\nand grenadelauncher.\nCan carry two Infantry.\nCan detect other submarines.\n  Strong vs Infantry, Buildings\n  Weak vs Tanks, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.
 	Tooltip:
 		Name: Attack Submarine
 	Health:
@@ -627,7 +620,8 @@ SS.AG:
 		CloakSound: subshow1.aud
 		UncloakSound: subshow1.aud
 		CloakedCondition: underwater
-		Palette: submerged
+		Palette: submerged		
+		IsPlayerPalette: false
 		UncloakOn: Attack, Heal, Unload, Dock, SelfHeal, Demolish
 		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit || is-shooting
 		RequiresCondition: !notmobile
@@ -655,7 +649,7 @@ MSUB.new:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 4
-		Prerequisites: ~spen, stek, ~techlevel.high
+		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
 		Description: Submerged anti-ground siege unit.\nCan detect other submarines.\n  Strong vs Buildings, Ground units, Aircraft\n  Weak vs Naval units\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 		BuildDurationModifier: 60
 	Valued:
@@ -718,7 +712,7 @@ MSUB.AA:
 	Inherits: MSUB.new
 	Buildable:
 		BuildPaletteOrder: 3
-		Prerequisites: ~spen, dome, ~techlevel.medium
+		Prerequisites: ~spen, dome, ~ships.soviet, ~techlevel.medium
 		Description: Submerged unit with anti-air capabilities.\nCan detect other submarines.\n  Strong vs Aircraft\n  Cannot attack ground units\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 	Tooltip:
 		Name: SAM Submarine
@@ -772,6 +766,7 @@ MINS:
 		CloakSound: subshow1.aud
 		UncloakSound: subshow1.aud
 		Palette: submerged
+		IsPlayerPalette: false
 	RenderSprites:
 		Image: mins
 	Targetable:
@@ -781,3 +776,72 @@ MINS:
 	GrantExternalConditionToCrusher:
 		OnCrushCondition: minehit
 		OnCrushDuration: 50
+
+NSUB:
+	Inherits: ^Submarine
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Submarine
+		BuildPaletteOrder: 7
+		BuildLimit: 1
+		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
+		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Strong vs Buildings, Naval Units\n  Weak vs Defenses, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+	Valued:
+		Cost: 2400
+	Tooltip:
+		Name: Nuclear Submarine
+	Health:
+		HP: 75000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 3
+		Speed: 50
+	Armament@AS:
+		Name: primary
+		Weapon: TorpNuke
+		LocalOffset: 612,-171,0, 612,171,0
+		FireDelay: 2
+		PauseOnCondition: !ammo
+	Armament@AG:
+		Name: secondary
+		Weapon: SubNuke
+		LocalOffset: 0,0,0
+		FireDelay: 2
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Armaments: primary, secondary
+		Ammo: 1
+		PipCount: 1
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 1500
+		Count: 1
+		PauseOnCondition: ammo
+	ReloadArmamentsBar@1:
+		Armaments: primary
+		Color: FFFF00
+	ReloadArmamentsBar@2:
+		Armaments: secondary
+		Color: FFFF00
+	RenderRangeCircle:
+		FallbackRange: 16c768
+	AttackFrontal:
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 44,44
+	HitShape:
+		TargetableOffsets: 576,0,0, -576,0,0
+		Type: Capsule
+			Radius: 341
+			PointA: 0, -576
+			PointB: 0, 576
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0

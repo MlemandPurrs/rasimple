@@ -56,16 +56,6 @@ POWR:
 		SequencePalette: placebuilding
 	RevealsShroud:
 		Range: 5c0
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 APWR:
 	Buildable:
@@ -94,16 +84,6 @@ APWR:
 		SequencePalette: placebuilding
 	RevealsShroud:
 		Range: 5c0
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 TENT:
 	Buildable:
@@ -194,16 +174,6 @@ BARR:
 		Range: 2c512
 	WithRangeCircle:
 		Range: 2c512
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 KENN:
 	Buildable:
@@ -347,22 +317,12 @@ PROC:
 		RequiresCondition: !build-incomplete && soviet.player
 	GrantConditionOnFaction@soviet:
 		Condition: soviet.player
-		Factions: russia,ukraine,belarus
+		Factions: soviet,russia,ukraine,belarus
 		ResetOnOwnerChange: True
 	GrantConditionOnFaction@allies:
 		Condition: allied.player
-		Factions: england,france,germany
+		Factions: allies,england,france,germany
 		ResetOnOwnerChange: True
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 SILO:
 	Buildable:
@@ -470,21 +430,6 @@ WEAP:
 		OwnerType: InternalName
 	Power:
 		RequiresCondition: !build-incomplete
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
-	#	the orb glitches through roof of factory while exiting
-	#	this is to fix that
-	GrantExternalConditionToProduced@TTNKORBFIXER:
-		Condition: exiting-factory
-		Duration: 10
 
 FIX:
 	Inherits@IDISABLE: ^DisableOnPowerDown
@@ -516,16 +461,6 @@ FIX:
 	ProximityExternalCondition:
 		Condition: unit.sellable
 		Range: 1c0
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 INDP:
 	Inherits: ^ScienceBuilding
@@ -578,16 +513,6 @@ INDP:
 	ProvidesPrerequisite@disabled:
 		Prerequisite: indplowpower
 		RequiresCondition: disabled || empdisable
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 DOME:
 	Building:
@@ -666,16 +591,6 @@ DOME.Soviet:
 		SupportPowerPaletteOrder: 4
 	SupportPowerChargeBar:
 	-MapEditorData:
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 ATEK:
 	#	first nullify then overwrite
@@ -693,7 +608,7 @@ ATEK:
 		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
 	Buildable:
 		BuildLimit: 1
-		Prerequisites: afldorweap, ~structures.allies, ~!player.england, ~!player.france, ~!player.germany,  ~techlevel.high
+		Prerequisites: afldorweap, ~structures.allies, ~techlevel.high
 		Description: Provides Allied advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.
 		BuildPaletteOrder: 12
 	Valued:
@@ -737,107 +652,6 @@ ATEK:
 		RequiresCondition: !build-incomplete && !being-captured && !being-demolished && !disabled
 	RenderSprites:
 		Image: ateknew
-	ParatroopersPower@SpyParadrop:
-		PauseOnCondition: disabled || lowpower
-		OrderName: SpyParadrop
-		Prerequisites: ~afld, player.england
-		Icon: paraspy
-		ChargeInterval: 9000
-		Description: Intel Paradrop
-		LongDesc: A B-52 drops an Veteran Spy anywhere on the map.
-		DropItems: spy.england
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		UnitType: b52
-		DisplayBeacon: true
-		BeaconPoster: paraspy
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		Cursor: airdrop
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2	
-	ProduceActorPower@DecoyArmy:
-		PauseOnCondition: disabled || lowpower
-		OrderName: DecoyArmy
-		Prerequisites: ~weap, player.france
-		Actors: 1tnf, 1tnf, 2tnf, 2tnf, artf
-		ChargeInterval: 6000
-		Icon: decoyarmy
-		Description: Decoy Army
-		LongDesc: Delivers an group of Fake units at your primary War Factory\nThose remote-controlled units armed with dummy weaponry\nwill look identical to real units for the opponent.
-		Type: Vehicle
-		ReadyAudio: ReinforcementsArrived
-		BlockedAudio: NoBuild
-		SupportPowerPaletteOrder: 2
-	ParatroopersPower@AlliedParaTanks:
-		PauseOnCondition: disabled || lowpower
-		OrderName: AlliedParaTanks
-		Prerequisites: ~afld, player.germany
-		Icon: paratanks
-		ChargeInterval: 7500
-		Description: Paratanks
-		LongDesc: A B-52 drops an Veteran squad of two Light\nand a Medium Tank anywhere on the map.
-		DropItems: 1TNK.R1, 2TNK.R1, 1TNK.R1
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		UnitType: b52
-		DisplayBeacon: true
-		BeaconPoster: paratanks
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		Cursor: airdrop
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2
-	SupportPowerChargeBar:
-	GrantConditionOnPowerState@LOWPOWER:
-		Condition: lowpower
-		ValidPowerStates: Low, Critical
-
-ATEK.England:
-	Inherits: ATEK
-	Buildable:
-		BuildLimit: 1
-		Prerequisites: afldorweap, ~structures.allies, ~player.england, ~techlevel.high
-		Description: Provides Allied advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.\n  Special Ability: Intel Drop\nA B-52 drops an Veteran Spy anywhere on the map.\n (requires Airfield)
-	RenderSprites:
-		Image: ateknew
-	ProvidesPrerequisite@COPY:
-		Prerequisite: atek
-	-MapEditorData:
-
-ATEK.France:
-	Inherits: ATEK
-	Buildable:
-		BuildLimit: 1
-		Prerequisites: afldorweap, ~structures.allies, ~player.france, ~techlevel.high
-		Description: Provides Allied advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.\n  Special Ability: Decoy Army\nDelivers an group of Fake units at your primary War Factory\nThose remote-controlled units armed with dummy weaponry\nwill look identical to real units for the opponent.\n (requires War Factory)
-	RenderSprites:
-		Image: ateknew
-	ProvidesPrerequisite@COPY:
-		Prerequisite: atek
-	-MapEditorData:
-
-ATEK.Germany:
-	Inherits: ATEK
-	Buildable:
-		BuildLimit: 1
-		Prerequisites: afldorweap, ~structures.allies, ~player.germany, ~techlevel.high
-		Description: Provides Allied advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.\n  Special Ability: Paratanks\nA B-52 drops an Veteran squad of two Light\nand a Medium Tank anywhere on the map.\n (requires Airfield)
-	RenderSprites:
-		Image: ateknew
-	ProvidesPrerequisite@COPY:
-		Prerequisite: atek
-	-MapEditorData:
 
 STEK:
 	Building:
@@ -846,7 +660,7 @@ STEK:
 	Buildable:
 		BuildLimit: 1
 		Description: Provides Soviet advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.
-		Prerequisites: afldorweap, ~structures.soviet, ~!player.russia, ~!player.ukraine, ~!player.belarus, ~techlevel.high
+		Prerequisites: afldorweap, ~structures.soviet, ~techlevel.high
 		BuildPaletteOrder: 12
 	Valued:
 		Cost: 2000
@@ -891,122 +705,10 @@ STEK:
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 2
-	ParatroopersPower@ShockParadrop:
-		PauseOnCondition: disabled || lowpower
-		OrderName: ShockParadrop
-		Prerequisites: ~afld, player.russia
-		Icon: parashok
-		ChargeInterval: 9000
-		Description: Storm Troopers
-		LongDesc: A Badger drops three Veteran Shock Troopers anywhere on the map.
-		DropItems: shokr1, shokr1, shokr1
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		DisplayBeacon: true
-		BeaconPoster: parashok
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		Cursor: airdrop
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2
-	ParatroopersPower@GrenParadrop:
-		PauseOnCondition: disabled || lowpower
-		OrderName: GrenParadrop
-		Prerequisites: ~afld, player.ukraine
-		Icon: paragren
-		ChargeInterval: 9000
-		Description: Paragrenadiers
-		LongDesc: A Badger drops four Grenadiers anywhere on the map.
-		DropItems: E2R1,E2R1,E2R1,E2R1
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		DisplayBeacon: true
-		BeaconPoster: paragren
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		Cursor: airdrop
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2
-	ParatroopersPower@ParaMines:
-		PauseOnCondition: disabled || lowpower
-		OrderName: SovietParaMines
-		Prerequisites: ~afld, player.belarus
-		Icon: paramines
-		ChargeInterval: 9000
-		Description: Paramines
-		LongDesc: A Badger drops one Minelayer anywhere on the map.
-		DropItems: MNLY
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		DisplayBeacon: true
-		BeaconPoster: paramines
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		Cursor: airdrop
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2
 	SupportPowerChargeBar:
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
-
-STEK.Russia:
-	Inherits: STEK
-	Buildable:
-		Prerequisites: afldorweap, ~player.russia, ~techlevel.high
-		Description: Provides Soviet advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.\n  Special Ability: Storm Troopers\nA Badger drops three Veteran Shock Troopers anywhere on the map.\n (requires Airfield)
-	RenderSprites:
-		Image: stek
-	ProvidesPrerequisite@COPY:
-		Prerequisite: stek
-	-MapEditorData:
-
-STEK.Ukraine:
-	Inherits: STEK
-	Buildable:
-		Prerequisites: afldorweap, ~player.ukraine, ~techlevel.high
-		Description: Provides Soviet advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.\n  Special Ability: Paragrenadiers\nA Badger drops four Veteran Grenadiers anywhere on the map.\n (requires Airfield)
-	RenderSprites:
-		Image: stek
-	ProvidesPrerequisite@COPY:
-		Prerequisite: stek
-	-MapEditorData:
-
-STEK.Belarus:
-	Inherits: STEK
-	Buildable:
-		Prerequisites: afldorweap, ~player.belarus, ~techlevel.high
-		Description: Provides Soviet advanced technologies.\nMaximum one can be built.\nCan be Infiltrated by an Spy or Saboteur for\nunlocking Tech unit production.\n  Special Ability: Paramines\nA Badger drops one Minelayer anywhere on the map.\n (requires Airfield)
-	RenderSprites:
-		Image: stek
-	ProvidesPrerequisite@COPY:
-		Prerequisite: stek
-	-MapEditorData:
 
 SPRO:
 	Inherits: ^ScienceBuilding
@@ -1067,16 +769,6 @@ SPRO:
 		Types: SpyInfiltrate
 	RenderSprites:
 		Image: atek
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 AFLD:
 	Buildable:
@@ -1169,41 +861,13 @@ AFLD:
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 3
-	ParatroopersPower@FastParatroopers:
-		OrderName: SovietFastParatroopers
-		Prerequisites: aircraft.soviet
-		RequiresCondition: belarus.player
-		Icon: paratroopers
-		ChargeInterval: 3750
-		Description: Paratroopers
-		LongDesc: A Badger drops a squad of Veteran infantry\nanywhere on the map.
-		DropItems: E1R1,E3R1,E1R1,E3R1,E1R1
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		DisplayBeacon: true
-		BeaconPoster: pinficon
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		PauseOnCondition: lowpower
-		Cursor: airdrop
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 3
 	GrantConditionOnFaction@soviet:
 		Condition: soviet.player
-		Factions: russia, ukraine
-		ResetOnOwnerChange: True
-	GrantConditionOnFaction@faster:
-		Condition: belarus.player
-		Factions: belarus
+		Factions: soviet
 		ResetOnOwnerChange: True
 	GrantConditionOnFaction@allies:
 		Condition: allied.player
-		Factions: england, france, germany
+		Factions: allies
 		ResetOnOwnerChange: True
 	ProvidesPrerequisite@TECHPREQ:
 		Prerequisite: afldorweap
@@ -1231,16 +895,6 @@ AFLD:
 		StartRepairingNotification: Repairing
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 AFLD.Ukraine:
 	Buildable:
@@ -1297,16 +951,6 @@ HPAD:
 		StartRepairingNotification: Repairing
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 SYRD:
 	Buildable:
@@ -1453,16 +1097,6 @@ SPEN:
 		ValidPowerStates: Low, Critical
 	Power:
 		RequiresCondition: !build-incomplete
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 GAP:
 	-Capturable:
@@ -1494,16 +1128,6 @@ GAP:
 		SequencePalette: placebuilding
 	Sellable:
 		RequiresCondition: !build-incomplete && !being-demolished
-	ProductionCostMultiplier@Russia:
-		Multiplier: 90
-		Prerequisites: player.russia
-	Explodes@RUMALUS:
-		Weapon: Demolish
-		DamageThreshold: 10
-		RequiresCondition: is.russian
-	GrantConditionOnPrerequisite@RUMALUS:
-		Condition: is.russian
-		Prerequisites: player.russia
 
 SBAG:
 	Buildable:
@@ -1801,7 +1425,7 @@ FTUR:
 TSLA:
 	Buildable:
 		BuildPaletteOrder: 5
-		Prerequisites: dome, ~structures.soviet, ~!player.russia, ~techlevel.medium
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium
 		Description: Advanced base defense.\nTesla briefly short-circuits Vehicle and Ships.\nCan detect cloaked units.\n  Strong vs Vehicles, Infantry\n  Weak vs Aircraft
 	Valued:
 		Cost: 1200
@@ -1857,19 +1481,6 @@ TSLA:
 	SpawnActorOnDeath:
 		Actor: tsla.husk
 		OwnerType: InternalName
-
-TSLA.Russia:
-	Inherits: TSLA
-	Buildable:
-		Prerequisites: dome, ~structures.soviet, ~player.russia, ~techlevel.medium
-		Description: Advanced base defense.\nTesla briefly short-circuits Vehicle and Ships.\nCan detect cloaked units.\n  Strong vs Vehicles, Infantry\n  Weak vs Aircraft
-	Power:
-		Amount: -80
-	RenderSprites:
-		Image: tsla
-	ProvidesPrerequisite@COPY:
-		Prerequisite: tsla
-	-MapEditorData:
 
 GUN:
 	Buildable:
