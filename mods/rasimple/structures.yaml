@@ -863,11 +863,11 @@ AFLD:
 		SupportPowerPaletteOrder: 3
 	GrantConditionOnFaction@soviet:
 		Condition: soviet.player
-		Factions: soviet
+		Factions: soviet, england, france, germany
 		ResetOnOwnerChange: True
 	GrantConditionOnFaction@allies:
 		Condition: allied.player
-		Factions: allies
+		Factions: allies, england, france, germany
 		ResetOnOwnerChange: True
 	ProvidesPrerequisite@TECHPREQ:
 		Prerequisite: afldorweap

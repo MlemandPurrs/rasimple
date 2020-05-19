@@ -376,7 +376,7 @@ SYRF:
 	Buildable:
 		BuildPaletteOrder: 3
 		Queue: Fakestructure
-		Prerequisites: ~player.allies, ~techlevel.medium, ~!global-disablenavy
+		Prerequisites: ~player.allies, ~techlevel.low, ~!global-disablenavy
 		Description: Looks like a Naval Yard.
 		Icon: fake-icon
 	Tooltip:

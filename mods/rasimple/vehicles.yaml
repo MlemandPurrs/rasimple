@@ -709,7 +709,7 @@ DTRK:
 	Buildable:
 		BuildPaletteOrder: 14
 		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
-		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted.\n Can disguise as Supply Truck, friendly or enemy.
+		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted.\n Can disguise as enemy Supply Truck.
 	Selectable:
 		Class: DemoDisguise
 	-Tooltip:
