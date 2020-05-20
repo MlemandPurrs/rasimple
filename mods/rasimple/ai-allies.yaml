@@ -32,6 +32,30 @@ Player:
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 7c0
+			CrateParabombs:
+				OrderName: CrateParabombs
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			CrateNuke:
+				OrderName: CrateNuke
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
 	BaseBuilderBotModule@allies:
 		RequiresCondition: enable-ai-player && player.allies
 		MinimumExcessPower: 60
@@ -72,6 +96,7 @@ Player:
 			fact: 3
 			afld: 2
 			spro: 1
+			gtur: 1
 		BuildingFractions:
 			proc: 15
 			tent: 2
@@ -90,6 +115,7 @@ Player:
 			pdox: 1
 			afld: 1
 			spro: 1
+			gtur: 1
 	CaptureManagerBotModule@mech:
 		RequiresCondition: enable-ai-player && player.allies
 		CapturingActorTypes: mech
@@ -98,11 +124,11 @@ Player:
 		MaximumCaptureTargetOptions: 15
 	SquadManagerBotModule@allies:
 		RequiresCondition: enable-ai-player && player.allies
-		SquadSize: 16
-		SquadSizeRandomBonus: 16
+		SquadSize: 8
+		SquadSizeRandomBonus: 8
 		RushInterval: 400
 		AttackScanRadius: 16
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, pt, dd, ca, heli, iroq.ai, e6, mech, spit
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, pt, dd, ca, heli, iroq.ai, e6, mech, spit, jeep.scout
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@allies.sea:
 		RequiresCondition: enable-ai-player && player.allies
@@ -110,21 +136,31 @@ Player:
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk, medi, jeep.scout
 		NavalUnitsTypes: pt,dd,ca
 		ConstructionYardTypes: fact
 		NavalProductionTypes: syrd
-	SquadManagerBotModule@allies.air:
+	SquadManagerBotModule@allies.airplane:
+		RequiresCondition: enable-ai-player && player.allies
+		SquadSize: 1
+		SquadSizeRandomBonus: 3
+		RushInterval: 400
+		AttackScanRadius: 48
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, iroq.ai, heli, jeep.scout
+		ConstructionYardTypes: fact
+	SquadManagerBotModule@allies.helicopter:
 		RequiresCondition: enable-ai-player && player.allies
 		SquadSize: 2
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, spit, jeep.scout
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@allies:
 		RequiresCondition: enable-ai-player && player.allies
 		UnitQueues: Vehicle, Infantry
+		UnitDelays:
+			mcv.ai: 13500
 		UnitsToBuild:
 			e1: 65
 			e2: 15
@@ -144,6 +180,7 @@ Player:
 			mech: 2
 			mcv.ai: 1
 			mrj: 1
+			medi: 2
 		UnitLimits:
 			dog: 4
 			harv: 8
@@ -156,6 +193,7 @@ Player:
 			ctnk: 5
 			msam: 2
 			mrj: 1
+			medi: 3
 	UnitBuilderBotModule@allies.sea:
 		RequiresCondition: enable-ai-player && player.allies
 		IdleBaseUnitsMaximum: 6
@@ -168,15 +206,23 @@ Player:
 			pt: 8
 			dd: 6
 			ca: 4
-	UnitBuilderBotModule@allies.air:
+	UnitBuilderBotModule@allies.airplane:
+		RequiresCondition: enable-ai-player && player.allies
+		IdleBaseUnitsMaximum: 0
+		UnitQueues: Aircraft
+		UnitDelays:
+			spit: 7500
+		UnitsToBuild:
+			spit: 100
+		UnitLimits:
+			spit: 2
+	UnitBuilderBotModule@allies.helicopter:
 		RequiresCondition: enable-ai-player && player.allies
 		IdleBaseUnitsMaximum: 4
 		UnitQueues: Aircraft
 		UnitsToBuild:
-			iroq.ai: 30
-			heli: 50
-			spit: 20
+			iroq.ai: 40
+			heli: 60
 		UnitLimits:
 			iroq.ai: 4
 			heli: 6
-			spit: 2

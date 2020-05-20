@@ -91,6 +91,7 @@ proc:
 proc.husk:
 	idle: proc-dead2
 		Offset: 1, -16
+		ZOffset: -1c511
 	bib: bib2
 		Length: *
 		UseTilesetExtension: true
@@ -646,6 +647,37 @@ gun.husk:
 		Length: *
 		Offset: -1,-1
 		UseTilesetExtension: true
+
+gtur:
+	Inherits: emp-overlay
+	idle: gtur
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,0
+	damaged-idle: gtur
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,0
+	make: gturmake
+		Length: *
+		Offset: 0,0
+		Tick: 70
+	muzzle: cruiser-muzzle
+		Length: 20
+		Facings: 8
+	bib: mbSAM
+		Length: *
+		Offset: 0,-5
+		UseTilesetExtension: true
+	dead: gturmake
+		Start: 8
+		Length: 1
+		Offset: 0,0
+	place: gturmake
+		Start: 11
+		Length: 1
+	icon: gturicon
 
 tsla:
     Inherits: emp-overlay

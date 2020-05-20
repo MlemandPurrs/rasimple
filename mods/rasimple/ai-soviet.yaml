@@ -55,10 +55,34 @@ Player:
 				MinimumAttractiveness: 1
 				Consideration@1:
 					Against: Ally
-					Types: Tank, Vehicle, Ship
+					Types: ICTarget
 					Attractiveness: 1
 					TargetMetric: None
-					CheckRadius: 2c0
+					CheckRadius: 1c0
+			CrateParabombs:
+				OrderName: CrateParabombs
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			CrateNuke:
+				OrderName: CrateNuke
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
 	BaseBuilderBotModule@soviet:
 		RequiresCondition: enable-ai-player && player.soviet
 		MinimumExcessPower: 60
@@ -123,11 +147,11 @@ Player:
 		MaximumCaptureTargetOptions: 15
 	SquadManagerBotModule@soviet:
 		RequiresCondition: enable-ai-player && player.soviet
-		SquadSize: 16
-		SquadSizeRandomBonus: 16
+		SquadSize: 12
+		SquadSizeRandomBonus: 6
 		RushInterval: 400
 		AttackScanRadius: 16
-		ExcludeFromSquadsTypes: harv.soviet, mcv, mcv.ai, dog, ss, ss.ag, msub, msub.aa, yak.ai, mig.ai, e6, thf, hind
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, ss, ss.ag, msub, msub.aa, yak.ai, mig.ai, e6, thf, hind, ftrk.scout
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@soviet.sea:
 		RequiresCondition: enable-ai-player && player.soviet
@@ -135,21 +159,31 @@ Player:
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv.soviet, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind
-		NavalUnitsTypes: ss,ss.ag,msub,msub.aa,fsub
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind, ftrk.scout
+		NavalUnitsTypes: ss,ss.ag,msub,msub.aa
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen
-	SquadManagerBotModule@soviet.air:
+	SquadManagerBotModule@soviet.airplane:
+		RequiresCondition: enable-ai-player && player.soviet
+		SquadSize: 1
+		SquadSizeRandomBonus: 3
+		RushInterval: 400
+		AttackScanRadius: 48
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf, hind, ftrk.scout
+		ConstructionYardTypes: fact
+	SquadManagerBotModule@soviet.helicopter:
 		RequiresCondition: enable-ai-player && player.soviet
 		SquadSize: 2
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv.soviet, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf, yak.ai, mig.ai, ftrk.scout
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@soviet:
 		RequiresCondition: enable-ai-player && player.soviet
 		UnitQueues: Vehicle, Infantry
+		UnitDelays:
+			mcv.ai: 13500
 		UnitsToBuild:
 			e1: 65
 			e2: 15
@@ -186,22 +220,26 @@ Player:
 			ss.ag: 20
 			msub: 20
 			msub.aa: 20
-			fsub: 10
 		UnitLimits:
 			ss: 4
 			ss.ag: 6
 			msub: 4
 			msub.aa: 2
-			fsub: 8
 	UnitBuilderBotModule@soviet.air:
+		RequiresCondition: enable-ai-player && player.soviet
+		IdleBaseUnitsMaximum: 0
+		UnitQueues: Aircraft
+		UnitsToBuild:
+			yak.ai: 60
+			mig.ai: 40
+		UnitLimits:
+			yak.ai: 6
+			mig.ai: 4
+	UnitBuilderBotModule@soviet.helicopter:
 		RequiresCondition: enable-ai-player && player.soviet
 		IdleBaseUnitsMaximum: 4
 		UnitQueues: Aircraft
 		UnitsToBuild:
-			yak.ai: 50
-			mig.ai: 30
-			hind: 20
+			hind: 100
 		UnitLimits:
-			yak.ai: 6
-			mig.ai: 4
 			hind: 2

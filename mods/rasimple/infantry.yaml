@@ -155,6 +155,14 @@ MEDI:
 	DeliversCash:
 		Payload: 62
 		Type: InfantryRefund
+	#	unsure if i need this
+	Armament@AI:
+		Weapon: ai.targeting.helper
+		LocalOffset: 0,0,0
+		RequiresCondition: enable-helper
+	GrantConditionOnBotOwner@aiplayer:
+		Condition: enable-helper
+		Bots: normal
 
 MECH:
 	Inherits@ROT: ^RottingInfantry
@@ -198,7 +206,7 @@ THF:
 	Inherits@ROT: ^RottingInfantry
 	Buildable:
 		BuildPaletteOrder: 6
-		Description: Field operative of the Union.\n  Special Ability: Sabotage\nCan infiltrate enemy buildings to damage them.\nSteals enemy credits from Refineries.\nInfiltrates Tech Centers to unlock Behemoth Tank Unit.\n  Special Ability: Hijacking\nHijacks enemy vehicles.\n  Special Ability: Cloaking\nCloaks when standing still.\n  Unarmed
+		Description: Field operative of the Union.\n  Special Ability: Hijacking\nSteals enemy vehicles.\n  Special Ability: Sabotage\nInfiltrates enemy production structures to Demolish them.\nSteals enemy credits from Refineries.\nInfiltrates enemy Power Plants to cut off base power.\nInfiltrates Radar Domes to reset their exploration.\nInfiltrates Tech Centers to unlock Behemoth Tank Unit.\n  Special Ability: Cloaking\nCloaks when standing still.\n  Unarmed
 	Tooltip:
 		Name: Saboteur
 	Health:
@@ -207,10 +215,11 @@ THF:
 		PipType: Blue
 	CaptureManager:
 	Captures@SABOTAGE:
-		CaptureTypes: building-sabotage
+		CaptureTypes: demolish-sabotage
+		CaptureDelay: 45
 		SabotageThreshold: 1
-		SabotageHPRemoval: 20
-		PlayerExperience: 50
+		SabotageHPRemoval: 100
+		PlayerExperience: 0
 	DeliversCash:
 		Payload: 125
 		Type: InfantryRefund

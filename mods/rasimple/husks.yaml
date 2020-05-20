@@ -50,7 +50,7 @@ HARV.Soviet.EmptyHusk:
 IROQ.Husk:
 	Inherits: ^HelicopterHusk
 	Tooltip:
-		Name: Iroqouis Scout
+		Name: Iroqouis
 	Aircraft:
 		TurnSpeed: 4
 		Speed: 112
@@ -533,3 +533,39 @@ MIG.Husk:
 		TrailLength: 6
 		TrailWidth: 48
 		UsePlayerColor: false
+
+HIND.Husk:
+	Tooltip:
+		Name: MI-24 Hind
+
+NEBR.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Nuclear Bomber
+	Contrail@1:
+		Offset: -598,-683,0
+		TrailLength: 6
+		TrailWidth: 48
+		UsePlayerColor: false
+	Contrail@2:
+		Offset: -598,683,0
+		TrailLength: 6
+		TrailWidth: 48
+		UsePlayerColor: false
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		MinRange: 11c0
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: nebr

@@ -430,3 +430,8 @@ nsub:
 	idle:
 		Facings: 16
 	icon: nsubicon
+
+nebr:
+	idle:
+		Facings: 16
+	icon: nebricon

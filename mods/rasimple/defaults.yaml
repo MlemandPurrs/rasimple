@@ -185,6 +185,7 @@
 	Inherits@QtnkSlow: ^ThumpSnare
 	Inherits@SELLUNIT: ^SellableOnRepairPad
 	Inherits@CRATEFX: ^UnitExternalConditionals
+	Inherits@AICurtain: ^AICurtainHelper
 	Mobile:
 		PauseOnCondition: !(!empdisable && !being-captured)
 	Passenger:
@@ -217,6 +218,10 @@
 		Crushes: crate, mine, infantry, airmine
 	Repairable:
 		RepairActors: hpad, carr.deployed
+
+^DisabledByPowerOutage:
+	InfiltrateForPowerOutage:
+		Types: SpyInfiltrate, ThiefInfiltrate
 
 ^BasicBuilding:
 
@@ -320,7 +325,7 @@
 	Cloak:
 		CloakTypes: Underwater
 		InitialDelay: 0
-		CloakDelay: 50
+		CloakDelay: 75
 		CloakSound: subshow1.aud
 		UncloakSound: subshow1.aud
 		CloakedCondition: underwater
@@ -716,9 +721,33 @@ CRATE:
 		SelectionShares: 1
 		Units: 5tnk
 		Prerequisites: techcenter
-	GiveUnitCrateAction@horde:
+	GiveUnitCrateAction@mrj:
 		SelectionShares: 1
+		Units: mrj.crate
+		Prerequisites: techcenter, techlevel.high
+	GiveUnitCrateAction@horde:
+		SelectionShares: 3
 		Units: tecn,tecn,tecn,tecn,tecn,tecn,tecn,tecn
+	GiveUnitCrateAction@harv:
+		SelectionShares: 5
+		Units: harv.crate
+		ValidFactions: allies, england, france, germany
+		TimeDelay: 7500
+	GiveUnitCrateAction@harvsoviet:
+		SelectionShares: 5
+		Units: harv.soviet.crate
+		ValidFactions: soviet, russia, ukraine, belarus
+		TimeDelay: 7500
+	GiveUnitCrateAction@ctnk:
+		SelectionShares: 2
+		Units: ctnk
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techcenter, techlevel.high
+	GiveUnitCrateAction@4tnk:
+		SelectionShares: 2
+		Units: 4tnk
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techcenter, techlevel.high
 
 crate.parabombs:
 	AlwaysVisible:
@@ -993,3 +1022,14 @@ camera.minimum:
 		Condition: invis.crate
 	ExternalCondition@INVISIBLE:
 		Condition: invis.crate
+
+^AICurtainHelper:
+	GrantConditionOnBotOwner@ichelper:
+		Condition: curtain-targeting
+		Bots: normal
+	GrantConditionOnDamageState@ichelper:
+		Condition: curtain-eligible
+		ValidDamageStates: Medium, Heavy, Critical
+	Targetable@ichelper:
+		TargetTypes: ICTarget
+		RequiresCondition: curtain-targeting && curtain-eligible

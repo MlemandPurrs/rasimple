@@ -616,7 +616,7 @@ SS.AG:
 	Cloak:
 		CloakTypes: Underwater
 		InitialDelay: 0
-		CloakDelay: 50
+		CloakDelay: 75
 		CloakSound: subshow1.aud
 		UncloakSound: subshow1.aud
 		CloakedCondition: underwater
@@ -628,7 +628,7 @@ SS.AG:
 	GrantConditionOnAttack@UNCLOAK:
 		Condition: is-shooting
 		ArmamentNames: secondary
-		RevokeDelay: 50
+		RevokeDelay: 75
 	-GrantConditionOnDeploy:
 	HitShape:
 		TargetableOffsets: 576,0,0, -576,0,0
@@ -762,7 +762,7 @@ MINS:
 	Cloak:
 		CloakTypes: Underwater
 		InitialDelay: 0
-		CloakDelay: 50
+		CloakDelay: 75
 		CloakSound: subshow1.aud
 		UncloakSound: subshow1.aud
 		Palette: submerged
@@ -785,7 +785,7 @@ NSUB:
 		BuildPaletteOrder: 7
 		BuildLimit: 1
 		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
-		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Strong vs Buildings, Naval Units\n  Weak vs Defenses, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 	Valued:
 		Cost: 2400
 	Tooltip:

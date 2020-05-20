@@ -22,16 +22,22 @@
 25mm:
 	Range: 4c768
 
+105mm:
+	ReloadDelay: 64
+
 105mm.Singular:
 	Inherits: 105mm
-	ReloadDelay: 60
 	-Burst:
 	Warhead@1Dam: SpreadDamage
 		Versus:
 			Heavy: 115
 
+90mm:
+	ReloadDelay: 42
+
 120mm:
-	Range: 5c512
+	ReloadDelay: 96
+	Range: 5c768
 
 Dragon.Ltnk:
 	Inherits: Dragon
@@ -1050,3 +1056,86 @@ SubNuke:
 	Warhead@8Res_Areanuke: DestroyResource
 		Size: 2
 		Delay: 15
+
+ParaNuke:
+	ReloadDelay: 0
+	Range: 0c938
+	Report: chute1.aud
+	ValidTargets: Ground, Water, Bridge
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 32,0,0
+		Acceleration: 0,0,-1
+	Warhead@1Dam_Impact: SpreadDamage
+		Spread: 0c768
+		Damage: 10000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Eff_Water: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: h2obomb2.aud
+		ValidTargets: Water, Underwater
+		Delay: 1
+		ImpactActors: false
+	Warhead@3Eff_Impact: CreateEffect
+		Explosions: mininuke
+		ImpactSounds: kaboom1.aud
+		ValidTargets: Air, Ground, Water, Underwater, Bridge
+		Delay: 3
+		ImpactActors: false
+	Warhead@4Dam_Areanuke: SpreadDamage
+		Spread: 1c512
+		Damage: 5000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 4
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@5Eff_Areanuke: CreateEffect
+		ImpactSounds: kaboom22.aud
+		Delay: 7
+		ImpactActors: false
+	Warhead@6Smu_Areanuke: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Vehicle, Tank, Structure, Wall, Husk, Trees
+		Size: 1
+		Delay: 4
+	Warhead@7Dam_Areanuke: SpreadDamage
+		Spread: 2c384
+		Damage: 2500
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 8
+		ValidTargets: Air, Ground, Water, Bridge
+		Versus:
+			None: 100
+			Wood: 125
+			Light: 100
+			Heavy: 100
+			Concrete: 75
+		AffectsParent: true
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@8Res_Areanuke: DestroyResource
+		Size: 2
+		Delay: 15
+
+ai.targeting.helper:
+	ReloadDelay: 1
+	Range: 7c0
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Damage: 0

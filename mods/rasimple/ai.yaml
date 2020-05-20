@@ -10,7 +10,7 @@ Player:
 		RequiresCondition: enable-ai-player
 	HarvesterBotModule@aiplayer:
 		RequiresCondition: enable-ai-player
-		HarvesterTypes: harv, harv.soviet
+		HarvesterTypes: harv,harv.soviet,harv.crate,harv.soviet.crate
 		RefineryTypes: proc
 	BuildingRepairBotModule@aiplayer:
 		RequiresCondition: enable-ai-player

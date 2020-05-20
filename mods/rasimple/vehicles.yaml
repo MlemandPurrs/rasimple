@@ -3,6 +3,15 @@ HARV:
 		Queue: Vehicle, MWFVehicle
 		Prerequisites: proc, ~vehicles.allies, ~techlevel.infonly
 		BuildPaletteOrder: 1
+	-Tooltip:
+	Tooltip@sidebar:
+		Name: Ore Truck
+		RequiresCondition: !produced
+	Tooltip@ingame:
+		Name: Harvester
+		RequiresCondition: produced
+	ExternalCondition@PRODUCED:
+		Condition: produced
 	Harvester:
 		Capacity: 30
 		PipCount: 9
@@ -24,8 +33,14 @@ HARV.Soviet:
 	Buildable:
 		Prerequisites: proc, ~vehicles.soviet, ~techlevel.infonly
 		Description: Collects Ore and Gems for processing.\n  Armed with basic Gun.
-	Tooltip:
+	Tooltip@sidebar:
 		Name: Armed Ore Truck
+		RequiresCondition: !produced
+	Tooltip@ingame:
+		Name: Armed Harvester
+		RequiresCondition: produced
+	ExternalCondition@PRODUCED:
+		Condition: produced
 	Turreted@SECONDARY:
 		Turret: secondary
 		Offset: 508,0,128
@@ -53,6 +68,30 @@ HARV.Soviet:
 	HarvesterHuskModifier:
 		FullHuskActor: HARV.Soviet.FullHusk
 		FullnessThreshold: 50
+
+HARV.Crate:
+	Inherits: HARV
+	Tooltip:
+		Name: Harvester
+	-Buildable:
+	-Tooltip@sidebar:
+	-Tooltip@ingame:
+	-ExternalCondition@PRODUCED:
+	RenderSprites:
+		Image: harv
+	-MapEditorData:
+
+HARV.Soviet.Crate:
+	Inherits: HARV.Soviet
+	Tooltip:
+		Name: Armed Harvester
+	-Buildable:
+	-Tooltip@sidebar:
+	-Tooltip@ingame:
+	-ExternalCondition@PRODUCED:
+	RenderSprites:
+		Image: harv.soviet
+	-MapEditorData:
 
 JEEP:
 	Buildable:
@@ -373,12 +412,15 @@ APC.soviet:
 	-Buildable:
 	-MapEditorData:
 
+#	differences to regular 3TNK
+#	available early, weapon no burst, 
+#	7500 weaker hitpoints, same speed.
 3TNK.1B:
 	Inherits: 3TNK
 	Buildable:
 		BuildPaletteOrder: 4
 		Prerequisites: ~vehicles.soviet, ~techlevel.low
-		Description: Soviet Main Battle Tank.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+		Description: Soviet Main Battle Tank.\nEarly pattern that is weaker yet cheaper.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: Heavy Tank 1-B
 	Valued:
@@ -386,7 +428,7 @@ APC.soviet:
 	Mobile:
 		Speed: 71
 	Health:
-		HP: 60000
+		HP: 52500
 	-Armament:
 	Armament:
 		Name: primary
@@ -511,6 +553,7 @@ MSAM:
 	Mobile:
 		TurnSpeed: 7
 		Speed: 96
+		PauseOnCondition: empdisable
 	RevealsShroud:
 		Range: 6c0
 		RevealGeneratedShroud: False
@@ -522,7 +565,17 @@ MSAM:
 	Armament:
 		Weapon: StingerAA
 		LocalOffset: 192,-64,176, 192,64,176
+		PauseOnCondition: empdisable
+	Armament@AI:
+		Weapon: ai.targeting.helper
+		LocalOffset: 0,0,0
+		RequiresCondition: enable-helper
+		PauseOnCondition: empdisable
+	GrantConditionOnBotOwner@aiplayer:
+		Condition: enable-helper
+		Bots: normal
 	AttackTurreted:
+		PauseOnCondition: empdisable
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	SelectionDecorations:
@@ -541,6 +594,15 @@ MRJ:
 		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Jams nearby enemy radar domes\nand deflects incoming missiles.\nDoesnt appear on enemy Radar.\n  Armed with basic gun.
+	-Tooltip:
+	Tooltip@sidebar:
+		Name: Mobile Radar Jammer
+		RequiresCondition: !produced
+	Tooltip@ingame:
+		Name: Mobile Jammer
+		RequiresCondition: produced
+	ExternalCondition@PRODUCED:
+		Condition: produced
 	WithIdleOverlay@SPINNER:
 		PauseOnCondition: empdisable
 	ProximityExternalCondition@JAMMER:
@@ -566,6 +628,18 @@ MRJ:
 	#	PauseOnCondition: empdisable
 	WithSpriteTurret:
 	WithMuzzleOverlay:
+
+MRJ.Crate:
+	Inherits: MRJ
+	Tooltip:
+		Name: MRJ
+	-Buildable:
+	-Tooltip@sidebar:
+	-Tooltip@ingame:
+	-ExternalCondition@PRODUCED:
+	RenderSprites:
+		Image: mrj
+	-MapEditorData:
 
 CTNK:
 	Buildable:
@@ -643,6 +717,8 @@ STNK:
 	Passenger:
 		PipType: Red
 	Cloak:
+		InitialDelay: 150
+		CloakDelay: 150
 		UncloakOn: Attack, Unload, Dock, Damage, Heal
 		PauseOnCondition: cloak-force-disabled && empdisable
 		#	for some reason this doesnt function when put to PauseOn

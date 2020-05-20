@@ -6,7 +6,7 @@ FACT:
 		Amount: 30
 		RequiresCondition: !build-incomplete
 	Production:
-		Produces: Building,Defense,Fakestructure,Dummy
+		Produces: Building,Defense,Fakestructure
 		PauseOnCondition: disabled || build-incomplete
 	ProvidesPrerequisite@allies:
 		Factions: allies, england, france, germany
@@ -35,7 +35,7 @@ POWR:
 	Buildable:
 		BuildPaletteOrder: 1
 		Prerequisites: ~techlevel.infonly
-		Description: Provides Power for other structures.\nCan be Infiltrated by an Spy resulting\nin a temporary blackout.
+		Description: Provides Power for other structures.\nCan be Infiltrated by a Spy or Saboteur\nresulting in a temporary blackout.
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
@@ -56,12 +56,14 @@ POWR:
 		SequencePalette: placebuilding
 	RevealsShroud:
 		Range: 5c0
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate, ThiefInfiltrate
 
 APWR:
 	Buildable:
 		BuildPaletteOrder: 13
 		Prerequisites: dome, ~techlevel.medium
-		Description: Provides double the Power of\na standard Power Plant.\nCan be Infiltrated by an Spy resulting\nin a temporary blackout.
+		Description: Provides double the Power of\na standard Power Plant.\nCan be Infiltrated by a Spy or Saboteur\nresulting in a temporary blackout.
 	Building:
 		Footprint: xxx Xxx
 		Dimensions: 3,2
@@ -126,6 +128,9 @@ TENT:
 		Range: 2c512
 	WithRangeCircle:
 		Range: 2c512
+	Capturable@3:
+		RequiresCondition: !build-incomplete
+		Types: demolish-sabotage
 
 BARR:
 	Buildable:
@@ -174,6 +179,9 @@ BARR:
 		Range: 2c512
 	WithRangeCircle:
 		Range: 2c512
+	Capturable@3:
+		RequiresCondition: !build-incomplete
+		Types: demolish-sabotage
 
 KENN:
 	Buildable:
@@ -306,12 +314,12 @@ PROC:
 		Prerequisites: oprf
 	-FreeActor:
 	FreeActor@1:
-		Actor: HARV
+		Actor: HARV.crate
 		SpawnOffset: 1,1
 		Facing: 64
 		RequiresCondition: !build-incomplete && allied.player
 	FreeActor@2:
-		Actor: HARV.soviet
+		Actor: HARV.soviet.crate
 		SpawnOffset: 1,1
 		Facing: 64
 		RequiresCondition: !build-incomplete && soviet.player
@@ -430,6 +438,9 @@ WEAP:
 		OwnerType: InternalName
 	Power:
 		RequiresCondition: !build-incomplete
+	Capturable@3:
+		RequiresCondition: !build-incomplete
+		Types: demolish-sabotage
 
 FIX:
 	Inherits@IDISABLE: ^DisableOnPowerDown
@@ -521,7 +532,7 @@ DOME:
 	Buildable:
 		Prerequisites: proc, ~structures.allies, ~techlevel.medium
 		BuildPaletteOrder: 6
-		Description: Provides an overview\nof the battlefield.\nCan detect cloaked units.\nCan be Infiltrated by an Spy resulting\nin loss of map exploration.
+		Description: Provides an overview\nof the battlefield.\nCan detect cloaked units.\nCan be Infiltrated by an Spy or Saboteur\nresulting in loss of map exploration.
 	Valued:
 		Cost: 1000
 	RevealsShroud:
@@ -543,6 +554,8 @@ DOME:
 		UseDeathTypeSuffix: false
 	ProvidesRadar:
 		RequiresCondition: !jammed && !disabled && !build-incomplete
+	InfiltrateForExploration:
+		Types: SpyInfiltrate, ThiefInfiltrate
 	SpawnActorOnDeath:
 		Actor: dome.husk
 		OwnerType: InternalName
@@ -558,12 +571,14 @@ DOME:
 		Condition: england.player
 		Factions: england
 		ResetOnOwnerChange: True
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate, ThiefInfiltrate
 
 DOME.Soviet:
 	Inherits: DOME
 	Buildable:
 		Prerequisites: proc, ~structures.soviet, ~techlevel.medium
-		Description: Provides an overview\nof the battlefield.\nCan detect cloaked units.\nCan be Infiltrated by an Spy resulting\nin loss of map exploration.\nCan detect cloaked units.\n  Special Ability: Spy Plane\nReveals an area of the map\nand cloaked enemy units there.\n (requires Airfield)
+		Description: Provides an overview\nof the battlefield.\nCan detect cloaked units.\nCan be Infiltrated by an Spy or Saboteur\nresulting in loss of map exploration.\nCan detect cloaked units.\n  Special Ability: Spy Plane\nReveals an area of the map\nand cloaked enemy units there.\n (requires Airfield)
 	RenderSprites:
 		Image: dome
 	ProvidesPrerequisite@COPY:
@@ -895,6 +910,9 @@ AFLD:
 		StartRepairingNotification: Repairing
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
+	Capturable@3:
+		RequiresCondition: !build-incomplete
+		Types: demolish-sabotage
 
 AFLD.Ukraine:
 	Buildable:
@@ -951,6 +969,9 @@ HPAD:
 		StartRepairingNotification: Repairing
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
+	Capturable@3:
+		RequiresCondition: !build-incomplete
+		Types: demolish-sabotage
 
 SYRD:
 	Buildable:
@@ -1366,8 +1387,8 @@ HBOX.static:
 		QuantizedFacings: 8
 	-Cloak:
 	Cloak:
-		InitialDelay: 125
-		CloakDelay: 60
+		InitialDelay: 150
+		CloakDelay: 75
 		IsPlayerPalette: true
 		PauseOnCondition: cloak-force-disabled || build-incomplete
 	RenderSprites:
@@ -1438,7 +1459,7 @@ TSLA:
 	#	this ensures TeslaCharge weapon can target the Tesla Coil
 	Targetable@Normal:
 		TargetTypes: Ground, C4, DetonateAttack, Structure, Defense, Charge
-		RequiresCondition: !TeslaHasCharge
+		RequiresCondition: !TeslaHasCharge && lowpower
 	Targetable@Charged:
 		TargetTypes: Ground, C4, DetonateAttack, Structure, Defense
 		RequiresCondition: TeslaHasCharge
@@ -1530,6 +1551,78 @@ GUN:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
+
+GTUR:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
+	Inherits@shape: ^2x2Shape
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 6
+		BuildLimit: 1
+		Prerequisites: atek, ~structures.allies, ~techlevel.high
+		Description: Triple-barreled Artillery base defense.\nHas double the durability of standard Defenses.\nCan detect cloaked units.\nMaximum one can be built.\n  Strong vs Infantry, Vehicles, Ships\n  Weak vs Aircraft
+	Valued:
+		Cost: 1650
+	Tooltip:
+		Name: Grand Turret
+	Selectable:
+		DecorationBounds: 34,34
+	SelectionDecorations:
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 80000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 2
+		InitialFacing: 0
+		RealignDelay: -1
+	-WithSpriteBody:
+	WithEmbeddedTurretSpriteBody:
+		PauseOnCondition: empdisable
+	WithBuildingBib:
+		HasMinibib: true
+	AttackTurreted:
+		PauseOnCondition: disabled
+		RequiresCondition: !build-incomplete
+	Armament:
+		Weapon: 203mm
+		MuzzleSequence: muzzle
+		LocalOffset: 900,200,420, 900,0,420, 900,-200,420
+		PauseOnCondition: disabled
+	WithMuzzleOverlay:
+	Power:
+		Amount: -80
+		RequiresCondition: !build-incomplete
+	BodyOrientation:
+		UseClassicFacingFudge: True
+	DetectCloaked:
+		Range: 3c0
+		RequiresCondition: !disabled && !build-incomplete
+	RenderDetectionCircle:
+	-SpawnActorsOnSell:
+	WithDeathAnimation:
+		DeathSequence: dead
+		UseDeathTypeSuffix: false
+	Explodes:
+		Weapon: BuildingExplode
+		EmptyWeapon: BuildingExplode
+	-ActorPreviewPlaceBuildingPreview:
+	SequencePlaceBuildingPreview:
+		Sequence: place
+		SequencePalette: placebuilding
+	ReloadArmamentsBar:
+		Color: FFFF00
 
 PDOX:
 	Buildable:
@@ -1698,7 +1791,7 @@ HSAM:
 		RequiresCondition: !build-incomplete
 		PauseOnCondition: disabled
 	Cloak:
-		InitialDelay: 125
+		InitialDelay: 150
 		CloakDelay: 75
 		IsPlayerPalette: true
 		PauseOnCondition: cloak-force-disabled || empdisable || build-incomplete || is-shooting
