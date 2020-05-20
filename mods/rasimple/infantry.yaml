@@ -157,7 +157,7 @@ MEDI:
 		Type: InfantryRefund
 	#	unsure if i need this
 	Armament@AI:
-		Weapon: ai.targeting.helper
+		Weapon: ai.targeting.helper.noattack
 		LocalOffset: 0,0,0
 		RequiresCondition: enable-helper
 	GrantConditionOnBotOwner@aiplayer:
@@ -214,12 +214,16 @@ THF:
 	Passenger:
 		PipType: Blue
 	CaptureManager:
+	#	because Demolish cannot be 
+	#	configured to enter only specific
+	#	types.
 	Captures@SABOTAGE:
 		CaptureTypes: demolish-sabotage
 		CaptureDelay: 45
 		SabotageThreshold: 1
 		SabotageHPRemoval: 100
 		PlayerExperience: 0
+		SabotageCursor: c4
 	DeliversCash:
 		Payload: 125
 		Type: InfantryRefund

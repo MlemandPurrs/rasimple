@@ -1,4 +1,18 @@
 
+beacon:
+	ctnksummon: ctnkbcon
+		Length: *
+		Offset: 0,-42
+	paranuke: paranukebcon
+		Length: *
+		Offset: 0,-42
+
+icon:
+	chronorein: creinicon
+	paranuke: paranukeicon
+	beheicon: 5tnkicon
+	prsmicon: prsmicon
+
 explosion:
 	invisblank: blank1
 	mininuke: miniatomsfx

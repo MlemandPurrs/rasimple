@@ -25,6 +25,8 @@ HARV:
 		RequiresCondition: !parachute
 	Passenger:
 		PipType: Blue
+	Targetable@HarvTargeting:
+		TargetTypes: Harvester
 
 HARV.Soviet:
 	Inherits: HARV
@@ -673,6 +675,31 @@ CTNK:
 	RevealsShroud@GAPGEN:
 		Range: 4c0
 
+CTNK.summon:
+	Inherits: ^SummonBase
+	SpawnActorOnDeath:
+		Actor: ctnk
+		RequiresCondition: !parachute
+	KillsSelf:
+		RequiresCondition: !parachute
+	RenderSprites:
+		Image: dummy
+
+#	making it appear properly using greyscale overlay + play sound
+#	will have to wait until grant timed condition gets implemented
+#	CTNK.ai:
+#	Inherits: CTNK
+#	-Buildable:
+#	GrantConditionOnPrerequisite@ENTRANCE:
+#	Condition: 
+#	Prerequisite: 
+#	WithColoredOverlay@INVISIBLE:
+#	Palette: invis
+#	RequiresCondition: invis.crate
+#	RenderSprites:
+#	Image: ctnk
+#	-MapEditorData:
+
 STNK:
 	Buildable:
 		BuildPaletteOrder: 13
@@ -925,9 +952,11 @@ QTNK:
 		PipType: Red
 	RenderRangeCircle:
 	Explodes@UNITEXPLODES:
-		Weapon: MiniNuke
-		EmptyWeapon: MiniNuke
+		Weapon: TankNuke
+		EmptyWeapon: TankNuke
 		DamageSource: Killer
+	ProvidesPrerequisite@limiting:
+		Prerequisite: havesuper
 
 PRSM:
 	Inherits: ^TrackedVehicle
@@ -939,7 +968,7 @@ PRSM:
 		Prerequisites: atek, ~vehicles.allies, ~tech.stolen, ~player.allies, ~techlevel.high
 		Description: Experimental vehicle armed with an Laser.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft
 	Valued:
-		Cost: 1500
+		Cost: 1700
 	Tooltip:
 		Name: Prism Tank
 	UpdatesPlayerStatistics:

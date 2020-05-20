@@ -441,6 +441,35 @@ WEAP:
 	Capturable@3:
 		RequiresCondition: !build-incomplete
 		Types: demolish-sabotage
+	ProduceActorPower@SuperTank:
+		PauseOnCondition: disabled || lowpower
+		OrderName: AISuperTank
+		Prerequisites: ~stek, aitoodumb, !havesuper
+		Actors: 5tnk
+		ChargeInterval: 27000
+		Icon: beheicon
+		Description: Behemoth Tank
+		LongDesc: Delivers an Behemoth Tank at your primary War Factory.
+		Type: Vehicle
+		ReadyAudio: ReinforcementsArrived
+		BlockedAudio: NoBuild
+		SupportPowerPaletteOrder: 2
+	ProduceActorPower@PrismTanks:
+		PauseOnCondition: disabled || lowpower
+		OrderName: AIPrismTanks
+		Prerequisites: ~atek, aitoodumb
+		Actors: prsm,prsm
+		ChargeInterval: 13500
+		Icon: prsmicon
+		Description: Prism Tanks
+		LongDesc: Delivers two Prism Tanks at your primary War Factory.
+		Type: Vehicle
+		ReadyAudio: ReinforcementsArrived
+		BlockedAudio: NoBuild
+		SupportPowerPaletteOrder: 2
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
 
 FIX:
 	Inherits@IDISABLE: ^DisableOnPowerDown
@@ -713,6 +742,28 @@ STEK:
 		BeaconPoster: pbmbicon
 		SquadSize: 3
 		SquadOffset: 1792,1792,0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		Cursor: airstrike
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 2
+	AirstrikePower@SovietParaNuke:
+		PauseOnCondition: disabled || lowpower
+		OrderName: SovietParanuke
+		Prerequisites: mslo, aitoodumb
+		Icon: paranuke
+		ChargeInterval: 15000
+		SquadSize: 1
+		QuantizedFacings: 8
+		Description: Paranuke
+		LongDesc: A fast plane drops an Paranuke on your target.
+		SelectTargetSpeechNotification: SelectTarget
+		UnitType: nebr.ai
+		CameraActor: camera.paradrop
+		DisplayBeacon: True
+		BeaconPoster: paranuke
 		ArrowSequence: arrow
 		ClockSequence: clock
 		CircleSequence: circles
@@ -1399,7 +1450,7 @@ FTUR:
 	Inherits@IDISABLE: ^DisableOnPowerDown
 	Buildable:
 		BuildPaletteOrder: 4
-		Prerequisites: weap, ~structures.soviet, ~techlevel.low
+		Prerequisites: weap, ~structures.soviet, ~techlevel.medium
 	Tooltip:
 		Name: Flame Turret
 	Power:
@@ -1631,6 +1682,7 @@ PDOX:
 	-ProvidesPrerequisite@germanstructure:
 	ChronoshiftPower@chronoshift:
 		OrderName: ChronoshiftPower
+		Prerequisites: !aitoodumb
 		PauseOnCondition: disabled
 		Icon: chrono
 		ChargeInterval: 4500
@@ -1646,6 +1698,29 @@ PDOX:
 		Range: 2
 		SupportPowerPaletteOrder: 5
 	-ChronoshiftPower@advancedchronoshift:
+	ParatroopersPower@ChronoReinforcements:
+		OrderName: AIChronoTanks
+		Prerequisites: aitoodumb
+		PauseOnCondition: disabled
+		Icon: chronorein
+		ChargeInterval: 9000
+		Description: Chrono Reinforcments
+		LongDesc: Teleports 2 Chrono Tanks to target area.
+		DropItems: ctnk.summon, ctnk.summon
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.minimum
+		UnitType: badr.summoner.chrono
+		SquadSize: 2
+		DisplayBeacon: true
+		BeaconPoster: ctnksummon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		SupportPowerPaletteOrder: 5
+		Cursor: chrono-target
 	-SpawnActorsOnSell:
 	Power:
 		RequiresCondition: !build-incomplete
@@ -1751,6 +1826,7 @@ MSLO:
 AGUN:
 	Buildable:
 		BuildPaletteOrder: 6
+		Prerequisites: dome, ~structures.allies, ~techlevel.medium
 	-SpawnActorsOnSell:
 	Power:
 		RequiresCondition: !build-incomplete

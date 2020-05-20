@@ -39,7 +39,7 @@ BADR.buildable:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 3
 		BuildLimit: 1
-		Prerequisites: ~afld, stek, ~aircraft.soviet, ~techlevel.high
+		Prerequisites: ~afld, stek, ~aircraft.soviet, ~!aitoodumb, ~techlevel.high
 		Description: Badger variant that carries\ntriple payload of Parabombs.\nMaximum 1 can be built.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: Badger Bomber
@@ -159,7 +159,7 @@ B52.buildable:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 6
 		BuildLimit: 1
-		Prerequisites: ~afld, atek, ~aircraft.allies, ~techlevel.high
+		Prerequisites: ~afld, atek, ~aircraft.allies, ~!aitoodumb, ~techlevel.high
 		Description: B-52 variant modified to function as Gunship.\nMaximum 1 can be built.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: B-52 Gunship
@@ -817,8 +817,7 @@ NEBR:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 6
 		BuildLimit: 1
-		Prerequisites: ~afld, stek, ~aircraft.soviet, ~techlevel.high
-		#	Prerequisites: ~disabled
+		Prerequisites: ~afld, stek, ~aircraft.soviet, ~!aitoodumb, ~techlevel.high
 		Description: Fast plane armed with nuclear parabomb.\nMaximum 1 can be built.\nHas very weak armor.
 	Valued:
 		Cost: 2400
@@ -884,3 +883,19 @@ NEBR:
 		Image: nebr
 	Rearmable:
 		RearmActors: afld, afld.ukraine, carr.new.deployed
+
+NEBR.ai:
+	Inherits: NEBR
+	-Buildable:
+	-AttackAircraft:
+	AttackBomber:
+		FacingTolerance: 20
+	RenderSprites:
+		Image: nebr
+	-Selectable:
+	SelectionDecorations:
+		RenderSelectionBars: False
+	-Voiced:
+	RejectsOrders:
+	Interactable:
+	-MapEditorData:

@@ -17,6 +17,27 @@ Player:
 					Attractiveness: -5
 					TargetMetric: None
 					CheckRadius: 8c0
+			UseChronoReinforcements:
+				OrderName: AIChronoTanks
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Harvester
+					Attractiveness: 2
+					TargetMetric: None
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 5c0
+				Consideration@3:
+					Against: Neutral, Enemy
+					Types: Structure
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 5c0
 			UseNuclear:
 				OrderName: NukeMissile
 				MinimumAttractiveness: 3000
@@ -32,6 +53,10 @@ Player:
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 7c0
+			UsePrismTanks:
+				OrderName: AIPrismTanks
+				Consideration@1:
+					Against: Ally
 			CrateParabombs:
 				OrderName: CrateParabombs
 				MinimumAttractiveness: 1
@@ -88,8 +113,8 @@ Player:
 			fix: 1
 			pdox: 1
 			mslo: 1
-			agun: 6
-			gun: 6
+			agun.ai: 6
+			gun.ai: 6
 			pbox.static: 8
 			hbox.static: 4
 			gap: 4
@@ -106,7 +131,7 @@ Player:
 			syrd: 1
 			pbox.static: 7
 			hbox.static: 3
-			gun: 5
+			gun.ai: 5
 			gap: 2
 			fix: 1
 			agun: 5
@@ -128,15 +153,15 @@ Player:
 		SquadSizeRandomBonus: 8
 		RushInterval: 400
 		AttackScanRadius: 16
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, pt, dd, ca, heli, iroq.ai, e6, mech, spit, jeep.scout
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, pt, dd, ca, heli, iroq.ai, e6, mech, spit, jeep.scout, ctnk.summon
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@allies.sea:
-		RequiresCondition: enable-ai-player && player.allies
+		RequiresCondition: enable-ai-player && player.allies && !global-disablenavy
 		SquadSize: 4
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk, medi, jeep.scout
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk, medi, jeep.scout, prsm, ctnk.summon
 		NavalUnitsTypes: pt,dd,ca
 		ConstructionYardTypes: fact
 		NavalProductionTypes: syrd
@@ -146,7 +171,7 @@ Player:
 		SquadSizeRandomBonus: 3
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, iroq.ai, heli, jeep.scout
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, iroq.ai, heli, jeep.scout, prsm, ctnk.summon
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@allies.helicopter:
 		RequiresCondition: enable-ai-player && player.allies
@@ -154,7 +179,7 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, spit, jeep.scout
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, spit, jeep.scout, prsm, ctnk.summon
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@allies:
 		RequiresCondition: enable-ai-player && player.allies
@@ -195,7 +220,7 @@ Player:
 			mrj: 1
 			medi: 3
 	UnitBuilderBotModule@allies.sea:
-		RequiresCondition: enable-ai-player && player.allies
+		RequiresCondition: enable-ai-player && player.allies && !global-disablenavy
 		IdleBaseUnitsMaximum: 6
 		UnitQueues: Ship
 		UnitsToBuild:

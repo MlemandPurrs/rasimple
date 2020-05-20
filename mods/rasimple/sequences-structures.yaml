@@ -82,6 +82,7 @@ proc:
     fake-icon: proficon
 	dead: proc-dead
 		Tick: 800
+		ZOffset: -1c511
 	idle-smoke: proc-smoke
 		Length: 40
 		Tick: 160

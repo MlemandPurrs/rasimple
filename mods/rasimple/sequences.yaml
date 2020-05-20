@@ -6,6 +6,9 @@ mcv:
 harv:
     Inherits: emp-overlay
 
+#	im too lazy to figure the proper ZOffset
+#	for its Turret to not appear over itself
+#	while its Harvesting
 harv.soviet:
     Inherits: emp-overlay
 	idle: harvempty

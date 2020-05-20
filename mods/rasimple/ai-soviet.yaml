@@ -35,6 +35,27 @@ Player:
 					Attractiveness: 1
 					TargetMetric: None
 					CheckRadius: 5c0
+			UseParanuke:
+				OrderName: SovietParanuke
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 4c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
 			UseNuclear:
 				OrderName: NukeMissile
 				MinimumAttractiveness: 3000
@@ -59,6 +80,10 @@ Player:
 					Attractiveness: 1
 					TargetMetric: None
 					CheckRadius: 1c0
+			UseSuperTank:
+				OrderName: AISuperTank
+				Consideration@1:
+					Against: Ally
 			CrateParabombs:
 				OrderName: CrateParabombs
 				MinimumAttractiveness: 1
@@ -123,6 +148,7 @@ Player:
 			hsam: 2
 			fact: 3
 			hpad: 2
+			pbox.static: 3
 		BuildingFractions:
 			proc: 15
 			barr: 2
@@ -135,6 +161,7 @@ Player:
 			fix: 1
 			sam: 3
 			hsam: 1
+			pbox.static: 1
 			stek: 1
 			mslo: 1
 			iron: 1
@@ -142,7 +169,7 @@ Player:
 	CaptureManagerBotModule@thf:
 		RequiresCondition: enable-ai-player && player.soviet
 		CapturingActorTypes: thf
-		CapturableActorTypes: harv,harv.soviet,mcv,v2rl,arty,4tnk,ttnk,ctnk,mrj
+		CapturableActorTypes: harv,harv.soviet,mcv,v2rl,arty,4tnk,ttnk,ctnk,mrj,5tnk,prsm
 		CheckCaptureTargetsForVisibility: true
 		MaximumCaptureTargetOptions: 15
 	SquadManagerBotModule@soviet:
@@ -151,16 +178,26 @@ Player:
 		SquadSizeRandomBonus: 6
 		RushInterval: 400
 		AttackScanRadius: 16
-		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, ss, ss.ag, msub, msub.aa, yak.ai, mig.ai, e6, thf, hind, ftrk.scout
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, ss, ss.ag, msub, msub.aa, yak.ai, mig.ai, e6, thf, hind, ftrk.scout, nsub
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@soviet.sea:
-		RequiresCondition: enable-ai-player && player.soviet
+		RequiresCondition: enable-ai-player && player.soviet && !global-disablenavy
 		SquadSize: 4
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind, ftrk.scout
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind, ftrk.scout, 5tnk
 		NavalUnitsTypes: ss,ss.ag,msub,msub.aa
+		ConstructionYardTypes: fact
+		NavalProductionTypes: spen
+	SquadManagerBotModule@soviet.supernaval:
+		RequiresCondition: enable-ai-player && player.soviet && !global-disablenavy
+		SquadSize: 1
+		SquadSizeRandomBonus: 0
+		RushInterval: 400
+		AttackScanRadius: 24
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind, ftrk.scout, 5tnk, ss,ss.ag,msub,msub.aa
+		NavalUnitsTypes: nsub
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen
 	SquadManagerBotModule@soviet.airplane:
@@ -169,7 +206,7 @@ Player:
 		SquadSizeRandomBonus: 3
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf, hind, ftrk.scout
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf, hind, ftrk.scout, 5tnk, nsub
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@soviet.helicopter:
 		RequiresCondition: enable-ai-player && player.soviet
@@ -177,7 +214,7 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf, yak.ai, mig.ai, ftrk.scout
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, ss, ss.ag, msub, msub.aa, fsub, e6, thf, yak.ai, mig.ai, ftrk.scout, 5tnk, nsub
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@soviet:
 		RequiresCondition: enable-ai-player && player.soviet
@@ -212,7 +249,7 @@ Player:
 			thf: 2
 			mcv.ai: 1
 	UnitBuilderBotModule@soviet.sea:
-		RequiresCondition: enable-ai-player && player.soviet
+		RequiresCondition: enable-ai-player && player.soviet && !global-disablenavy
 		IdleBaseUnitsMaximum: 6
 		UnitQueues: Ship
 		UnitsToBuild:
@@ -225,6 +262,14 @@ Player:
 			ss.ag: 6
 			msub: 4
 			msub.aa: 2
+	UnitBuilderBotModule@soviet.supernaval:
+		RequiresCondition: enable-ai-player && player.soviet && !global-disablenavy
+		IdleBaseUnitsMaximum: 0
+		UnitQueues: Ship
+		UnitsToBuild:
+			nsub: 100
+		UnitLimits:
+			nsub: 1
 	UnitBuilderBotModule@soviet.air:
 		RequiresCondition: enable-ai-player && player.soviet
 		IdleBaseUnitsMaximum: 0
