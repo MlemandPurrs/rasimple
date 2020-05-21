@@ -113,8 +113,8 @@ Player:
 			fix: 1
 			pdox: 1
 			mslo: 1
-			agun.ai: 6
-			gun.ai: 6
+			agun: 6
+			gun: 6
 			pbox.static: 8
 			hbox.static: 4
 			gap: 4
@@ -131,7 +131,7 @@ Player:
 			syrd: 1
 			pbox.static: 7
 			hbox.static: 3
-			gun.ai: 5
+			gun: 5
 			gap: 2
 			fix: 1
 			agun: 5

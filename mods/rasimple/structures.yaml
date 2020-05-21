@@ -1508,12 +1508,9 @@ TSLA:
 	-SpawnActorsOnSell:
 	-Targetable:
 	#	this ensures TeslaCharge weapon can target the Tesla Coil
-	Targetable@Normal:
-		TargetTypes: Ground, C4, DetonateAttack, Structure, Defense, Charge
+	Targetable@ChargeTargeting:
+		TargetTypes: Charge
 		RequiresCondition: !TeslaHasCharge && lowpower
-	Targetable@Charged:
-		TargetTypes: Ground, C4, DetonateAttack, Structure, Defense
-		RequiresCondition: TeslaHasCharge
 	#	the TesleChargeApplied condition gets applied by an new secondary weapon on SHOK
 	GrantCondition@Overcharge:
 		Condition: TeslaHasCharge

@@ -169,7 +169,7 @@ Player:
 	CaptureManagerBotModule@thf:
 		RequiresCondition: enable-ai-player && player.soviet
 		CapturingActorTypes: thf
-		CapturableActorTypes: harv,harv.soviet,mcv,v2rl,arty,4tnk,ttnk,ctnk,mrj,5tnk,prsm
+		CapturableActorTypes: harv,harv.crate,harv.soviet,harv.soviet.crate,mcv,v2rl,arty,4tnk,ttnk,ctnk,mrj,5tnk,prsm
 		CheckCaptureTargetsForVisibility: true
 		MaximumCaptureTargetOptions: 15
 	SquadManagerBotModule@soviet:
@@ -196,7 +196,7 @@ Player:
 		SquadSizeRandomBonus: 0
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind, ftrk.scout, 5tnk, ss,ss.ag,msub,msub.aa
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, volk, shok, ftrk, apc.soviet, 3tnk.1b, 3tnk, 4tnk, v2rl, ttnk, yak.ai, mig.ai, e6, thf, hind, ftrk.scout, 5tnk, ss, ss.ag, msub, msub.aa
 		NavalUnitsTypes: nsub
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen
