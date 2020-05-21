@@ -26,3 +26,6 @@ Player:
 		CapturableActorTypes: oilb,bio,miss,fcom,hosp
 		CheckCaptureTargetsForVisibility: false
 		MaximumCaptureTargetOptions: 15
+	GrantConditionOnPrerequisite@NAVYDISABLER:
+		Condition: global-disablenavy
+		Prerequisites: global-disablenavy

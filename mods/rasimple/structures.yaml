@@ -1506,7 +1506,6 @@ TSLA:
 		RequiresCondition: !disabled
 	RenderDetectionCircle:
 	-SpawnActorsOnSell:
-	-Targetable:
 	#	this ensures TeslaCharge weapon can target the Tesla Coil
 	Targetable@ChargeTargeting:
 		TargetTypes: Charge
@@ -1546,6 +1545,7 @@ TSLA:
 	RevealsShroud@GAPGEN:
 		Range: 6c0
 	Power:
+		Amount: -80
 		RequiresCondition: !build-incomplete
 	SpawnActorOnDeath:
 		Actor: tsla.husk
@@ -1744,8 +1744,8 @@ MSLO:
 	Buildable:
 		BuildPaletteOrder: 8
 	Cloak:
-		InitialDelay: 125
-		CloakDelay: 60
+		InitialDelay: 150
+		CloakDelay: 75
 		IsPlayerPalette: true
 		UncloakOn: Attack, Damage
 		CloakTypes: Cloak, Thief

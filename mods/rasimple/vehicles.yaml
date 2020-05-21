@@ -555,7 +555,7 @@ MSAM:
 	Mobile:
 		TurnSpeed: 7
 		Speed: 96
-		PauseOnCondition: empdisable
+		PauseOnCondition: !(!empdisable && !being-captured)
 	RevealsShroud:
 		Range: 6c0
 		RevealGeneratedShroud: False
@@ -803,7 +803,6 @@ TTNK:
 		RequiresCondition:	!is-shooting
 	WithAttackOverlay@ATTACKER:
 		Sequence: spinner
-		RequiresCondition:	is-shooting
 	GrantConditionOnAttack@ORBUSAGE:
 		Condition: is-shooting
 		RevokeDelay: 32
