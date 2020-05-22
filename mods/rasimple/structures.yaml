@@ -501,6 +501,12 @@ FIX:
 	ProximityExternalCondition:
 		Condition: unit.sellable
 		Range: 1c0
+	Targetable@cthelper:
+		TargetTypes: CTTarget
+		RequiresCondition: chrono-targeting
+	GrantConditionOnBotOwner@cthelper:
+		Condition: chrono-targeting
+		Bots: normal
 
 INDP:
 	Inherits: ^ScienceBuilding
@@ -742,28 +748,6 @@ STEK:
 		BeaconPoster: pbmbicon
 		SquadSize: 3
 		SquadOffset: 1792,1792,0
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		Cursor: airstrike
-		UseDirectionalTarget: True
-		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2
-	AirstrikePower@SovietParaNuke:
-		PauseOnCondition: disabled || lowpower
-		OrderName: SovietParanuke
-		Prerequisites: mslo, aitoodumb
-		Icon: paranuke
-		ChargeInterval: 15000
-		SquadSize: 1
-		QuantizedFacings: 8
-		Description: Paranuke
-		LongDesc: A fast plane drops an Paranuke on your target.
-		SelectTargetSpeechNotification: SelectTarget
-		UnitType: nebr.ai
-		CameraActor: camera.paradrop
-		DisplayBeacon: True
-		BeaconPoster: paranuke
 		ArrowSequence: arrow
 		ClockSequence: clock
 		CircleSequence: circles
@@ -1355,7 +1339,7 @@ PBOX.static:
 	Buildable:
 		BuildPaletteOrder: 2
 		Prerequisites: barracks, ~fact, ~techlevel.low
-		Description: Static defense with a Machinegun emplacement.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+		Description: Static defense with\nMG emplacement.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	-CustomSellValue:
 	-Cargo:
 	-AttackGarrisoned:
@@ -1419,7 +1403,7 @@ HBOX.static:
 	Buildable:
 		BuildPaletteOrder: 5
 		Prerequisites: barracks, dome, ~structures.allies, ~techlevel.medium
-		Description: Camouflaged static defense with a sniper inside.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+		Description: Camouflaged static defense\nwith a Sniper inside.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	-CustomSellValue:
 	-Cargo:
 	-AttackGarrisoned:
@@ -1679,7 +1663,6 @@ PDOX:
 	-ProvidesPrerequisite@germanstructure:
 	ChronoshiftPower@chronoshift:
 		OrderName: ChronoshiftPower
-		Prerequisites: !aitoodumb
 		PauseOnCondition: disabled
 		Icon: chrono
 		ChargeInterval: 4500
@@ -1695,29 +1678,6 @@ PDOX:
 		Range: 2
 		SupportPowerPaletteOrder: 5
 	-ChronoshiftPower@advancedchronoshift:
-	ParatroopersPower@ChronoReinforcements:
-		OrderName: AIChronoTanks
-		Prerequisites: aitoodumb
-		PauseOnCondition: disabled
-		Icon: chronorein
-		ChargeInterval: 9000
-		Description: Chrono Reinforcments
-		LongDesc: Teleports 2 Chrono Tanks to target area.
-		DropItems: ctnk.summon, ctnk.summon
-		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.minimum
-		UnitType: badr.summoner.chrono
-		SquadSize: 2
-		DisplayBeacon: true
-		BeaconPoster: ctnksummon
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles
-		SupportPowerPaletteOrder: 5
-		Cursor: chrono-target
 	-SpawnActorsOnSell:
 	Power:
 		RequiresCondition: !build-incomplete

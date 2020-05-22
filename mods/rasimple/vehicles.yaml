@@ -25,8 +25,6 @@ HARV:
 		RequiresCondition: !parachute
 	Passenger:
 		PipType: Blue
-	Targetable@HarvTargeting:
-		TargetTypes: Harvester
 
 HARV.Soviet:
 	Inherits: HARV
@@ -674,31 +672,6 @@ CTNK:
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 4c0
-
-CTNK.summon:
-	Inherits: ^SummonBase
-	SpawnActorOnDeath:
-		Actor: ctnk
-		RequiresCondition: !parachute
-	KillsSelf:
-		RequiresCondition: !parachute
-	RenderSprites:
-		Image: dummy
-
-#	making it appear properly using greyscale overlay + play sound
-#	will have to wait until grant timed condition gets implemented
-#	CTNK.ai:
-#	Inherits: CTNK
-#	-Buildable:
-#	GrantConditionOnPrerequisite@ENTRANCE:
-#	Condition: 
-#	Prerequisite: 
-#	WithColoredOverlay@INVISIBLE:
-#	Palette: invis
-#	RequiresCondition: invis.crate
-#	RenderSprites:
-#	Image: ctnk
-#	-MapEditorData:
 
 STNK:
 	Buildable:

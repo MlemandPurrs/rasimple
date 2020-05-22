@@ -78,7 +78,7 @@ E3:
 
 E4:
 	Buildable:
-		Prerequisites: ~barr, ftur, ~techlevel.low
+		Prerequisites: ~barr, ftur, ~techlevel.medium
 		BuildPaletteOrder: 9
 		Description: Close-range anti-structure unit.\nMay explode on death 30% chance.\n  Immune to Fire-based weaponry.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
 	Valued:
@@ -99,7 +99,7 @@ E4:
 		Condition: dont-move
 		RevokeDelay: 12
 	Passenger:
-		PipType: Green
+		PipType: Yellow
 	DeliversCash:
 		Payload: 100
 		Type: InfantryRefund
@@ -145,7 +145,7 @@ MEDI:
 	Inherits@ROT: ^RottingInfantry
 	Buildable:
 		BuildPaletteOrder: 9
-		Prerequisites: ~tent, dome, ~techlevel.low
+		Prerequisites: ~tent, dome, ~techlevel.medium
 	Health:
 		HP: 6000
 	Valued:

@@ -784,7 +784,7 @@ NSUB:
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 7
 		BuildLimit: 1
-		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
+		Prerequisites: ~spen, stek, ~ships.soviet, ~!aitoodumb, ~techlevel.high
 		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 	Valued:
 		Cost: 2400
