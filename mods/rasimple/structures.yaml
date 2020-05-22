@@ -501,12 +501,6 @@ FIX:
 	ProximityExternalCondition:
 		Condition: unit.sellable
 		Range: 1c0
-	Targetable@cthelper:
-		TargetTypes: CTTarget
-		RequiresCondition: chrono-targeting
-	GrantConditionOnBotOwner@cthelper:
-		Condition: chrono-targeting
-		Bots: normal
 
 INDP:
 	Inherits: ^ScienceBuilding
@@ -1339,7 +1333,7 @@ PBOX.static:
 	Buildable:
 		BuildPaletteOrder: 2
 		Prerequisites: barracks, ~fact, ~techlevel.low
-		Description: Static defense with\nMG emplacement.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+		Description: Static defense with\nMG emplacement.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	-CustomSellValue:
 	-Cargo:
 	-AttackGarrisoned:
@@ -1403,7 +1397,7 @@ HBOX.static:
 	Buildable:
 		BuildPaletteOrder: 5
 		Prerequisites: barracks, dome, ~structures.allies, ~techlevel.medium
-		Description: Camouflaged static defense\nwith a Sniper inside.\nImmune to EMP.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+		Description: Camouflaged static defense\nwith a Sniper inside.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	-CustomSellValue:
 	-Cargo:
 	-AttackGarrisoned:
