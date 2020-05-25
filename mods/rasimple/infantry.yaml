@@ -169,14 +169,14 @@ MECH:
 	Health:
 		HP: 6000
 	Valued:
-		Cost: 450
+		Cost: 475
 	Buildable:
 		Prerequisites: ~tent, fix, ~techlevel.medium
 		BuildPaletteOrder: 6
 	Passenger:
 		PipType: Blue
 	DeliversCash:
-		Payload: 125
+		Payload: 118
 		Type: InfantryRefund
 
 SPY:
