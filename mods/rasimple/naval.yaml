@@ -2,6 +2,8 @@ LST:
 	Buildable:
 		BuildPaletteOrder: 1
 		Description: General-purpose naval transport.\nCan carry up to 16 Infantry and Vehicles.\n  Unarmed
+	Valued:
+		Cost: 800
 	Cargo:
 		MaxWeight: 16
 		PipCount: 16
@@ -15,6 +17,8 @@ PT:
 	Buildable:
 		BuildPaletteOrder: 2
 		Prerequisites: ~syrd, ~ships.allies, ~techlevel.low
+	Valued:
+		Cost: 450
 	-Turreted:
 	Turreted@PRIMARY:
 		Turret: primary
@@ -189,7 +193,7 @@ CA:
 		BuildDurationModifier: 60
 		Prerequisites: ~syrd, atek, ~ships.allies, ~techlevel.high
 	Valued:
-		Cost: 2000
+		Cost: 1800
 	Armament@PRIMARY:
 		PauseOnCondition: empdisable
 	Armament@SECONDARY:
