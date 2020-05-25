@@ -331,6 +331,8 @@ PROC:
 		Condition: allied.player
 		Factions: allies,england,france,germany
 		ResetOnOwnerChange: True
+	Sellable:
+		RefundPercent: 100
 
 SILO:
 	Buildable:
@@ -458,11 +460,11 @@ WEAP:
 		PauseOnCondition: disabled || lowpower
 		OrderName: AIPrismTanks
 		Prerequisites: ~atek, aitoodumb
-		Actors: prsm,prsm
+		Actors: prsm
 		ChargeInterval: 13500
 		Icon: prsmicon
 		Description: Prism Tanks
-		LongDesc: Delivers two Prism Tanks at your primary War Factory.
+		LongDesc: Delivers an Prism Tank at your primary War Factory.
 		Type: Vehicle
 		ReadyAudio: ReinforcementsArrived
 		BlockedAudio: NoBuild
@@ -495,7 +497,7 @@ FIX:
 	Sellable:
 		RequiresCondition: !unit.docked && !build-incomplete && !being-captured && !being-demolished
 	AcceptsDeliveredCash:
-		ValidTypes: AircraftRefund, MoneyTransfer
+		ValidTypes: AircraftRefund
 	ExternalCondition@Docked:
 		Condition: unit.docked
 	ProximityExternalCondition:

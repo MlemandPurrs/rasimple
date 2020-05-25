@@ -536,7 +536,7 @@ MIG.Husk:
 
 HIND.Husk:
 	Tooltip:
-		Name: MI-24 Hind
+		Name: Hind
 
 NEBR.Husk:
 	Inherits: ^PlaneHusk

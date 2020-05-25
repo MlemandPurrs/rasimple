@@ -420,7 +420,7 @@ World:
 			2: WarningTwoMinutesRemaining
 			1: WarningOneMinuteRemaining
 	ResourceRenderer:
-		RenderTypes: Ore, Gems, Scrap
+		RenderTypes: Ore, Gems, Scraps
 
 EditorWorld:
 	Inherits: ^BaseWorld

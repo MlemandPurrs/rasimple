@@ -342,13 +342,13 @@ IROQ:
 		PauseOnCondition: !ammodc
 	Armament@FOURTH:
 		Name: fourth
-		Weapon: ChainGun.aa
+		Weapon: ChainGun.AA
 		LocalOffset: 85,213,-85, 85,-213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo
 	Armament@FIFTH:
 		Name: fifth
-		Weapon: ChainGun.aa
+		Weapon: ChainGun.AA
 		LocalOffset: 85,213,-85, 85,-213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo
@@ -360,7 +360,6 @@ IROQ:
 	Aircraft
 		WaitDistanceFromResupplyBase: 4c0
 		TakeOffOnResupply: true
-		IdleBehavior: ReturnToBase
 		InitialFacing: 224
 		TurnSpeed: 5
 		Speed: 176
@@ -443,7 +442,6 @@ HELI:
 		Armaments: primary, secondary, tertiary, quartenary
 	Aircraft:
 		TakeOffOnResupply: true
-		IdleBehavior: ReturnToBase
 	AmmoPool:
 		PipType: Red
 		ReloadDelay: 15
@@ -465,30 +463,30 @@ HIND:
 		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high
 		Description: Slow helicopter gunship armed with dual chainguns\nand anti-ground rockets.\n  Strong vs Infantry, Tanks\n  Weak vs fast Units, Aircraft
 	Tooltip:
-		Name: MI-24 Hind
+		Name: Hind
 	Valued:
 		Cost: 1500
 	Armament@PRIMARY:
 		Name: primary
-		Weapon: ChainGun
+		Weapon: ChainGun.Hind
 		LocalOffset: 85,-213,-85, 85,213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo
 	Armament@SECONDARY:
 		Name: secondary
-		Weapon: ChainGun
+		Weapon: ChainGun.Hind
 		LocalOffset: 85,213,-85, 85,-213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo
 	Armament@FOURTH:
 		Name: fourth
-		Weapon: ChainGun.aa
+		Weapon: ChainGun.AA
 		LocalOffset: 85,-213,-85, 85,213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo
 	Armament@FIFTH:
 		Name: fifth
-		Weapon: ChainGun.aa
+		Weapon: ChainGun.AA
 		LocalOffset: 85,213,-85, 85,-213,-85
 		MuzzleSequence: muzzle
 		PauseOnCondition: !ammo

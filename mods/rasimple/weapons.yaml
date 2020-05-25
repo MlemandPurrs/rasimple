@@ -317,7 +317,7 @@ GrenadeLauncher.sub:
 			Heavy: 50
 
 ZSU-23:
-	Range: 9c0
+	Range: 10c0
 	Projectile: Bullet
 		Speed: 3c340
 		Inaccuracy: 1c938
@@ -393,6 +393,8 @@ HeliAGGun:
 HeliAAGun:
 	Inherits: HeliAGGun
 	ValidTargets: Air
+	Projectile: Bullet
+		Inaccuracy: 0c768
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
 		ValidTargets: Air
@@ -411,13 +413,18 @@ ChainGun:
 	Projectile: Bullet
 		Blockable: false
 
-ChainGun.aa:
+ChainGun.Hind:
+	Inherits: ChainGun
+	MinRange: 2c0
+
+ChainGun.AA:
 	Inherits: ChainGun
 	Range: 5c0
 	ValidTargets: Air
 	MinRange: 1c256
 	Projectile: Bullet
 		Blockable: false
+		Inaccuracy: 0c768
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Air
 		Damage: 1250

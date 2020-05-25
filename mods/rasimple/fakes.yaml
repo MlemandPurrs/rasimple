@@ -185,58 +185,6 @@ PROF:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
 	Selectable:
-		Bounds: 72,50,0,4
-		DecorationBounds: 72,70,0,-2
-	SelectionDecorations:
-	Buildable:
-		BuildPaletteOrder: 4
-		Prerequisites: ~disabled
-		Queue: Fakestructure
-		Description: Looks like the standard, old Ore Refinery.
-		Icon: fake-icon
-	Tooltip:
-		Name: Fake Ore Refinery
-		GenericName: Ore Refinery
-		GenericVisibility: Enemy
-		GenericStancePrefix: False
-	Building:
-		Footprint: _X_ xxx X== ===
-		Dimensions: 3,4
-		LocalCenterOffset: 0,-512,0
-	RenderSprites:
-		Image: proc
-	WithBuildingBib:
-	WithIdleOverlay@TOP:
-		RequiresCondition: !build-incomplete
-		Sequence: idle-top
-	HitShape:
-		Type: Rectangle
-			TopLeft: -1536, -512
-			BottomRight: 1536, 598
-	HitShape@TOP:
-		TargetableOffsets: 1680,0,0
-		Type: Rectangle
-			TopLeft: -512, -1536
-			BottomRight: 512, -512
-	HitShape@BOTTOMLEFT:
-		TargetableOffsets: -1260,-1024,0
-		Type: Rectangle
-			TopLeft: -1536, 598
-			BottomRight: -512, 1280
-	WithIdleOverlay@SMOKE:
-		RequiresCondition: !build-incomplete
-		Sequence: idle-smoke
-	Valued:
-		Cost: 375
-	Health:
-		HP: 90000
-	Armor:
-		Type: Wood
-
-PROF.ERCC:
-	Inherits: ^FakeBuilding
-	Inherits@infiltrate: ^InfiltratableFake
-	Selectable:
 		Bounds: 72,45,0,-14
 		DecorationBounds: 72,77,0,-15
 	SelectionDecorations:
@@ -262,26 +210,11 @@ PROF.ERCC:
 		RequiresCondition: !build-incomplete
 		Sequence: topsolid
 	-HitShape:
-	HitShape@TOPLEFT:
-		TargetableOffsets: 560,-1152,0, 880,-630,0
+	HitShape@NEW:
+		TargetableOffsets: 0,0,0, 1080,0,0, 720,-630,0, 1400,1152,0, 1720,630,0, -560,1152,0, -800,630,0, -560,-1152,0, -800,-630,0
 		Type: Rectangle
-			TopLeft: -1536, -768
-			BottomRight: -256,-256
-	HitShape@TOPRIGHT:
-		TargetableOffsets: 1400,1152,0, 1720,630,0
-		Type: Rectangle
-			TopLeft: 256, -1536
-			BottomRight: 1536, -256
-	HitShape@BOTRIGHT:
-		TargetableOffsets: -560,1152,0, -800,630,0
-		Type: Rectangle
-			TopLeft: 256, 256
-			BottomRight: 1536, 768
-	HitShape@BOTLEFT:
-		TargetableOffsets: -560,-1152,0, -800,-630,0
-		Type: Rectangle
-			TopLeft: -1536, 256
-			BottomRight: -256, 1536
+			TopLeft: -1536, -1536
+			BottomRight: 1536, 1036
 	WithIdleOverlay@SMOKE:
 		RequiresCondition: !build-incomplete
 		Sequence: idle-smoke
@@ -291,10 +224,10 @@ PROF.ERCC:
 		HP: 90000
 	Armor:
 		Type: Wood
-	-ActorPreviewPlaceBuildingPreview:
-	SequencePlaceBuildingPreview:
-		Sequence: place
-		SequencePalette: placebuilding
+	#	-ActorPreviewPlaceBuildingPreview:
+	#	SequencePlaceBuildingPreview:
+	#	Sequence: place
+	#	SequencePalette: placebuilding
 
 WEAF:
 	Inherits: ^FakeBuilding

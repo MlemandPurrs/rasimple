@@ -101,6 +101,8 @@ JEEP:
 		Description: Fast scout & anti-infantry vehicle.\nDetects cloaked units in close radius.\nCan carry one infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
 	Mobile:
 		PauseOnCondition: !(!empdisable && !notmobile && !being-captured)
+	Valued:
+		Cost: 450
 	Tooltip:
 		Name: Jeep
 	Armament:
@@ -146,7 +148,7 @@ FTRK:
 	Tooltip:
 		Name: Flak Truck
 	Valued:
-		Cost: 600
+		Cost: 500
 	Mobile:
 		PauseOnCondition: !(!empdisable && !notmobile && !being-captured)
 	Turreted:
@@ -308,10 +310,6 @@ APC.soviet:
 		Prerequisites: vehicles.upgraded
 	Passenger:
 		PipType: Green
-	Explodes:
-		Weapon: VisualExplode
-		EmptyWeapon: VisualExplode
-		Chance: 50
 	RenderSprites:
 		Image: apc
 	Sellable:

@@ -117,9 +117,9 @@ E6:
 	Buildable:
 		BuildPaletteOrder: 5
 		Prerequisites: ~barracks, proc, ~techlevel.infonly
-		Description: Infiltrates and captures Enemy structures.\nExternally captures Neutral structures.\nCan restore destroyed Tech buildings.\nCan repair destroyed Bridges.\n  Unarmed
+		Description: Enteringly captures Enemy structures.\nExternally captures Neutral structures.\nCan restore destroyed Tech buildings.\nCan repair destroyed Bridges.\n  Unarmed
 	Valued:
-		Cost: 500
+		Cost: 450
 	-GrantConditionOnPrerequisite@GLOBALREUSABLEENGINEER:
 	-Captures:
 	-Captures@REUSABLE:
@@ -168,6 +168,8 @@ MECH:
 	Inherits@ROT: ^RottingInfantry
 	Health:
 		HP: 6000
+	Valued:
+		Cost: 450
 	Buildable:
 		Prerequisites: ~tent, fix, ~techlevel.medium
 		BuildPaletteOrder: 6
@@ -183,6 +185,8 @@ SPY:
 		Prerequisites: ~tent, dome, ~techlevel.medium
 		BuildPaletteOrder: 7
 		Description: Agent of the Intelligence Service.\nCan detect cloaked units and spies.\n  Special Ability: Hijacking\nCan steal enemy Vehicles when not disguised.\n  Special Ability: Espionage\nInfiltrates enemy production structures for rank bonus.\nSteals enemy credits from Refineries.\nInfiltrates enemy Power Plants to cut off base power.\nInfiltrates Radar Domes to reset their exploration.\nInfiltrates Tech Centers to unlock Prism Tank Unit.\n  Special Ability: Disguise\nCan disguise as enemy Infantry.\nLoses disguise when attacking.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 475
 	Passenger:
 		PipType: Yellow
 	CaptureManager:
@@ -195,7 +199,7 @@ SPY:
 		Weapon: SilencedPPK
 		MuzzleSequence: garrison-muzzle
 	DeliversCash:
-		Payload: 125
+		Payload: 118
 		Type: InfantryRefund
 
 SPY.England:
@@ -209,6 +213,8 @@ THF:
 		Description: Field operative of the Union.\n  Special Ability: Hijacking\nSteals enemy vehicles.\n  Special Ability: Sabotage\nInfiltrates enemy production structures to Demolish them.\nSteals enemy credits from Refineries.\nInfiltrates enemy Power Plants to cut off base power.\nInfiltrates Radar Domes to reset their exploration.\nInfiltrates Tech Centers to unlock Behemoth Tank Unit.\n  Special Ability: Cloaking\nCloaks when standing still.\n  Unarmed
 	Tooltip:
 		Name: Saboteur
+	Valued:
+		Cost: 475
 	Health:
 		HP: 4500
 	Passenger:
@@ -225,7 +231,7 @@ THF:
 		PlayerExperience: 0
 		SabotageCursor: c4
 	DeliversCash:
-		Payload: 125
+		Payload: 118
 		Type: InfantryRefund
 
 E7:
