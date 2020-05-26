@@ -614,7 +614,7 @@ MRJ:
 		ValidStances: Ally
 	Turreted:
 		TurnSpeed: 5
-		Offset: 246,-60,148
+		Offset: 246,-60,118
 	Armament:
 		Weapon: M1Carbine
 		MuzzleSequence: muzzle
