@@ -60,6 +60,8 @@ POWR:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate, ThiefInfiltrate
 
 APWR:
+	Health:
+		HP: 80000
 	Buildable:
 		BuildPaletteOrder: 13
 		Prerequisites: dome, ~techlevel.medium
@@ -255,6 +257,8 @@ KENN:
 
 PROC:
 	Inherits@AI: ^IncomeAIBoost
+	Health:
+		HP: 100000
 	Buildable:
 		Prerequisites: ~techlevel.infonly
 		BuildPaletteOrder: 4
@@ -405,6 +409,8 @@ OPRF:
 
 WEAP:
 	Inherits@IDISABLE: ^DisableOnPowerDown
+	Health:
+		HP: 120000
 	Buildable:
 		BuildPaletteOrder: 5
 		Prerequisites: proc, ~techlevel.low
@@ -557,6 +563,8 @@ INDP:
 		RequiresCondition: disabled || empdisable
 
 DOME:
+	Health:
+		HP: 80000
 	Building:
 		Footprint: xx xx
 		Dimensions: 2,2
@@ -1005,6 +1013,8 @@ HPAD:
 		Types: demolish-sabotage
 
 SYRD:
+	Health:
+		HP: 120000
 	Buildable:
 		BuildPaletteOrder: 3
 		Prerequisites: ~structures.allies, ~techlevel.low, ~!global-disablenavy
@@ -1075,6 +1085,8 @@ SYRD:
 		RequiresCondition: !build-incomplete
 
 SPEN:
+	Health:
+		HP: 120000
 	Buildable:
 		BuildPaletteOrder: 3
 		Prerequisites: ~structures.soviet, ~techlevel.low, ~!global-disablenavy

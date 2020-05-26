@@ -312,7 +312,7 @@ IROQ:
 		Prerequisites: ~hpad, ~aircraft.allies, ~!aitoodumb, ~techlevel.medium
 		Description: Light helicopter armed with dual chainguns.\nCan use Depthcharges against Submarines.\n  Strong vs Infantry, Light vehicles\n  Weak vs Tanks, Aircraft
 	Valued:
-		Cost: 1350
+		Cost: 800
 	Tooltip:
 		Name: Iroquois
 	Health:
@@ -541,6 +541,8 @@ YAK:
 		BuildPaletteOrder: 1
 		Prerequisites: ~afld, ~aircraft.soviet, ~!aitoodumb, ~techlevel.medium
 		Description: Strafing Attack Plane armed with\ndual machine guns.\nBombs Submarines with Depthcharges.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+	Valued:
+		Cost: 1200
 	Health:
 		HP: 8000
 	Aircraft:
