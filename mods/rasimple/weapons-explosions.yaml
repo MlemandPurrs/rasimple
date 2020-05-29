@@ -1,0 +1,56 @@
+
+ScrapsExplosion:
+	Warhead@1Dam: SpreadDamage
+		Spread: 9
+		Damage: 10
+		Versus:
+			None: 1
+			Wood: 1
+			Light: 1
+			Heavy: 1
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion
+		ImpactSounds: kaboom25.aud
+	Warhead@3Res: CreateResource
+		AddsResourceType: Scraps
+		Size: 1,1
+
+BurnFX:
+	ValidTargets: Ground, Trees
+	InvalidTargets: Air
+	ReloadDelay: 20
+	Range: 0c128
+	Projectile: Bullet
+		Speed: 85
+		Blockable: false
+	Warhead@3Eff: CreateEffect
+		Image: fire
+		Explosions: 3, 6, 7, 8
+
+FlakFX:
+	ValidTargets: Ground, Water, Trees
+	ReloadDelay: 20
+	Range: 1c128
+	Projectile: Bullet
+		Speed: 85
+		LaunchAngle: 96
+		Image: DRAGON
+		Shadow: True
+		Blockable: false
+		AirburstAltitude: 1c908
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 4000
+		ValidTargets: Air
+		Versus:
+			None: 40
+			Wood: 10
+			Light: 60
+			Heavy: 10
+			Concrete: 20
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion_air
+		ImpactSounds: aacanon3.aud
+		ValidTargets: Air

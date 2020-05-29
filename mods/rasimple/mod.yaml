@@ -161,7 +161,12 @@ Weapons:
 	ra|weapons/other.yaml
 	ra|weapons/smallcaliber.yaml
 	ra|weapons/superweapons.yaml
-    rasimple|weapons.yaml
+    rasimple|weapons-explosions.yaml
+	rasimple|weapons-ballistics.yaml
+	rasimple|weapons-missiles.yaml
+	rasimple|weapons-other.yaml
+	rasimple|weapons-smallcaliber.yaml
+	rasimple|weapons-superweapons.yaml
 
 Voices:
 	ra|audio/voices.yaml

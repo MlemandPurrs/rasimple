@@ -1,0 +1,159 @@
+
+^AntiGroundMissile:
+	Projectile: Missile
+		ContrailLength: 8
+
+^AntiAirMissile:
+	Projectile: Missile
+		ContrailLength: 8
+
+Dragon.Ltnk:
+	Inherits: Dragon
+	Range: 4c768
+	ReloadDelay: 300
+
+Dragon.garrison:
+	Inherits: Dragon
+	Projectile: Missile
+		#	this completely breaks it
+		#	HomingActivationDelay: 50
+		#	performs somewhat better with this
+		CruiseAltitude: 512
+		#	doesnt change anything
+		LockOnProbability: 0
+		
+#	bullet based is working properly.
+#	negatives: dumb-fire, cannot be jammed.
+#	basically becomes an overpriced Gun Turret that performs worser.
+Dragon.pbox:
+	Inherits: ^Cannon
+	ReloadDelay: 50
+	Range: 6c512
+	Report: missile6.aud	
+	Projectile: Bullet
+		Speed: 213
+		Inaccuracy: 128
+		Blockable: false
+		ContrailLength: 10
+		Image: DRAGON
+		Shadow: True
+		TrailImage: smokey
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: Ground, Water, Air
+		Versus:
+			None: 10
+			Wood: 74
+			Light: 34
+			Heavy: 100
+			Concrete: 50
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom25.aud
+	Warhead@4EffWater: CreateEffect
+		Explosions: med_splash
+		ImpactSounds: splash9.aud
+
+APTusk:
+	Burst: 2
+
+SCUD:
+	Warhead@Flames: FireCluster
+		Weapon: BurnFx
+		RandomClusterCount: 3
+		Dimensions: 3,3
+		Footprint: xxx xxx xxx
+		ValidTargets: Ground
+		InvalidTargets: Water
+
+SCUD.Badger:
+	Inherits: SCUD
+	Burst: 2
+	BurstDelays: 12
+	ReloadDelay: 120
+	Projectile: Bullet
+		Inaccuracy: 1c512
+		LaunchAngle: 0
+
+TorpTube:
+	Projectile: Missile
+		HorizontalRateOfTurn: 2
+	Warhead@1Dam: SpreadDamage
+		Damage: 12000
+		Versus:
+			Wood: 50
+			Light: 50
+			Heavy: 85
+			Concrete: 850
+
+SubMissileAA:
+	TargetActorCenter: false
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion_air
+		ImpactSounds: kaboom25.aud
+
+SubMissileAA.cluster:
+	Inherits: SubMissileAA
+	#	-Burst:
+	Warhead@Burst: FireCluster
+		Weapon: FlakFX
+		RandomClusterCount: 4
+		Dimensions: 3,3
+		Footprint: xxx x_x xxx
+		ValidTargets: Air
+
+SubMissile.2shot:
+	Inherits: SubMissile
+	BurstDelays: 77
+
+MaverickHind:
+	Inherits: Maverick
+	ReloadDelay: 40
+	Range: 5c0
+	InvalidTargets: Infantry
+
+MammothTusk:
+	Range: 4c512
+	Projectile: Missile
+		Speed: 341
+		HorizontalRateOfTurn: 15
+		RangeLimit: 6c256
+
+MaverickAA:
+	Inherits: ^AntiAirMissile
+	ReloadDelay: 104
+	Burst: 2
+	BurstDelays: 7
+	Range: 11c0
+	MinRange: 3c0
+	Projectile: Missile
+		Speed: 304
+		Inaccuracy: 512
+		RangeLimit: 14c410
+		CruiseAltitude: 2c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Versus:
+			None: 30
+			Wood: 90
+			Light: 100
+			Concrete: 100
+		Spread: 256
+		ValidTargets: Air
+	Report: missile7.aud
+	Warhead@2Eff: CreateEffect
+		Explosions: med_explosion_air
+
+HellfireAA.rapid:
+	Inherits: HellfireAA
+	Burst: 2
+	BurstDelays: 7
+	Range: 6c0
+	Projectile: Missile
+		RangeLimit: 7c0
+
+Nike.6shot:
+	Inherits: Nike
+	ReloadDelay: 90
+	Burst: 6
+	BurstDelays: 15
