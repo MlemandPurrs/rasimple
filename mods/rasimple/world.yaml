@@ -298,7 +298,7 @@ World:
 	MPStartUnits@mcvonly:
 		Class: mcv
 		ClassName: MCV Only
-		Factions: allies, england, france, germany
+		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
 		BaseActor: mcv
 	MPStartUnits@deployedallies:
 		Class: none
