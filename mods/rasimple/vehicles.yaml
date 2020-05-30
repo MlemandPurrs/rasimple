@@ -148,7 +148,7 @@ FTRK:
 	Tooltip:
 		Name: Flak Truck
 	Valued:
-		Cost: 500
+		Cost: 525
 	Mobile:
 		PauseOnCondition: !(!empdisable && !notmobile && !being-captured)
 	Turreted:
@@ -177,7 +177,7 @@ FTRK.Scout:
 	Tooltip:
 		Name: Scout Car
 	Valued:
-		Cost: 500
+		Cost: 450
 	Mobile:
 		PauseOnCondition: !(!empdisable && !being-captured)
 		Speed: 170
@@ -203,6 +203,9 @@ FTRK.Scout:
 	WithSpriteTurret:
 		Sequence: turret-mg
 	-Cargo:
+	DetectCloaked:
+		Range: 2c512
+	RenderDetectionCircle:
 	RenderSprites:
 		Image: ftrk
 	-MapEditorData:

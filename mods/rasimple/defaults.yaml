@@ -511,6 +511,9 @@
 ^Wall:
 	LineBuild:
 		Range: 8
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 4
 
 ^Gate:
 	Inherits: ^Building
@@ -546,6 +549,7 @@
 		OpeningSound: cashturn.aud
 		ClosingSound: cashturn.aud
 		BlocksProjectilesHeight: 0
+	-GivesBuildableArea:
 
 CAMERA.small:
 	Inherits: CAMERA

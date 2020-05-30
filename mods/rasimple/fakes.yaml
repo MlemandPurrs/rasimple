@@ -413,7 +413,7 @@ AFLF:
 	RenderSprites:
 		Image: AFLD
 	Valued:
-		Cost: 125
+		Cost: 187
 	Health:
 		HP: 40000
 	Armor:

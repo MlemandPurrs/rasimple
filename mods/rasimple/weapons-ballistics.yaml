@@ -41,31 +41,6 @@ GrenadeLauncher.sub:
 			Light: 50
 			Heavy: 50
 
-DiscGrenade:
-	Inherits: ^Artillery
-	ReloadDelay: 60
-	Range: 4c512
-	-Report:
-	Projectile: Bullet
-		Speed: 226
-		Blockable: true
-		Shadow: true
-		LaunchAngle: 60
-		Inaccuracy: 0
-		Image: DISCUS
-		Palette: effect
-		BounceCount: 2
-	Warhead@1Dam: SpreadDamage
-		Spread: 154
-		Damage: 4000
-		Versus:
-			Light: 70
-			Concrete: 30
-		DamageTypes: Prone70Percent, TriggerProne, ExplosionDeath
-	Warhead@2Eff: CreateEffect
-		Explosions: small_explosion
-		ImpactSounds: kaboom25.aud
-
 155mm.b52:
 	Inherits: 155mm
 	TargetActorCenter: false
