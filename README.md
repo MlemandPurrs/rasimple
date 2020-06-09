@@ -1,3 +1,5 @@
+OpenRA mod that allows only Allies and Soviets to be played in skirmish/multiplayer.
+
 This repository contains the development of RA Simple mod, which is a sub-mod that depends on the Red Alert mod of the [OpenRA](https://github.com/OpenRA/OpenRA) engine.
 
 The mod is being developed here with infrequent updates.
