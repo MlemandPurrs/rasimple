@@ -165,12 +165,90 @@ Player:
 	ProvidesPrerequisite@Soviet:
 		Factions: soviet
 		Prerequisite: player.soviet
+	ProvidesPrerequisite@RedAlert:
+		Factions: allies, soviet
+		Prerequisite: player.redalert
 	GrantConditionOnPrerequisite@Allies:
 		Condition: player.allies
 		Prerequisites: player.allies
 	GrantConditionOnPrerequisite@Soviet:
 		Condition: player.soviet
 		Prerequisites: player.soviet
+	ProvidesPrerequisite@England:
+		Factions: england
+		Prerequisite: player.england
+	ProvidesPrerequisite@France:
+		Factions: france
+		Prerequisite: player.france
+	ProvidesPrerequisite@Germany:
+		Factions: germany
+		Prerequisite: player.germany
+	ProvidesPrerequisite@Russia:
+		Factions: russia
+		Prerequisite: player.russia
+	ProvidesPrerequisite@Ukraine:
+		Factions: ukraine
+		Prerequisite: player.ukraine
+	ProvidesPrerequisite@Belarus:
+		Factions: belarus
+		Prerequisite: player.belarus
+	GrantConditionOnPrerequisite@England:
+		Condition: player.allies
+		Prerequisites: player.england		
+	GrantConditionOnPrerequisite@France:
+		Condition: player.allies
+		Prerequisites: player.france
+	GrantConditionOnPrerequisite@Germany:
+		Condition: player.allies
+		Prerequisites: player.germany
+	GrantConditionOnPrerequisite@Russia:
+		Condition: player.soviet
+		Prerequisites: player.russia
+	GrantConditionOnPrerequisite@Ukraine:
+		Condition: player.soviet
+		Prerequisites: player.ukraine
+	GrantConditionOnPrerequisite@Belarus:
+		Condition: player.soviet
+		Prerequisites: player.belarus
+	ProvidesPrerequisite@GDI:
+		Factions: gdi
+		Prerequisite: player.gdi
+	ProvidesPrerequisite@Nod:
+		Factions: nod
+		Prerequisite: player.nod
+	ProvidesPrerequisite@CnC:
+		Factions: gdi, nod
+		Prerequisite: player.cnc
+	GrantConditionOnPrerequisite@GDI:
+		Condition: player.gdi
+		Prerequisites: player.gdi
+	GrantConditionOnPrerequisite@Nod:
+		Condition: player.nod
+		Prerequisites: player.nod
+	ProvidesPrerequisite@alliesorengland:
+		Factions: allies, england
+		Prerequisite: allies.or.england
+	ProvidesPrerequisite@alliesorfrance:
+		Factions: allies, france
+		Prerequisite: allies.or.france
+	ProvidesPrerequisite@alliesorgermany:
+		Factions: allies, germany
+		Prerequisite: allies.or.germany
+	ProvidesPrerequisite@sovietorrussia:
+		Factions: soviet, russia
+		Prerequisite: soviet.or.russia
+	ProvidesPrerequisite@sovietorukraine:
+		Factions: soviet, ukraine
+		Prerequisite: soviet.or.ukraine
+	ProvidesPrerequisite@sovietorbelarus:
+		Factions: soviet, belarus
+		Prerequisite: soviet.or.belarus
+	ProvidesPrerequisite@alliesorenglandorgdi:
+		Factions: allies, england, gdi
+		Prerequisite: can.has.carrier
+	ProvidesPrerequisite@englandorfrance:
+		Factions: england, france
+		Prerequisite: england.or.france
 	LobbyPrerequisiteCheckbox@GLOBALSCRAPS:
 		ID: scraps
 		Label: Scrap Metal

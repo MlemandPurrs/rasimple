@@ -129,6 +129,7 @@
 
 ^Infantry:
 	Inherits@AI: ^ProductionAIBoost
+	#	Inherits@TiberiumDamage: ^InfantryTiberiumDamage
 	Selectable:
 		Bounds: 18,18,0,-6
 		DecorationBounds: 12,17,0,-6
@@ -145,13 +146,103 @@
 		RequiresCondition: barracksheal
 	GrantConditionOnPrerequisite@HOSPITAL2:
 		Condition: hospital2
-		Prerequisites: hosp.buildable
+		Prerequisites: gdihosp
 	GrantCondition@HOSPITAL:
 		RequiresCondition: hospital || hospital2 && damaged
 		Condition: hospitalheal
 	WithDecoration@REDCROSS:
 		ReferencePoint: Bottom, Right
 		RequiresCondition: ( barracksheal || hospitalheal )
+	WithDeathAnimation:
+		DeathTypes:
+			DefaultDeath: 1
+			BulletDeath: 2
+			SmallExplosionDeath: 3
+			ExplosionDeath: 4
+			FireDeath: 5
+			ElectricityDeath: 6
+			TiberiumDeath: 7
+		CrushedSequence: die-crushed
+
+^Cyborg:
+	Inherits@1: ^Infantry
+	Inherits@2: ^AffectedByEMP
+	-Crushable:
+	-SelfHealing@HOSPITAL:
+	-GrantConditionOnPrerequisite@HOSPITAL:
+	-GrantConditionOnPrerequisite@HOSPITAL2:
+	-GrantConditionOnDamageState@HOSPITAL:
+	-GrantCondition@HOSPITAL:
+	-WithDecoration@REDCROSS:
+	-Targetable@HEAL:
+	-SelfHealing@BARRACKSHEALING:
+	-GrantCondition@BARRACKSHEALING:
+	-ExternalCondition@barracks:
+	-WithDecoration@RANK-1:
+	-WithDecoration@RANK-2:
+	-WithDecoration@RANK-3:
+	-WithDecoration@RANK-ELITE:
+	ExplosionOnDamageTransition:
+		Weapon: UnitExplodeSmall
+		DamageState: Critical
+		TriggerOnlyOnce: true
+	Mobile:
+		Locomotor: chem
+	DeathSounds:
+	MustBeDestroyed:
+	TakeCover:
+		RequiresCondition: critical
+		Duration: -1
+		DamageModifiers:
+			Prone50Percent: 50
+			Prone60Percent: 60
+			Prone70Percent: 70
+			Prone100Percent: 100
+			Prone350Percent: 350
+		ProneOffset: 300,0,0
+		ProneSequencePrefix: crippled-
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle1, idle2
+	GrantConditionOnDamageState@CRITICAL:
+		Condition: critical
+		ValidDamageStates: Critical
+		GrantPermanently: true
+	Targetable@REPAIR:
+		RequiresCondition: !parachute && damaged
+		TargetTypes: Repair
+	WithDecoration@RANK-1:
+		Image: rank
+		Sequence: rank-veteran-1
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-veteran == 1
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+	WithDecoration@RANK-2:
+		Image: rank
+		Sequence: rank-veteran-2
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-veteran == 2
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+	WithDecoration@RANK-3:
+		Image: rank
+		Sequence: rank-veteran-3
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-veteran == 3
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
+	WithDecoration@RANK-ELITE:
+		Image: rank
+		Sequence: rank-elite
+		Palette: effect
+		ReferencePoint: Top, Left
+		RequiresCondition: rank-elite
+		ZOffset: 256
+		ValidStances: Ally, Enemy, Neutral
 
 ^IncomeAIBoost:
 	ResourcePurifier@incomeaiboost:
@@ -187,6 +278,8 @@
 	Inherits@SELLUNIT: ^SellableOnRepairPad
 	Inherits@CRATEFX: ^UnitExternalConditionals
 	Inherits@AICurtain: ^AICurtainHelper
+	Inherits@StealthGen: ^AffectedByStealthGen
+	Inherits@FieldRepair: ^AffectedByFieldRepair
 	Mobile:
 		PauseOnCondition: !(!empdisable && !being-captured)
 	Passenger:
@@ -195,16 +288,20 @@
 		Image: maxichute
 	EdibleByLeap:
 	Repairable:
-		RepairActors: fix
+		RepairActors: fix, fix.cnc
 	TemporaryOwnerManager:
 	Targetable@EMPTargeting:
 		TargetTypes: EMPTank
 		RequiresCondition: empdisable
 
+^NeutralPlane:
+	Inherits@SpeedBonus: ^AffectedByUkraine
+
 ^Plane:
 	Inherits@AI: ^ProductionAIBoost
 	Inherits@80: ^ProductionPlayerBoost
 	Inherits@SELLUNIT: ^SellableOnRepairPad
+	Inherits@StealthGen: ^AffectedByStealthGen
 	-EjectOnDeath:
 	Repairable:
 		RepairActors: afld, afld.ukraine, carr.deployed
@@ -230,6 +327,7 @@
 	Inherits@AI: ^ProductionAIBoost
 	Inherits@94: ^LeavesScraps
 	Inherits@97: ^BuildingAffectedByEMP
+	Inherits@StealthGen: ^AffectedByStealthGen
 	RequiresBuildableArea:
 		Adjacent: 3
 	Capturable:
@@ -260,6 +358,7 @@
 		MaximumDamageState: Dead
 	AcceptsDeliveredCash:
 		ValidTypes: MoneyTransfer
+	EdibleByLeap:
 
 ^Defense:
 	Inherits@AI: ^ProductionAIBoost
@@ -289,6 +388,8 @@
 	Inherits@80: ^ProductionPlayerBoost
 	Inherits@97: ^AffectedByEMP
 	Inherits@CRATEFX: ^UnitExternalConditionals
+	Inherits@StealthGen: ^AffectedByStealthGen
+	Inherits@FieldRepair: ^AffectedByFieldRepair
 	Mobile:
 		PauseOnCondition: !(!empdisable)
 	Targetable:
@@ -297,7 +398,7 @@
 		RequiresCondition: damaged
 		TargetTypes: Repair, RepairShip
 	RepairableNear:
-		RepairActors: spen, syrd
+		RepairActors: spen, syrd, spen.nod, syrd.gdi
 	Targetable@EMPTargeting:
 		TargetTypes: EMPTank
 		RequiresCondition: empdisable
@@ -322,7 +423,7 @@
 		Range: 3c0
 		RequiresCondition: underwater
 	RepairableNear:
-		RepairActors: spen, syrd
+		RepairActors: spen, spen.nod, syrd, syrd.gdi
 	Cloak:
 		CloakTypes: Underwater
 		InitialDelay: 0
@@ -367,6 +468,12 @@
 		Cursor: sell2
 		ShowTicks: false
 		RequiresCondition: ship.sellable && !underwater
+	-Cloak@STEALTHGEN:
+	-ExternalCondition@STEALTHGEN:
+	SelfHealing@FieldRepair:
+		RequiresCondition: fieldrepair && !underwater
+	WithDecoration@FieldRepair:
+		RequiresCondition: fieldrepair && !underwater
 
 ^AffectedByEMP:
 	WithColoredOverlay@EMPDISABLE:
@@ -560,6 +667,29 @@ CAMERA.small:
 		Range: 5c0
 		CloakTypes: Cloak, Thief
 
+CAMERA.tiny:
+	Inherits: CAMERA
+	RevealsShroud:
+		Range: 1c0
+		Type: CenterPosition
+	SpawnActorOnDeath:
+		Actor: CAMERA.blackout
+		OwnerType: InternalName
+		InternalOwner: Creeps
+
+CAMERA.blackout:
+	Inherits: CAMERA
+	RevealsShroud:
+		Range: 5c0
+		Type: CenterPosition
+	CreatesShroud:
+		Range: 25c0
+		MinRange: 25c0
+		Type: CenterPosition
+	KillsSelf:
+		RemoveInstead: true
+		Delay: 1125
+
 CRATE:
 	GiveUnitCrateAction@jeep:
 		SelectionShares: 6
@@ -616,10 +746,15 @@ CRATE:
 		Units: msam
 		ValidFactions: allies, england, france, germany
 		Prerequisites: techlevel.high, dome
+	GiveUnitCrateAction@4tnk:
+		SelectionShares: 2
+		Units: 4tnk
+		ValidFactions: soviet, russia, ukraine, belarus
+		Prerequisites: techlevel.high, techcenter, fix
 	GiveUnitCrateAction@squadlight:
 		SelectionShares: 10
 		Units: e1,e1,e1,e3,e3
-		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus
+		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, belarus, gdi, nod
 	GiveUnitCrateAction@squadlightallies:
 		SelectionShares: 9
 		Units: e1,e1,e1,e3,e3,medi,jeep
@@ -649,6 +784,96 @@ CRATE:
 		SelectionShares: 6
 		Units: e1,e1,e1,e4,e3,e3,ftrk,ftrk,3tnk
 		ValidFactions: soviet, russia, ukraine, belarus
+		TimeDelay: 4500
+	GiveUnitCrateAction@hmmv:
+		SelectionShares: 6
+		Units: hmmv
+		ValidFactions: gdi
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@1tnk.nod:
+		SelectionShares: 6
+		Units: 1tnk.nod
+		ValidFactions: nod
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@gapc:
+		SelectionShares: 6
+		Units: gapc
+		ValidFactions: gdi
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@napc:
+		SelectionShares: 6
+		Units: napc
+		ValidFactions: napc
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@mrpg:
+		SelectionShares: 6
+		Units: mrpg
+		ValidFactions: gdi
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@nodarty:
+		SelectionShares: 5
+		Units: arty.nod
+		ValidFactions: nod
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@mrls:
+		SelectionShares: 5
+		Units: mrls
+		ValidFactions: gdi
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@2tnk.gdi:
+		SelectionShares: 4
+		Units: 2tnk.gdi
+		ValidFactions: gdi
+		Prerequisites: techlevel.medium, fix
+	GiveUnitCrateAction@ftnk:
+		SelectionShares: 4
+		Units: ftnk
+		ValidFactions: nod
+		Prerequisites: techlevel.medium, fix
+	GiveUnitCrateAction@4tnk.gdi:
+		SelectionShares: 2
+		Units: 4tnk.gdi.rail
+		ValidFactions: gdi
+		Prerequisites: techlevel.high, techcenter, fix
+	GiveUnitCrateAction@ssm:
+		SelectionShares: 2
+		Units: ssm
+		ValidFactions: nod
+		Prerequisites: techlevel.high, techcenter, dome
+	GiveUnitCrateAction@bikes:
+		SelectionShares: 2
+		Units: bike,bike
+		ValidFactions: nod
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@squadlightgdi:
+		SelectionShares: 9
+		Units: e1,e1,e2,e2,e3,medi,mrpg
+		ValidFactions: gdi
+		TimeDelay: 2250
+	GiveUnitCrateAction@squadlightnod:
+		SelectionShares: 9
+		Units: e1,e1,e1,e3,e3,bggy,bggy
+		ValidFactions: nod
+		TimeDelay: 2250
+	GiveUnitCrateAction@squadheavygdi:
+		SelectionShares: 7
+		Units: e1,e1,e1,e2,e3,e3,e2,e6,medi
+		ValidFactions: gdi
+		TimeDelay: 4500
+	GiveUnitCrateAction@squadheavygdib:
+		SelectionShares: 6
+		Units: e1,e1,e1,medi,e3,e3,hmmv,hmmv,2tnk.gdi
+		ValidFactions: gdi
+		TimeDelay: 4500
+	GiveUnitCrateAction@squadheavynod:
+		SelectionShares: 7
+		Units: e1,e1,e1,e5,e5,e3,e3,e3,e6
+		ValidFactions: nod
+		TimeDelay: 4500
+	GiveUnitCrateAction@squadheavynodb:
+		SelectionShares: 6
+		Units: e1,e1,e1,e5,e3,e3,1tnk.nod,ftnk,1tnk.nod
+		ValidFactions: nod
 		TimeDelay: 4500
 	ExplodeCrateAction@ore:
 		Weapon: OreExplosion
@@ -748,11 +973,26 @@ CRATE:
 		Units: ctnk
 		ValidFactions: allies, england, france, germany
 		Prerequisites: techcenter, techlevel.high
-	GiveUnitCrateAction@4tnk:
-		SelectionShares: 2
-		Units: 4tnk
-		ValidFactions: soviet, russia, ukraine, belarus
+	GiveUnitCrateAction@disr:
+		SelectionShares: 1
+		Units: disr
+		ValidFactions: gdi
 		Prerequisites: techcenter, techlevel.high
+	GiveUnitCrateAction@mwav:
+		SelectionShares: 1
+		Units: mwav
+		ValidFactions: nod
+		Prerequisites: techcenter, techlevel.high
+	SupportPowerCrateAction@ion:
+		Proxy: crate.ion
+		SelectionShares: 1
+		TimeDelay: 6750
+		Sequence: nuke
+	SupportPowerCrateAction@airstrike:
+		Proxy: crate.airstrike
+		SelectionShares: 1
+		TimeDelay: 7500
+		Sequence: parabombs
 
 crate.parabombs:
 	AlwaysVisible:
@@ -776,7 +1016,32 @@ crate.parabombs:
 		Cursor: airstrike
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
-		SupportPowerPaletteOrder: 2
+		SupportPowerPaletteOrder: 3
+		ChargeInterval: 0
+		OneShot: true
+
+crate.airstrike:
+	AlwaysVisible:
+	AirstrikePower@AirstrikeOneShot:
+		OrderName: CrateAirstrike
+		Icon: airstrike
+		SquadSize: 3
+		QuantizedFacings: 8
+		Description: Air Strike (Single Use)
+		LongDesc: Deploy an aerial napalm strike.\nBurns buildings and infantry along a line.
+		SelectTargetSpeechNotification: SelectTarget
+		UnitType: a10.bomber
+		DisplayBeacon: True
+		BeaconPoster: airstrike
+		DisplayRadarPing: True
+		CameraActor: camera.paradrop
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		Cursor: airstrike
+		SupportPowerPaletteOrder: 3
 		ChargeInterval: 0
 		OneShot: true
 
@@ -787,7 +1052,7 @@ crate.nuke:
 		Cursor: nuke
 		Icon: abomb
 		ChargeInterval: 0
-		Description: Atom Bomb
+		Description: Atom Bomb (Single Use)
 		LongDesc: Launches a devastating atomic bomb at target location
 		BeginChargeSpeechNotification: AbombPrepping
 		EndChargeSpeechNotification: AbombReady
@@ -810,15 +1075,29 @@ crate.nuke:
 		SupportPowerPaletteOrder: 1
 		OneShot: true
 
+crate.ion:
+	AlwaysVisible:
+	IonCannonPower@IonCannonOneShot:
+		OrderName: CrateIon
+		Icon: ioncannon
+		ChargeInterval: 0
+		Description: Ion Cannon (Single Use)
+		LongDesc: Initiate an Ion Cannon strike.\nApplies instant damage to an small area.
+		OnFireSound: ion1.aud
+		Cursor: ioncannon
+		SelectTargetSpeechNotification: SelectTarget 
+		DisplayRadarPing: True
+		CameraActor: camera.paradrop
+		SupportPowerPaletteOrder: 1
+		OneShot: true
+
 crate.chrono:
 	AlwaysVisible:
-	#	BodyOrientation:
-	#	QuantizedFacings: 1
 	ChronoshiftPower@ChronoshiftOneShot:
 		OrderName: CrateChrono
 		Icon: chrono
 		ChargeInterval: 0
-		Description: Chronoshift
+		Description: Chronoshift (Single Use)
 		LongDesc: Teleports a small group of units\nacross the map for 20 seconds.
 		SelectTargetSpeechNotification: SelectTarget
 		InsufficientPowerSpeechNotification: InsufficientPower
@@ -827,12 +1106,17 @@ crate.chrono:
 		Duration: 400
 		KillCargo: true
 		DisplayRadarPing: True
-		SupportPowerPaletteOrder: 4
+		SupportPowerPaletteOrder: 2
 		OneShot: true
 
 tech.stolen:
 	AlwaysVisible:
 	ProvidesPrerequisite:
+	Interactable:
+	Tooltip:
+		Name: enemy Tech Center infiltrated
+	Buildable:
+		Description: Tech Unit
 
 ^ThumpSnare:
 	WithColoredOverlay@THUMPSNARE:
@@ -1042,3 +1326,116 @@ camera.minimum:
 ^InfiltratableFake:
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate, ThiefInfiltrate
+
+^InfantryTiberiumDamage:
+	DamagedByTerrain@TIBERIUM:
+		Terrain: Ore, Gems
+		Damage: 200
+		DamageInterval: 16
+		DamageTypes: TiberiumDeath
+		RequiresCondition: !hazmatsuits && !parachute
+	GrantConditionOnTerrain@HAZMAT:
+		Condition: ontiberium
+		TerrainTypes: Ore, Gems
+	GrantConditionOnPrerequisite@HAZMAT:
+		Condition: biolab
+		Prerequisites: bio
+	GrantCondition@HAZMAT:
+		RequiresCondition: biolab && ontiberium
+		Condition: hazmatsuits
+	WithDecoration@HAZMAT:
+		Image: pips
+		Sequence: pip-hazmat
+		ReferencePoint: Bottom, Left
+		RequiresCondition: hazmatsuits
+	SpawnActorOnDeath@TIBERIUM:
+		Probability: 15
+		Actor: vice
+		OwnerType: InternalName
+		InternalOwner: Creeps
+		DeathType: TiberiumDeath
+		RequiresLobbyCreeps: false
+
+^BuildingPlug:
+	Interactable:
+	AlwaysVisible:
+	Building:
+		BuildSounds: place2.aud
+		UndeploySounds: cashturn.aud
+	SequencePlaceBuildingPreview:
+		Sequence: place
+		SequencePalette: placebuilding
+	KillsSelf:
+		RemoveInstead: true
+	RenderSprites:
+
+^AffectedByStealthGen:
+	Cloak@STEALTHGEN:
+		InitialDelay: 150
+		CloakDelay: 150
+		IsPlayerPalette: true
+		UncloakOn: Attack, Unload, Damage, Heal, SelfHeal, Infiltrate, Demolish
+		PauseOnCondition: !insgenradius
+	ExternalCondition@STEALTHGEN:
+		Condition: insgenradius
+		TotalCap: 1
+
+dummy.firestorm:
+	Inherits: CAMERA
+	Buildable:
+		Queue: Dummy
+	EditorOnlyTooltip:
+		Name: (Firestorm sp proxy)
+	-RevealsShroud:
+	ProvidesPrerequisite@firestorm:
+		Prerequisite: firestorm
+	KillsSelf@firestorm:
+		Delay: 2250
+		RemoveInstead: true
+	Tooltip:
+		Name: Firestorm Internal Works
+
+^AffectedByFieldRepair:
+	SelfHealing@FieldRepair:
+		PercentageStep: 1
+		Delay: 6
+		HealIfBelow: 101
+		DamageCooldown: 0
+		RequiresCondition: fieldrepair
+		Step: 1
+	TimedConditionBar@FieldRepair:
+		Color: BFFF80
+		Condition: fieldrepair
+	WithDecoration@FieldRepair:
+		RequiresSelection: false
+		Image: allyrepair
+		Sequence: repair
+		Palette: player
+		IsPlayerPalette: true
+		ReferencePoint: Center
+		ZOffset: 256
+		ValidStances: Ally, Neutral, Enemy
+		RequiresCondition: fieldrepair
+	ExternalCondition@FieldRepair:
+		Condition: fieldrepair
+
+^AffectedByRussia:
+	ProductionCostMultiplier@Russia:
+		Multiplier: 90
+		Prerequisites: player.russia
+	Explodes@RUMALUS:
+		Weapon: Demolish
+		DamageThreshold: 10
+		RequiresCondition: is.russian
+	GrantConditionOnPrerequisite@RUMALUS:
+		Condition: is.russian
+		Prerequisites: player.russia
+
+^AffectedByUkraine:
+	SpeedMultiplier@UkraineBonus:
+		Modifier: 120
+		RequiresCondition: ukraine.player
+	GrantConditionOnFaction@UkraineBonus:
+		Condition: ukraine.player
+		Factions: ukraine
+		ResetOnOwnerChange: True

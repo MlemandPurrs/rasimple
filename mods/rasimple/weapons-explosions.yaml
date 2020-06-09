@@ -54,3 +54,40 @@ FlakFX:
 		Explosions: small_explosion_air
 		ImpactSounds: aacanon3.aud
 		ValidTargets: Air
+
+UnitExplodeChemSmall:
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 1000
+		ValidTargets: Ground, Trees
+		InvalidTargets: Air
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+		DamageTypes: Prone50Percent, TriggerProne, PoisonDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_chem
+		ImpactSounds: firebl3.aud
+		ExplosionPalette: desert
+		ValidTargets: Ground, Air, Ship, Trees
+	Warhead@3EffWater: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splashl1.aud, splashl2.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Structure, Wall, Trees
+
+UnitExplodeSmall.suicide:
+	Inherits: UnitExplodeSmall
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c256
+
+EMPExplode:
+	Inherits: ^Explosion
+	-Warhead@1Dam:
+	-Warhead@2Eff:
+	-Warhead@Smu:

@@ -20,9 +20,6 @@ HARV:
 		Cost: 1200
 	SelfHealing:
 		RequiresCondition: !empdisable
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Blue
 
@@ -97,7 +94,7 @@ JEEP:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 2
-		Prerequisites: ~vehicles.allies, ~techlevel.low
+		Prerequisites: ~vehicles.allies, ~!player.england, ~techlevel.low
 		Description: Fast scout & anti-infantry vehicle.\nDetects cloaked units in close radius.\nCan carry one infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
 	Mobile:
 		PauseOnCondition: !(!empdisable && !notmobile && !being-captured)
@@ -111,9 +108,6 @@ JEEP:
 		PauseOnCondition: empdisable
 	Carryable:
 		LocalOffset: 0,0,100
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Green
 	DetectCloaked:
@@ -144,7 +138,7 @@ FTRK:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 2
 		Description: Mobile unit with mounted Flak cannon.\nCan carry one Infantry.\n  Strong vs Infantry, Light armor, Aircraft\n  Weak vs Tanks
-		Prerequisites: ~vehicles.soviet, ~techlevel.low
+		Prerequisites: ~vehicles.soviet, ~!player.belarus,  ~techlevel.low
 	Tooltip:
 		Name: Flak Truck
 	Valued:
@@ -213,7 +207,7 @@ FTRK.Scout:
 APC:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
-		Prerequisites: tent, ~vehicles.allies, ~techlevel.low
+		Prerequisites: tent, ~vehicles.allies, ~!player.germany, ~techlevel.low
 		BuildPaletteOrder: 3
 		Description: Tough infantry transport.\nCan transport up to 5 Infantry.\nCan be Airlifted when empty.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
@@ -233,9 +227,6 @@ APC:
 	Carryable:
 		LocalOffset: 0,0,100
 		RequiresCondition: !loaded
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	-Tooltip:
 	Tooltip@sidebar:
 		Name: Armored Personnel Carrier
@@ -322,7 +313,7 @@ APC.soviet:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 4
-		Prerequisites: ~vehicles.allies, ~techlevel.low
+		Prerequisites: ~vehicles.allies, ~!player.england, ~!player.france, ~!player.germany, ~techlevel.low
 	Valued:
 		Cost: 600
 	Health:
@@ -354,9 +345,6 @@ APC.soviet:
 		PauseOnCondition: empdisable
 	Carryable:
 		LocalOffset: 0,0,100
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Green
 
@@ -374,7 +362,7 @@ APC.soviet:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 5
-		Prerequisites: fix, ~vehicles.allies, ~techlevel.medium
+		Prerequisites: fix, ~vehicles.allies, ~!player.england, ~!player.france, ~!player.germany, ~techlevel.medium
 	Valued:
 		Cost: 700
 	Health:
@@ -397,9 +385,6 @@ APC.soviet:
 	AttackTurreted:
 		Armaments: primary, secondary
 		PauseOnCondition: empdisable
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Yellow
 
@@ -420,7 +405,7 @@ APC.soviet:
 	Inherits: 3TNK
 	Buildable:
 		BuildPaletteOrder: 4
-		Prerequisites: ~vehicles.soviet, ~techlevel.low
+		Prerequisites: ~vehicles.soviet, ~!player.russia, ~!player.ukraine, ~!player.belarus, ~techlevel.low
 		Description: Soviet Main Battle Tank.\nEarly pattern that is weaker yet cheaper.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: Heavy Tank 1-B
@@ -449,7 +434,7 @@ APC.soviet:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 5
-		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium
+		Prerequisites: fix, ~vehicles.soviet, ~!player.russia, ~!player.ukraine, ~!player.belarus, ~techlevel.medium
 		Description: Soviet Main Battle Tank, with dual cannons.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
 	Armament:
 		PauseOnCondition: empdisable
@@ -471,7 +456,7 @@ APC.soviet:
 4TNK:
 	Buildable:
 		BuildPaletteOrder: 8
-		Prerequisites: fix, stek, ~vehicles.soviet, ~techlevel.high
+		Prerequisites: fix, stek, ~vehicles.soviet, ~soviet.or.ukraine, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Big and slow tank, with anti-air capability.\nCan crush concrete walls.\nSelf-repairs when below 50% of maximum Health.\n  Strong vs Vehicles, Infantry, Buildings\n  Weak vs Artillery
 	Passenger:
@@ -488,15 +473,12 @@ ARTY:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 6
-		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
+		Prerequisites: dome, ~vehicles.allies, ~!player.france, ~techlevel.medium
 	Armament:
 		PauseOnCondition: empdisable
 	AttackFrontal:
 		Armaments: primary
 		PauseOnCondition: empdisable
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	RenderRangeCircle:
 	Passenger:
 		PipType: Yellow
@@ -505,7 +487,7 @@ V2RL:
 	Buildable:
 		Queue: Vehicle, MWFVehicle
 		BuildPaletteOrder: 6
-		Prerequisites: dome, ~vehicles.soviet, ~techlevel.medium
+		Prerequisites: dome, ~vehicles.soviet, ~!player.ukraine, ~techlevel.medium
 	Armament:
 		Name: primary
 		PauseOnCondition: empdisable
@@ -519,15 +501,12 @@ V2RL:
 MNLY:
 	Buildable:
 		BuildPaletteOrder: 7
-		Prerequisites: fix, ~techlevel.medium
+		Prerequisites: fix, ~!player.germany, ~!vehicles.gdi, ~!vehicles.nod, ~techlevel.medium
 		Description: Carries and lays up to 5 Land Mines\nto destroy unwary enemy units.\nCan detect mines.\n  Unarmed
 	Valued:
 		Cost: 700
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Rearmable:
-		RearmActors: fix
+		RearmActors: fix, fix.cnc
 	Passenger:
 		PipType: Blue
 
@@ -592,7 +571,7 @@ MRJ:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		BuildPaletteOrder: 14
-		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
+		Prerequisites: atek, ~vehicles.allies, ~allies.or.england, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Jams nearby enemy radar domes\nand deflects incoming missiles.\nDoesnt appear on enemy Radar.\n  Armed with basic gun.
 	-Tooltip:
@@ -608,9 +587,6 @@ MRJ:
 		PauseOnCondition: empdisable
 	ProximityExternalCondition@JAMMER:
 		RequiresCondition: !empdisable
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Blue
 	AppearsOnRadar:
@@ -642,10 +618,51 @@ MRJ.Crate:
 		Image: mrj
 	-MapEditorData:
 
+TNKD:
+	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 8
+		Prerequisites: atek, ~vehicles.allies, ~england.or.france, ~techlevel.high
+		Description: Self-propelled anti-tank Gun.\n  Strong vs Tanks, Structures\n  Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 950
+	Tooltip:
+		Name: Tank Destroyer
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 2
+		Speed: 85
+	RevealsShroud:
+		MinRange: 3c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 3c0
+	Armament:
+		Weapon: TurretGun.tnkd
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+		PauseOnCondition: empdisable
+	AttackFrontal:
+		PauseOnCondition: empdisable
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: TNKD.Husk
+	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	Passenger:
+		PipType: Red
+
 CTNK:
 	Buildable:
 		BuildPaletteOrder: 8
-		Prerequisites: atek, ~vehicles.allies, ~player.allies, ~techlevel.high
+		Prerequisites: atek, ~vehicles.allies, ~allies.or.germany, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Experimental Tank armed with\nquad anti-ground missiles.\n  Special ability: Chrono Teleport\nCan instantly reallocate to areas within range.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft
 	Armament@PRIMARY:
@@ -656,9 +673,6 @@ CTNK:
 		PauseOnCondition: empdisable
 	PortableChrono:
 		ChargeDelay: 250
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Red
 	Chronoshiftable:
@@ -677,7 +691,7 @@ CTNK:
 STNK:
 	Buildable:
 		BuildPaletteOrder: 13
-		Prerequisites: tent, atek, ~vehicles.allies, ~player.allies, ~techlevel.high
+		Prerequisites: tent, atek, ~vehicles.allies, ~allies.or.france, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Lightly armored infantry transport armed\nwith MG and anti-ground missiles.\nSpecial ability: Phase Cloaking\nInvisible when out of combat.\n  Strong vs Light armor\n  Weak vs Infantry, Tanks, Aircraft
 	Valued:
@@ -712,9 +726,6 @@ STNK:
 		PipCount: 3
 		LoadedCondition: loaded
 		LoadingCondition: notmobile
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Red
 	Cloak:
@@ -722,7 +733,6 @@ STNK:
 		CloakDelay: 150
 		UncloakOn: Attack, Unload, Dock, Damage, Heal
 		PauseOnCondition: cloak-force-disabled && empdisable
-		#	for some reason this doesnt function when put to PauseOn
 		RequiresCondition: !notmobile
 	RevealsShroud:
 		MinRange: 4c0
@@ -736,7 +746,7 @@ STNK:
 MGG:
 	Buildable:
 		BuildPaletteOrder: 12
-		Prerequisites: techcenter, ~weap, ~techlevel.high
+		Prerequisites: techcenter, ~!vehicles.gdi, ~!vehicles.nod, ~techlevel.high
 		BuildDurationModifier: 60
 		Description: Regenerates the shroud nearby,\nobscuring the area.\n  Can be toggled on/off via deploy command.\n  Unarmed
 	Valued:
@@ -756,16 +766,13 @@ MGG:
 		ReferencePoint: Top
 		ZOffset: 256
 		RequiresCondition: deployed
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Passenger:
 		PipType: Blue
 
 TTNK:
 	Buildable:
 		BuildPaletteOrder: 9
-		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~soviet.or.russia, ~techlevel.high
 		Description: Tank with mounted Tesla coil.\nTesla briefly short-circuits Vehicle and Ships.\n  Immune to EMP\n  Strong vs Infantry, Vehicles, Buildings\n  Weak vs Aircraft
 		BuildDurationModifier: 60
 	Mobile:
@@ -784,7 +791,7 @@ TTNK:
 DTRK:
 	Buildable:
 		BuildPaletteOrder: 14
-		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~soviet.or.russia, ~techlevel.high
 		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted.\n Can disguise as enemy Supply Truck.
 	Selectable:
 		Class: DemoDisguise
@@ -830,7 +837,7 @@ DTRK:
 QTNK:
 	Buildable:
 		BuildPaletteOrder: 13
-		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~soviet.or.belarus, ~techlevel.high
 		Description: Mutually assured Destruction vehicle that quakes the ground.\nIts delicate components require the effects of Iron Curtain be repelled in order to function.\nDeals disruptive seismic damage to nearby Structures and Infantry during buildup,\nand significant damage on moment of detonation to Structures,\nwhile its dealing negligible damage to Vehicles but slowing them down.\n  Strong vs Buildings\n  Weak vs Infantry, Aircraft, Vehicles
 	Passenger:
 		Weight: 4
@@ -859,17 +866,17 @@ QTNK:
 		Queue: Vehicle
 		BuildPaletteOrder: 15
 		BuildLimit: 1
-		Prerequisites: stek, ~vehicles.soviet, ~tech.stolen, ~player.soviet, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~player.soviet, tech.stolen, ~techlevel.high
 		Description: Tank of majestic proportions.\nMaximum one can be built.\nCan crush concrete walls.\nSelf-repairs when below 50% of maximum Health.\nNuclear powered, detonates violently on death!\n  Strong vs everything on Ground\n  Weak vs Aircraft, fast Units
 	Valued:
-		Cost: 3000
+		Cost: 3200
 	Tooltip:
 		Name: Behemoth Tank
 		GenericName: Super Tank
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 180000
+		HP: 160000
 	Armor:
 		Type: Heavy
 	Mobile:
@@ -937,8 +944,8 @@ PRSM:
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Buildable:
 		Queue: Vehicle
-		BuildPaletteOrder: 12
-		Prerequisites: atek, ~vehicles.allies, ~tech.stolen, ~player.allies, ~techlevel.high
+		BuildPaletteOrder: 15
+		Prerequisites: atek, ~vehicles.allies, ~player.allies, tech.stolen, ~techlevel.high
 		Description: Experimental vehicle armed with an Laser.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft
 	Valued:
 		Cost: 1700
@@ -979,15 +986,12 @@ MCV:
 	Buildable:
 		BuildPaletteOrder: 10
 		BuildDurationModifier: 60
-		Prerequisites: fix, ~!aitoodumb, ~techlevel.medium
+		Prerequisites: fix, ~!vehicles.gdi, ~!vehicles.nod, ~!aitoodumb, ~techlevel.medium
 	Valued:
 		Cost: 2500
 	Passenger:
 		Weight: 4
 		PipType: Blue
-	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise
-		RequiresCondition: !parachute
 	Transforms:
 		PauseOnCondition: empdisable
 
@@ -995,7 +999,7 @@ MCV.ai:
 	Inherits: MCV
 	Buildable:
 		BuildLimit: 2
-		Prerequisites: fix, ~aitoodumb, ~techlevel.medium
+		Prerequisites: fix, ~!vehicles.gdi, ~!vehicles.nod, ~aitoodumb, ~techlevel.medium
 	RenderSprites:
 		Image: mcv
 	-MapEditorData:
@@ -1003,14 +1007,45 @@ MCV.ai:
 TRUK:
 	Buildable:
 		BuildPaletteOrder: 11
-		Prerequisites: proc, ~techlevel.low
+		Prerequisites: proc, ~!vehicles.gdi, ~!vehicles.nod, ~techlevel.low
 	Carryable:
 		LocalOffset: 0,0,100
 	Targetable:
-		TargetTypes: Ground, Vehicle, VehicleDisguise, DemoDisguise
+		TargetTypes: Ground, Vehicle, DemoDisguise
 		RequiresCondition: !parachute
 	Passenger:
 		PipType: Blue
 	-ProductionCostMultiplier@IndustrialPlant:
 	DeliversCash:
 		Type: MoneyTransfer
+
+MHQ.Start:
+	Inherits: ^TrackedVehicle
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Mobile HQ
+	Health:
+		HP: 15000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 9c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	WithIdleOverlay@SPINNER:
+		Sequence: spinner
+		Offset: -128,0,256
+		PauseOnCondition: empdisable
+	Passenger:
+		PipType: Red
+	Explodes@UNITEXPLODES:
+		Weapon: BarrelExplode
+	RenderSprites:
+		Image: mrj
+	MustBeDestroyed:
+		RequiredForShortGame: true

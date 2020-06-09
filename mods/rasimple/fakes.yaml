@@ -2,6 +2,7 @@ FPWR:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
 	Inherits@shape: ^2x2Shape
+	-ActorPreviewPlaceBuildingPreview:
 	Selectable:
 		Bounds: 48,48
 	HitShape:
@@ -10,7 +11,7 @@ FPWR:
 	Buildable:
 		BuildPaletteOrder: 1
 		Queue: Fakestructure
-		Prerequisites: ~player.allies, ~techlevel.infonly
+		Prerequisites: ~allies.or.france, ~techlevel.infonly
 		Description: Looks like a Power Plant.
 		Icon: fake-icon
 	Tooltip:
@@ -34,7 +35,6 @@ FPWR:
 	WithIdleOverlay@SMOKE:
 		RequiresCondition: !build-incomplete
 		Sequence: idle-smoke
-	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
@@ -43,12 +43,13 @@ FAPW:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
 	Inherits@shape: ^3x2Shape
+	-ActorPreviewPlaceBuildingPreview:
 	HitShape:
 		TargetableOffsets: -355,-1024,0
 	Buildable:
 		BuildPaletteOrder: 13
 		Queue: Fakestructure
-		Prerequisites: dome, ~player.allies, ~techlevel.medium
+		Prerequisites: dome, ~allies.or.france, ~techlevel.medium
 		Description: Looks like an Advanced Power Plant.
 		Icon: fake-icon
 	Tooltip:
@@ -76,7 +77,6 @@ FAPW:
 	WithIdleOverlay@SMOKE:
 		RequiresCondition: !build-incomplete
 		Sequence: idle-smoke
-	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
@@ -85,6 +85,7 @@ TENF:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
 	Inherits@shape: ^2x2Shape
+	-ActorPreviewPlaceBuildingPreview:
 	Selectable:
 		Bounds: 48,48
 	Tooltip:
@@ -95,7 +96,7 @@ TENF:
 	Buildable:
 		BuildPaletteOrder: 2
 		Queue: Fakestructure
-		Prerequisites: ~player.allies, ~techlevel.infonly
+		Prerequisites: ~allies.or.france, ~techlevel.infonly
 		Description: Looks like an Allied Barracks.
 		Icon: fake-icon
 	Building:
@@ -111,7 +112,6 @@ TENF:
 		HP: 40000
 	Armor:
 		Type: Wood
-	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
@@ -120,6 +120,7 @@ BARF:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
 	Inherits@shape: ^2x2Shape
+	-ActorPreviewPlaceBuildingPreview:
 	Selectable:
 		Bounds: 48,48
 	Tooltip:
@@ -146,7 +147,6 @@ BARF:
 		HP: 40000
 	Armor:
 		Type: Wood
-	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
@@ -184,13 +184,14 @@ KENF:
 PROF:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
+	-HitShape:
 	Selectable:
 		Bounds: 72,45,0,-14
 		DecorationBounds: 72,77,0,-15
 	SelectionDecorations:
 	Buildable:
 		BuildPaletteOrder: 4
-		Prerequisites: proc, ~player.allies, ~techlevel.low
+		Prerequisites: proc, ~allies.or.france, ~techlevel.low
 		Queue: Fakestructure
 		Description: Looks like a Ore Refinery.
 		Icon: fake-icon
@@ -209,7 +210,6 @@ PROF:
 	WithIdleOverlay@topsolid:
 		RequiresCondition: !build-incomplete
 		Sequence: topsolid
-	-HitShape:
 	HitShape@NEW:
 		TargetableOffsets: 0,0,0, 1080,0,0, 720,-630,0, 1400,1152,0, 1720,630,0, -560,1152,0, -800,630,0, -560,-1152,0, -800,-630,0
 		Type: Rectangle
@@ -224,20 +224,17 @@ PROF:
 		HP: 90000
 	Armor:
 		Type: Wood
-	#	-ActorPreviewPlaceBuildingPreview:
-	#	SequencePlaceBuildingPreview:
-	#	Sequence: place
-	#	SequencePalette: placebuilding
 
 WEAF:
 	Inherits: ^FakeBuilding
 	Inherits@infiltrate: ^InfiltratableFake
 	Inherits@shape: ^3x2Shape
+	-ActorPreviewPlaceBuildingPreview:
 	Selectable:
 		Bounds: 72,48
 	Buildable:
 		BuildPaletteOrder: 5
-		Prerequisites: proc, ~player.allies, ~techlevel.low
+		Prerequisites: proc, ~allies.or.france, ~techlevel.low
 		Queue: Fakestructure
 		Description: Looks like a Weapons Factory.
 		Icon: fake-icon
@@ -262,7 +259,6 @@ WEAF:
 		HP: 150000
 	Armor:
 		Type: Wood
-	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
@@ -275,7 +271,7 @@ FIXF:
 	Buildable:
 		BuildPaletteOrder: 8
 		Queue: Fakestructure
-		Prerequisites: weap, ~player.allies, ~techlevel.medium
+		Prerequisites: weap, ~allies.or.france, ~techlevel.medium
 		Description: Looks like a Service Depot.
 		Icon: fake-icon
 	Tooltip:
@@ -309,7 +305,7 @@ SYRF:
 	Buildable:
 		BuildPaletteOrder: 3
 		Queue: Fakestructure
-		Prerequisites: ~player.allies, ~techlevel.low, ~!global-disablenavy
+		Prerequisites: ~allies.or.france, ~techlevel.low, ~!global-disablenavy
 		Description: Looks like a Naval Yard.
 		Icon: fake-icon
 	Tooltip:
@@ -404,7 +400,7 @@ AFLF:
 	Buildable:
 		BuildPaletteOrder: 7
 		Queue: Fakestructure
-		Prerequisites: dome, ~player.allies, ~techlevel.medium
+		Prerequisites: dome, ~allies.or.france, ~techlevel.medium
 		Description: Looks like an Airfield.
 		Icon: fake-icon
 	Building:
@@ -433,7 +429,7 @@ HPAF:
 	Buildable:
 		BuildPaletteOrder: 10
 		Queue: Fakestructure
-		Prerequisites: dome, ~player.allies, ~techlevel.medium
+		Prerequisites: dome, ~allies.or.france, ~techlevel.medium
 		Description: Looks like an Helipad.
 		Icon: fake-icon
 	Building:
@@ -467,7 +463,7 @@ DOMF:
 	Buildable:
 		BuildPaletteOrder: 6
 		Queue: Fakestructure
-		Prerequisites: proc, ~player.allies, ~techlevel.medium
+		Prerequisites: proc, ~allies.or.france, ~techlevel.medium
 		Description: Looks like a Radar Dome.
 		Icon: fake-icon
 	Building:
@@ -498,7 +494,7 @@ SPRF:
 	Buildable:
 		BuildPaletteOrder: 9
 		Queue: Fakestructure
-		Prerequisites: techcenter, ~player.allies, ~techlevel.high
+		Prerequisites: techcenter, ~allies.or.france, ~techlevel.high
 		BuildLimit: 1
 		Description: Looks like Space Program.\nMaximum 1 can be built.
 		Icon: fake-icon
@@ -535,7 +531,7 @@ ATEF:
 	Buildable:
 		BuildPaletteOrder: 12
 		Queue: Fakestructure
-		Prerequisites: afldorweap, ~player.allies, ~techlevel.unrestricted
+		Prerequisites: afldorweap, ~allies.or.france, ~techlevel.unrestricted
 		BuildLimit: 1
 		Description: Looks like allies Tech Center.\nMaximum 1 can be built.
 		Icon: fake-icon
@@ -600,7 +596,7 @@ PDOF:
 	Buildable:
 		BuildPaletteOrder: 14
 		Queue: Fakestructure
-		Prerequisites: atek, ~player.allies, ~techlevel.unrestricted
+		Prerequisites: atek, ~allies.or.france, ~techlevel.unrestricted
 		BuildLimit: 1
 		Description: Looks like a Chronosphere.\nMaximum 1 can be built.
 		Icon: fake-icon
@@ -669,7 +665,7 @@ MSLF:
 	Buildable:
 		BuildPaletteOrder: 15
 		Queue: Fakestructure
-		Prerequisites: techcenter, ~player.allies, ~techlevel.unrestricted
+		Prerequisites: techcenter, ~allies.or.france, ~techlevel.unrestricted
 		BuildLimit: 1
 		Description: Looks like a Missile Silo.\nMaximum 1 can be built.
 		Icon: fake-icon
@@ -737,10 +733,11 @@ FACF:
 FGAP:
 	Inherits: ^FakeBuilding
 	Inherits@IDISABLE: ^DisableOnLowPower
+	-ActorPreviewPlaceBuildingPreview:
 	Buildable:
 		BuildPaletteOrder: 11
 		Queue: Fakestructure
-		Prerequisites: atek, ~player.allies, ~techlevel.high
+		Prerequisites: atek, ~allies.or.france, ~techlevel.high
 		Description: Looks like a Gap Generator
 		Icon: fake-icon
 	Tooltip:
@@ -762,16 +759,122 @@ FGAP:
 		Image: GAP
 	Valued:
 		Cost: 250
-	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
 		SequencePalette: placebuilding
 
+1TNF:
+	Inherits: 1TNK
+	-Armament@PRIMARY:
+	-Armament@SECONDARY:
+	-WithMuzzleOverlay:
+	-SpawnActorOnDeath:
+	Buildable:
+		BuildPaletteOrder: 997
+		Prerequisites: ~disabled
+		Description: Looks like a Light Tank
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake Light Tank
+		GenericName: Light Tank
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Valued:
+		Cost: 125
+	WithDecoration@fake:
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+		ReferencePoint: Top
+		ZOffset: 256
+	Explodes:
+		Weapon: Demolish
+		DamageThreshold: 50
+	Armament@PRIMARY:
+		Weapon: 25mm.Decoy
+		Recoil: 0
+	RenderSprites:
+		Image: 1TNK
+	Voiced:
+		VoiceSet: CivilianMaleVoice
+
+2TNF:
+	Inherits: 2TNK
+	-Armament@PRIMARY:
+	-Armament@SECONDARY:
+	-WithMuzzleOverlay:
+	-SpawnActorOnDeath:
+	Buildable:
+		BuildPaletteOrder: 998
+		Prerequisites: ~disabled
+		Description: Looks like a Medium Tank
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake Medium Tank
+		GenericName: Medium Tank
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Valued:
+		Cost: 200
+	WithDecoration@fake:
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+		ReferencePoint: Top
+		ZOffset: 256
+	Explodes:
+		Weapon: Demolish
+		DamageThreshold: 50
+	Armament@PRIMARY:
+		Weapon: 90mm.decoy
+		Recoil: 0
+	RenderSprites:
+		Image: 2TNK
+	Voiced:
+		VoiceSet: CivilianMaleVoice
+
+ARTF:
+	Inherits: ARTY
+	-WithMuzzleOverlay:
+	Buildable:
+		BuildPaletteOrder: 999
+		Prerequisites: ~disabled
+		Description: Looks like a Artillery
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake Artillery
+		GenericName: Artillery
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Valued:
+		Cost: 190
+	WithDecoration@fake:
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+		ReferencePoint: Top
+		ZOffset: 256
+	Explodes:
+		Weapon: Demolish
+		DamageThreshold: 50
+	Armament:
+		Weapon: 155mm.decoy
+		Recoil: 0
+	ProducibleWithLevel:
+		Prerequisites: techlevel.infonly
+		InitialLevels: 1
+	RenderSprites:
+		Image: ARTY
+	Voiced:
+		VoiceSet: CivilianMaleVoice
+
 MCVF:
 	Inherits: MCV
+	-Transforms:
+	-SpawnActorOnDeath:
 	Buildable:
 		BuildPaletteOrder: 13
-		Prerequisites: ~disabled
+		Prerequisites: fix, ~player.france
 		Description: Looks like a Mobile Construction Vehicle.\nCan deploy into a fake Construction Yard.
 		Icon: fake-icon
 	Tooltip:
@@ -790,15 +893,81 @@ MCVF:
 	Explodes:
 		Weapon: Demolish
 		DamageThreshold: 50
-	-Transforms:
 	Transforms:
 		IntoActor: facf
 		Offset: -1,-1
 		Facing: 96
 		TransformSounds: placbldg.aud, build5.aud
 		NoTransformNotification: BuildingCannotPlaceAudio
-	-SpawnActorOnDeath:
 	RenderSprites:
 		Image: MCV
+	Voiced:
+		VoiceSet: CivilianFemaleVoice
+
+TRUF:
+	Inherits: TRUK
+	-DeliversCash:
+	-SpawnActorOnDeath:
+	Buildable:
+		BuildPaletteOrder: 14
+		Prerequisites: proc, ~player.france
+		Description: Looks like a Supply Truck.
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake Supply Truck
+		GenericName: Supply Truck
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Valued:
+		Cost: 125
+	WithDecoration@fake:
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+		ReferencePoint: Top
+		ZOffset: 256
+	Explodes:
+		Weapon: Demolish
+		DamageThreshold: 50
+	RenderSprites:
+		Image: TRUK
+	Voiced:
+		VoiceSet: CivilianFemaleVoice
+
+MGGF:
+	Inherits: MGG
+	-CreatesShroud:
+	-RenderShroudCircle:
+	-GrantConditionOnDeploy:
+	-SpawnActorOnDeath:
+	-WithIdleOverlay@SPINNER:
+	-WithDecoration@offline:
+	Buildable:
+		BuildPaletteOrder: 15
+		Prerequisites: techcenter, ~player.france
+		Description: Looks like a Mobile Gap Generator.
+		Icon: fake-icon
+	Tooltip:
+		Name: Fake MGG
+		GenericName: Mobile Gap Generator
+		GenericVisibility: Enemy
+		GenericStancePrefix: False
+	Valued:
+		Cost: 200
+	WithDecoration@fake:
+		RequiresSelection: true
+		Image: pips
+		Sequence: tag-fake
+		ReferencePoint: Top
+		ZOffset: 256
+	Explodes:
+		Weapon: Demolish
+		DamageThreshold: 50
+	WithIdleOverlay@SPINNER:
+		Offset: -299,0,171
+		Sequence: spinner
+		PauseOnCondition: empdisable
+	RenderSprites:
+		Image: MGG
 	Voiced:
 		VoiceSet: CivilianFemaleVoice

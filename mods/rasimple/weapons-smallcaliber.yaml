@@ -21,6 +21,16 @@ M60mg:
 		Versus:
 			Light: 30
 
+M60mg.Inf:
+	Inherits: M60mg
+	BurstDelays: 5
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+	FirstBurstTargetOffset: -64,0,0
+	FollowingBurstTargetOffset: 256,0,0
+	Projectile: Bullet
+		Inaccuracy: 256
+
 FLAK-23-AG:
 	Projectile: Bullet
 		Speed: 1c682
@@ -155,6 +165,10 @@ Colt45:
 	BurstDelays: 2
 	Burst: 10
 
+SilencedPPK.rmbo:
+	Inherits: SilencedPPK
+	Range: 7c0
+
 VolkovGun:
 	Inherits: ^SnipeWeapon
 	ReloadDelay: 40
@@ -184,3 +198,41 @@ VolkovGun:
 		ImpactSounds: splash9.aud
 		ValidTargets: Water, Underwater
 		InvalidTargets: Ship, Structure, Bridge
+
+Vulcan.bomber:
+	Inherits: Vulcan
+	Range: 8c0
+	Burst: 9
+	BurstDelays: 2
+	FirstBurstTargetOffset: -2984,0,0
+	FollowingBurstTargetOffset: 746,0,0
+	ReloadDelay: 125
+	Report: gun5TD.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 5000
+		Versus:
+			Wood: 25
+			Light: 100
+			Heavy: 50
+
+Autocannon:
+	Inherits: ^HeavyMG
+	Burst: 18
+	BurstDelays: 2
+	Report: gun5TD.aud
+	ReloadDelay: 90
+	Range: 9c0
+	MinRange: 3c0
+	Projectile: Bullet
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Versus:
+			Wood: 25
+			Light: 100
+			Heavy: 50
+	Warhead@2Eff: CreateEffect
+		ValidTargets: Ground, Ship, Trees
+	FirstBurstTargetOffset: -768,0,0
+	FollowingBurstTargetOffset: 256,0,0

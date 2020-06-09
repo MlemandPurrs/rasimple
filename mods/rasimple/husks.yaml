@@ -21,6 +21,90 @@ HARV.Soviet.EmptyHusk:
 	RenderSprites:
 		Image: hhusk2.soviet
 
+1TNK.England.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Light Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 1tnk.England
+	InfiltrateForTransform:
+		IntoActor: 1tnk.England
+	RenderSprites:
+		Image: 1tnk.destroyed
+	-MapEditorData:
+
+1TNK.France.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Light Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 1tnk.France
+	InfiltrateForTransform:
+		IntoActor: 1tnk.France
+	RenderSprites:
+		Image: 1tnk.destroyed
+	-MapEditorData:
+
+1TNK.Germany.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Light Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 1tnk.Germany
+	InfiltrateForTransform:
+		IntoActor: 1tnk.Germany
+	RenderSprites:
+		Image: 1tnk.destroyed
+	-MapEditorData:
+
+2TNK.England.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Medium Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 2tnk.England
+	InfiltrateForTransform:
+		IntoActor: 2tnk.England
+	RenderSprites:
+		Image: 2tnk.destroyed
+	-MapEditorData:
+
+2TNK.France.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Medium Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 2tnk.France
+	InfiltrateForTransform:
+		IntoActor: 2tnk.France
+	RenderSprites:
+		Image: 2tnk.destroyed
+	-MapEditorData:
+
+2TNK.Germany.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Medium Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 2tnk.Germany
+	InfiltrateForTransform:
+		IntoActor: 2tnk.Germany
+	RenderSprites:
+		Image: 2tnk.destroyed
+	-MapEditorData:
+
 3TNK.1B.Husk:
 	Inherits: ^Husk
 	Tooltip:
@@ -34,6 +118,62 @@ HARV.Soviet.EmptyHusk:
 	RenderSprites:
 		Image: 3tnk.1b.destroyed
 
+3TNK.1B.Ukraine.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Heavy Tank 1-B)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 3tnk.1B.Ukraine
+	InfiltrateForTransform:
+		IntoActor: 3tnk.1B.Ukraine
+	RenderSprites:
+		Image: 3tnk.1b.destroyed
+	-MapEditorData:
+
+3TNK.1B.Belarus.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Heavy Tank 1-B)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 3tnk.1B.Belarus
+	InfiltrateForTransform:
+		IntoActor: 3tnk.1B.Belarus
+	RenderSprites:
+		Image: 3tnk.1b.destroyed
+	-MapEditorData:
+
+3TNK.Ukraine.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Heavy Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 3tnk.Ukraine
+	InfiltrateForTransform:
+		IntoActor: 3tnk.Ukraine
+	RenderSprites:
+		Image: 3tnk.destroyed
+	-MapEditorData:
+
+3TNK.Belarus.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Heavy Tank)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 3tnk.Belarus
+	InfiltrateForTransform:
+		IntoActor: 3tnk.Belarus
+	RenderSprites:
+		Image: 3tnk.destroyed
+	-MapEditorData:
+
 5TNK.Husk:
 	Inherits: ^Husk
 	Tooltip:
@@ -46,6 +186,17 @@ HARV.Soviet.EmptyHusk:
 		IntoActor: 5tnk
 	RenderSprites:
 		Image: 5tnk.destroyed
+
+TNKD.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Husk (Tank Destroyer)
+	TransformOnCapture:
+		IntoActor: tnkd
+	InfiltrateForTransform:
+		IntoActor: tnkd
+	RenderSprites:
+		Image: tnkd.destroyed
 
 IROQ.Husk:
 	Inherits: ^HelicopterHusk
@@ -203,6 +354,10 @@ AFLD.Husk:
 		Dimensions: 3,2
 	Tooltip:
 		Name: Airfield (Destroyed)
+	RenderSprites:
+		Image: afld.husk
+		FactionImages:
+			gdi: gdiafld.husk
 
 HPAD.Husk:
 	Inherits: ^BuildingHusk

@@ -2,6 +2,60 @@
 25mm:
 	Range: 4c768
 
+25mm.britain:
+	Inherits: 25mm
+	Warhead@1Dam: SpreadDamage
+		Damage: 2750
+
+25mm.france:
+	Inherits: 25mm
+	ReloadDelay: 18
+	Warhead@1Dam: SpreadDamage
+		Damage: 2250
+
+25mm.decoy:
+	ReloadDelay: 21
+	Range: 4c768
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Damage: 0
+
+70mm:
+	Inherits: ^Cannon
+	ReloadDelay: 30
+	Range: 4c768
+	Report: tnkfire3.aud
+	Projectile: Bullet
+		Speed: 853
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Versus:
+			None: 25
+			Wood: 70
+			Light: 100
+			Heavy: 90
+
+90mm:
+	ReloadDelay: 42
+
+90mm.britain:
+	Inherits: 90mm
+	Warhead@1Dam: SpreadDamage
+		Damage: 4500
+
+90mm.france:
+	Inherits: 90mm
+	ReloadDelay: 37
+	Warhead@1Dam: SpreadDamage
+		Damage: 3500
+
+90mm.decoy:
+	ReloadDelay: 42
+	Range: 4c768
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Damage: 0
+
 105mm:
 	ReloadDelay: 64
 
@@ -12,34 +66,17 @@
 		Versus:
 			Heavy: 115
 
-90mm:
-	ReloadDelay: 42
-
 120mm:
 	ReloadDelay: 96
 	Range: 5c768
 
-TurretGun:
-	Range: 7c512
+120mm.Singular:
+	Inherits: 120mm
+	-Burst:
 
-GrenadeLauncher:
-	Inherits: Grenade
-	Range: 6c512
-	Projectile:
-		LaunchAngle: 42
-		ContrailLength: 10
-		ContrailZOffset: 0
-		ContrailDelay: 0
-		ContrailWidth: 0c064
-	Report: aacanon3.aud
-
-GrenadeLauncher.sub:
-	Inherits: GrenadeLauncher
-	Range: 7c256
-	Warhead@1Dam: SpreadDamage
-		Versus:
-			Light: 50
-			Heavy: 50
+155mm:
+	Projectile: Bullet
+		ContrailLength: 15
 
 155mm.b52:
 	Inherits: 155mm
@@ -49,19 +86,13 @@ GrenadeLauncher.sub:
 		LaunchAngle: -35
 		Inaccuracy: 768
 
-2Inch:
-	ReloadDelay: 40
-	Projectile: Bullet
-		Speed: 724
-
-2Inch.burst:
-	Inherits: 2Inch
-	Range: 6c0
-	ReloadDelay: 60
-	Burst: 3
-	BurstDelays: 9
-	Projectile:
-		Inaccuracy: 0c768
+155mm.decoy:
+	ReloadDelay: 85
+	Range: 12c0
+	MinRange: 4c0
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Damage: 0
 
 203mm:
 	ReloadDelay: 160
@@ -107,6 +138,50 @@ GrenadeLauncher.sub:
 	Burst: 2
 	BurstDelays: 35
 
+2Inch:
+	ReloadDelay: 40
+	Projectile: Bullet
+		Speed: 724
+
+2Inch.burst:
+	Inherits: 2Inch
+	Range: 6c0
+	ReloadDelay: 60
+	Burst: 3
+	BurstDelays: 9
+	Projectile:
+		Inaccuracy: 0c768
+
+TurretGun:
+	Range: 7c512
+
+TurretGun.Germany:
+	Inherits: TurretGun
+	Range: 8c256
+
+TurretGun.tnkd:
+	Inherits: TurretGun
+	ReloadDelay: 50
+
+GrenadeLauncher:
+	Inherits: Grenade
+	Range: 6c512
+	Projectile:
+		LaunchAngle: 42
+		ContrailLength: 10
+		ContrailZOffset: 0
+		ContrailDelay: 0
+		ContrailWidth: 0c064
+	Report: aacanon3.aud
+
+GrenadeLauncher.sub:
+	Inherits: GrenadeLauncher
+	Range: 7c256
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			Light: 50
+			Heavy: 50
+
 DepthCharge:
 	Warhead@1Dam: SpreadDamage
 		Damage: 4000
@@ -126,3 +201,76 @@ HeliDepthCharge:
 	Range: 0c128
 	Projectile: Bullet
 		Inaccuracy: 64
+
+DiscGrenade:
+	Inherits: ^Artillery
+	ReloadDelay: 60
+	Range: 4c512
+	Report: nade.aud
+	Projectile: Bullet
+		Speed: 226
+		Blockable: true
+		Shadow: true
+		LaunchAngle: 60
+		Inaccuracy: 0
+		Image: DISCUS
+		Palette: effect
+		BounceCount: 2
+	Warhead@1Dam: SpreadDamage
+		Spread: 308
+		Damage: 4000
+		Versus:
+			Light: 70
+			Concrete: 30
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom25.aud
+	Warhead@4EffWater: CreateEffect
+		Explosions: small_splash
+	Warhead@5: GrantExternalCondition
+		Range: 0c256
+		Duration: 25
+		Condition: empdisable
+		ValidTargets: Ground, Vehicle
+
+MortarChem:
+	ReloadDelay: 60
+	Range: 9c0
+	MinRange: 2c0
+	ValidTargets: Ground, Water
+	InvalidTargets: Air
+	Report: nade.aud
+	Projectile: Bullet
+		Speed: 166
+		Blockable: false
+		LaunchAngle: 92
+		Inaccuracy: 768
+		Image: BOMB
+		ContrailLength: 10
+		ContrailZOffset: 0
+		ContrailDelay: 0
+		ContrailWidth: 0c064
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 5000
+		Versus:
+			None: 60
+			Wood: 90
+			Light: 60
+			Heavy: 45
+			Concrete: 100
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Vehicle, Tank, Structure, Wall, Husk, Trees
+	Warhead@3Eff: CreateEffect
+		Explosions: small_chem
+		ExplosionPalette: desert
+		ImpactSounds: firetrt1.aud
+		ValidTargets: Ground, Ship
+	Warhead@4EffWater: CreateEffect
+		Explosions: small_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge

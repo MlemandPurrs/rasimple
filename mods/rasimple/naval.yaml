@@ -1,6 +1,7 @@
 LST:
 	Buildable:
 		BuildPaletteOrder: 1
+		Prerequisites: ~!ships.gdi, ~!ships.nod, ~techlevel.low
 		Description: General-purpose naval transport.\nCan carry up to 16 Infantry and Vehicles.\n  Unarmed
 	Valued:
 		Cost: 800
@@ -14,12 +15,13 @@ LST:
 		RequiresCondition: ship.sellable && !loaded
 
 PT:
+	-Turreted:
+	-WithSpriteTurret:
 	Buildable:
 		BuildPaletteOrder: 2
-		Prerequisites: ~syrd, ~ships.allies, ~techlevel.low
+		Prerequisites: ~syrd, proc, ~ships.allies, ~techlevel.low
 	Valued:
-		Cost: 450
-	-Turreted:
+		Cost: 500
 	Turreted@PRIMARY:
 		Turret: primary
 		TurnSpeed: 7
@@ -45,7 +47,6 @@ PT:
 		Armaments: primary, secondary, tertiary
 		Turrets: primary, secondary
 		PauseOnCondition: empdisable
-	-WithSpriteTurret:
 	WithSpriteTurret@PRIMARY:
 		Turret: primary
 		Sequence: turret
@@ -66,7 +67,7 @@ RSHP:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 5
-		Prerequisites: ~syrd, fix, ~player.allies, ~techlevel.medium
+		Prerequisites: ~syrd, fix, ~ships.allies, ~allies.or.germany, ~techlevel.medium
 		Description: Light support ship.\nRepairs nearby Ships and Submarines.\nLays sea mines to destroy\nunwary enemy Ships and Submarines.\nRestocks Sea Mines when near\na Naval yard or an Sub Pen.\nCan detect submarines.\n  Unarmed
 	Valued:
 		Cost: 750
@@ -141,12 +142,13 @@ RSHP:
 			PointB: 0, 341
 
 DD:
+	-Turreted:
+	-WithSpriteTurret:
 	Buildable:
 		BuildPaletteOrder: 3
-		Prerequisites: ~syrd, dome, ~ships.allies, ~techlevel.medium
+		Prerequisites: ~syrd, dome, ~ships.allies, ~!player.germany, ~techlevel.medium
 	Valued:
 		Cost: 900
-	-Turreted:
 	Turreted@PRIMARY:
 		Turret: primary
 		TurnSpeed: 7
@@ -171,7 +173,6 @@ DD:
 		Armaments: primary, secondary, tertiary
 		Turrets: primary, secondary
 		PauseOnCondition: empdisable
-	-WithSpriteTurret:
 	WithSpriteTurret@PRIMARY:
 		Turret: primary
 		Sequence: turret
@@ -368,7 +369,7 @@ CARR.New:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 6
-		Prerequisites: ~syrd, dome, atek, ~ships.allies, ~techlevel.high
+		Prerequisites: ~syrd, dome, techcenter, ~can.has.carrier, ~techlevel.high
 		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto produce, repair and rearm Aircrafts.\nDetects Submarines when deployed.\n  Unarmed
 	Valued:
 		Cost: 2000
@@ -537,7 +538,7 @@ SS.new:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 2
-		Prerequisites: ~spen, ~ships.soviet, ~techlevel.low
+		Prerequisites: ~spen, proc, ~ships.soviet, ~!player.ukraine, ~techlevel.low
 		Description: Submerged anti-ship unit\narmed with torpedoes.\nCan detect other submarines.\n  Strong vs Naval units\n  Weak vs Ground units, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 	Valued:
 		Cost: 775
@@ -756,31 +757,6 @@ MSUB.AA:
 			PointA: 0, -448
 			PointB: 0, 448
 
-MINS:
-	Inherits: ^Mine
-	Tooltip:
-		Name: Sea Mine
-	Health:
-		HP: 5000
-		NotifyAppliedDamage: false
-	Cloak:
-		CloakTypes: Underwater
-		InitialDelay: 0
-		CloakDelay: 75
-		CloakSound: subshow1.aud
-		UncloakSound: subshow1.aud
-		Palette: submerged
-		IsPlayerPalette: false
-	RenderSprites:
-		Image: mins
-	Targetable:
-		TargetTypes: Underwater
-	Explodes:
-		Weapon: ASMine
-	GrantExternalConditionToCrusher:
-		OnCrushCondition: minehit
-		OnCrushDuration: 50
-
 NSUB:
 	Inherits: ^Submarine
 	Buildable:
@@ -788,7 +764,7 @@ NSUB:
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 7
 		BuildLimit: 1
-		Prerequisites: ~spen, stek, ~ships.soviet, ~!aitoodumb, ~techlevel.high
+		Prerequisites: ~spen, stek, ~ships.soviet, ~soviet.or.russia, ~techlevel.high
 		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
 	Valued:
 		Cost: 2400
@@ -849,3 +825,93 @@ NSUB:
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 5c0
+
+FSUB:
+	Inherits: ^Submarine
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	-Cloak:
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Submarine
+		BuildPaletteOrder: 7
+		Prerequisites: ~spen, ftur, dome, ~ships.soviet, ~player.ukraine, ~techlevel.high
+		Description: Submerged anti-ship unit\narmed with fireball launcher.\n Strong vs Ships and Infantry.\n Weak vs Aircraft and Defenses.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Flame Submarine
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 25000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 3
+		Speed: 42
+	Armament:
+		Weapon: FireballLauncher.Single
+		LocalOffset: 512,0,88
+		PauseOnCondition: empdisable
+	Turreted:
+		TurnSpeed: 255
+		Offset: 525,0,-46
+	WithSpriteTurret:
+		RequiresCondition: !underwater
+	AttackFrontal:
+		PauseOnCondition: empdisable
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 38,38
+	AutoTarget:
+		InitialStance: ReturnFire
+		InitialStanceAI: ReturnFire
+	Selectable:
+		DecorationBounds: 38,38
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 0
+		CloakDelay: 50
+		CloakSound: subshow1.aud
+		UncloakSound: subshow1.aud
+		CloakedCondition: underwater
+		Palette: submerged
+		IsPlayerPalette: false
+		UncloakOn: Attack, Heal, Unload, Dock, SelfHeal, Demolish
+		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit || is-shooting
+		RequiresCondition: !deployed
+	GrantConditionOnAttack@UNCLOAK:
+		Condition: is-shooting
+		ArmamentNames: secondary
+		RevokeDelay: 50
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 320
+			PointA: 0, -448
+			PointB: 0, 448
+
+MINS:
+	Inherits: ^Mine
+	Tooltip:
+		Name: Sea Mine
+	Health:
+		HP: 5000
+		NotifyAppliedDamage: false
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 0
+		CloakDelay: 75
+		CloakSound: subshow1.aud
+		UncloakSound: subshow1.aud
+		Palette: submerged
+		IsPlayerPalette: false
+	RenderSprites:
+		Image: mins
+	Targetable:
+		TargetTypes: Underwater
+	Explodes:
+		Weapon: ASMine
+	GrantExternalConditionToCrusher:
+		OnCrushCondition: minehit
+		OnCrushDuration: 50

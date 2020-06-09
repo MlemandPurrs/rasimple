@@ -1,7 +1,7 @@
 
 Metadata:
-	Title: Red Alert Simple
-	Version: v1.0-fixes
+	Title: RA Simple
+	Version: v.1.1
 	Website: https://www.openra.net
 	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
 
@@ -43,6 +43,10 @@ Packages:
     rasimple|bits/naval
     rasimple|bits/resources
     rasimple|bits/sounds
+	rasimple|bits/sounds/cyborg
+	rasimple|bits/sounds/genericTD
+	rasimple|bits/sounds/moebius
+	rasimple|bits/sounds/rambo
     rasimple|bits/sounds/volkov
     rasimple|bits/vehicle
     rasimple|uibits
@@ -56,6 +60,8 @@ Rules:
 	ra|rules/misc.yaml
 	rasimple|ai.yaml
 	rasimple|ai-allies.yaml
+	rasimple|ai-gdi.yaml
+	rasimple|ai-nod.yaml
 	rasimple|ai-soviet.yaml
 	rasimple|player.yaml
 	ra|rules/palettes.yaml
@@ -75,9 +81,16 @@ Rules:
 	rasimple|fakes.yaml
     rasimple|husks.yaml
     rasimple|infantry.yaml
-    rasimple|naval.yaml    
+    rasimple|naval.yaml
+	rasimple|naval-cnc.yaml
     rasimple|structures.yaml
     rasimple|vehicles.yaml  
+	rasimple|aircraft-cnc.yaml
+	rasimple|infantry-cnc.yaml
+	rasimple|structures-cnc.yaml
+	rasimple|vehicles-cnc.yaml  
+	rasimple|husks-cnc.yaml
+	rasimple|country-duplicates.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
@@ -91,6 +104,8 @@ Sequences:
 	rasimple|sequences-infantry.yaml
 	rasimple|sequences-structures.yaml
 	rasimple|sequences-misc.yaml
+	rasimple|sequences-cnc.yaml
+	rasimple|sequences-cnc-structures.yaml
 
 TileSets:
 	rasimple|tilesets/snow.yaml
@@ -292,10 +307,10 @@ GameSpeeds:
 		OrderLatency: 6
 
 ColorValidator:
-	TeamColorPresets: F5D378, f50606, 98331f, f57606, f7bb06, f861a4, da06f3, ffc9ca, 06f739, cef7b2, D1987C, 253D8C, 2f86f2, 76d2f8, 34ba93, 07941B
+	TeamColorPresets: C4B060, EC0000, 702C24, F57606, F7BB06, F861A4, BE00FE, AB7B84, 00C400, A0F08C, D1987C, 253D8C, 2F86F2, 7EBFF1, 44907C, B3F7EB
 
 ModContent:
-	InstallPromptMessage: Red Alert Plus Lite requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2008 Red Alert freeware release.\n\nAdvanced Install includes options for downloading the music and for\ncopying the videos and other content from an original game disc.
+	InstallPromptMessage: C&C All requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2008 Red Alert freeware release.\n\nAdvanced Install includes options for downloading the music and for\ncopying the videos and other content from an original game disc.
 	QuickDownload: quickinstall
 	HeaderMessage: Game content may be extracted from the original game discs or an\nexisting digital install. OpenRA can also download the base game\nfiles from an online mirror of the 2008 freeware release of RA.
 	Packages:

@@ -75,9 +75,11 @@ hhusk2.soviet:
 
 truk:
     Inherits: emp-overlay
+	fake-icon: truficon
 
 jeep:
     Inherits: emp-overlay
+	rank2-icon: jeepr2icon
 
 ftrk:
     Inherits: emp-overlay
@@ -87,23 +89,33 @@ ftrk:
 	muzzle-mg: minigun
 		Length: 6
 		Facings: 8
+	rank2-icon: ftrkr2icon
 
 apc:
 	turret: apc-tur3
 		Facings: 32
 		UseClassicFacingFudge: True
+	rank2-icon: apcr2icon
 	hapcicon: hapcicon
     Inherits: emp-overlay
 
 1tnk:
     Inherits: emp-overlay
+	fake-icon: 1tnficon
 	turret: 1tnk-tur
 		Start: 0
+		Facings: 32
+		UseClassicFacingFudge: True
+	nod-tur: ltnk-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	idle-float: 1tnk-float
 		Facings: 32
 		UseClassicFacingFudge: True
 
 2tnk:
     Inherits: emp-overlay
+	fake-icon: 2tnficon
 	mg-muzzle: minigun
 		Length: 6
 		Facings: 8
@@ -120,6 +132,7 @@ apc:
 	muzzle: gunfire2
 		Length: 5
 	icon: 3tnkonebarlicon
+	rank2-icon: 3tnkonebarlr2icon
 
 3tnk.1b.destroyed:
 	idle: 3tnk-1b
@@ -134,6 +147,7 @@ apc:
   
 3tnk:
     Inherits: emp-overlay   
+	rank2-icon: 3tnkr2icon
 
 4tnk:
     Inherits: emp-overlay
@@ -166,9 +180,12 @@ apc:
 
 arty:
     Inherits: emp-overlay
+	rank2-icon: artyr2icon
+	fake-icon: artficon
 
 v2rl:
     Inherits: emp-overlay
+	rank2-icon: v2rlr2icon
 
 mnly:
     Inherits: emp-overlay
@@ -178,6 +195,13 @@ mnly:
 	muzzle: minigun
 		Length: 6
 		Facings: 8
+	rep-tur: repair-tur
+		Facings: 32
+	sgen-top: sgen-top
+		Length: *
+		Tick: 90
+	sprticon: gdimnlyicon
+	stlthicon: nodmnlyicon
 
 mrj:
     Inherits: emp-overlay
@@ -187,6 +211,7 @@ mrj:
 	muzzle: minigun
 		Length: 6
 		Facings: 8
+	mhqicon: mhqicon
 
 stnk:
     Inherits: emp-overlay
@@ -197,6 +222,20 @@ stnk:
 		Length: 6
 		Facings: 8
 	icon: stnkicon
+
+tnkd:
+	Inherits: emp-overlay
+	idle:
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: gunfire2
+		Length: 2
+	icon: tnkdicon
+
+tnkd.destroyed:
+	idle: tnkd
+		Facings: 32
+		UseClassicFacingFudge: True
 
 ctnk:
     Inherits: emp-overlay
@@ -228,6 +267,7 @@ mgg:
     muzzle: mgg
         Length: 2
 	msam-icon: msamicon
+	fake-icon: mggficon
 
 ss:
     Inherits: emp-overlay
@@ -281,6 +321,7 @@ rshp:
 
 dd:
     Inherits: emp-overlay
+	rank2-icon: ddr2icon
 	turret-dc: mgun
 		Facings: 32
 	mg-muzzle: minigun
@@ -362,6 +403,7 @@ badr:
 	icon: badricon
 
 yak:
+	rank2-icon: yakr2icon
 
 dummy.visual:
 	 idle: blank32
@@ -438,3 +480,12 @@ nebr:
 	idle:
 		Facings: 16
 	icon: nebricon
+
+fsub:
+	Inherits: emp-overlay
+	idle:
+		Facings: 16
+	turret: flame-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon: fsubicon

@@ -495,36 +495,42 @@ hosp.husk:
 
 bio:
     Inherits: emp-overlay
+	Defaults:
+		Offset: 0,-2
 	make: biomake
 		Length: *
 		Tick: 80
 	idle-smoke: bio-smoke
 		Length: 40
 		Tick: 160
-		Offset: 0,-20
+		Offset: 0,-22
 	damaged-idle-smoke: bio-smoke-d
 		Length: 40
 		Tick: 160
-		Offset: 0,-20
+		Offset: 0,-22
     icon: bioicon
+		Offset: 0,0
 
 bio.husk:
 	idle: bio
 		Start: 2
-	bib: bib3
-		UseTilesetExtension: true
-		Length: *
+		Offset: 0,-2
     icon: bioicon
 
 miss:
     Inherits: emp-overlay
+	dead: miss
+		Start: 2
+		Tick: 800
 	make: missmake
 		Length: *
         Tick: 80
+	icon: techicon
 
 miss.husk:
 	idle: miss
 		Start: 2
+		Offset: 0,-1
 
 oilb.husk:
 	Defaults:
@@ -641,6 +647,9 @@ gun:
 	make: gunmake
 		Length: *
         Tick: 70
+	place: gunmake
+		Start: 19
+		Length: 1
 
 gun.husk:
 	idle: gun-dead
@@ -720,7 +729,7 @@ sam:
 
 sam.husk:
 	idle: sam2
-		Start: 34
+		Start: 67
 		Length: 1
 		Offset: -1,-2
 	bib: mbSAM
@@ -873,32 +882,6 @@ barb:
 		Start: 16
 		Length: 16
 	icon: barbicon
-
-gun2:    
-	Inherits: emp-overlay
-	idle: blank32
-		Facings: 32
-		UseClassicFacingFudge: True
-	make: gunmake
-		Length: *
-		Tick: 70
-	place: gunmake
-		Start: 19
-		Length: 1
-	turret-normal: gun
-		Facings: 32
-		UseClassicFacingFudge: True
-	turret-damaged: gun
-		Start: 64
-		Facings: 32
-		UseClassicFacingFudge: True	
-	muzzle: gunfire2
-		Length: 5
-	bib: mbGUN
-		Length: *
-		Offset: -1,-1
-		UseTilesetExtension: true
-	icon: gunicon
 
 rresf:
     Inherits: emp-overlay

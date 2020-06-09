@@ -2,11 +2,65 @@
 icon:
 	beheicon: 5tnkicon
 	prsmicon: prsmicon
+	airstrike: airstrikeicon
+	sathack: sathaxicon
+	ioncannon: ionicon
+	uavicon: uavicon
+	radarscan: rdrscnicon
+	fieldrepair: frepicon
+	chemmiss: chemicon
+	empmiss: empicon
+	firestorm: frstgenicon
+	paraspy: paraspyicon
+	parashok: parashokicon
+	paragren: paragrenicon
+	decoyarmy: decoyarmyicon
+	paratanks: para1tnkicon
+	paramines: paramnlyicon
+
+beacon:
+	airstrike: airstrikebcon
+		Length: *
+		Offset: 0,-42
+	uav: uavbcon
+		Length: *
+		Offset: 0,-42
+	chemstrike: chembcon
+		Length: *
+		Offset: 0,-42
+	paraspy: spybcon
+		Length: *
+		Offset: 0,-42
+	parashok: shokbcon
+		Length: *
+		Offset: 0,-42
+	paragren: grenbcon
+		Length: *
+		Offset: 0,-42
+	paratanks: 1tnkbcon
+		Length: *
+		Offset: 0,-42
+	paramines: mnlybcon
+		Length: *
+		Offset: 0,-42
 
 explosion:
 	invisblank: blank1
 	mininuke: miniatomsfx
 		Length: *
+    small_chem: chemball
+    medium_chem: chemball-medium
+    large_chem: chemball-large
+	pulse_explosion: pulsefx2
+		BlendMode: Additive
+		Tick: 80
+	pulse_explosion_small: pulsefx1
+		BlendMode: Alpha
+		Tick: 80
+	b2exp: b2exp
+		BlendMode: Additive
+		Tick: 90
+		ZOffset: 2046
 
 emp-overlay:
 	emp-overlay: empfx01
@@ -58,6 +112,30 @@ resources:
 	scrap18: scrap18
 	scrap19: scrap19
 	scrap20: scrap20
+	rti1: rtib1
+		UseTilesetExtension: false
+	rti2: rtib2
+		UseTilesetExtension: false
+	rti3: rtib3
+		UseTilesetExtension: false
+	rti4: rtib4
+		UseTilesetExtension: false
+	rti5: rtib5
+		UseTilesetExtension: false
+	rti6: rtib6
+		UseTilesetExtension: false
+	rti7: rtib7
+		UseTilesetExtension: false
+	rti8: rtib8
+		UseTilesetExtension: false
+	rti9: rtib9
+		UseTilesetExtension: false
+	rti10: rtib10
+		UseTilesetExtension: false
+	rti11: rtib11
+		UseTilesetExtension: false
+	rti12: rtib12
+		UseTilesetExtension: false
 
 drillmine:
 	Defaults:
@@ -77,8 +155,22 @@ pips:
         Offset: 0, 2
     tag-reload: tag-reload
         Offset: 0, 2
+    tag-reload-small: tag-reload-small
+        Offset: 0, 2
     tag-deployed: tag-deployed
         Offset: 0, 2
+	pip-hazmat: pip-hazmat
+		Length: *
+    tag-cloner: tag-cloner
+        Offset: 0, 2
+
+pip-ammored:
+	oneshot:
+		Start: 0
+		Length: 1
+	threeshot:
+		Start: 1
+		Length: 1
 
 mins:
 	idle:
@@ -118,3 +210,71 @@ laserfire:
 	idle: veh-hit3
 		Length: *
 		ZOffset: 511
+
+discus:
+	idle:
+		Length: *
+		Reverses: true
+		ZOffset: 1023
+		Offset: 0, 0, 12
+
+ionsfx:
+	idle:
+		Length: *
+		Offset: 0, -78
+		ZOffset: 1023
+
+hjm:
+	idle:
+		Facings: 32
+		ZOffset: 1023
+
+patriot:
+	idle:
+		Facings: 32
+		ZOffset: 1023
+
+icbmmiss:
+	idle:
+		Facings: 32
+		ZOffset: 1023
+
+chemicalmissile:
+	up: cmissup
+		Length: *
+		ZOffset: 1023
+	down: cmissdown
+		Length: *
+		ZOffset: 1023
+
+radarcratetd: 
+	idle:
+		Length: *
+		Tick: 80
+		
+b2bomb:
+	idle: b2bomb
+		Length: *
+		ZOffset: 1023
+
+mine2:
+	Defaults:
+		Offset: 11, -15
+		UseTilesetExtension: false
+	idle:
+		Start: 30
+		Length: 1
+	active:
+		Start: 30
+		Length: 24
+
+gmine2:
+	Defaults:
+		Offset: 7, -13
+		UseTilesetExtension: false
+	idle:
+		Start: 30
+		Length: 1
+	active:
+		Start: 30
+		Length: 24

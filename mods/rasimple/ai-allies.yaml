@@ -17,6 +17,21 @@ Player:
 					Attractiveness: -5
 					TargetMetric: None
 					CheckRadius: 8c0
+			UseParatanks:
+				OrderName: AlliedParatanks
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
 			UseNuclear:
 				OrderName: NukeMissile
 				MinimumAttractiveness: 3000
@@ -32,10 +47,15 @@ Player:
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 7c0
-			UsePrismTanks:
-				OrderName: AIPrismTanks
+			UseFieldRepairs:
+				OrderName: FieldRepairPower
+				MinimumAttractiveness: 1
 				Consideration@1:
 					Against: Ally
+					Types: ICTarget
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 2c0
 			CrateParabombs:
 				OrderName: CrateParabombs
 				MinimumAttractiveness: 1
@@ -81,6 +101,9 @@ Player:
 			syrd: 4500
 			agun: 6000
 			atek: 7500
+			atek.england: 7500
+			atek.france: 7500
+			atek.germany: 7500
 		BuildingLimits:
 			proc: 4
 			tent: 2
@@ -89,10 +112,14 @@ Player:
 			syrd: 1
 			hpad: 4
 			atek: 1
+			atek.england: 1
+			atek.france: 1
+			atek.germany: 1
 			fix: 1
 			mslo: 1
 			agun: 6
 			gun: 6
+			gun.germany: 6
 			pbox.static: 8
 			hbox.static: 4
 			gap: 4
@@ -110,10 +137,14 @@ Player:
 			pbox.static: 7
 			hbox.static: 3
 			gun: 5
+			gun.germany: 5
 			gap: 2
 			fix: 1
 			agun: 5
 			atek: 1
+			atek.england: 1
+			atek.france: 1
+			atek.germany: 1
 			mslo: 1
 			afld: 1
 			spro: 1
@@ -121,7 +152,7 @@ Player:
 	CaptureManagerBotModule@mech:
 		RequiresCondition: enable-ai-player && player.allies
 		CapturingActorTypes: mech
-		CapturableActorTypes: 2tnk.husk,3tnk.husk,4tnk.husk,harv.fullhusk,harv.emptyhusk,harv.soviet.fullhusk,harv.soviet.emptyhusk
+		CapturableActorTypes: 2tnk.husk,2tnk.england.husk,2tnk.france.husk,2tnk.germany.husk,3tnk.husk,3tnk.ukraine.husk,3tnk.belarus.husk,4tnk.husk,harv.fullhusk,harv.emptyhusk,harv.soviet.fullhusk,harv.soviet.emptyhusk,harv.cnc.fullhusk,harv.cnc.emptyhusk,1tnk.nod.husk,2tnk.gdi.husk,4tnk.gdi.rail.husk,mwav.husk,disr.husk
 		CheckCaptureTargetsForVisibility: true
 		MaximumCaptureTargetOptions: 15
 	SquadManagerBotModule@allies:
@@ -138,7 +169,7 @@ Player:
 		SquadSizeRandomBonus: 4
 		RushInterval: 400
 		AttackScanRadius: 24
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk, medi, jeep.scout, prsm
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e1.england, e2, e2.france, e3, jeep, jeep.england, apc, apc.germany, 1tnk, 1tnk.england, 1tnk.france, 1tnk.germany, 2tnk, 2tnk.england, 2tnk.france, 2tnk.germany, arty, arty.france, msam, e7, heli, iroq.ai, e6, mech, spit, mrj, stnk, ctnk, medi, jeep.scout, prsm, mgi, mnly.support.allies
 		NavalUnitsTypes: pt,dd,ca
 		ConstructionYardTypes: fact
 		NavalProductionTypes: syrd
@@ -148,7 +179,7 @@ Player:
 		SquadSizeRandomBonus: 1
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, iroq.ai, heli, jeep.scout, prsm
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e1.england, e2.france, e3, jeep, jeep.england, apc, apc.germany, 1tnk, 1tnk.england, 1tnk.france, 1tnk.germany, 2tnk, 2tnk.england, 2tnk.france, 2tnk.germany, arty, arty.france, msam, e7, pt, dd, dd.germany, ca, e6, mech, mrj, stnk, ctnk, medi, iroq.ai, heli, jeep.scout, prsm, mgi, mnly.support.allies
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@allies.helicopter:
 		RequiresCondition: enable-ai-player && player.allies
@@ -156,7 +187,7 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, jeep, apc, 1tnk, 2tnk, arty, msam, e7, pt, dd, ca, e6, mech, mrj, stnk, ctnk, medi, spit, jeep.scout, prsm
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e1.england, e2, e2.france, e3, jeep, jeep.england, apc, apc.germany, 1tnk, 1tnk.england, 1tnk.france, 1tnk.germany, 2tnk, 2tnk.england, 2tnk.france, 2tnk.germany, arty, arty.france, msam, e7, pt, dd, dd.germany, ca, e6, mech, mrj, stnk, ctnk, medi, spit, jeep.scout, prsm, mgi, mnly.support.allies
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@allies:
 		RequiresCondition: enable-ai-player && player.allies
@@ -165,16 +196,27 @@ Player:
 			mcv.ai: 13500
 		UnitsToBuild:
 			e1: 65
+			e1.england: 65
 			e2: 15
+			e2.france: 15
 			e3: 30
 			dog: 15
 			harv: 15
 			jeep: 20
+			jeep.england: 20
 			apc: 30
-			stnk: 5
+			apc.germany: 30
+			stnk: 10
 			1tnk: 40
+			1tnk.england: 40
+			1tnk.france: 40
+			1tnk.germany: 40
 			2tnk: 50
+			2tnk.england: 50
+			2tnk.france: 50
+			2tnk.germany: 50
 			arty: 15
+			arty.france: 15
 			ctnk: 10
 			msam: 1
 			e7: 1
@@ -183,10 +225,12 @@ Player:
 			mcv.ai: 1
 			mrj: 1
 			medi: 2
+			mnly.support.allies: 1
 		UnitLimits:
 			dog: 4
 			harv: 8
 			jeep: 4
+			jeep.england: 4
 			e7: 1
 			e6: 2
 			mech: 2
@@ -203,6 +247,7 @@ Player:
 		UnitsToBuild:
 			pt: 50
 			dd: 30
+			dd.germany: 30
 			ca: 20
 		UnitLimits:
 			pt: 8

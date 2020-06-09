@@ -39,7 +39,7 @@ BADR.buildable:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 3
 		BuildLimit: 1
-		Prerequisites: ~afld, stek, ~aircraft.soviet, ~!aitoodumb, ~techlevel.high
+		Prerequisites: ~afld, stek, ~aircraft.soviet, ~soviet.or.ukraine, ~!aitoodumb, ~techlevel.high
 		Description: Badger variant that carries\ntriple payload of Parabombs.\nMaximum 1 can be built.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: Badger Bomber
@@ -68,8 +68,6 @@ BADR.buildable:
 		Armaments: primary, secondary, tertiary
 		FacingTolerance: 20
 		PersistentTargeting: false
-		#	this is useless, its not taking effect at all
-		#	StrafeRunLength: 3c0
 	Aircraft:
 		CruiseAltitude: 2560
 		TurnSpeed: 3
@@ -206,7 +204,6 @@ B52.buildable:
 		Turret: turret-arty
 		TurnSpeed: 255
 		Offset: -260,0,0
-		#	Offset: 1042,0,0
 	WithSpriteTurret@1:
 		Sequence: turret1
 		Turret: turret-mg
@@ -275,16 +272,26 @@ TRAN:
 	Buildable:
 		Queue: Aircraft, MWFAir, MWFHeli
 		BuildPaletteOrder: 1
-		Prerequisites: ~hpad, ~aircraft.allies, ~techlevel.medium
-		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry light vehicles, one at a time.\n  Unarmed
+		Prerequisites: ~hpad, ~!aircraft.allies, ~!aircraft.soviet, ~techlevel.medium
+		Description: Fast Infantry Transport Helicopter.\n  Unarmed
 	Cargo:
 		LoadedCondition: loaded	
-	Carryall:
-		LocalOffset: 0, 0, -128
 	Health:
 		HP: 20000
 	Sellable:
 		RequiresCondition: unit.sellable && !loaded
+
+TRAN.Allies:
+	Inherits: TRAN
+	Buildable:
+		BuildPaletteOrder: 4
+		Prerequisites: ~hpad, ~aircraft.allies, ~techlevel.medium
+		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry light vehicles, one at a time.\n  Unarmed
+	Carryall:
+		LocalOffset: 0, 0, -128
+	RenderSprites:
+		Image: tran
+	-MapEditorData:
 
 TRAN.Soviet:
 	Inherits: TRAN
@@ -299,7 +306,6 @@ TRAN.Soviet:
 		Image: tran
 	SpawnActorOnDeath:
 		Actor: TRAN.soviet.Husk
-	-Carryall:
 	-MapEditorData:
 
 IROQ:
@@ -403,10 +409,10 @@ IROQ:
 
 IROQ.AI:
 	Inherits: IROQ
-	Buildable:
-		Prerequisites: ~hpad, ~aircraft.allies, ~aitoodumb, ~techlevel.medium
 	-Armament@TERTIARY:
 	-AmmoPool@2:
+	Buildable:
+		Prerequisites: ~hpad, ~aircraft.allies, ~aitoodumb, ~techlevel.medium
 	AttackAircraft:
 		Armaments: primary, secondary
 	RenderSprites:
@@ -456,6 +462,7 @@ HELI:
 		RearmActors: hpad, carr.deployed
 
 HIND:
+	-AmmoPool:
 	Buildable:
 		Queue: Aircraft, MWFAir, MWFHeli
 		BuildPaletteOrder: 6
@@ -496,7 +503,6 @@ HIND:
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
 		PauseOnCondition: !ammorock
-	-AmmoPool:
 	AmmoPool@GUNS:
 		Armaments: primary, secondary, fourth, fifth
 		Ammo: 24
@@ -536,10 +542,11 @@ U2:
 
 YAK:
 	Inherits@AUTODAMAGE: ^KilledWithoutAirfield
+	-AmmoPool:
 	Buildable:
 		Queue: Aircraft, MWFAir
 		BuildPaletteOrder: 1
-		Prerequisites: ~afld, ~aircraft.soviet, ~!aitoodumb, ~techlevel.medium
+		Prerequisites: ~afld, ~aircraft.soviet, ~!aitoodumb, ~!player.belarus, ~techlevel.medium
 		Description: Strafing Attack Plane armed with\ndual machine guns.\nBombs Submarines with Depthcharges.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
 		Cost: 1200
@@ -582,7 +589,6 @@ YAK:
 		MuzzleSequence: muzzle
 		FireDelay: 1
 		PauseOnCondition: !ammo
-	-AmmoPool:
 	AmmoPool@1:
 		Armaments: primary, secondary, fourth, fifth
 		Ammo: 32
@@ -605,12 +611,12 @@ YAK:
 
 YAK.AI:
 	Inherits: YAK
-	Buildable:
-		Prerequisites: ~afld, ~aircraft.soviet, ~aitoodumb, ~techlevel.medium
-	Aircraft:
-		TakeOffOnCreation: True
 	-Armament@TERTIARY:
 	-AmmoPool@2:
+	Buildable:
+		Prerequisites: ~afld, ~aircraft.soviet, ~aitoodumb, ~!player.belarus, ~techlevel.medium
+	Aircraft:
+		TakeOffOnCreation: True
 	AttackAircraft:
 		Armaments: primary, secondary
 	RenderSprites:
@@ -806,10 +812,6 @@ TORN:
 	Rearmable:
 		RearmActors: afld, afld.ukraine, carr.new.deployed
 
-MH60:
-	Buildable:
-		Prerequisites: ~disabled
-
 NEBR:
 	Inherits: ^Plane
 	Buildable:
@@ -817,7 +819,7 @@ NEBR:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 6
 		BuildLimit: 1
-		Prerequisites: ~disabled
+		Prerequisites: ~afld, mslo, ~soviet.or.belarus, ~techlevel.high
 		Description: Fast plane armed with nuclear parabomb.\nMaximum 1 can be built.\nHas very weak armor.
 	Valued:
 		Cost: 2400
@@ -858,9 +860,6 @@ NEBR:
 		PipType: red
 		AmmoCondition: ammo
 		ReloadDelay: 750
-	#	ReloadArmamentsBar:
-	#	Color: FFFF00		
-	#	PauseOnCondition: airborne
 	Selectable:
 		Bounds: 36,28,0,2
 		DecorationBounds: 40,29,0,1

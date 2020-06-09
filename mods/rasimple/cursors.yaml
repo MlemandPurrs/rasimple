@@ -255,3 +255,7 @@ Cursors:
 		invun-target:
 			Start: 24
 			Length: 10
+	cmisscurs.shp: cursor
+		cmiss-target:
+			Start: 0
+			Length: 7

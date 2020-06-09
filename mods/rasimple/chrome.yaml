@@ -1,6 +1,9 @@
 ^Sidebar:
 	Image: sidebar.png
 
+^Sidebar2:
+	Image: sidebar2.png
+
 ^Dialog:
 	Image: dialog.png
 
@@ -133,6 +136,121 @@ command-button-soviet-disabled:
 	Inherits: command-button-soviet
 command-button-soviet-highlighted-disabled:
 	Inherits: command-button-soviet-highlighted
+
+sidebar-gdi:
+	Inherits: ^Sidebar2
+	Regions:
+		radar: 290, 67, 222, 222
+		background-top: 0, 185, 238, 262
+		background-moneybin: 0, 85, 238, 28
+		background-iconbg: 12, 227, 190, 47
+		background-iconrow: 0, 116, 238, 47
+		background-bottom: 0, 166, 238, 8
+		background-supportoverlay: 12, 324, 64, 48
+
+sidebar-button-gdi:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 281, 5, 5, 18, 18, 5, 5
+sidebar-button-gdi-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 252, 5, 5, 18, 18, 5, 5
+sidebar-button-gdi-pressed:
+	Inherits: sidebar-button-gdi
+sidebar-button-gdi-highlighted:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 339, 5, 5, 18, 18, 5, 5
+sidebar-button-gdi-highlighted-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 310, 5, 5, 18, 18, 5, 5
+sidebar-button-gdi-highlighted-pressed:
+	Inherits: sidebar-button-gdi-highlighted
+sidebar-button-gdi-disabled:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 484, 5, 5, 18, 18, 5, 5
+sidebar-button-gdi-highlighted-disabled:
+	Inherits: sidebar-button-gdi-disabled
+
+command-button-gdi:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 281, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-gdi-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 252, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-gdi-pressed:
+	Inherits: command-button-gdi
+command-button-gdi-highlighted:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 339, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-gdi-highlighted-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 310, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-gdi-highlighted-pressed:
+	Inherits: command-button-gdi-highlighted
+command-button-gdi-disabled:
+	Inherits: command-button-gdi
+command-button-gdi-highlighted-disabled:
+	Inherits: command-button-gdi-highlighted
+
+sidebar-nod:
+	Inherits: ^Sidebar2
+	Regions:
+		radar: 290, 290, 222, 222
+		background-top: 0, 185, 238, 262
+		background-moneybin: 0, 54, 238, 28
+		background-iconbg: 12, 275, 190, 47
+		background-iconrow: 0, 116, 238, 47
+		background-bottom: 0, 166, 238, 8
+		background-supportoverlay: 77, 324, 64, 48
+
+sidebar-button-nod:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 165, 5, 5, 18, 18, 5, 5
+sidebar-button-nod-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 136, 5, 5, 18, 18, 5, 5
+sidebar-button-nod-pressed:
+	Inherits: sidebar-button-nod
+sidebar-button-nod-highlighted:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 223, 5, 5, 18, 18, 5, 5
+sidebar-button-nod-highlighted-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 194, 5, 5, 18, 18, 5, 5
+sidebar-button-nod-highlighted-pressed:
+	Inherits: sidebar-button-nod-highlighted
+sidebar-button-nod-disabled:
+	Inherits: sidebar-button-allies-disabled
+sidebar-button-nod-highlighted-disabled:
+	Inherits: sidebar-button-allies-disabled
+
+command-button-nod:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 165, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-nod-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 136, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-nod-pressed:
+	Inherits: command-button-nod
+command-button-nod-highlighted:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 223, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-nod-highlighted-hover:
+	Inherits: ^Sidebar2
+	PanelRegion: 260, 194, 3, 3, 22, 22, 3, 3
+	PanelSides: Center
+command-button-nod-highlighted-pressed:
+	Inherits: command-button-nod-highlighted
+command-button-nod-disabled:
+	Inherits: command-button-nod
+command-button-nod-highlighted-disabled:
+	Inherits: command-button-nod-highlighted
 
 sidebar-bits:
 	Inherits: ^Glyphs
@@ -394,6 +512,9 @@ flags:
 		russia: 30, 0, 30, 15
 		ukraine: 30, 15, 30, 15
 		belarus: 30, 30, 30, 15
+
+		gdi: 0, 90, 30, 15
+		nod: 30, 90, 30, 15
 
 music:
 	Inherits: ^Glyphs

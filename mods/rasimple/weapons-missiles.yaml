@@ -66,14 +66,58 @@ SCUD:
 		ValidTargets: Ground
 		InvalidTargets: Water
 
-SCUD.Badger:
-	Inherits: SCUD
+HonestJohn:
+	ReloadDelay: 240
+	InvalidTargets: Air
 	Burst: 2
-	BurstDelays: 12
-	ReloadDelay: 120
+	BurstDelays: 80
+	Range: 12c0
+	MinRange: 6c0
+	Report: missile1.aud
 	Projectile: Bullet
-		Inaccuracy: 1c512
-		LaunchAngle: 0
+		Blockable: false
+		Shadow: true
+		Inaccuracy: 313
+		Image: hjm
+		TrailImage: smokey
+		TrailDelay: 3
+		Speed: 200
+		LaunchAngle: 90
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 10000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Versus:
+			None: 90
+			Wood: 40
+			Concrete: 30
+			Light: 50
+			Heavy: 20
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+	Warhead@3Eff: CreateEffect
+		Explosions: large_chem
+		ImpactSounds: firebl3.aud
+		ValidTargets: Ground, Ship
+		ExplosionPalette: desert
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge
+
+HonestJohn.bomber:
+	Inherits: HonestJohn
+	ReloadDelay: 120
+	-Burst:
+	-BurstDelays:
+	Range: 0c938
+	-MinRange:
+	Projectile: Bullet
+		LaunchAngle: -90
+	Warhead@3Eff: CreateEffect
+		Explosions: large_napalm
+		ExplosionPalette: effect
 
 TorpTube:
 	Projectile: Missile
@@ -105,6 +149,36 @@ SubMissileAA.cluster:
 SubMissile.2shot:
 	Inherits: SubMissile
 	BurstDelays: 77
+
+SubMissile.barrage:
+	Inherits: SubMissile
+	Report: rocket1TD.aud
+	ReloadDelay: 600
+	Projectile: Bullet
+		Inaccuracy: 3c614
+		LaunchAngle: 180
+		Image: DRAGON
+		Shadow: true
+		TrailImage: smokey
+	Burst: 12
+	BurstDelays: 12
+	Warhead@1Dam: SpreadDamage
+		Spread: 683
+		Damage: 2500
+		ValidTargets: Ground
+		Versus:
+			None: 25
+			Wood: 60
+			Light: 100
+			Heavy: 50
+
+SubMissile.barrage.display:
+	ReloadDelay: 740
+	Range: 20c0
+	Projectile: Bullet
+		LaunchAngle: 180
+	Warhead@1Dam: SpreadDamage
+		Damage: 0
 
 MaverickHind:
 	Inherits: Maverick
@@ -157,3 +231,237 @@ Nike.6shot:
 	ReloadDelay: 90
 	Burst: 6
 	BurstDelays: 15
+
+227mm:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 120
+	Range: 10c0
+	MinRange: 2c0
+	Burst: 4
+	BurstDelays: 4
+	Report: rocket1TD.aud
+	TargetActorCenter: true
+	# Remove default Missile properties
+	-Projectile:
+	Projectile: Missile
+		Blockable: false
+		Image: DRAGON
+		Shadow: true
+		TrailImage: smokey
+		Inaccuracy: 853
+		MinimumLaunchAngle: 62
+		MaximumLaunchAngle: 62
+		ContrailLength: 8
+		Speed: 266
+	Warhead@1Dam: SpreadDamage
+		Spread: 683
+		Versus:
+			None: 25
+			Wood: 60
+			Light: 100
+			Heavy: 50
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+
+227mm.2shot:
+	Inherits: 227mm
+	ReloadDelay: 60
+	Burst: 2
+
+227mm.boat:
+	Inherits: 227mm.2shot
+	Range: 6c0
+
+227mm.antisub:
+	Inherits: 227mm.2shot
+	Report: rocket1TD.aud
+	Range: 6c0
+	ValidTargets: Submarine, Underwater
+	-Projectile:
+	Projectile: Missile
+		Blockable: false
+		Image: DRAGON
+		Shadow: true
+		TrailImage: smokey
+		Inaccuracy: 128
+		MinimumLaunchAngle: 62
+		MaximumLaunchAngle: 62
+		ContrailLength: 8
+		Speed: 266
+		RangeLimit: 12c0
+		MinimumLaunchAngle: 31
+		HorizontalRateOfTurn: 15
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		ValidTargets: Water, Underwater, Bridge
+	Warhead@3Eff: CreateEffect
+		Explosions: small_explosion
+		#	ImpactSounds: xplos.aud
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+
+OrcaAGMissiles:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 12
+	Range: 5c0
+	MinRange: 1c256
+	Burst: 2
+	ValidTargets: Ground
+	Projectile: Missile
+		Arm: 1
+		HorizontalRateOfTurn: 20
+		Speed: 256
+		RangeLimit: 6c0
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Versus:
+			None: 30
+			Wood: 115
+			Light: 100
+			Heavy: 85
+
+OrcaAAMissiles:
+	Inherits: OrcaAGMissiles
+	ValidTargets: Air
+	Burst: 2
+	Projectile: Missile
+		Arm: 0
+		Speed: 298
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Versus:
+			Light: 85
+			Heavy: 55
+
+rah66AG:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 10
+	MinRange: 0c768
+	Burst: 2
+	BurstDelays: 2
+	ValidTargets: Ground, Water
+	InvalidTargets: Air
+	Projectile: Missile
+		Inaccuracy: 1c0
+		TrailImage: smokey
+		Speed: 213
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 3200
+		Versus:
+			None: 100
+			Wood: 120
+			Concrete: 50
+			Light: 70
+			Heavy: 50
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+	Warhead@3Eff: CreateEffect
+		Explosions: small_napalm
+		ImpactSounds: firebl3.aud
+		ValidTargets: Ground, Ship
+	Warhead@4EffWater: CreateEffect
+		Explosions: small_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge
+
+BikeRockets:
+	Inherits: Dragon
+	Burst: 2
+	BurstDelays: 6
+	Report: missile6.aud
+
+BikeRocketsAA:
+	Inherits: RedEye
+	Burst: 2
+	BurstDelays: 6
+	Report: missile6.aud
+
+ASROC:
+	ReloadDelay: 30
+	Range: 6c0
+	Report: rocket1.aud
+	ValidTargets: Submarine, Underwater
+	Projectile: Missile
+		Arm: 0
+		Blockable: false
+		Inaccuracy: 128
+		Image: DRAGON
+		HorizontalRateOfTurn: 15
+		TrailImage: smokey
+		ContrailLength: 8
+		Speed: 298
+		RangeLimit: 20c0
+		MinimumLaunchAngle: 30
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 6000
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+		ValidTargets: Water, Underwater, Bridge
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Heavy: 100
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@4EffWaterHit: CreateEffect
+		Explosions: small_explosion
+		ImpactSounds: xplos.aud
+		ValidTargets: Ground, Ship, Trees
+	Warhead@5EffWater: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge
+
+Patriot:
+	Inherits: ^AntiAirMissile
+	ReloadDelay: 30
+	Range: 12c512
+	MinRange: 2c0
+	Report: missile1.aud
+	ValidTargets: Air
+	-Projectile:
+	Projectile: Missile
+		Image: PATRIOT
+		HorizontalRateOfTurn: 20
+		Speed: 300
+		RangeLimit: 13c819
+		Inaccuracy: 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 682
+		Damage: 5000
+		ValidTargets: Air
+		Versus:
+			None: 20
+			Wood: 85
+			Light: 100
+			Heavy: 75
+
+Patriot.ship:
+	Inherits: Patriot
+	ReloadDelay: 75
+	Projectile: Missile
+		MinimumLaunchAngle: 165
+		MaximumLaunchAngle: 165
+
+Stinger.A10.Right:
+	Inherits: Stinger
+	MinRange: 3c0
+	ReloadDelay: 90
+	Burst: 3
+	BurstDelays: 7
+	Projectile: Missile
+		Inaccuracy: 1c256
+	#	FirstBurstTargetOffset: -768,64,0
+	#	FollowingBurstTargetOffset: 512,0,0
+	FirstBurstTargetOffset: 0,768,0
+	FollowingBurstTargetOffset: 0,-512,0
+
+Stinger.A10.Left:
+	Inherits: Stinger.A10.Right
+	FirstBurstTargetOffset: 0,-768,0
+	FollowingBurstTargetOffset: 0,512,0
