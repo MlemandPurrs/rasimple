@@ -1,7 +1,7 @@
 
 Metadata:
 	Title: RA Simple
-	Version: v.1.1
+	Version: v.1.2
 	Website: https://www.openra.net
 	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
 
@@ -13,7 +13,6 @@ Packages:
 	~^Content/ra/v2/cnc
 	~^Content/ra/v2/movies
 	.
-	$ra: ra
     $rasimple: rasimple
 	./mods/common: common
 	~main.mix
@@ -32,80 +31,52 @@ Packages:
 	~expand2.mix
 	~hires1.mix
 	~desert.mix
-	ra|bits
-	ra|bits/desert
+	~./v2/cnc/scores.mix
     rasimple|bits
     rasimple|bits/aircraft
     rasimple|bits/buildings
+	rasimple|bits/desert
     rasimple|bits/icons
     rasimple|bits/infantry
     rasimple|bits/music
     rasimple|bits/naval
     rasimple|bits/resources
     rasimple|bits/sounds
-	rasimple|bits/sounds/cyborg
-	rasimple|bits/sounds/genericTD
-	rasimple|bits/sounds/moebius
-	rasimple|bits/sounds/rambo
+	rasimple|bits/sounds/robot
     rasimple|bits/sounds/volkov
     rasimple|bits/vehicle
     rasimple|uibits
 
 MapFolders:
-    ra|maps: System
 	rasimple|maps: System
 	~^maps/rasimple: User
+	~^maps/release-20200503: User
 
 Rules:
-	ra|rules/misc.yaml
+	rasimple|misc.yaml
 	rasimple|ai.yaml
 	rasimple|ai-allies.yaml
-	rasimple|ai-gdi.yaml
-	rasimple|ai-nod.yaml
 	rasimple|ai-soviet.yaml
 	rasimple|player.yaml
-	ra|rules/palettes.yaml
 	rasimple|palettes.yaml
 	rasimple|world.yaml
-	ra|rules/defaults.yaml
-	ra|rules/vehicles.yaml
-	ra|rules/husks.yaml
-	ra|rules/structures.yaml
-	ra|rules/infantry.yaml
-	ra|rules/civilian.yaml
-	ra|rules/decoration.yaml
-	ra|rules/aircraft.yaml
-	ra|rules/ships.yaml
-    rasimple|aircraft.yaml
     rasimple|defaults.yaml
+	rasimple|civilian.yaml
+	rasimple|decoration.yaml
+    rasimple|aircraft.yaml
 	rasimple|fakes.yaml
     rasimple|husks.yaml
     rasimple|infantry.yaml
     rasimple|naval.yaml
-	rasimple|naval-cnc.yaml
     rasimple|structures.yaml
     rasimple|vehicles.yaml  
-	rasimple|aircraft-cnc.yaml
-	rasimple|infantry-cnc.yaml
-	rasimple|structures-cnc.yaml
-	rasimple|vehicles-cnc.yaml  
-	rasimple|husks-cnc.yaml
-	rasimple|country-duplicates.yaml
 
 Sequences:
-	ra|sequences/ships.yaml
-	ra|sequences/vehicles.yaml
-	ra|sequences/structures.yaml
-	ra|sequences/infantry.yaml
-	ra|sequences/aircraft.yaml
-	ra|sequences/misc.yaml
-	ra|sequences/decorations.yaml
     rasimple|sequences.yaml
+	rasimple|sequences-decorations.yaml
 	rasimple|sequences-infantry.yaml
 	rasimple|sequences-structures.yaml
 	rasimple|sequences-misc.yaml
-	rasimple|sequences-cnc.yaml
-	rasimple|sequences-cnc-structures.yaml
 
 TileSets:
 	rasimple|tilesets/snow.yaml
@@ -133,7 +104,7 @@ ChromeLayout:
 	common|chrome/ingame-infoobjectives.yaml
 	common|chrome/ingame-infostats.yaml
 	common|chrome/ingame-menu.yaml
-	ra|chrome/ingame-observer.yaml
+	rasimple|chrome/ingame-observer.yaml
 	rasimple|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
 	common|chrome/ingame-debug.yaml
@@ -159,7 +130,7 @@ ChromeLayout:
 	common|chrome/connection.yaml
 	common|chrome/replaybrowser.yaml
 	common|chrome/gamesave-browser.yaml
-	ra|chrome/gamesave-loading.yaml
+	rasimple|chrome/gamesave-loading.yaml
 	common|chrome/dropdowns.yaml
 	common|chrome/musicplayer.yaml
 	common|chrome/tooltips.yaml
@@ -170,12 +141,6 @@ ChromeLayout:
 	common|chrome/playerprofile.yaml
 
 Weapons:
-	ra|weapons/explosions.yaml
-	ra|weapons/ballistics.yaml
-	ra|weapons/missiles.yaml
-	ra|weapons/other.yaml
-	ra|weapons/smallcaliber.yaml
-	ra|weapons/superweapons.yaml
     rasimple|weapons-explosions.yaml
 	rasimple|weapons-ballistics.yaml
 	rasimple|weapons-missiles.yaml
@@ -184,18 +149,16 @@ Weapons:
 	rasimple|weapons-superweapons.yaml
 
 Voices:
-	ra|audio/voices.yaml
     rasimple|voices.yaml
 
 Notifications:
-	ra|audio/notifications.yaml
+	rasimple|notifications.yaml
 
 Music:
-	ra|audio/music.yaml
     rasimple|music.yaml
 
 Translations:
-	ra|languages/english.yaml
+	rasimple|languages/english.yaml
 
 Hotkeys:
 	common|hotkeys/game.yaml
@@ -251,12 +214,12 @@ Fonts:
 		Size: 24
 		Ascender: 18
 	Title:
-		Font: ra|ZoodRangmah.ttf
+		Font: rasimple|ZoodRangmah.ttf
 		Size: 48
 		Ascender: 26
 
 Missions:
-	ra|missions.yaml
+	rasimple|missions.yaml
 
 MapGrid:
 	TileSize: 24,24
@@ -307,7 +270,7 @@ GameSpeeds:
 		OrderLatency: 6
 
 ColorValidator:
-	TeamColorPresets: C4B060, EC0000, 702C24, F57606, F7BB06, F861A4, BE00FE, AB7B84, 00C400, A0F08C, D1987C, 253D8C, 2F86F2, 7EBFF1, 44907C, B3F7EB
+	TeamColorPresets: C4B060, EC0000, 702C24, FC8800, F7BB06, F861A4, A800A8, AB7B84, 00C400, A0F08C, D1987C, 253D8C, 4494E4, 7EBFF1, 44907C, 00A8A8
 
 ModContent:
 	InstallPromptMessage: C&C All requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2008 Red Alert freeware release.\n\nAdvanced Install includes options for downloading the music and for\ncopying the videos and other content from an original game disc.
@@ -345,16 +308,19 @@ ModContent:
 		music-aftermath: Aftermath Music
 			TestFiles: ^Content/ra/v2/expand/await.aud, ^Content/ra/v2/expand/bog.aud, ^Content/ra/v2/expand/float_v2.aud, ^Content/ra/v2/expand/gloom.aud, ^Content/ra/v2/expand/grndwire.aud, ^Content/ra/v2/expand/rpt.aud, ^Content/ra/v2/expand/search.aud, ^Content/ra/v2/expand/traction.aud, ^Content/ra/v2/expand/wastelnd.aud
 			Sources: aftermath, aftermath-linux, ra-origin
+		cncmusic: C&C Game Music
+			TestFiles: ^Content/ra/v2/cnc/scores.mix
+			Download: cncmusic
 	Downloads:
-		ra|installer/downloads.yaml
+		rasimple|installer/downloads.yaml
 	Sources:
-		ra|installer/aftermath.yaml
-		ra|installer/allies95.yaml
-		ra|installer/cnc95.yaml
-		ra|installer/counterstrike.yaml
-		ra|installer/firstdecade.yaml
-		ra|installer/origin.yaml
-		ra|installer/soviet95.yaml
+		rasimple|installer/aftermath.yaml
+		rasimple|installer/allies95.yaml
+		rasimple|installer/cnc95.yaml
+		rasimple|installer/counterstrike.yaml
+		rasimple|installer/firstdecade.yaml
+		rasimple|installer/origin.yaml
+		rasimple|installer/soviet95.yaml
 
 ModCredits:
 	ModCreditsFile: rasimple|credits.txt

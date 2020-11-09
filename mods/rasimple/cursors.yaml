@@ -228,21 +228,22 @@ Cursors:
 			Start: 17
 		assaultmove-blocked-minimap:
 			Start: 19
-	ioncannoncurs.shp: cursor
-		ioncannon:
-			Start: 0
-			Length: 16
-	mouse_apolyton2.shp: cursor
-		empstrike:
-			Start: 0
-			Length: 6
-		airdrop:
-			Start: 7
-			Length: 5
-			Tick: 80
+	cursorairstrike.shp: cursor
 		airstrike:
-			Start: 12
-			Length: 14
+			Start: 0
+			Length: 4
+			Tick: 90
+		airstrike-minimap:
+			Start: 4
+			Length: 4
+	cursorparadrop.shp: cursor
+		airdrop:
+			Start: 0
+			Length: 5
+			Tick: 120
+		airdrop-minimap:
+			Start: 6
+			Length: 2
 	sonarbox.shp: cursor
 		sonar-target:
 			Start: 6
@@ -255,7 +256,3 @@ Cursors:
 		invun-target:
 			Start: 24
 			Length: 10
-	cmisscurs.shp: cursor
-		cmiss-target:
-			Start: 0
-			Length: 7

@@ -1,5 +1,4 @@
-Developer of RA+ , RA Simple, RA Advanced,
-CnC on RA maps and CnC All mods:
+Developer of RA+ , RA Simple, CnC All mods:
 - MlemandPurrs
 
 Thanks to the OpenRA Development team
@@ -21,7 +20,7 @@ whose works have been used in this mod..
 
 MustaphaTR, Inq, Sircake, Timber, Flamewh33l, Marn,
 Graion Dilach, rob-v, Kiraye, Holloweye, Nolt, Nooze,
-CombinE, ELoyros, forcecore/boolbada, VMetalic,
+CombinE, forcecore/boolbada, VMetalic,
 Gerseras/Seraphinexxx, ZxGanon, reaperr, raminator,
 Nyerguds, Allen262, abcdefg30, SoScared,
 Lin Kuei Ominae, Bittah Commander, Rampastring,

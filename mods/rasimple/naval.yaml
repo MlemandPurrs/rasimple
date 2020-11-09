@@ -1,27 +1,83 @@
 LST:
+	Inherits: ^Ship
+	-Chronoshiftable:
 	Buildable:
+		Queue: Ship
 		BuildPaletteOrder: 1
-		Prerequisites: ~!ships.gdi, ~!ships.nod, ~techlevel.low
+		Prerequisites: ~techlevel.low
 		Description: General-purpose naval transport.\nCan carry up to 16 Infantry and Vehicles.\n  Unarmed
 	Valued:
 		Cost: 800
+	Tooltip:
+		Name: Transport
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 35000
+	Armor:
+		Type: Heavy
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 36,36
+	Mobile:
+		Locomotor: lcraft
+		Speed: 100
+		PauseOnCondition: notmobile
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	WithLandingCraftAnimation:
+		OpenTerrainTypes: Clear, Rough, Road, Ore, Gems, Beach
 	Cargo:
+		Types: Infantry, Vehicle
 		MaxWeight: 16
 		PipCount: 16
+		PassengerFacing: 0
 		LoadedCondition: loaded	
+		LoadingCondition: notmobile
 	RepairableNear:
 		RepairActors: syrd, spen
 	Sellable:
 		RequiresCondition: ship.sellable && !loaded
 
 PT:
-	-Turreted:
-	-WithSpriteTurret:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
 		BuildPaletteOrder: 2
 		Prerequisites: ~syrd, proc, ~ships.allies, ~techlevel.low
+		Description: Light scout & support ship.\nCan detect submarines.\n  Strong vs Naval units\n  Weak vs Ground units, Aircraft
 	Valued:
 		Cost: 500
+	Tooltip:
+		Name: Gunboat
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 20000
+	Armor:
+		Type: Heavy
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 36,36
+	Mobile:
+		TurnSpeed: 5
+		Speed: 82
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
 	Turreted@PRIMARY:
 		Turret: primary
 		TurnSpeed: 7
@@ -32,9 +88,16 @@ PT:
 		Offset: -461,0,18
 	Armament@PRIMARY:
 		Turret: primary
+		Name: primary
+		Weapon: 2Inch
+		LocalOffset: 208,0,48
+		MuzzleSequence: muzzle
 		PauseOnCondition: empdisable
 	Armament@SECONDARY:
 		Turret: secondary
+		Name: secondary
+		Weapon: DepthCharge
+		MuzzleSequence: muzzle
 		PauseOnCondition: empdisable
 	Armament@TERTIARY:
 		Name: tertiary
@@ -53,6 +116,7 @@ PT:
 	WithSpriteTurret@SECONDARY:
 		Turret: secondary
 		Sequence: turret-dc
+	WithMuzzleOverlay:
 	HitShape:
 		TargetableOffsets: 341,0,0, -341,0,0
 		Type: Capsule
@@ -67,7 +131,7 @@ RSHP:
 		Queue: Ship
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 5
-		Prerequisites: ~syrd, fix, ~ships.allies, ~allies.or.germany, ~techlevel.medium
+		Prerequisites: ~syrd, fix, ~ships.allies, ~techlevel.medium
 		Description: Light support ship.\nRepairs nearby Ships and Submarines.\nLays sea mines to destroy\nunwary enemy Ships and Submarines.\nRestocks Sea Mines when near\na Naval yard or an Sub Pen.\nCan detect submarines.\n  Unarmed
 	Valued:
 		Cost: 750
@@ -79,17 +143,24 @@ RSHP:
 		HP: 20000
 	Armor:
 		Type: Heavy
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 36,36
 	Mobile:
-		TurnSpeed: 7
-		Speed: 85
+		TurnSpeed: 5
+		Speed: 82
 	RevealsShroud:
 		Range: 6c0
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 5c0
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
 	Turreted:
 		TurnSpeed: 7
-		Offset: -461,0,-80
+		Offset: -468,0,-180
 	Armament:
 		Weapon: Repair
 		Cursor: repair
@@ -100,14 +171,7 @@ RSHP:
 		PauseOnCondition: empdisable
 	AttackTurreted:
 		PauseOnCondition: empdisable
-	SelectionDecorations:
 	WithSpriteTurret:
-	DetectCloaked:
-		CloakTypes: Underwater
-		Range: 4c0
-	RenderDetectionCircle:
-	Selectable:
-		DecorationBounds: 36,36
 	AutoTarget:
 	AutoTargetPriority@DEFAULT:
 		ValidTargets: Ship, Submarine
@@ -142,13 +206,40 @@ RSHP:
 			PointB: 0, 341
 
 DD:
-	-Turreted:
-	-WithSpriteTurret:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
 		BuildPaletteOrder: 3
-		Prerequisites: ~syrd, dome, ~ships.allies, ~!player.germany, ~techlevel.medium
+		Prerequisites: ~syrd, dome, ~ships.allies, ~techlevel.medium
+		Description: Fast multi-role ship.\nCan detect submarines.\n  Strong vs Naval units, Vehicles, Aircraft\n  Weak vs Infantry
 	Valued:
 		Cost: 900
+	Tooltip:
+		Name: Destroyer
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 38,38
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 7
+		Speed: 56
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
 	Turreted@PRIMARY:
 		Turret: primary
 		TurnSpeed: 7
@@ -159,20 +250,30 @@ DD:
 		Offset: -761,0,128
 	Armament@PRIMARY:
 		Turret: primary
+		Weapon: Stinger
+		LocalOffset: 0,-100,0, 0,100,0
+		LocalYaw: 64, -64
 		PauseOnCondition: empdisable
 	Armament@SECONDARY:
+		Turret: primary
 		Name: secondary
-		Turret: secondary
-		Weapon: DepthChargeDual
+		Weapon: StingerAA
+		LocalOffset: 0,-100,0, 0,100,0
+		LocalYaw: 64, -64
 		PauseOnCondition: empdisable
 	Armament@TERTIARY:
+		Turret: secondary
 		Name: tertiary
-		Turret: primary
+		Weapon: DepthChargeDual
+		LocalOffset: 0,-100,0, 0,100,0
+		LocalYaw: 80, -80
 		PauseOnCondition: empdisable
 	AttackTurreted:
 		Armaments: primary, secondary, tertiary
 		Turrets: primary, secondary
 		PauseOnCondition: empdisable
+	RenderRangeCircle:
+		FallbackRange: 8c512
 	WithSpriteTurret@PRIMARY:
 		Turret: primary
 		Sequence: turret
@@ -186,24 +287,76 @@ DD:
 			Radius: 320
 			PointA: 0, -448
 			PointB: 0, 448
-	RenderRangeCircle:
 
 CA:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
 		BuildPaletteOrder: 4
-		BuildDurationModifier: 60
 		Prerequisites: ~syrd, atek, ~ships.allies, ~techlevel.high
+		Description: Very slow long-range ship.\n  Strong vs Buildings, Ground units\n  Weak vs Naval units, Aircraft
 	Valued:
 		Cost: 1800
+	Tooltip:
+		Name: Cruiser
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 44,44
+	Health:
+		HP: 80000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 3
+		Speed: 46
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 7c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	Turreted@PRIMARY:
+		Turret: primary
+		Offset: -896,0,128
+		TurnSpeed: 3
+	Turreted@SECONDARY:
+		Turret: secondary
+		Offset: 768,0,128
+		TurnSpeed: 3
 	Armament@PRIMARY:
+		Turret: primary
+		Weapon: 8Inch
+		LocalOffset: 480,-100,40, 480,100,40
+		Recoil: 171
+		RecoilRecovery: 34
+		MuzzleSequence: muzzle
 		PauseOnCondition: empdisable
 	Armament@SECONDARY:
+		Name: secondary
+		Turret: secondary
+		Weapon: 8Inch
+		LocalOffset: 480,-100,40, 480,100,40
+		Recoil: 171
+		RecoilRecovery: 34
+		MuzzleSequence: muzzle
 		PauseOnCondition: empdisable
 	AttackTurreted:
+		Turrets: primary, secondary
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
 		PauseOnCondition: empdisable
-	RenderRangeCircle:
 	ReloadArmamentsBar:
 		Color: FFFF00
+	WithMuzzleOverlay:
+	RenderRangeCircle:
+	WithSpriteTurret@PRIMARY:
+		Turret: primary
+	WithSpriteTurret@SECONDARY:
+		Turret: secondary
 	HitShape:
 		TargetableOffsets: 576,0,0, -576,0,0
 		Type: Capsule
@@ -220,7 +373,7 @@ CARR:
 		Prerequisites: ~spen, dome, stek, ~ships.soviet, ~techlevel.high
 		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto Produce, Rearm and Repair\nHelicopters at Sea.\nRepairs Ships when deployed.\n  Unarmed
 	Valued:
-		Cost: 1500
+		Cost: 1200
 	Tooltip:
 		Name: Helicarrier
 	Health:
@@ -229,7 +382,7 @@ CARR:
 		Type: Heavy
 	Mobile:
 		TurnSpeed: 255
-		Speed: 85
+		Speed: 82
 	RevealsShroud:
 		Range: 6c0
 		RevealGeneratedShroud: False
@@ -259,25 +412,25 @@ CARR.Deployed:
 	-CapturableProgressBlink:
 	-SpawnActorsOnSell:
 	-GpsDot:
-	GpsDot:
-		String: Ship
 	-Demolishable:
 	-Sellable:
 	-Explodes:
+	-RequiresBuildableArea:
+	-ShakeOnDeath:
+	GpsDot:
+		String: Ship
 	Explodes:
 		Weapon: UnitExplodeShip
 		EmptyWeapon: UnitExplodeShip
 	Selectable:
 		Bounds: 48,48
 	Valued:
-		Cost: 1500
+		Cost: 1200
 	Tooltip:
 		Name: Helicarrier
 	Building:
 		TerrainTypes: Water
 		RequiresBaseProvider: False
-	-RequiresBuildableArea:
-	-ShakeOnDeath:
 	Health:
 		HP: 32500
 	Armor:
@@ -302,7 +455,6 @@ CARR.Deployed:
 	Targetable:
 		TargetTypes: Ground, Water, Ship
 	WithResupplyAnimation:
-	-MapEditorData:
 	Exit@1:
 		SpawnOffset: 0,-256,0
 		ExitCell: 0,0
@@ -362,205 +514,50 @@ CARR.Deployed:
 		StartRepairingNotification: Repairing
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
-
-CARR.New:
-	Inherits: ^Ship
-	Buildable:
-		Queue: Ship
-		BuildAtProductionType: Boat
-		BuildPaletteOrder: 6
-		Prerequisites: ~syrd, dome, techcenter, ~can.has.carrier, ~techlevel.high
-		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto produce, repair and rearm Aircrafts.\nDetects Submarines when deployed.\n  Unarmed
-	Valued:
-		Cost: 2000
-	Tooltip:
-		Name: Aircraft Carrier
-	Health:
-		HP: 65000
-	Armor:
-		Type: Heavy
-	Mobile:
-		TurnSpeed: 3
-		Speed: 42
-	RevealsShroud:
-		Range: 6c0
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 4c0
-	SelectionDecorations:
-	Selectable:
-		DecorationBounds: 72,48
-	Transforms:
-		IntoActor: carr.new.deployed
-		Offset: -1,0
-		Facing: 192
-	RenderSprites:
-		Image: carr.usa
-		Scale: 0.9
-	HitShape:
-		TargetableOffsets: 753,0,0, 0,0,0, -753,0,0
-		Type: Capsule
-			Radius: 341
-			PointA: 0, -753
-			PointB: 0, 753
-
-CARR.New.Deployed:
-	Inherits: ^Building
-	Selectable:
-		Class: afld
-		Bounds: 72,48
-	-GivesBuildableArea:
-	-RepairableBuilding:
-	-WithBuildingRepairDecoration:
-	-EngineerRepairable:
-	-AcceptsDeliveredCash:
-	-WithMakeAnimation:
-	-CaptureManager:
-	-Capturable:
-	-Capturable@2:
-	-CapturableProgressBar:
-	-CapturableProgressBlink:
-	-SpawnActorsOnSell:
-	-GpsDot:
-	GpsDot:
-		String: Ship
-	-Demolishable:
-	-Sellable:
-	-Explodes:
-	Explodes:
-		Weapon: UnitExplodeShip
-		EmptyWeapon: UnitExplodeShip
-	Valued:
-		Cost: 2000
-	Tooltip:
-		Name: Aircraft Carrier
-	Building:
-		Footprint: xxx
-		Dimensions: 3,1
-		TerrainTypes: Water
-		RequiresBaseProvider: False
-	-RequiresBuildableArea:
-	-ShakeOnDeath:
-	Health:
-		HP: 65000
-	Armor:
-		Type: Heavy
-	RevealsShroud:
-		Range: 6c0
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 4c0
-	Transforms:
-		IntoActor: carr.new
-		Offset: 1,0
-		Facing: 192
-	Reservable:
-	WithDecoration@deployed:
-		Image: pips
-		Sequence: tag-deployed
-		ReferencePoint: Top
-		ZOffset: 256
-	Targetable:
-		TargetTypes: Ground, Water, Ship
-	WithResupplyAnimation:
 	-MapEditorData:
-	SelfHealing:
-		Step: -100
-		Delay: 3
-		HealIfBelow: 100
-		DamageCooldown: 0
-		RequiresCondition: disabled
-	Exit@1:
-		SpawnOffset: 0,-256,0
-		ExitCell: 1,2
-		ExitDelay: 3
-		Facing: 192
-	Production:
-		Produces: MWFAir
-		PauseOnCondition: disabled
-	ProductionQueue:
-		Type: MWFAir
-		Group: Plane
-		ReadyAudio: UnitReady
-		BlockedAudio: NoBuild
-		QueuedAudio: Training
-		OnHoldAudio: OnHold
-		CancelledAudio: Cancelled
-		LowPowerModifier: 300
-	ProvidesPrerequisite@allies:
-		Factions: allies, britain, france, germany
-		Prerequisite: aircraft.allies
-		ResetOnOwnerChange: True
-	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine, belarus
-		Prerequisite: aircraft.soviet
-		ResetOnOwnerChange: True
-	ProductionBar:
-		ProductionType: MWFAir
-	ProvidesPrerequisite@ISAIRFIELD:
-		Prerequisite: afld
-	RenderSprites:
-		Image: carr.usa.deployed
-		Scale: 0.9
-	DetectCloaked:
-		CloakTypes: Underwater
-		Range: 7c0
-	RenderDetectionCircle:
-	HitShape:
-		UseTargetableCellsOffsets: true
-		Type: Rectangle
-			TopLeft: -1536, -512
-			BottomRight: 1536, 512
-	#	HitShape:
-	#	TargetableOffsets: 653,0,0, -653,0,0
-	#	Type: Capsule
-	#	Radius: 341
-	#	PointA: 0, -653
-	#	PointB: 0, 653
-	ActorLostNotification:
-		Notification: NavalUnitLost
-	RepairsUnits:
-		HpPerStep: 500
-		Interval: 7
-		StartRepairingNotification: Repairing
-		FinishRepairingNotification: UnitRepaired
-		PlayerExperience: 15
 
 SS:
-	Buildable:
-		Prerequisites: ~disabled
-
-#	clone of SS to circumvent bugs with it inheriting weird vision from somewhere
-SS.new:
 	Inherits: ^Submarine
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
+	-Cloak:
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 2
-		Prerequisites: ~spen, proc, ~ships.soviet, ~!player.ukraine, ~techlevel.low
-		Description: Submerged anti-ship unit\narmed with torpedoes.\nCan detect other submarines.\n  Strong vs Naval units\n  Weak vs Ground units, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+		Prerequisites: ~spen, proc, ~ships.soviet, ~techlevel.low
+		Description: Submerged anti-ship unit armed with Torpedoes\nand Grenadelauncher against Coastal targets.\nCan detect other submarines.\n  Strong vs Infantry, Naval units\n  Weak vs Ground units, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.\nMovespeed increase by 20% when on surface\nunless the Submarine is heavily damaged.
 	Valued:
 		Cost: 775
 	Tooltip:
 		Name: Submarine
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
+	Selectable:
+		DecorationBounds: 38,38
+	SelectionDecorations:
 	Health:
 		HP: 25000
 	Armor:
 		Type: Light
 	Mobile:
 		TurnSpeed: 4
-		Speed: 71
+		Speed: 56
 	Armament:
 		Weapon: TorpTube
 		LocalOffset: 0,-171,0, 0,171,0
 		FireDelay: 2
 		PauseOnCondition: empdisable
-	AttackFrontal:
+	Armament@SECONDARY:
+		Name: secondary
+		Turret: secondary
+		Weapon: GrenadeLauncher
+		LocalOffset: 132,0,96
+		MuzzleSequence: muzzle
 		PauseOnCondition: empdisable
-	SelectionDecorations:
+	AttackFrontal:
+		Armaments: primary, secondary
+		PauseOnCondition: empdisable
+	WithMuzzleOverlay:
 	AutoTarget:
 		InitialStance: Defend
 		InitialStanceAI: ReturnFire
@@ -568,8 +565,6 @@ SS.new:
 		ValidTargets: Water, Underwater
 	AutoTargetPriority@ATTACKANYTHING:
 		ValidTargets: Water, Underwater
-	Selectable:
-		DecorationBounds: 38,38
 	RenderSprites:
 		Image: ss
 	HitShape:
@@ -578,46 +573,6 @@ SS.new:
 			Radius: 256
 			PointA: 0, -448
 			PointB: 0, 448
-
-SS.AG:
-	Inherits: SS.new
-	Valued:
-		Cost: 950
-	Buildable:
-		Queue: Ship
-		BuildAtProductionType: Submarine
-		BuildPaletteOrder: 5
-		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
-		Description: Submerged multi-role unit\narmed with torpedoes\nand grenadelauncher.\nCan carry two Infantry.\nCan detect other submarines.\n  Strong vs Infantry, Buildings\n  Weak vs Tanks, Aircraft\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.
-	Tooltip:
-		Name: Attack Submarine
-	Health:
-		HP: 32500
-	Mobile:
-		TurnSpeed: 3
-		Speed: 42
-		PauseOnCondition: !(!notmobile && !empdisable)
-	Armament@SECONDARY:
-		Name: secondary
-		Weapon: GrenadeLauncher.sub
-		LocalOffset: 612,0,192
-		MuzzleSequence: muzzle
-		PauseOnCondition: empdisable
-	AttackFrontal:
-		Armaments: primary, secondary
-	WithMuzzleOverlay:
-	WithMoveAnimation:
-		MoveSequence: move
-		RequiresCondition: !underwater
-	RenderSprites:
-		Image: ADVSUB
-	Cargo:
-		MaxWeight: 2
-		PipCount: 2
-		Types: Infantry
-		PassengerFacing: 0
-		LoadingCondition: notmobile
-	-Cloak:
 	Cloak:
 		CloakTypes: Underwater
 		InitialDelay: 0
@@ -629,33 +584,28 @@ SS.AG:
 		IsPlayerPalette: false
 		UncloakOn: Attack, Heal, Unload, Dock, SelfHeal, Demolish
 		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit || is-shooting
-		RequiresCondition: !notmobile
+		RequiresCondition: !deployed
 	GrantConditionOnAttack@UNCLOAK:
 		Condition: is-shooting
 		ArmamentNames: secondary
 		RevokeDelay: 75
-	-GrantConditionOnDeploy:
-	HitShape:
-		TargetableOffsets: 576,0,0, -576,0,0
-		Type: Capsule
-			Radius: 341
-			PointA: 0, -576
-			PointB: 0, 576
+	Turreted@SECONDARY:
+		Turret: secondary
+		TurnSpeed: 4
+		Offset: 648,0,-50
+	WithSpriteTurret:
+		Turret: secondary
+		RequiresCondition: !underwater
 
 MSUB:
-	Buildable:
-		Prerequisites: ~disabled
-
-#	clone of MSUB to circumvent bugs with it inheriting weird vision from somewhere
-MSUB.new:
 	Inherits: ^Submarine
-	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
 		BuildPaletteOrder: 4
 		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
-		Description: Submerged anti-ground siege unit.\nCan detect other submarines.\n  Strong vs Buildings, Ground units, Aircraft\n  Weak vs Naval units\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+		Description: Submerged anti-ground siege unit.\nCan detect other submarines.\n  Strong vs Buildings, Ground units, Aircraft\n  Weak vs Naval units\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.\nMovespeed increase by 20% when on surface\nunless the Submarine is heavily damaged.
 		BuildDurationModifier: 60
 	Valued:
 		Cost: 1750
@@ -669,7 +619,7 @@ MSUB.new:
 		Type: Light
 	Mobile:
 		TurnSpeed: 3
-		Speed: 42
+		Speed: 46
 	Armament@PRIMARY:
 		Weapon: SubMissile.2shot
 		LocalOffset: 0,-171,0
@@ -714,20 +664,21 @@ MSUB.new:
 			PointB: 0, 576
 
 MSUB.AA:
-	Inherits: MSUB.new
+	Inherits: MSUB
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
 		BuildPaletteOrder: 3
 		Prerequisites: ~spen, dome, ~ships.soviet, ~techlevel.medium
-		Description: Submerged unit with anti-air capabilities.\nCan detect other submarines.\n  Strong vs Aircraft\n  Cannot attack ground units\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+		Description: Submerged unit with anti-air capabilities.\nCan detect other submarines.\n  Strong vs Aircraft\n  Cannot attack ground units\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.\nMovespeed increase by 20% when on surface\nunless the Submarine is heavily damaged.
 	Tooltip:
 		Name: SAM Submarine
 	Valued:
-		Cost: 1250
+		Cost: 950
 	Health:
 		HP: 25000
 	Mobile:
 		TurnSpeed: 4
-		Speed: 71
+		Speed: 68
 	-Armament@PRIMARY:
 	-Armament@SECONDARY:
 	Armament@PRIMARY:
@@ -759,13 +710,14 @@ MSUB.AA:
 
 NSUB:
 	Inherits: ^Submarine
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
-		BuildPaletteOrder: 7
+		BuildPaletteOrder: 5
 		BuildLimit: 1
-		Prerequisites: ~spen, stek, ~ships.soviet, ~soviet.or.russia, ~techlevel.high
-		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
+		Prerequisites: ~spen, stek, ~ships.soviet, ~techlevel.high
+		Description: Submerged anti-ground/anti-naval\nunit armed with nuclear warhead.\nCan detect other submarines.\nMaximum 1 can be built.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.\nMovespeed increase by 20% when on surface\nunless the Submarine is heavily damaged.
 	Valued:
 		Cost: 2400
 	Tooltip:
@@ -776,7 +728,7 @@ NSUB:
 		Type: Light
 	Mobile:
 		TurnSpeed: 3
-		Speed: 50
+		Speed: 46
 	Armament@AS:
 		Name: primary
 		Weapon: TorpNuke
@@ -825,71 +777,8 @@ NSUB:
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 5c0
-
-FSUB:
-	Inherits: ^Submarine
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
-	-Cloak:
-	Buildable:
-		Queue: Ship
-		BuildAtProductionType: Submarine
-		BuildPaletteOrder: 7
-		Prerequisites: ~spen, ftur, dome, ~ships.soviet, ~player.ukraine, ~techlevel.high
-		Description: Submerged anti-ship unit\narmed with fireball launcher.\n Strong vs Ships and Infantry.\n Weak vs Aircraft and Defenses.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.
-	Valued:
-		Cost: 800
-	Tooltip:
-		Name: Flame Submarine
-	UpdatesPlayerStatistics:
-		AddToArmyValue: true
-	Health:
-		HP: 25000
-	Armor:
-		Type: Light
-	Mobile:
-		TurnSpeed: 3
-		Speed: 42
-	Armament:
-		Weapon: FireballLauncher.Single
-		LocalOffset: 512,0,88
-		PauseOnCondition: empdisable
-	Turreted:
-		TurnSpeed: 255
-		Offset: 525,0,-46
-	WithSpriteTurret:
-		RequiresCondition: !underwater
-	AttackFrontal:
-		PauseOnCondition: empdisable
-	SelectionDecorations:
-	Selectable:
-		DecorationBounds: 38,38
-	AutoTarget:
-		InitialStance: ReturnFire
-		InitialStanceAI: ReturnFire
-	Selectable:
-		DecorationBounds: 38,38
-	Cloak:
-		CloakTypes: Underwater
-		InitialDelay: 0
-		CloakDelay: 50
-		CloakSound: subshow1.aud
-		UncloakSound: subshow1.aud
-		CloakedCondition: underwater
-		Palette: submerged
-		IsPlayerPalette: false
-		UncloakOn: Attack, Heal, Unload, Dock, SelfHeal, Demolish
-		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit || is-shooting
-		RequiresCondition: !deployed
-	GrantConditionOnAttack@UNCLOAK:
-		Condition: is-shooting
-		ArmamentNames: secondary
-		RevokeDelay: 50
-	HitShape:
-		TargetableOffsets: 448,0,0, -448,0,0
-		Type: Capsule
-			Radius: 320
-			PointA: 0, -448
-			PointB: 0, 448
+	GpsDot:
+		String: Nuke
 
 MINS:
 	Inherits: ^Mine

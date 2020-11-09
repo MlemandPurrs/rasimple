@@ -24,7 +24,7 @@ Terrain:
 		Type: Ore
 		TargetTypes: Ground
 		AcceptsSmudgeType: Crater, Scorch
-		Color: 948060
+		Color: A1E21C
 		RestrictPlayerColor: true
 	TerrainType@Tree:
 		Type: Tree

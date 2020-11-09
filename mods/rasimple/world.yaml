@@ -39,20 +39,6 @@
 			Shallow: 80
 			Water: 80
 			River: 80
-	Locomotor@CHEM:
-		Name: chem
-		Crushes: mine, crate
-		SharesCell: true
-		TerrainSpeeds:
-			Clear: 90
-			Rough: 80
-			Road: 100
-			Bridge: 100
-			Ore: 80
-			Gems: 80
-			Scraps: 80
-			Beach: 80
-			Shallow: 80
 	Locomotor@WHEELED:
 		Name: wheeled
 		Crushes: mine, crate
@@ -150,36 +136,20 @@
 		Name: amphibious
 		Crushes: infantry, mine, crate
 		TerrainSpeeds:
-			Clear: 50
-			Rough: 30
-			Road: 60
+			Clear: 80
+			Rough: 70
+			Road: 90
 			Bridge: 60
-			Ore: 30
-			Gems: 30
-			Scraps: 30
-			Beach: 70
-			Shallow: 70
-			Water: 80
+			Ore: 50
+			Gems: 50
+			Scraps: 50
+			Beach: 80
+			Shallow: 80
+			Water: 90
 			River: 70
 	Locomotor@IMMOBILE:
 		Name: immobile
 		TerrainSpeeds:
-	JumpjetLocomotor@JUMPJET:
-		Name: jumpjet
-		Crushes: crate
-		SharesCell: true
-		JumpjetTransitionCost: 100
-		TerrainSpeeds:
-			Clear: 90
-			Rough: 80
-			Road: 100
-			Bridge: 100
-			Beach: 90
-			Ore: 90
-			Gems: 90
-			Scraps: 90
-			Shallow: 90
-			Jumpjet: 110
 	TerrainRenderer:
 	ShroudRenderer:
 		FogVariants: shroud
@@ -189,22 +159,8 @@
 		Name: Any
 		InternalName: Random
 		RandomFactionMembers: allies, soviet
-		Side: Random
+		Side: Red Alert
 		Description: Random Side\nA random side will be chosen when the game starts.
-	Faction@randomallies:
-		Name: Allies
-		InternalName: RandomAllies
-		RandomFactionMembers: england, france, germany
-		Side: Random
-		Description: Random Allied Country\nA random Allied country will be chosen when the game starts.
-		Selectable: False
-	Faction@randomsoviet:
-		Name: Soviet
-		InternalName: RandomSoviet
-		RandomFactionMembers: russia, ukraine, belarus
-		Side: Random
-		Description: Random Soviet Country\nA random Soviet country will be chosen when the game starts.
-		Selectable: False
 	Faction@0:
 		Name: Allies
 		InternalName: allies
@@ -220,7 +176,7 @@
 		Name: France
 		InternalName: france
 		Side: Allies
-		Description: France\nSpecialization: Deception\nThe forces of France are capable of deceiving their enemies in many ways.\nFaction Variations:\n    - Tanks* fire faster but deal less damage.\n*Those Tanks being the Light and Medium Tanks.\n+10% faster rate of fire, deals -250/-500 damage per shot on affected Tanks.\nThis bonus does not affect secondary weaponry.\n    - Can build Fake structures.\nThis selection of fake structures look precisely\n as an real building to the enemy.\nVeterancy Bonus:\n    - Grenadier and Artillery gets built as Veteran.\nUnique Support Powers:\n    - Decoy Army (Tech Center)\nDelivers an group of Fake units at your primary War Factory.\nThose remote-controlled units armed with dummy weaponry\nwill look identical to the opponent.\nSpecial Units:\n    - Medic (Infantry)\nInfantry capable of healing others during combat.\n    - Phase Transport (Vehicle)\nTransport that is cloaked when out of combat.\n    - Fake Vehicles\nCapable of producing fake doubles of MCV, Supply Truck and MGG.
+		Description: France\nSpecialization: Deception\nThe forces of France are capable of deceiving their enemies in many ways.\nFaction Variations:\n    - Tanks* fire faster but deal less damage.\n*Those Tanks being the Light and Medium Tanks.\n+10% faster rate of fire, deals -250/-500 damage per shot on affected Tanks.\nThis bonus does not affect secondary weaponry.\n    - Can build Fake structures.\nThis selection of fake structures look precisely\n as an real building to the enemy.\nVeterancy Bonus:\n    - Artillery gets built as Veteran.\nUnique Support Powers:\n    - Decoy Army (Tech Center)\nDelivers an group of Fake units at your primary War Factory.\nThose remote-controlled units armed with dummy weaponry\nwill look identical to the opponent.\nSpecial Units:\n    - Medic (Infantry)\nInfantry capable of healing others during combat.\n    - Phase Transport (Vehicle)\nTransport that is cloaked when out of combat.\n    - Fake Vehicles\nCapable of producing fake doubles of MCV, Supply Truck and MGG.
 		Selectable: False
 	Faction@3:
 		Name: Germany
@@ -251,18 +207,6 @@
 		Side: Soviet
 		Description: Belarus\nSpecialization: Secret Weapons\nThe forces of Belarus have ingenious inventions at their disposal.\nFaction Variations:\n    - Tanks* are cheaper to build but have less health.\n*Those Tanks being both types of Heavy Tanks.\n10% cheaper to build at the cost of having 10% less Hitpoints.\n    - Paratroopers available twice as frequent.\nVeterancy Bonus:\n    - Yak Plane and Flak Truck gets built as Veteran.\nUnique Support Power:\n    - Paramines (Tech Center)\nA Badger paradrops one Minelayer anywhere on the map.\nSpecial Units:\n    - Sniper (Infantry)\nSharpshooter infantry that can kill most Infantry in one shot.\n    - MAD Tank (Vehicle)\nDevice capable of emitting seismic waves when deployed that damage structures.\n    - Nuclear Bomber (Aircraft)\nUnits capable of delivering tactical Nuclear warheads.
 		Selectable: False
-	Faction@GDI:
-		Name: GDI
-		InternalName: gdi
-		Side: Tiberian Dawn
-		Description: Global Defense Initiative\nThe GDI is an international military branch of the United Nations that are tasked\nwith keeping the world peace. Commanding the combined forces of the world's\nmost powerful nations, the GDI posseses an unmatched arsenal of weaponry.
-		Selectable: False
-	Faction@Nod:
-		Name: Nod
-		InternalName: nod
-		Side: Tiberian Dawn
-		Description: Brotherhood of Nod\nThe Brotherhood is a fanatical religious cult centered around their leader Kane\nand the alien substance Tiberium. They utilize stealth technology, propaganda\nand guerilla tactics to defeat those who oppose their goal of world domination.
-		Selectable: False
 	ResourceType@ore:
 		Type: Ore
 		Name: Valuable Minerals
@@ -278,7 +222,7 @@
 	ResourceType@gem:
 		Type: Gems
 		Name: Valuable Minerals
-		PipColor: Red
+		PipColor: Blue
 		ResourceType: 2
 		TerrainType: Gems
 		Palette: player
@@ -289,7 +233,7 @@
 		AllowUnderActors: true
 	ResourceType@scrap:
 		Type: Scraps
-		Name: Valuable Minerals
+		Name: Scrap Metal
 		PipColor: Gray
 		ResourceType: 3
 		TerrainType: Scraps
@@ -352,11 +296,6 @@ World:
 		ClassName: MCV Only
 		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
 		BaseActor: mcv
-	MPStartUnits@mcvonly2:
-		Class: mcv
-		ClassName: MCV Only
-		Factions: gdi, nod
-		BaseActor: mcv.cnc
 	MPStartUnits@deployedallies:
 		Class: none
 		ClassName: Conyard + Scout
@@ -371,22 +310,6 @@ World:
 		Factions: soviet, russia, ukraine, belarus
 		BaseActor: fact
 		SupportActors: ftrk.scout
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@deployedgdi:
-		Class: none
-		ClassName: Conyard + Scout
-		Factions: gdi
-		BaseActor: fact.cnc
-		SupportActors: hmmv.scout
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@deployednod:
-		Class: none
-		ClassName: Conyard + Scout
-		Factions: nod
-		BaseActor: fact.cnc
-		SupportActors: bggy.scout
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	MPStartUnits@lightalliesa:
@@ -453,74 +376,10 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,apc.soviet,ftrk,3tnk,3tnk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@lightnoda:
-		Class: light
-		ClassName: Light Support
-		Factions: nod
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,bggy,1tnk.nod
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@lightnodb:
-		Class: light
-		ClassName: Light Support
-		Factions: nod
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,napc,bggy
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@lightgdia:
-		Class: light
-		ClassName: Light Support
-		Factions: gdi
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,gapc,hmmv
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@lightgdib:
-		Class: light
-		ClassName: Light Support
-		Factions: gdi
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,hmmv,2tnk.gdi
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@heavynoda:
-		Class: heavy
-		ClassName: Heavy Support
-		Factions: nod
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,bggy,1tnk.nod,1tnk.nod,ftnk,1tnk.nod
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@heavynodb:
-		Class: heavy
-		ClassName: Heavy Support
-		Factions: nod
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,napc,bggy,1tnk.nod,1tnk.nod,1tnk.nod
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@heavygdia:
-		Class: heavy
-		ClassName: Heavy Support
-		Factions: gdi
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,hmmv,hmmv,2tnk.gdi,2tnk.gdi
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@heavygdib:
-		Class: heavy
-		ClassName: Heavy Support
-		Factions: gdi
-		BaseActor: mcv.cnc
-		SupportActors: e1,e1,e1,e3,e3,gapc,hmmv,2tnk.gdi,2tnk.gdi
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
 	MPStartUnits@cratehunters:
 		Class: mhq
 		ClassName: Crate Hunters
-		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus, gdi, nod
+		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
 		BaseActor: MHQ.Start
 	MPStartLocations:
 		SeparateTeamSpawnsCheckboxDisplayOrder: 6
@@ -550,7 +409,6 @@ World:
 		Owner: Creeps
 		Types: mine,gmine
 	LuaScript:
-		#	Scripts: cossackscript.lua
 	TimeLimitManager:
 		TimeLimitWarnings:
 			40: FourtyMinutesRemaining

@@ -60,13 +60,6 @@
 
 e1:
 	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-	cncicon: cnce1icon
-	rank2-icon: e1r2icon
-
-e1lmg:
-	Inherits@PostDeath: ^Rot
 	stand:
 		Facings: 8
 	stand2:
@@ -151,9 +144,9 @@ e1lmg:
 	garrison-muzzle: minigun
 		Length: 6
 		Facings: 8
-	icon: mgiicon
+	icon: e1icon
 
-e1sniper:
+e2:
 	Inherits@PostDeath: ^Rot
 	stand:
 		Facings: 8
@@ -164,11 +157,130 @@ e1sniper:
 		Start: 16
 		Length: 6
 		Facings: 8
-		Tick: 100
+		Tick: 80
+	throw:
+		Start: 64
+		Length: 20
+		Facings: 8
+	parachute:
+		Start: 505
+	idle1:
+		Start: 384
+		Length: 14
+		Tick: 120
+	idle2:
+		Start: 399
+		Length: 16
+		Tick: 120
+	die1:
+		Start: 416
+		Length: 8
+	die2:
+		Start: 424
+		Length: 8
+	die3:
+		Start: 432
+		Length: 8
+	die4:
+		Start: 440
+		Length: 12
+	die5:
+		Start: 452
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 240
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 240
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 240
+		Length: 4
+		Facings: 8
+		Tick: 80
+	prone-throw:
+		Start: 288
+		Length: 12
+		Facings: 8
+	icon: e2icon
+
+e3:
+	Inherits@PostDeath: ^Rot
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 120
 	shoot:
 		Start: 64
 		Length: 8
 		Facings: 8
+	parachute:
+		Start: 393
+	idle1:
+		Start: 272
+		Length: 14
+		Tick: 120
+	idle2:
+		Start: 287
+		Length: 16
+		Tick: 120
+	die1:
+		Start: 304
+		Length: 8
+	die2:
+		Start: 312
+		Length: 8
+	die3:
+		Start: 320
+		Length: 8
+	die4:
+		Start: 328
+		Length: 12
+	die5:
+		Start: 340
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
 	prone-stand:
 		Start: 144
 		Stride: 4
@@ -181,80 +293,29 @@ e1sniper:
 		Start: 144
 		Length: 4
 		Facings: 8
-		Tick: 100
-	liedown:
-		Start: 128
-		Length: 2
-		Facings: 8
-	standup:
-		Start: 176
-		Length: 2
-		Facings: 8
+		Tick: 120
 	prone-shoot:
 		Start: 192
-		Length: 8
+		Length: 10
 		Facings: 8
-	parachute:
-		Start: 377
-	idle1:
-		Start: 256
-		Length: 16
-		Tick: 120
-	idle2:
-		Start: 272
-		Length: 16
-		Tick: 120
-	die1:
-		Start: 288
-		Length: 8
-	die2:
-		Start: 296
-		Length: 8
-	die3:
-		Start: 304
-		Length: 8
-	die4:
-		Start: 312
-		Length: 12
-	die5:
-		Start: 324
-		Length: 18
-	die6: electro
-		Length: *
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-			INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
-	die-crushed: corpse1
-		Length: *
-		Tick: 1600
-		ZOffset: -511
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-			INTERIOR: TEMPERAT
-	garrison-muzzle: minigun
-		Length: 6
-		Facings: 8
-	icon: snipericon
-
-e2:
-	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-	cncicon: cnce2icon
-	rank2-icon: e2r2icon
-
-e3:
-	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-	cncicon: cnce3icon
+	icon: e3icon
 
 e4:
 	Inherits@PostDeath: ^Rot
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 120
+	shoot:
+		Start: 64
+		Length: 16
+		Facings: 8
 	muzzle:
 		Combine:
 			flame-n:
@@ -283,10 +344,266 @@ e4:
 				Offset: -7,8
 		Facings: 8
 		Length: 13
+	parachute:
+		Start: 528
+	idle1:
+		Start: 384
+		Length: 14
+		Tick: 120
+	idle2:
+		Start: 399
+		Length: 16
+		Tick: 120
+	die1:
+		Start: 416
+		Length: 8
+	die2:
+		Start: 424
+		Length: 8
+	die3:
+		Start: 432
+		Length: 8
+	die4:
+		Start: 440
+		Length: 12
+	die5:
+		Start: 452
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
 	die7: poisondeath
 		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 208
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 208
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 208
+		Length: 4
+		Facings: 8
+		Tick: 120
+	prone-shoot:
+		Start: 256
+		Length: 16
+		Facings: 8
+	icon: e4icon
 
-e5:
+e6:
+	Inherits@PostDeath: ^Rot
+	stand:
+		Start: 0
+		Facings: 8
+	stand2:
+		Start: 0
+		Facings: 8
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	parachute:
+		Start: 210
+	idle1:
+		Start: 121
+		Length: 8
+		Tick: 120
+	idle2:
+		Start: 130
+		Length: 14
+		Tick: 120
+	die1:
+		Start: 146
+		Length: 8
+	die2:
+		Start: 154
+		Length: 8
+	die3:
+		Start: 162
+		Length: 8
+	die4:
+		Start: 170
+		Length: 12
+	die5:
+		Start: 182
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 82
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 82
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 82
+		Length: 4
+		Facings: 8
+		Tick: 100
+	icon: e6icon
+
+medi:
+	Inherits@PostDeath: ^Rot
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		Tick: 100
+	heal:
+		Start: 56
+		Length: 58
+		Tick: 120
+	standup:
+		Start: 114
+		Length: 2
+		Facings: 8
+	idle:
+		Start: 178
+		Length: 14
+		Tick: 120
+	die1:
+		Start: 193
+		Length: 7
+	die2:
+		Start: 201
+		Length: 8
+	die3:
+		Start: 209
+		Length: 8
+	die4:
+		Start: 217
+		Length: 12
+	die5:
+		Start: 229
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 130
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 130
+		Length: 4
+		Facings: 8
+		Tick: 100
+	icon: mediicon
+
+mech:
+	Inherits@PostDeath: ^Rot
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		Tick: 100
+	repair:
+		Start: 56
+		Length: 58
+		Tick: 120
+	standup:
+		Start: 114
+		Length: 2
+		Facings: 8
+	idle:
+		Start: 178
+		Length: 14
+		Tick: 120
+	die1:
+		Start: 193
+		Length: 7
+	die2:
+		Start: 201
+		Length: 8
+	die3:
+		Start: 209
+		Length: 8
+	die4:
+		Start: 217
+		Length: 12
+	die5:
+		Start: 229
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 130
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 130
+		Length: 4
+		Facings: 8
+		Tick: 100
+	icon: mechicon
+
+spy:
 	Inherits@PostDeath: ^Rot
 	stand:
 		Facings: 8
@@ -300,67 +617,36 @@ e5:
 		Tick: 100
 	shoot:
 		Start: 64
-		Length: 16
+		Length: 8
 		Facings: 8
-	liedown:
-		Start: 192
-		Length: 2
-		Facings: 8
-	standup:
-		Start: 240
-		Length: 2
-		Facings: 8
-	prone-stand:
-		Start: 208
-		Stride: 4
-		Facings: 8
-	prone-stand2:
-		Start: 208
-		Stride: 4
-		Facings: 8
-	prone-run:
-		Start: 208
-		Length: 4
-		Facings: 8
-		Tick: 100
-	prone-shoot:
-		Start: 256
-		Length: 16
+	garrison-muzzle: minigun
+		Length: 6
 		Facings: 8
 	idle1:
-		Start: 384
-		Length: 16
+		Start: 256
+		Length: 14
 		Tick: 120
 	idle2:
-		Start: 400
+		Start: 271
 		Length: 16
 		Tick: 120
-	cheer:
-		Start: 588
-		Length: 3
-		Facings: 8
-		Tick: 120
 	die1:
-		Start: 509
-		Length: 9
-		Tick: 80
+		Start: 288
+		Length: 8
 	die2:
-		Start: 518
+		Start: 296
 		Length: 8
-		Tick: 80
 	die3:
-		Start: 526
+		Start: 304
 		Length: 8
-		Tick: 80
 	die4:
-		Start: 534
+		Start: 312
 		Length: 12
-		Tick: 80
 	die5:
-		Start: 546
+		Start: 324
 		Length: 18
-		Tick: 80
 	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 		Length: *
 		UseTilesetExtension: true
 		TilesetOverrides:
@@ -369,82 +655,33 @@ e5:
 	die7: poisondeath
 		Length: *
 	die-crushed: corpse1
-		Length: *
+		Length: 6
 		Tick: 1600
 		ZOffset: -511
 		UseTilesetExtension: true
 		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-	muzzle:
-		Combine:
-			chem-n:
-				Length: *
-				Offset: 1,2
-			chem-nw:
-				Length: *
-				Offset: 8,2
-			chem-w:
-				Length: *
-				Offset: 8,-3
-			chem-sw:
-				Length: *
-				Offset: 7,-6
-			chem-s:
-				Length: *
-				Offset: 1,-6
-			chem-se:
-				Length: *
-				Offset: -5,-6
-			chem-e:
-				Length: *
-				Offset: -7,-3
-			chem-ne:
-				Length: *
-				Offset: -3,2
+	prone-stand:
+		Start: 144
+		Stride: 4
 		Facings: 8
-		Length: 13
-	parachute:
-		Start: 588
-		Length: 2	
-	icon: e5icon
-
-e6:
-	Inherits@PostDeath: ^Rot
-	stand:
-		Start: 0
+	prone-stand2:
+		Start: 144
+		Stride: 4
 		Facings: 8
-	stand2:
-		Start: 0
+	prone-run:
+		Start: 144
+		Length: 4
 		Facings: 8
-	die7: poisondeath
-		Length: *
-
-medi:
-	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-	cncicon: cncmediicon
-
-mech:
-	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-
-spy:
-	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-	garrison-muzzle: minigun
-		Length: 6
+		Tick: 100
+	prone-shoot:
+		Start: 192
+		Length: 8
 		Facings: 8
+	icon: spyicon
 
 thf:
-	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-
-infl:
 	Inherits@PostDeath: ^Rot
 	stand:
 		Facings: 8
@@ -453,51 +690,27 @@ infl:
 		Length: 6
 		Facings: 8
 		Tick: 100
-	shoot:
-		Start: 56
-		Length: 4
-		Facings: 8
-	prone-stand:
-		Start: 104
-		Stride: 4
-		Facings: 8
-	prone-run:
-		Start: 104
-		Length: 4
-		Facings: 8
-		Tick: 100
-	standup:
-		Start: 136
-		Length: 2
-		Facings: 8
-	prone-shoot:
-		Start: 152
-		Length: 4
-		Facings: 8
-	idle1:
-		Start: 184
-		Length: 26
-		Tick: 120
-	idle2:
-		Start: 184
-		Length: 26
+	idle:
+		Start: 120
+		Length: 19
 		Tick: 120
 	die1:
-		Start: 210
+		Start: 139
 		Length: 8
 	die2:
-		Start: 218
+		Start: 147
 		Length: 8
 	die3:
-		Start: 226
+		Start: 155
 		Length: 8
 	die4:
-		Start: 234
+		Start: 163
 		Length: 12
 	die5:
-		Start: 246
+		Start: 175
 		Length: 18
 	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 		Length: *
 		UseTilesetExtension: true
 		TilesetOverrides:
@@ -506,22 +719,94 @@ infl:
 	die7: poisondeath
 		Length: *
 	die-crushed: corpse1
-		Length: *
+		Length: 6
 		Tick: 1600
 		ZOffset: -511
 		UseTilesetExtension: true
 		TilesetOverrides:
 			DESERT: TEMPERAT
-            INTERIOR: TEMPERAT
-	garrison-muzzle: minigun
-		Length: 6
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 72
+		Stride: 4
 		Facings: 8
-	icon: inflicon
+	prone-run:
+		Start: 72
+		Length: 4
+		Facings: 8
+		Tick: 80
+	icon: thficon
 
 e7:
 	Inherits@PostDeath: ^Rot
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		Tick: 80
+	shoot:
+		Start: 56
+		Length: 7
+		Facings: 8
+	idle1:
+		Start: 233
+		Length: 14
+		Tick: 120
+	idle2:
+		Start: 248
+		Length: 14
+		Tick: 120
+	die1:
+		Start: 262
+		Length: 8
+	die2:
+		Start: 270
+		Length: 8
+	die3:
+		Start: 278
+		Length: 8
+	die4:
+		Start: 286
+		Length: 12
+	die5:
+		Start: 298
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
 	die7: poisondeath
 		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	prone-stand:
+		Start: 128
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 128
+		Length: 4
+		Facings: 8
+		Tick: 80
+	prone-shoot:
+		Start: 176
+		Length: 7
+		Facings: 8
+	garrison-muzzle: minigun
+		Length: 3
+		Stride: 6
+		Facings: 8
 	swim_idle: bikinitany
 		Start: 1
 		Facings: 8
@@ -576,279 +861,151 @@ e7:
 		Length: 9
 		Tick: 100
 		Transpose: True
+	icon: e7icon
+
+gnrl:
+	stand:
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 56
+		Length: 4
+		Facings: 8
+	prone-stand:
+		Start: 104
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 104
+		Length: 4
+		Facings: 8
+		Tick: 100
+	standup:
+		Start: 136
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 152
+		Length: 4
+		Facings: 8
+	idle1:
+		Start: 184
+		Length: 26
+		Tick: 120
+	die1:
+		Start: 210
+		Length: 8
+	die2:
+		Start: 218
+		Length: 8
+	die3:
+		Start: 226
+		Length: 8
+	die4:
+		Start: 234
+		Length: 12
+	die5:
+		Start: 246
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
 
 volk:
 	Inherits@PostDeath: ^Rot
 	Defaults: gnrl
 	Inherits: gnrl
+	garrison-muzzle: minigun
+		Length: 6
+		Facings: 8
 	icon: volkicon
-	die7: poisondeath
-		Length: *
-	garrison-muzzle: minigun
-		Length: 6
-		Facings: 8
-
-gdirmbo:
-	Inherits@PostDeath: ^Rot
-	stand:
-		Facings: 8
-	run:
-		Start: 8
-		Length: 6
-		Facings: 8
-		Tick: 100
-	shoot:
-		Start: 56
-		Length: 7
-		Facings: 8
-	liedown:
-		Start: 112
-		Length: 2
-		Facings: 8
-	standup:
-		Start: 160
-		Length: 2
-		Facings: 8
-	prone-stand:
-		Start: 128
-		Stride: 4
-		Facings: 8
-	prone-run:
-		Start: 128
-		Length: 4
-		Facings: 8
-		Tick: 100
-	prone-shoot:
-		Start: 176
-		Length: 7
-		Facings: 8
-	idle1:
-		Start: 232
-		Length: 30
-		Tick: 120
-	idle2:
-		Start: 232
-		Length: 30
-		Tick: 120
-	die1:
-		Start: 262
-		Length: 8
-		Tick: 80
-	die2:
-		Start: 270
-		Length: 8
-		Tick: 80
-	die3:
-		Start: 278
-		Length: 8
-		Tick: 80
-	die4:
-		Start: 286
-		Length: 12
-		Tick: 80
-	die5:
-		Start: 298
-		Length: 18
-		Tick: 80
-	die6: electro
-		Length: *
-		UseTilesetExtension: true
-		TilesetOverrides:
-            DESERT: TEMPERAT
-            INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
-	die-crushed: corpse1
-		Length: *
-		Tick: 1600
-		ZOffset: -511
-		UseTilesetExtension: true
-		TilesetOverrides:
-            DESERT: TEMPERAT
-            INTERIOR: TEMPERAT
-	garrison-muzzle: minigun
-		Length: 6
-		Facings: 8
-	icon: gdirmboicon
-
-nodrmbo:
-	Inherits@PostDeath: ^Rot
-	stand:
-		Facings: 8
-	stand2:
-		Start: 8
-		Facings: 8
-	run:
-		Start: 16
-		Length: 6
-		Facings: 8
-		Tick: 100
-	shoot:
-		Start: 64
-		Length: 4
-		Facings: 8
-	liedown:
-		Start: 96
-		Length: 2
-		Facings: 8
-	standup:
-		Start: 144
-		Length: 2
-		Facings: 8
-	prone-stand:
-		Start: 112
-		Stride: 4
-		Facings: 8
-	prone-stand2:
-		Start: 112
-		Stride: 4
-		Facings: 8
-	prone-run:
-		Start: 112
-		Length: 4
-		Facings: 8
-		Tick: 100
-	prone-shoot:
-		Start: 160
-		Length: 4
-		Facings: 8
-	idle1:
-		Start: 192
-		Length: 16
-		Tick: 120
-	idle2:
-		Start: 208
-		Length: 16
-		Tick: 120
-	idle3:
-		Start: 224
-		Length: 15
-		Tick: 120
-	cheer:
-		Start: 396
-		Length: 3
-		Facings: 8
-		Tick: 120
-	die1:
-		Start: 318
-		Length: 8
-		Tick: 80
-	die2:
-		Start: 326
-		Length: 8
-		Tick: 80
-	die3:
-		Start: 334
-		Length: 8
-		Tick: 80
-	die4:
-		Start: 342
-		Length: 12
-		Tick: 80
-	die5:
-		Start: 354
-		Length: 18
-		Tick: 80
-	die6: electro
-		Length: *
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-			INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
-	die-crushed: corpse1
-		Length: *
-		Tick: 1600
-		ZOffset: -511
-		UseTilesetExtension: true
-		TilesetOverrides:
-            DESERT: TEMPERAT
-            INTERIOR: TEMPERAT
-	garrison-muzzle: minigun
-		Length: 6
-		Facings: 8
-	icon: nodrmboicon
 
 shok:
 	Inherits@PostDeath: ^Rot
-	die7: poisondeath
-		Length: *
-
-mort:
-	Inherits@PostDeath: ^Rot
 	stand:
 		Facings: 8
 	stand2:
+		Start: 8
 		Facings: 8
 	run:
 		Start: 16
 		Length: 6
 		Facings: 8
-		Tick: 100
-	throw:
+		Tick: 120
+	shoot:
 		Start: 64
-		Length: 20
-		Facings: 8
-	liedown:
-		Start: 224
-		Length: 2
-		Facings: 8
-	standup:
-		Start: 272
-		Length: 2
+		Length: 16
 		Facings: 8
 	prone-stand:
-		Start: 240
+		Start: 208
 		Stride: 4
 		Facings: 8
 	prone-stand2:
-		Start: 240
+		Start: 208
 		Stride: 4
 		Facings: 8
 	prone-run:
-		Start: 240
+		Start: 208
 		Length: 4
 		Facings: 8
-		Tick: 100
-	prone-throw:
-		Start: 288
-		Length: 12
+		Tick: 120
+	liedown:
+		Start: 192
+		Length: 2
 		Facings: 8
+	standup:
+		Start: 240
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 256
+		Length: 16
+		Facings: 8
+	parachute:
+		Start: 528
 	idle1:
 		Start: 384
-		Length: 16
+		Length: 14
 		Tick: 120
 	idle2:
-		Start: 400
+		Start: 399
 		Length: 16
-		Tick: 120
-	cheer:
-		Start: 494
-		Length: 3
-		Facings: 8
 		Tick: 120
 	die1:
 		Start: 416
 		Length: 8
-		Tick: 80
 	die2:
 		Start: 424
 		Length: 8
-		Tick: 80
 	die3:
 		Start: 432
 		Length: 8
-		Tick: 80
 	die4:
 		Start: 440
 		Length: 12
-		Tick: 80
 	die5:
 		Start: 452
 		Length: 18
-		Tick: 80
 	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 		Length: *
 		UseTilesetExtension: true
 		TilesetOverrides:
@@ -857,161 +1014,14 @@ mort:
 	die7: poisondeath
 		Length: *
 	die-crushed: corpse1
-		Length: *
-		Tick: 1600
-		ZOffset: -511
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-            INTERIOR: TEMPERAT
-	icon: morticon
-
-cybr:
-	Inherits: emp-overlay
-	Defaults: 
-		Tick: 80
-	stand:
-		Facings: 8
-	run:
-		Start: 8
 		Length: 6
-		Facings: 8
-	idle1:
-		Start: 56
-		Length: 15
-	idle2:
-		Start: 71
-		Length: 15
-	crippled-run:
-		Start: 86
-		Length: 6
-		Facings: 8
-	crippled-stand:
-		Start: 86
-		Facings: 8
-		Stride: 6
-	die1:
-		Start: 134
-		Length: 15
-	die2:
-		Start: 149
-		Length: 15
-	die3:
-		Start: 134
-		Length: 15
-	die4:
-		Start: 275
-		Length: 15
-	die5:
-		Start: 260
-		Length: 15
-	die6: electro
-		Length: *
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-			INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
-	die-crushed: corpse1
-		Length: *
 		Tick: 1600
 		ZOffset: -511
 		UseTilesetExtension: true
 		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-	shoot: cybr
-		Start: 164
-		Length: 6
-		Facings: 8
-	crippled-shoot: cybr
-		Start: 212
-		Length: 6
-		Facings: 8
-	garrison-muzzle: minigun
-		Length: 6
-		Facings: 8
-	icon: cybricon
-
-jump:
-	stand: jump
-		Start: 0
-		Facings: 8
-	flying: jump-air
-		Start: 0
-		Length: 6
-		Facings: 8
-	run: jump
-		Start: 8
-		Length: 6
-		Facings: 8
-		Tick: 100
-	flying-run: jump-air
-		Start: 48
-		Length: 6
-		Facings: 8
-		Tick: 100
-	shoot: jump
-		Start: 56
-		Length: 6
-		Facings: 8
-		Tick: 100
-	flying-shoot:
-		Combine:
-			jump-air:
-				Start: 96
-				Length: 6
-			jump-air:
-				Start: 102
-				Length: 6
-			jump-air:
-				Start: 108
-				Length: 6
-			jump-air:
-				Start: 114
-				Length: 6
-			jump-air:
-				Start: 120
-				Length: 6
-			jump-air:
-				Start: 126
-				Length: 6
-			jump-air:
-				Start: 132
-				Length: 6
-			jump-air:
-				Start: 138
-				Length: 6
-		Facings: 8
-		Length: 6
-	die1: blank1
-		Length: *
-	die2: blank1
-		Length: *
-	die3: blank1
-		Length: *
-	die4: blank1
-		Length: *
-	die5: blank1
-		Length: *
-	die6: electro
-		Length: *
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-			INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
-	die-crushed: corpse1
-		Length: *
-		Tick: 1600
-		ZOffset: -511
-		UseTilesetExtension: true
-		TilesetOverrides:
-			DESERT: TEMPERAT
-			INTERIOR: TEMPERAT
-	icon: jumpicon
+	icon: shokicon
 
 tecn:
 	Inherits@PostDeath: ^Rot
@@ -1078,6 +1088,159 @@ tecn:
 	garrison-muzzle: minigun
 		Length: 6
 		Facings: 8
+
+c1:
+	stand:
+		Facings: 8
+	panic-stand:
+		Facings: 8
+	panic-run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	shoot:
+		Start: 120
+		Length: 4
+		Facings: 8
+	die1:
+		Start: 152
+		Length: 8
+	die2:
+		Start: 160
+		Length: 8
+	die3:
+		Start: 168
+		Length: 12
+	die4:
+		Start: 168
+		Length: 12
+	die5:
+		Start: 180
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 80
+
+c2:
+	stand:
+		Facings: 8
+	panic-stand:
+		Facings: 8
+	panic-run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	shoot:
+		Start: 120
+		Length: 4
+		Facings: 8
+	die1:
+		Start: 152
+		Length: 8
+	die2:
+		Start: 160
+		Length: 8
+	die3:
+		Start: 168
+		Length: 12
+	die4:
+		Start: 168
+		Length: 12
+	die5:
+		Start: 180
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 80
+
+c3:
+	stand:
+		Facings: 8
+	panic-stand:
+		Facings: 8
+	panic-run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	shoot:
+		Start: 120
+		Length: 4
+		Facings: 8
+	die1:
+		Start: 152
+		Length: 8
+	die2:
+		Start: 160
+		Length: 8
+	die3:
+		Start: 168
+		Length: 12
+	die4:
+		Start: 168
+		Length: 12
+	die5:
+		Start: 180
+		Length: 18
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 80
 
 c4:
 	stand:
@@ -1443,177 +1606,261 @@ c10:
 		Facings: 8
 		Tick: 80
 
-terr:
-	Inherits@PostDeath: ^Rot
+dog:
 	stand:
 		Facings: 8
 	walk:
-		Start: 56
+		Start: 8
 		Length: 6
 		Facings: 8
 		Tick: 80
 	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 80
+	eat:
+		Start: 104
+		Length: 14
+		Facings: 8
+		Tick: 120
+	idle1:
+		Start: 216
+		Length: 7
+		Tick: 120
+	idle2:
+		Start: 224
+		Length: 11
+		Tick: 120
+	die1:
+		Start: 236
+		Length: 6
+	die2:
+		Start: 242
+		Length: 9
+	die3:
+		Start: 236
+		Length: 6
+	die4:
+		Start: 242
+		Length: 9
+	die5:
+		Start: 251
+		Length: 14
+	die6: electdog
+		Length: *
+	die7: poisondeath
+		Length: *
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	jump: dogbullt
+		Length: 4
+		Facings: 8
+	icon: dogicon
+
+einstein:
+	stand:
+		Facings: 8
+	panic-stand:
+		Facings: 8
+	panic-run:
 		Start: 8
 		Length: 6
 		Facings: 8
-	shoot:
-		Start: 205
-		Length: 4
+	run:
+		Start: 56
+		Length: 6
 		Facings: 8
-	cheer:
-		Start: 200
-		Length: 3
+		Tick: 80
+	die1:
+		Start: 120
+		Length: 8
+	die2:
+		Start: 128
+		Length: 8
+	die3:
+		Start: 136
+		Length: 12
+	die4:
+		Start: 136
+		Length: 12
+	die5:
+		Start: 148
+		Length: 17
+	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+	die-crushed: corpse1
+		Length: 6
+		Tick: 1600
+		ZOffset: -511
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+
+delphi:
+	stand:
 		Facings: 8
-		Tick: 120
+	panic-stand:
+		Facings: 8
+	panic-run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	run:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 80
 	die1:
 		Start: 329
 		Length: 8
-		Tick: 80
 	die2:
 		Start: 337
 		Length: 8
-		Tick: 80
 	die3:
-		Start: 337
-		Length: 8
-		Tick: 80
+		Start: 345
+		Length: 12
 	die4:
 		Start: 345
 		Length: 12
-		Tick: 80
 	die5:
 		Start: 357
-		Length: 18
-		Tick: 80
+		Length: 17
 	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 		Length: *
 		UseTilesetExtension: true
 		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
 	die-crushed: corpse1
-		Length: *
+		Length: 6
 		Tick: 1600
 		ZOffset: -511
 		UseTilesetExtension: true
-        TilesetOverrides:
+		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-	icon: terricon
 
-vice:
-	idle:
-		Length: *
-	muzzle:
-		Combine:
-			chem-n:
-				Length: *
-				Offset: 1,2
-			chem-nw:
-				Length: *
-				Offset: 8,2
-			chem-w:
-				Length: *
-				Offset: 8,-3
-			chem-sw:
-				Length: *
-				Offset: 7,-6
-			chem-s:
-				Length: *
-				Offset: 1,-6
-			chem-se:
-				Length: *
-				Offset: -5,-6
-			chem-e:
-				Length: *
-				Offset: -7,-3
-			chem-ne:
-				Length: *
-				Offset: -3,2
-		Facings: 8
-		Length: 13
-	icon: viceicon
-
-exo:
+chan:
 	stand:
-		Start: 0
 		Facings: 8
-	idle1:
-		Start: 8
-		Length: 6
+	panic-stand:
 		Facings: 8
-	idle2:
+	panic-run:
 		Start: 8
 		Length: 6
 		Facings: 8
 	run:
 		Start: 56
-		Length: 8
-		Facings: 8
-		Tick: 100
-	shoot:
-		Start: 120
 		Length: 6
 		Facings: 8
+		Tick: 80
 	die1:
-		Start: 168
-		Length: 15
-		Facings: 1
+		Start: 120
+		Length: 8
 	die2:
-		Start: 168
-		Length: 15
-		Facings: 1
+		Start: 128
+		Length: 8
 	die3:
-		Start: 168
-		Length: 15
-		Facings: 1
+		Start: 136
+		Length: 12
 	die4:
-		Start: 168
-		Length: 15
-		Facings: 1
+		Start: 136
+		Length: 12
 	die5:
-		Start: 168
-		Length: 15
-		Facings: 1
+		Start: 148
+		Length: 17
 	die6: electro
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
 		Length: *
 		UseTilesetExtension: true
 		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-	die7: poisondeath
-		Length: *
 	die-crushed: corpse1
-		Length: *
+		Length: 6
 		Tick: 1600
 		ZOffset: -511
 		UseTilesetExtension: true
-        TilesetOverrides:
+		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-	parachute:
-		Start: 198
-		Length: 1
-		Facings: 1
-	teleport:
-		Start: 198
-		Length: 14
-		Facings: 1
-	icon: exoicon
 
-xosuit:
-	Inherits: emp-overlay
-	idle:
-		Facings: 32
-	run:
-		Start: 32
-		Length: 20
-		Facings: 32
-		Tick: 100
-	icon: exoicon
+ant:
+	stand: ant1
+		Facings: 8
+	run: ant1
+		Start: 8
+		Length: 8
+		Facings: 8
+	bite: ant1
+		Start: 72
+		Length: 4
+		Facings: 8
+	die: ant1
+		Start: 104
+		Length: 8
+		Tick: 300
+	die-crushed: ant1
+		Start: 104
+		Length: 8
+		Tick: 400
+		ZOffset: -511
+	icon: anticon
 
-dog:
-	die7: poisondeath
-		Length: *
+fireant:
+	stand: ant2
+		Facings: 8
+	run: ant2
+		Start: 8
+		Length: 8
+		Facings: 8
+	bite: ant2
+		Start: 72
+		Length: 4
+		Facings: 8
+	die: ant2
+		Start: 104
+		Length: 8
+		Tick: 300
+	die-crushed: ant2
+		Start: 104
+		Length: 8
+		Tick: 400
+		ZOffset: -511
+	icon: anticon
+
+scoutant:
+	stand: ant3
+		Facings: 8
+	run: ant3
+		Start: 8
+		Length: 8
+		Facings: 8
+	bite: ant3
+		Start: 72
+		Length: 4
+		Facings: 8
+	die: ant3
+		Start: 104
+		Length: 8
+		Tick: 300
+	die-crushed: ant3
+		Start: 104
+		Length: 8
+		Tick: 400
+		ZOffset: -511
+	icon: anticon

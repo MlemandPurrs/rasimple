@@ -1,8 +1,31 @@
 
 fact:
     Inherits: emp-overlay
+	idle:
+	make: factmake
+		Length: *
+	build:
+		Start: 1
+		Length: 25
+	pdox: factpdox
+		Length: 80
+	damaged-idle:
+		Start: 26
+	damaged-build:
+		Start: 27
+		Length: 25
+	damaged-pdox: factpdox
+		Start: 80
+		Length: 80
 	dead: fact-dead2
 		Tick: 800
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	icon: facticon
+	fake-icon: facficon
 
 fact.husk:
 	idle: fact-dead
@@ -14,6 +37,9 @@ fact.husk:
 
 powr:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
 	idle-smoke: powr-smoke
 		Length: 40
 		Tick: 160
@@ -29,9 +55,15 @@ powr:
 	make: powrmake
 		Length: *
 		Tick: 80
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	dead: powrdead2
 		Tick: 800
-	fake-icon: pwrficon
+	icon: powricon
+	fake-icon: fpwricon
 
 powr.husk:
 	idle: powrdead2
@@ -43,12 +75,18 @@ powr.husk:
 
 apwr:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,-10
+	damaged-idle:
+		Start: 1
+		Offset: 0,-10
 	place: apwrmake
 		Start: 12
 		Offset: 0,-10
 	make: apwrmake
 		Length: *
 		Tick: 80
+		Offset: 0,-10
 	idle-smoke: apwr-smoke
 		Length: 40
 		Tick: 160
@@ -62,9 +100,100 @@ apwr:
 	dead: apwr-dead2
 		Tick: 800
 		Offset: 0,-10
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	icon: apwricon
+	fake-icon: fapwicon
 
 apwr.husk:
 	idle: apwr-dead2
+		Start: 0
+		Length: 1
+		Offset: 0,-10
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+
+powrgrey:
+	Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
+	place: powrgreymake
+		Start: 12
+	make: powrgreymake
+		Length: *
+		Tick: 80
+	idle-smoke: powr-smoke
+		Length: 40
+		Tick: 160
+		Offset: 0,-20
+		BlendMode: DoubleMultiplicative
+	damaged-idle-smoke: powr-smoke-d
+		Length: 40
+		Tick: 160
+		Offset: 0,-20
+		BlendMode: DoubleMultiplicative
+	dead: powrgreydead
+		Tick: 800
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	icon: powricon
+	fake-icon: fpwricon
+
+powrgrey.husk:
+	idle: powrgreydead
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+
+apwrgrey:
+	Inherits: emp-overlay
+	idle:
+		Offset: 0,-10
+	damaged-idle:
+		Start: 1
+		Offset: 0,-10
+	place: apwrgreymake
+		Start: 12
+		Offset: 0,-10
+	make: apwrgreymake
+		Length: *
+		Offset: 0,-10
+		Tick: 80
+	idle-smoke: apwr-smoke
+		Length: 40
+		Tick: 160
+		Offset: -12,-30
+		BlendMode: DoubleMultiplicative
+	damaged-idle-smoke: apwr-smoke-d
+		Length: 40
+		Tick: 160
+		Offset: -12,-30
+		BlendMode: DoubleMultiplicative
+	dead: apwrgreydead
+		Tick: 800
+		Offset: 0,-10
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	icon: apwricon
+	fake-icon: fapwicon
+
+apwrgrey.husk:
+	idle: apwrgreydead
 		Start: 0
 		Length: 1
 		Offset: 0,-10
@@ -155,14 +284,30 @@ ercc-proc:
 
 silo:
     Inherits: emp-overlay
+	idle: silo2
+		Offset: 0,-1
+	damaged-idle: silo2
+		Start: 9
+		Offset: 0,-1
+	stages: silo2
+		Length: 9
+		Offset: 0,-1
+	damaged-stages: silo2
+		Start: 9
+		Length: 9
+		Offset: 0,-1
 	make: silomake
 		Length: *
 		Offset: 0,-1
 		Tick: 80
+	bib: mbSILO
+		Length: *
+		UseTilesetExtension: true
 	dead: silo2
 		Start: 9
 		Length: 1
 		Tick: 800
+	icon: siloicon
 
 silo.husk:
 	idle: silo2
@@ -175,18 +320,21 @@ silo.husk:
 tent:
     Inherits: emp-overlay
 	Defaults:
-		UseTilesetExtension: true    
+		UseTilesetExtension: true
 		TilesetOverrides:
 			INTERIOR: SNOW
+	idle:
+		Length: 10
+        Tick: 100
+	damaged-idle:
+		Start: 10
+		Length: 10
+		Tick: 100
 	place: tentmake
 		Start: 12
 	make: tentmake
 		Length: *
 		Tick: 80
-    idle:
-        Tick: 100
-    damaged-idle:
-        Tick: 100
 	dead:
 		Start: 10
 		Length: 1
@@ -195,8 +343,10 @@ tent:
 		Length: *
 		TilesetOverrides:
 			INTERIOR: TEMPERAT
-    fake-icon: tenficon
-        UseTilesetExtension: false
+	icon: tenticon
+		UseTilesetExtension: false
+	fake-icon: tenficon
+		UseTilesetExtension: false
 
 tent.husk:
 	Defaults:
@@ -215,18 +365,30 @@ tent.husk:
 barr:
     Inherits: emp-overlay
     idle:
+		Length: 10
+		Offset: 0,-6
         Tick: 100
     damaged-idle:
+		Start: 10
+		Length: 10
         Tick: 100
 	place: barrmake
 		Start: 12
-    make:
+	make: barrmake
+		Length: *
+		Offset: 0,-6
         Tick: 80
-    fake-icon: barficon
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	dead:
 		Start: 10
 		Length: 1
 		Tick: 800
+	icon: barricon
+    fake-icon: barficon
 
 barr.husk:
 	idle: barr-dead
@@ -241,9 +403,18 @@ barr.husk:
 
 kenn:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
+	make: kennmake
+		Length: *
+	bib: mbSILO
+		Length: *
+		UseTilesetExtension: true
 	dead:
 		Start: 1
 		Tick: 800
+	icon: kennicon
 	fake-icon: kenficon
 
 kenn.husk:
@@ -256,11 +427,28 @@ kenn.husk:
 
 weap:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
+	place: weapmake
+		Start: 14
 	make: weapmake
 		Length: *
 		Tick: 80
+	build-top: weap3
+		Length: 10
+	damaged-build-top: weap2
+		Start: 4
+		Length: 4
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	dead: weap-dead
 		Tick: 800
+	icon: weapicon
+	fake-icon: weaficon
 
 weap.husk:
 	idle: weap-dead2
@@ -272,6 +460,23 @@ weap.husk:
 
 fix:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,1
+		ZOffset: -1c511
+	damaged-idle:
+		Start: 7
+		Offset: 0,1
+		ZOffset: -1c511
+	active:
+		Start: 1
+		Length: 6
+		Offset: 0,1
+		ZOffset: -1c511
+	damaged-active:
+		Start: 8
+		Length: 6
+		Offset: 0,1
+		ZOffset: -1c511
 	make: fixmake
 		Length: *
 		Offset: 0,1
@@ -281,6 +486,13 @@ fix:
 		Tick: 800
 	none: blank32
 		Length: 1
+	bib: mbFIX
+		Length: *
+		ZOffset: -1c511
+		Offset: 0,-4
+		UseTilesetExtension: true
+	icon: fixicon
+	fake-icon: fixficon
 
 fix.husk:
 	idle: fix-dead
@@ -296,14 +508,26 @@ fix.husk:
 
 dome:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,-4
+	damaged-idle:
+		Start: 1
+		Offset: 0,-4
 	make: domemake
 		Length: *
 		Offset: 0,-4
 		Tick: 80
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	dead:
 		Start: 1
 		Tick: 800
 		Offset: 0,-4
+	icon: domeicon
+	fake-icon: domficon
 
 dome.husk:
 	idle: dome-dead
@@ -318,7 +542,28 @@ dome.husk:
 
 afld:
     Inherits: emp-overlay
-    fake-icon: aflficon
+	idle: afldidle
+		Length: 8
+		Tick: 160
+		ZOffset: -1023
+		Offset: 0,-4
+	damaged-idle: afldidle
+		Start: 8
+		Length: 8
+		Tick: 160
+		ZOffset: -1023
+		Offset: 0,-4
+	active:
+		Length: 8
+		Tick: 160
+		ZOffset: -1023
+		Offset: 0,-4
+	damaged-active:
+		Start: 8
+		Length: 8
+		Tick: 160
+		ZOffset: -1023
+		Offset: 0,-4
 	place: afldmake
 		Start: 10
 	make: afldmake
@@ -331,6 +576,8 @@ afld:
 		Tick: 800
 		ZOffset: -1023
 		Offset: 0,-4
+	icon: afldicon
+    fake-icon: aflficon
 
 afld.husk:
 	idle: afld
@@ -340,7 +587,21 @@ afld.husk:
 
 hpad:
     Inherits: emp-overlay
-    fake-icon: hpaficon
+	idle:
+		ZOffset: -1023
+	damaged-idle:
+		Start: 7
+		ZOffset: -1023
+	active:
+		Start: 1
+		Length: 6
+		Tick: 100
+		ZOffset: -1023
+	damaged-active:
+		Start: 8
+		Length: 6
+		Tick: 100
+		ZOffset: -1023
 	dead:
 		Start: 7
 		Length: 1
@@ -348,7 +609,14 @@ hpad:
 	make: hpadmake
 		Length: *
         Tick: 80
-
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	icon: hpadicon
+    fake-icon: hpaficon
+	
 hpad.husk:
 	idle: hpad
 		Start: 7
@@ -357,9 +625,20 @@ hpad.husk:
 
 atek:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
 	make: atekmake
 		Length: *
 		Tick: 80
+	active: sputdoor
+		Length: *
+		Offset: -4,0
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	dead: atek-dead
 		Tick: 800
 	none: blank32
@@ -395,11 +674,20 @@ ateknew.husk:
 
 stek:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
 	make: stekmake
 		Length: *
 		Tick: 80
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	dead: stek-dead
 		Tick: 800
+	icon: stekicon
     fake-icon: steficon
 	none: blank32
 		Length: 1
@@ -411,6 +699,9 @@ stek.husk:
 
 syrd:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
 	make: syrdmake
 		Length: *
 		Tick: 80
@@ -418,6 +709,8 @@ syrd:
 		Start: 1
 		Offset: 0,2
 		Tick: 800
+	icon: syrdicon
+	fake-icon: syrficon
 
 syrd.husk:
 	idle: syrd
@@ -426,6 +719,11 @@ syrd.husk:
 
 spen:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,2
+	damaged-idle:
+		Start: 1
+		Offset: 0,2
 	make: spenmake
 		Length: *
 		Offset: 0,2
@@ -434,6 +732,8 @@ spen:
 		Start: 1
 		Offset: 0,2
 		Tick: 800
+	icon: spenicon
+	fake-icon: speficon
 
 spen.husk:
 	idle: spen
@@ -441,9 +741,17 @@ spen.husk:
 		Offset: 0,2
 
 fcom:
+	idle:
+	damaged-idle:
+		Start: 1
 	make: fcommake
 		Length: *
 		Tick: 80
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 
 fcom.husk:
 	idle: fcom
@@ -479,12 +787,23 @@ acom.husk:
 hosp:
     Inherits: emp-overlay
     idle:
+		Length: 4
         Tick: 100
     damaged-idle:
+		Start: 4
+		Length: 4
         Tick: 100
+	dead:
+		Start: 8
+		Tick: 800
 	make: hospmake
 		Length: *
 		Tick: 80
+	bib: mbHOSP
+		Length: *
+		Offset: 0,1
+		UseTilesetExtension: true
+	icon: hospicon
 
 hosp.husk:
 	idle: hosp
@@ -497,6 +816,12 @@ bio:
     Inherits: emp-overlay
 	Defaults:
 		Offset: 0,-2
+	idle:
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 2
+		Tick: 800
 	make: biomake
 		Length: *
 		Tick: 80
@@ -519,18 +844,40 @@ bio.husk:
 
 miss:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
 	dead: miss
 		Start: 2
 		Tick: 800
 	make: missmake
 		Length: *
         Tick: 80
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 	icon: techicon
 
 miss.husk:
 	idle: miss
 		Start: 2
-		Offset: 0,-1
+
+oilb:
+	Defaults:
+		Offset: 0,-6
+	idle:
+	damaged-idle:
+		Start: 1
+		Length: *
+	make:
+	bib: bib3
+		Length: *
+		Offset: 0,0
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
 
 oilb.husk:
 	Defaults:
@@ -549,8 +896,13 @@ gap:
     Inherits: emp-overlay
     fake-icon: gapficon
     idle:
+		Length: 32
+		Offset: 0,-14
         Tick: 90
     damaged-idle:
+		Start: 32
+		Length: 32
+		Offset: 0,-14
         Tick: 90
 	make: gapmake
 		Length: *
@@ -559,6 +911,10 @@ gap:
 	place: gapmake
 		Start: 12
 		Offset: 0,-14
+	bib: mbGAP
+		Length: *
+		UseTilesetExtension: true
+	icon: gapicon
 
 gap.husk:
 	idle: gap
@@ -571,24 +927,42 @@ gap.husk:
 
 pbox:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 1
 	make: pboxmake
 		Length: *
         Tick: 80
 	muzzle: minigun
 		Length: 6
 		Facings: 8
+	bib: mbPBOX
+		Length: *
+		Offset: 0,-2
+		UseTilesetExtension: true
+	icon: pboxicon
 
 pbox.husk:
 	idle: pbox-dead
 
 hbox:
     Inherits: emp-overlay
+	Defaults:
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	idle:
+	damaged-idle:
+		Start: 2
 	make: hboxmake
 		Length: *
         Tick: 80
 	muzzle: minigun
 		Length: 6
 		Facings: 8
+		UseTilesetExtension: false
+	icon: hboxicon
+		UseTilesetExtension: false
 
 hbox.husk:
 	Defaults:
@@ -600,10 +974,18 @@ hbox.husk:
 
 ftur:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,-2
+	damaged-idle:
+		Start: 1
+		Offset: 0,-2
 	make: fturmake
 		Length: *
 		Offset: 0,-2
         Tick: 50
+	bib: mbFTUR
+		Length: *
+		UseTilesetExtension: true
 	muzzle-spray:
 		Combine:
 			flame-n:
@@ -632,6 +1014,7 @@ ftur:
 				Offset: -7,8
 		Facings: 8
 		Length: 13
+	icon: fturicon
 
 ftur.husk:
 	idle: ftur
@@ -644,12 +1027,34 @@ ftur.husk:
 
 gun:
     Inherits: emp-overlay
+	idle:
+		Facings: 32
+		UseClassicFacingFudge: True
+	recoil:
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
 	make: gunmake
 		Length: *
         Tick: 70
 	place: gunmake
 		Start: 19
 		Length: 1
+	damaged-idle:
+		Start: 64
+		Facings: 32
+		UseClassicFacingFudge: True
+	damaged-recoil:
+		Start: 96
+		Facings: 32
+		UseClassicFacingFudge: True
+	muzzle: gunfire2
+		Length: 5
+	bib: mbGUN
+		Length: *
+		Offset: -1,-1
+		UseTilesetExtension: true
+	icon: gunicon
 
 gun.husk:
 	idle: gun-dead
@@ -663,19 +1068,20 @@ gtur:
 	idle: gtur
 		Facings: 32
 		UseClassicFacingFudge: True
-		Offset: 0,0
+		Offset: 0,-5
 	damaged-idle: gtur
 		Start: 32
 		Facings: 32
 		UseClassicFacingFudge: True
-		Offset: 0,0
+		Offset: 0,-5
 	make: gturmake
 		Length: *
-		Offset: 0,0
+		Offset: 0,-5
 		Tick: 70
 	muzzle: cruiser-muzzle
 		Length: 20
 		Facings: 8
+		Offset: 0,-5
 	bib: mbSAM
 		Length: *
 		Offset: 0,-5
@@ -683,7 +1089,7 @@ gtur:
 	dead: gturmake
 		Start: 8
 		Length: 1
-		Offset: 0,0
+		Offset: 0,-5
 	place: gturmake
 		Start: 11
 		Length: 1
@@ -691,10 +1097,29 @@ gtur:
 
 tsla:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,-13
+	damaged-idle:
+		Start: 10
+		Offset: 0,-13
 	make: tslamake
 		Length: *
 		Offset: 0,-13
         Tick: 70
+	active:
+		Start: 1
+		Length: 9
+		Tick: 100
+		Offset: 0,-13
+	damaged-active:
+		Start: 11
+		Length: 9
+		Tick: 100
+		Offset: 0,-13
+	bib: mbTSLA
+		Length: *
+		UseTilesetExtension: true
+	icon: tslaicon
 
 tsla.husk:
 	idle: tsla-dead
@@ -705,10 +1130,40 @@ tsla.husk:
 
 agun:
     Inherits: emp-overlay
+	idle:
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,-13
+	recoil:
+		Start: 32
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,-13
 	make: agunmake
 		Length: *
 		Offset: 0,-13
         Tick: 80
+	place: agunmake
+		Start: 9
+		Length: 1
+		Offset: 0,-13
+	damaged-idle:
+		Start: 64
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,-13
+	damaged-recoil:
+		Start: 96
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: 0,-13
+	muzzle: gunfire2
+		Start: 1
+		Length: 4
+	bib: mbAGUN
+		Length: *
+		UseTilesetExtension: true
+	icon: agunicon
 
 agun.husk:
     idle: agun
@@ -722,10 +1177,32 @@ agun.husk:
 
 sam:
     Inherits: emp-overlay
+	idle: sam2
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: -1,-2
+	damaged-idle: sam2
+		Start: 34
+		Facings: 32
+		UseClassicFacingFudge: True
+		Offset: -1,-2
 	make: sammake
 		Length: *
 		Offset: -1,-2
         Tick: 80
+	place: sammake
+		Start: 17
+		Length: 1
+		Offset: -1,-2
+	muzzle: samfire
+		Length: 18
+		Facings: 8
+		Offset: -1,6
+	bib: mbSAM
+		Length: *
+		Offset: 0,1
+		UseTilesetExtension: true
+	icon: samicon
 
 sam.husk:
 	idle: sam2
@@ -773,6 +1250,9 @@ hsam:
 	make: hsammake
 		Length: 20
 		Tick: 80
+	place: hsammake
+		Start: 29
+		Length: 1
 	muzzle: samfire
 		Length: 18
 		Facings: 8
@@ -785,9 +1265,23 @@ hsam.husk:
 
 pdox:
     Inherits: emp-overlay
+	idle:
+	damaged-idle:
+		Start: 29
+	active:
+		Length: 29
+	damaged-active:
+		Start: 29
+		Length: 29
 	make: pdoxmake
 		Length: *
         Tick: 80
+	bib: mbPDOX
+		Length: *
+		Offset: 0,-4
+		UseTilesetExtension: true
+	icon: pdoxicon
+	fake-icon: pdoficon
 
 pdox.husk:
 	idle: pdox
@@ -800,10 +1294,27 @@ pdox.husk:
 
 iron:
     Inherits: emp-overlay
+	idle:
+		Offset: 0,-12
+	active:
+		Length: 11
+		Offset: 0,-12
+	damaged-idle:
+		Start: 11
+		Offset: 0,-12
+	damaged-active:
+		Start: 11
+		Length: 11
+		Offset: 0,-12
 	make: ironmake
 		Length: *
 		Offset: 0,-12
         Tick: 80
+	bib: mbIRON
+		Length: *
+		Offset: 0,2
+		UseTilesetExtension: true
+	icon: ironicon
     fake-icon: iroficon
 
 iron.husk:
@@ -818,9 +1329,27 @@ iron.husk:
 
 mslo:
     Inherits: emp-overlay
+	Defaults:
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	idle:
+	damaged-idle:
+		Start: 8
 	make: mslomake
 		Length: *
-        Tick: 80
+	    Tick: 80
+	active:
+		Start: 1
+		Length: 7
+		Tick: 80
+	damaged-active:
+		Start: 9
+		Length: 7
+	icon: msloicon
+		UseTilesetExtension: false
+	fake-icon: mslficon
+		UseTilesetExtension: false
 
 mslo.husk:
 	Defaults:
@@ -828,6 +1357,17 @@ mslo.husk:
 	idle: mslo
 		Start: 12
 		Length: 1
+
+brik:
+	idle:
+		Length: 16
+	scratched-idle:
+		Start: 16
+		Length: 16
+	damaged-idle:
+		Start: 32
+		Length: 16
+	icon: brikicon
 
 vgate:
     Inherits: emp-overlay
@@ -869,11 +1409,61 @@ hgate:
 		ZOffset: -1c511
 	icon: hgateicon
 
+hgate-allies:
+    Inherits: emp-overlay
+	open:
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	idle:
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	damaged-idle:
+		Frames: 13, 12, 11, 10, 9, 8, 7
+		Length: 7
+		ZOffset: -1c511
+	make:
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	icon: hgateicon
+
+hgate-soviet:
+    Inherits: emp-overlay
+	open:
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	idle:
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	damaged-idle:
+		Frames: 13, 12, 11, 10, 9, 8, 7
+		Length: 7
+		ZOffset: -1c511
+	make:
+		Frames: 6, 5, 4, 3, 2, 1, 0
+		Length: 7
+		ZOffset: -1c511
+	icon: hgateicon
+
 v19:
     idle:
 		Tick: 120
     damaged-idle:
         Tick: 120
+
+sbag:
+	idle:
+		Length: 16
+	icon: sbagicon
+
+fenc:
+	idle:
+		Length: 16
+	icon: fencicon
 
 barb:
 	idle:
@@ -882,6 +1472,13 @@ barb:
 		Start: 16
 		Length: 16
 	icon: barbicon
+
+cycl:
+	idle:
+		Length: 16
+	damaged-idle:
+		Start: 16
+		Length: 16
 
 rresf:
     Inherits: emp-overlay

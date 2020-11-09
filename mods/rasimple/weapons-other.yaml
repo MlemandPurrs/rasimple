@@ -1,44 +1,40 @@
-
-TeslaZap:
-	Range: 8c0
-	InvalidTargets: EMPTank
-	Warhead@2: GrantExternalCondition
-		Range: 0c256
-		Duration: 25
-		Condition: empdisable
-		ValidTargets: Vehicle, Ship, Submarine
-
-PortaTesla:
+^FireWeapon:
+	ValidTargets: Ground, Water, Trees
+	ReloadDelay: 65
+	Range: 5c0
 	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 15000
+		ValidTargets: Ground, Water, Trees
 		Versus:
-			Heavy: 80
-
-TeslaCharge:
-	ReloadDelay: 120
-	Range: 1c0
-	Report: electro1.aud
-	ValidTargets: Charge
-	Projectile: TeslaZap
-	Warhead@CHARGE: GrantExternalCondition
-		Range: 0c256
-		Duration: 150
-		Condition: TeslaChargeApplied
-		ValidTargets: Charge
-
-TTankZap:
-	InvalidTargets: EMPTank
-	Warhead@2: GrantExternalCondition
-		Range: 0c256
-		Duration: 25
-		Condition: empdisable
-		ValidTargets: Vehicle, Ship, Submarine
+			None: 90
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 20
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath, Incendiary
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Structure, Wall
+	Warhead@3Eff: CreateEffect
+		Explosions: napalm
+		ImpactSounds: firebl3.aud
+		ImpactActors: false
 
 FireballLauncher:
+	Inherits: ^FireWeapon
 	MinRange: 1c513
+	Burst: 2
+	BurstDelays: 20
 	Projectile: Bullet
+		Speed: 250
+		TrailImage: fb2
+		Image: FB1
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		InvalidTargets: Flamer
+		Versus:
+			Light: 50
 	Warhead@Flames: FireCluster
 		Weapon: BurnFx
 		RandomClusterCount: 3
@@ -54,6 +50,27 @@ FireballLauncher.Single:
 	-BurstDelays:
 
 Flamer:
+	Inherits: ^FireWeapon
+	ReloadDelay: 50
+	Burst: 15
+	BurstDelays: 1
+	Projectile: Bullet
+		Speed: 170
+		TrailImage: fb4
+		Image: fb3
+		LaunchAngle: 62
+		Inaccuracy: 853
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 1000
+		Versus:
+			None: 70
+			Wood: 80
+			Light: 40
+			Heavy: 20
+			Concrete: 10
+	Warhead@3Eff: CreateEffect
+		Explosions: small_napalm
 	Warhead@Flames: FireCluster
 		Weapon: BurnFx
 		RandomClusterCount: 1
@@ -82,6 +99,51 @@ BigFlamer:
 		Footprint: x
 		ValidTargets: Ground
 		InvalidTargets: Water
+
+Napalm:
+	Inherits: ^FireWeapon
+	ReloadDelay: 90
+	Range: 0c968
+	Burst: 2
+	BurstDelays: 2
+	Projectile: Bullet
+		Image: BOMBLET
+		Speed: 170
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 170
+		Damage: 6000
+		Versus:
+			Wood: 100
+			Concrete: 50
+
+Napalm.inferno:
+	Inherits: Napalm
+	Range: 4c512
+
+Napalm.bomber:
+	Inherits: ^FireWeapon
+	ReloadDelay: 4
+	Range: 2c0
+	Burst: 2
+	BurstDelays: 2
+	Projectile: GravityBomb
+		Image: BOMBLET
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 3000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Versus:
+			Wood: 35
+			Heavy: 80
+	Warhead@3Eff: CreateEffect
+		Explosions: napalm
+		ImpactSounds: firebl3.aud
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge
 
 Flamespray:
 	ValidTargets: Ground, Water, Trees
@@ -156,103 +218,220 @@ Flamespray.dual:
 		ValidTargets: Ground
 		InvalidTargets: Water
 
-Chemspray:
-	Inherits: Flamespray
-	ReloadDelay: 50
+^TeslaWeapon:
+	ReloadDelay: 3
+	Range: 8c0
+	Report: tesla1.aud
+	Projectile: TeslaZap
 	Warhead@1Dam: SpreadDamage
-		Damage: 8000
-		InvalidTargets: Wall, Chem
-		DamageTypes: Prone50Percent, TriggerProne, FireDeath
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Structure, Wall
-	-Warhead@Flames:
-
-BurnFX:
-	ValidTargets: Ground, Trees
-	InvalidTargets: Air
-	ReloadDelay: 20
-	Range: 0c128
-	Projectile: Bullet
-		Speed: 85
-		Blockable: false
-	Warhead@3Eff: CreateEffect
-		Image: fire
-		Explosions: 3, 6, 7, 8
-
-FlakFX:
-	ValidTargets: Ground, Water, Trees
-	ReloadDelay: 20
-	Range: 1c128
-	Projectile: Bullet
-		Speed: 85
-		LaunchAngle: 96
-		Image: DRAGON
-		Shadow: True
-		Blockable: false
-		AirburstAltitude: 1c908
-	Warhead@1Dam: SpreadDamage
-		Spread: 213
-		Damage: 4000
-		ValidTargets: Air
+		Spread: 42
+		Damage: 10000
 		Versus:
-			None: 40
-			Wood: 10
-			Light: 60
-			Heavy: 10
-			Concrete: 20
-		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
-	Warhead@2Eff: CreateEffect
-		Explosions: small_explosion_air
-		ImpactSounds: aacanon3.aud
-		ValidTargets: Air
+			None: 1000
+		DamageTypes: Prone50Percent, TriggerProne, ElectricityDeath
 
-Repair:
+TeslaZap:
+	Inherits: ^TeslaWeapon
+	InvalidTargets: EMPTank
 	Warhead@1Dam: SpreadDamage
-		Damage: -2500
-		ValidTargets: Repair
+		Versus:
+			Wood: 60
+	Warhead@2: GrantExternalCondition
+		Range: 0c256
+		Duration: 25
+		Condition: empdisable
+		ValidTargets: Vehicle, Ship, Submarine
+		InvalidTargets: EMPInvalid, InvulNoEMP
+
+PortaTesla:
+	Inherits: ^TeslaWeapon
+	ReloadDelay: 70
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 4500
+		Versus:
+			Wood: 60
+			Heavy: 80
+
+TeslaCharge:
+	ReloadDelay: 120
+	Range: 1c0
+	Report: electro1.aud
+	ValidTargets: Charge
+	Projectile: TeslaZap
+	Warhead@CHARGE: GrantExternalCondition
+		Range: 0c256
+		Duration: 150
+		Condition: TeslaChargeApplied
+		ValidTargets: Charge
+
+TTankZap:
+	Inherits: ^TeslaWeapon
+	InvalidTargets: EMPTank
+	ReloadDelay: 120
+	Range: 7c512
+	Warhead@2: GrantExternalCondition
+		Range: 0c256
+		Duration: 25
+		Condition: empdisable
+		ValidTargets: Vehicle, Ship, Submarine
+		InvalidTargets: EMPInvalid, InvulNoEMP
+
+DogJaw:
+	ValidTargets: Infantry
+	ReloadDelay: 10
+	Range: 2c0
+	Report: dogg5p.aud
+	TargetActorCenter: true
+	Projectile: InstantHit
+	Warhead@1Dam: TargetDamage
+		Damage: 100000
+		ValidTargets: Infantry
+		InvalidTargets: Ant
+		DamageTypes: DefaultDeath
 
 Heal:
 	ReloadDelay: 70
 	Range: 2c0
-
-ScrapsExplosion:
+	Report: heal2.aud
+	ValidTargets: Heal
+	Projectile: Bullet
+		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
-		Spread: 9
-		Damage: 10
-		Versus:
-			None: 1
-			Wood: 1
-			Light: 1
-			Heavy: 1
-		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+		Spread: 213
+		Damage: -5000
+		ValidStances: Ally
+		ValidTargets: Heal
+		DebugOverlayColor: 00FF00
+
+Repair:
+	Inherits: Heal
+	Report: fixit1.aud
+	ValidTargets: Repair
+	Warhead@1Dam: SpreadDamage
+		Damage: -2500
+		ValidTargets: Repair
+
+Demolish:
+	Warhead@1Dam: SpreadDamage
+		DamageTypes: DefaultDeath
 	Warhead@2Eff: CreateEffect
-		Explosions: small_explosion
+		Explosions: building
 		ImpactSounds: kaboom25.aud
-	Warhead@3Res: CreateResource
-		AddsResourceType: Scraps
-		Size: 1,1
 
-ATMine:
+Claw:
+	ReloadDelay: 30
+	Range: 1c512
+	Projectile: Bullet
+		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
-		AffectsParent: false
-		InvalidTargets: Defense
+		Spread: 213
+		Damage: 3000
+		Versus:
+			None: 97
+			Wood: 10
+			Light: 30
+			Heavy: 10
+			Concrete: 10
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 
-ASMine:
+Mandible:
+	Inherits: Claw
+	ReloadDelay: 10
+	Burst: 2
+	BurstDelays: 14
+	StartBurstReport: antbite.aud
 	Warhead@1Dam: SpreadDamage
-		Spread: 256
+		Damage: 6000
+		Versus:
+			None: 90
+		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
+
+MandibleHeavy:
+	Inherits: Claw
+	ReloadDelay: 15
+	Burst: 2
+	BurstDelays: 20
+	StartBurstReport: antbite.aud
+	Warhead@1Dam: SpreadDamage
 		Damage: 10000
-		AffectsParent: true
-		InvalidTargets: Mine
-		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
-		ValidTargets: Ship, Submarine, Underwater
-	Warhead@2Eff: CreateEffect
-		Explosions: large_explosion
+		Versus:
+			None: 100
+			Light: 90
+			Heavy: 35
+			Concrete: 20
+		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
+
+AntFireball:
+	Inherits: FireballLauncher
+	Report: antbite.aud
+	ReloadDelay: 50
+	Burst: 2
+	BurstDelays: 20
+	Range: 4c0
+	Projectile: Bullet
+		Speed: 200
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 4000
+		Versus:
+			None: 80
+			Wood: 85
+			Light: 45
+			Heavy: 20
+			Concrete: 15
+
+DemoTruckTargeting:
+	ValidTargets: DetonateAttack
+	Range: 2c0
+	Projectile: InstantHit
+	Warhead@1Dam: TargetDamage
+		ValidTargets: DetonateAttack
+
+MADTankThump:
+	InvalidTargets: MADTank
+	ValidTargets: Structure
+	Warhead@1Dam: HealthPercentageDamage
+		Spread: 8c0
+		Damage: 1
+		InvalidTargets: MADTank
+		ValidTargets: Structure, Infantry
+		Versus:
+			None: 50
+		DamageTypes: Prone50Percent, TriggerProne
+	Warhead@Shake: ShakeScreen
+		Duration: 10
+		Intensity: 2
+		Multiplier: 1,0
+	Warhead@3: GrantExternalCondition
+		Range: 8c0
+		Duration: 24
+		Condition: thumpsnare
+		ValidTargets: Vehicle
+
+MADTankDetonate:
+	InvalidTargets: MADTank
+	ValidTargets: Structure
+	Warhead@1Dam: HealthPercentageDamage
+		Spread: 8c0
+		Damage: 20
+		InvalidTargets: MADTank
+		ValidTargets: Structure
+	Warhead@2Dam: HealthPercentageDamage
+		Spread: 8c0
+		Damage: 20
+		InvalidTargets: MADTank
+		ValidTargets: Vehicle
+		Versus:
+			Light: 50
+			Heavy: 50
+	Warhead@3Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 8,7
+	Warhead@4Eff: CreateEffect
+		Explosions: med_explosion
 		ImpactSounds: mineblo1.aud
-	Warhead@4EffWater: CreateEffect
-		Explosions: large_explosion
-		ImpactSounds: mineblo1.aud
-		ValidTargets: Underwater
+		ImpactActors: false
 
 BombingRun.ag:
 	ReloadDelay: 60
@@ -268,12 +447,12 @@ BombingRun.ag:
 		Shadow: true
 	Warhead@1Dam: SpreadDamage
 		Spread: 512
-		Damage: 8000
+		Damage: 9000
 		Versus:
-			None: 100
-			Wood: 100
-			Light: 100
-			Heavy: 100
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 50
 			Concrete: 100
 		DamageTypes: Prone100Percent, TriggerProne, ExplosionDeath
 	Warhead@2Eff: CreateEffect
@@ -315,93 +494,6 @@ BombingRun.dc:
 		Explosions: small_explosion
 		ImpactSounds: kaboom15.aud
 		ValidTargets: Submarine
-
-MADTankThump:
-	InvalidTargets: MADTank
-	ValidTargets: Structure
-	Warhead@1Dam: HealthPercentageDamage
-		Spread: 8c0
-		InvalidTargets: MADTank
-		ValidTargets: Structure, Infantry
-		Versus:
-			None: 50
-		DamageTypes: Prone50Percent, TriggerProne
-	Warhead@Shake: ShakeScreen
-		Intensity: 2
-	Warhead@3: GrantExternalCondition
-		Range: 8c0
-		Duration: 24
-		Condition: thumpsnare
-		ValidTargets: Vehicle
-
-MADTankDetonate:
-	InvalidTargets: MADTank
-	ValidTargets: Structure
-	Warhead@1Dam: HealthPercentageDamage
-		Spread: 8c0
-		Damage: 20
-		InvalidTargets: MADTank
-		ValidTargets: Structure
-	Warhead@2Smu: LeaveSmudge
-		Size: 8,7
-	Warhead@5Dam: HealthPercentageDamage
-		Spread: 8c0
-		Damage: 20
-		InvalidTargets: MADTank
-		ValidTargets: Vehicle
-		Versus:
-			Light: 50
-			Heavy: 50
-
-^Railgun:
-	ReloadDelay: 96
-	Range: 7c512
-	Report: bigggun1.aud
-	Projectile: Railgun
-		Duration: 10
-		Blockable: true
-		DamageActorsInLine: true
-		BeamColor: 00FFFFC8
-		BeamWidth: 40
-		HelixThickness: 16
-		HelixColor: D8FCfC
-		HelixRadius: 10
-		HitAnim: explosion
-		HitAnimSequence: small_explosion
-		ZOffset: 2046
-		QuantizationCount: 4
-		BeamAlphaDeltaPerTick: -16
-		HelixAlphaDeltaPerTick: -16
-		HelixRadiusDeltaPerTick: 16
-		HelixAngleDeltaPerTick: 16
-	Warhead@1Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 50, 50
-		Damage: 12500
-		AffectsParent: false
-		Versus:
-			None: 100
-			Wood: 130
-			Light: 150
-			Heavy: 110
-			Concrete: 10
-		DamageTypes: Prone100Percent, TriggerProne, ElectricityDeath
-		ValidStances: Ally, Neutral, Enemy
-
-Railgun.Light:
-	Inherits: ^Railgun
-	Range: 5c256
-	Warhead@1Dam: SpreadDamage
-		Damage: 9000
-
-Railgun:
-	Inherits: ^Railgun
-
-Railgun.Dual:
-	Inherits: Railgun
-	ReloadDelay: 128
-	Burst: 2
-	BurstDelays: 16
 
 PrismLaser:
 	ValidTargets: Ground, Water
@@ -476,276 +568,6 @@ PrisTBurst:
 	Warhead@1Dam: SpreadDamage
 		Damage: 2100
 
-LaserGun:
-	ReloadDelay: 40
-	Range: 6c512
-	Report: lastur1.aud
-	Projectile: LaserZap
-		Width: 36
-		Duration: 8
-		Color: FF000080
-		SecondaryBeam: true
-		SecondaryBeamWidth: 144
-		SecondaryBeamColor: FF000030
-	Warhead@1Dam: SpreadDamage
-		Spread: 42
-		Damage: 6750
-		DamageTypes: Prone60Percent, TriggerProne, ElectricityDeath
-
-Laser:
-	ReloadDelay: 45
-	Range: 7c512
-	Report: obelray1.aud
-	Projectile: LaserZap
-		Width: 85
-		HitAnim: laserfire
-		ZOffset: 2047
-	Warhead@1Dam: SpreadDamage
-		Spread: 42
-		Damage: 36000
-		Versus:
-			Wood: 50
-		DamageTypes: Prone50Percent, TriggerProne, ElectricityDeath
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle, Structure, Wall, Husk, Trees, Creep
-
-PortaLaser:
-	Inherits: Laser
-	ReloadDelay: 30
-	Range: 3c768
-	Burst: 2
-	BurstDelays: 3
-	-Report:
-	StartBurstReport: lasgun.aud
-	Projectile: LaserZap
-		Width: 30
-		Duration: 3
-		SecondaryBeamWidth: 50
-		SecondaryBeamColor: FF000030
-		Blockable: true
-	Warhead@1Dam: SpreadDamage
-		Damage: 1500
-		Versus:
-			None: 150
-			Wood: 75
-			Heavy: 90
-
-LaserFence:
-	TargetActorCenter: true
-	Projectile: InstantHit
-	Warhead@1Dam: TargetDamage
-		DebugOverlayColor: FF0000
-		Damage: 99999
-		DamageTypes: FireDeath
-
-MicroLaser:
-	ValidTargets: Ground, Vehicle, Ship
-	InvalidTargets: Infantry
-	ReloadDelay: 120
-	Range: 7c0
-	Report: prsmfire.aud
-	Projectile: LaserZap
-		Width: 35
-		HitAnim: laserfire
-		Color: 00FFFFC8
-		ZOffset: 2047
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamZOffset: 2047
-		SecondaryBeamColor: ECFCFE
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Vehicle, Ship
-		InvalidTargets: Infantry
-		Spread: 42
-		Damage: 3600
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-		Versus:
-			None: 100
-			Wood: 70
-			Light: 30
-			Heavy: 65
-	Warhead@2Eff: CreateEffect
-		Explosions: pulse_explosion_small
-		ImpactSounds: ion1.aud
-	Warhead@emp: GrantExternalCondition
-		Range: 1c512
-		Duration: 300
-		Condition: empdisable
-		ValidTargets: Vehicle, Ship, Submarine
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-
-SonicZap:
-	ReloadDelay: 120
-	Range: 5c768
-	TargetActorCenter: true
-	InvalidTargets: Air
-	Report: sonic4.aud
-	Projectile: AreaBeam
-		Speed: 0c428
-		Duration: 65
-		DamageInterval: 3
-		Width: 390
-		Shape: Flat
-		ZOffset: 1023
-		BeyondTargetRange: 0c256
-		Blockable: true
-		TrackTarget: true
-		Color: 00c3ff25
-	Warhead@1Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 100, 100
-		Damage: 1100
-		AffectsParent: false
-		ValidStances: Neutral, Enemy
-		ValidTargets: Ground, Water
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-	Warhead@2Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 50, 50
-		Damage: 550
-		InvalidTargets: Disruptor, Air
-		AffectsParent: false
-		ValidStances: Ally
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-		
-SonicZapVisual:
-	ReloadDelay: 120
-	Range: 5c768
-	TargetActorCenter: true
-	InvalidTargets: Chrono, Air
-	Projectile: AreaBeam
-		Speed: 0c428
-		Duration: 65
-		DamageInterval: 3
-		Width: 180
-		Shape: Flat
-		ZOffset: 1023
-		BeyondTargetRange: 0c256
-		Blockable: true
-		TrackTarget: true
-		Color: 00fffb35
-	Warhead@1Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 100, 100
-		Damage: 10
-		AffectsParent: false
-		ValidStances: Neutral, Enemy
-		ValidTargets: Ground, Water
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-	Warhead@2Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 50, 50
-		Damage: 10
-		InvalidTargets: Disruptor, Air
-		AffectsParent: false
-		ValidStances: Ally
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-
-ParaBomb.burst:
-	Inherits: ParaBomb
-	Range: 5c0
-	ReloadDelay: 50
-	Burst: 5
-	BurstDelays: 8
-	TargetActorCenter: true
-
-Napalm:
-	Inherits: ^FireWeapon
-	ReloadDelay: 90
-	Range: 0c968
-	Burst: 2
-	BurstDelays: 2
-	Projectile: Bullet
-		Image: BOMBLET
-		Speed: 170
-		Blockable: false
-	Warhead@1Dam: SpreadDamage
-		Spread: 170
-		Damage: 6000
-		Versus:
-			Wood: 100
-			Concrete: 50
-
-Napalm.bomber:
-	Inherits: ^FireWeapon
-	ReloadDelay: 4
-	Range: 2c0
-	Burst: 2
-	BurstDelays: 2
-	Projectile: GravityBomb
-		Image: BOMBLET
-		Shadow: true
-	Warhead@1Dam: SpreadDamage
-		Spread: 341
-		Damage: 3000
-		Falloff: 1000, 368, 135, 50, 18, 7, 0
-		Versus:
-			Wood: 35
-			Heavy: 80
-	Warhead@3Eff: CreateEffect
-		Explosions: napalm
-		ImpactSounds: firebl3.aud
-	Warhead@4EffWater: CreateEffect
-		Explosions: large_splash
-		ValidTargets: Water, Underwater
-		InvalidTargets: Ship, Structure, Bridge
-
-MEMP:
-	ValidTargets: Ground, Water
-	Warhead@1Dam_impact: SpreadDamage
-		Range: 0, 1c1, 2c1, 3c1, 3c512, 4c1, 4c512
-		Damage: 4500
-		Falloff: 1000, 368, 135, 90, 68, 37, 10
-		DamageTypes: Prone50Percent, TriggerProne, EnergyDeath
-		Versus:
-			None: 20
-			Wood: 20
-			Light: 20
-			Heavy: 20
-			Concrete: 25
-			Brick: 25
-	Warhead@2Eff: CreateEffect
-		Explosions: pulse_explosion
-	Warhead@emp: GrantExternalCondition
-		Range: 5c0
-		Duration: 500
-		Condition: empdisable
-		ValidTargets: Ground, Vehicle, Air
-	Warhead@2Smu_impact: LeaveSmudge
-		SmudgeType: Scorch
-	Warhead@3Smu_area: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle, Structure, Wall, Husk, Trees
-		Size: 1
-		Delay: 3
-	Warhead@4Smu_area2: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle, Structure, Wall, Husk, Trees
-		Size: 2,1
-		Delay: 6
-	Warhead@5Eff: CreateEffect
-		Explosions: piff
-		ImpactSounds: mobemp1.aud
-		ValidTargets: Ground, Air, Ship, Trees
-
 ai.targeting.helper:
 	ReloadDelay: 1
 	Range: 7c0
@@ -777,94 +599,3 @@ DropDummy:
 	Warhead: SpreadDamage
 		Spread: 56
 		Damage: 1
-
-Hack.blackout:
-	ValidTargets: Radar
-	Warhead@2: GrantExternalCondition
-		Range: 18c0
-		Duration: 1125
-		Condition: jammed
-		ValidTargets: Radar
-
-SonicZap:
-	ReloadDelay: 120
-	Range: 5c768
-	TargetActorCenter: true
-	InvalidTargets: Air
-	Report: sonic4.aud
-	Projectile: AreaBeam
-		Speed: 0c428
-		Duration: 65
-		DamageInterval: 3
-		Width: 390
-		Shape: Flat
-		ZOffset: 1023
-		BeyondTargetRange: 0c256
-		Blockable: true
-		TrackTarget: true
-		Color: 00c3ff25
-	Warhead@1Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 100, 100
-		Damage: 1100
-		AffectsParent: false
-		ValidStances: Neutral, Enemy
-		ValidTargets: Ground, Water
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-	Warhead@2Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 50, 50
-		Damage: 550
-		InvalidTargets: Disruptor, Air
-		AffectsParent: false
-		ValidStances: Ally
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-		
-SonicZapVisual:
-	ReloadDelay: 120
-	Range: 5c768
-	TargetActorCenter: true
-	InvalidTargets: Chrono, Air
-	Projectile: AreaBeam
-		Speed: 0c428
-		Duration: 65
-		DamageInterval: 3
-		Width: 180
-		Shape: Flat
-		ZOffset: 1023
-		BeyondTargetRange: 0c256
-		Blockable: true
-		TrackTarget: true
-		Color: 00fffb35
-	Warhead@1Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 100, 100
-		Damage: 10
-		AffectsParent: false
-		ValidStances: Neutral, Enemy
-		ValidTargets: Ground, Water
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath
-	Warhead@2Dam: SpreadDamage
-		Range: 0, 32
-		Falloff: 50, 50
-		Damage: 10
-		InvalidTargets: Disruptor, Air
-		AffectsParent: false
-		ValidStances: Ally
-		Versus:
-			Heavy: 80
-			Concrete: 150
-			Wood: 200
-		DamageTypes: Prone50Percent, TriggerProne, ElectroDeath

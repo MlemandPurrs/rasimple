@@ -77,6 +77,7 @@ Player:
 		SpeedUp: True
 	ClassicProductionQueue@Fakestructure:
 		Type: Fakestructure
+		Factions: allies, france
 		DisplayOrder: 6
 		LowPowerModifier: 300
 		ReadyAudio: ConstructionComplete
@@ -165,90 +166,27 @@ Player:
 	ProvidesPrerequisite@Soviet:
 		Factions: soviet
 		Prerequisite: player.soviet
-	ProvidesPrerequisite@RedAlert:
-		Factions: allies, soviet
-		Prerequisite: player.redalert
 	GrantConditionOnPrerequisite@Allies:
 		Condition: player.allies
 		Prerequisites: player.allies
 	GrantConditionOnPrerequisite@Soviet:
 		Condition: player.soviet
 		Prerequisites: player.soviet
-	ProvidesPrerequisite@England:
-		Factions: england
-		Prerequisite: player.england
-	ProvidesPrerequisite@France:
-		Factions: france
-		Prerequisite: player.france
-	ProvidesPrerequisite@Germany:
-		Factions: germany
-		Prerequisite: player.germany
-	ProvidesPrerequisite@Russia:
-		Factions: russia
-		Prerequisite: player.russia
-	ProvidesPrerequisite@Ukraine:
-		Factions: ukraine
-		Prerequisite: player.ukraine
-	ProvidesPrerequisite@Belarus:
-		Factions: belarus
-		Prerequisite: player.belarus
-	GrantConditionOnPrerequisite@England:
-		Condition: player.allies
-		Prerequisites: player.england		
-	GrantConditionOnPrerequisite@France:
-		Condition: player.allies
-		Prerequisites: player.france
-	GrantConditionOnPrerequisite@Germany:
-		Condition: player.allies
-		Prerequisites: player.germany
-	GrantConditionOnPrerequisite@Russia:
-		Condition: player.soviet
-		Prerequisites: player.russia
-	GrantConditionOnPrerequisite@Ukraine:
-		Condition: player.soviet
-		Prerequisites: player.ukraine
-	GrantConditionOnPrerequisite@Belarus:
-		Condition: player.soviet
-		Prerequisites: player.belarus
-	ProvidesPrerequisite@GDI:
-		Factions: gdi
-		Prerequisite: player.gdi
-	ProvidesPrerequisite@Nod:
-		Factions: nod
-		Prerequisite: player.nod
-	ProvidesPrerequisite@CnC:
-		Factions: gdi, nod
-		Prerequisite: player.cnc
-	GrantConditionOnPrerequisite@GDI:
-		Condition: player.gdi
-		Prerequisites: player.gdi
-	GrantConditionOnPrerequisite@Nod:
-		Condition: player.nod
-		Prerequisites: player.nod
-	ProvidesPrerequisite@alliesorengland:
-		Factions: allies, england
-		Prerequisite: allies.or.england
-	ProvidesPrerequisite@alliesorfrance:
-		Factions: allies, france
-		Prerequisite: allies.or.france
-	ProvidesPrerequisite@alliesorgermany:
-		Factions: allies, germany
-		Prerequisite: allies.or.germany
-	ProvidesPrerequisite@sovietorrussia:
-		Factions: soviet, russia
-		Prerequisite: soviet.or.russia
-	ProvidesPrerequisite@sovietorukraine:
-		Factions: soviet, ukraine
-		Prerequisite: soviet.or.ukraine
-	ProvidesPrerequisite@sovietorbelarus:
-		Factions: soviet, belarus
-		Prerequisite: soviet.or.belarus
-	ProvidesPrerequisite@alliesorenglandorgdi:
-		Factions: allies, england, gdi
-		Prerequisite: can.has.carrier
-	ProvidesPrerequisite@englandorfrance:
-		Factions: england, france
-		Prerequisite: england.or.france
+	ProvidesPrerequisite@IsPlaying:
+		Prerequisite: player.online
+	ProvidesRadar@GLOBALRADAR:
+		RequiresCondition: minimap.always.on && !isbeingjammed
+	GrantConditionOnPrerequisite@GLOBALRADAR:
+		Condition: minimap.always.on
+		Prerequisites: global-minimap
+	ProvidesRadar@LOCALRADAR:
+		RequiresCondition: !minimap.always.on && minimap.with.radar && !isbeingjammed
+	GrantConditionOnPrerequisite@LOCALRADAR:
+		Condition: minimap.with.radar
+		Prerequisites: activedome
+	GrantConditionOnPrerequisite@GLOBALJAM:
+		Condition: isbeingjammed
+		Prerequisites: isbeingjammed
 	LobbyPrerequisiteCheckbox@GLOBALSCRAPS:
 		ID: scraps
 		Label: Scrap Metal
@@ -263,5 +201,26 @@ Player:
 		Enabled: False
 		DisplayOrder: 12
 		Prerequisites: global-disablenavy
+	LobbyPrerequisiteCheckbox@FIELDREPAIRS:
+		ID: fieldrepairstoggle
+		Label: Field Repairs
+		Description: Service Depots grant the 'Field Repairs' support-power
+		Enabled: False
+		DisplayOrder: 13
+		Prerequisites: global-fieldrepairs
+	LobbyPrerequisiteCheckbox@FREEAIRCRAFT:
+		ID: freeaircraft
+		Label: Free Aircraft
+		Description: Airfields and Helipads come with free Aircraft
+		Enabled: False
+		DisplayOrder: 14
+		Prerequisites: global-freeaircraft
+	LobbyPrerequisiteCheckbox@FREERADAR:
+		ID: freeradar
+		Label: Minimap Always On
+		Description: Minimap available independent of Radar structure, can still get jammed through the Radar structure
+		Enabled: False
+		DisplayOrder: 16
+		Prerequisites: global-minimap
 	GameSaveViewportManager:
 	PlayerRadarTerrain:
