@@ -450,19 +450,6 @@ SPY:
 		Payload: 118
 		Type: InfantryRefund
 
-SPY.England:
-	Inherits: SPY
-	Buildable:
-		Prerequisites: ~disabled
-	ProducibleWithLevel:
-		Prerequisites: techlevel.infonly
-		InitialLevels: 1
-	UpdatesPlayerStatistics:
-		OverrideActor: spy
-	RenderSprites:
-		Image: spy
-	-MapEditorData:
-
 THF:
 	Inherits: ^Soldier	
 	Inherits@ROT: ^RottingInfantry
@@ -882,7 +869,7 @@ DOG:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 4
 		Prerequisites: proc, ~techlevel.infonly
-		Description: Anti-infantry detection unit.\nCan detect Spies, Saboteurs and Infiltrators.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+		Description: Anti-infantry detection unit.\nCan detect Spies and Saboteurs.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
 	Tooltip:
 		Name: Attack Dog
 		GenericName: Dog

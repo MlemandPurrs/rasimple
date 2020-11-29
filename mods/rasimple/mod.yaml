@@ -69,7 +69,8 @@ Rules:
     rasimple|infantry.yaml
     rasimple|naval.yaml
     rasimple|structures.yaml
-    rasimple|vehicles.yaml  
+    rasimple|vehicles.yaml 
+    rasimple|map-compatibility.yaml  
 
 Sequences:
     rasimple|sequences.yaml

@@ -150,7 +150,7 @@ Player:
 		SquadSizeRandomBonus: 8
 		RushInterval: 400
 		AttackScanRadius: 16
-		ExcludeFromSquadsTypes: e6, mech, dog, jeep.scout, harv, harv.crate, mcv, mcv.ai, pt, dd, ca, iroq.ai, heli, spit
+		ExcludeFromSquadsTypes: e6, mech, dog, jeep.scout, harv, harv.crate, mcv, mcv.ai, pt, dd, ca, bshp, iroq.ai, heli, spit
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@allies.sea:
 		RequiresCondition: enable-ai-player && player.allies && !global-disablenavy
@@ -159,7 +159,7 @@ Player:
 		RushInterval: 400
 		AttackScanRadius: 24
 		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, e6, e7, medi, mech, jeep, jeep.scout, apc, 1tnk, 2tnk, arty, msam, mrj, stnk, ctnk, prsm, heli, iroq.ai, spit
-		NavalUnitsTypes: pt,dd,ca
+		NavalUnitsTypes: pt,dd,ca,bshp
 		ConstructionYardTypes: fact
 		NavalProductionTypes: syrd
 	SquadManagerBotModule@allies.air:
@@ -168,7 +168,7 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, e6, e7, medi, mech, jeep, jeep.scout, apc, 1tnk, 2tnk, arty, msam, mrj, stnk, ctnk, prsm, pt, dd, ca
+		ExcludeFromSquadsTypes: harv, harv.crate, mcv, mcv.ai, dog, e1, e2, e3, e6, e7, medi, mech, jeep, jeep.scout, apc, 1tnk, 2tnk, arty, msam, mrj, stnk, ctnk, prsm, pt, dd, ca, bshp
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@allies.land:
 		RequiresCondition: enable-ai-player && player.allies
@@ -216,10 +216,12 @@ Player:
 			pt: 50
 			dd: 30
 			ca: 20
+			bshp: 15
 		UnitLimits:
 			pt: 8
 			dd: 6
 			ca: 4
+			bshp: 3
 	UnitBuilderBotModule@allies.air:
 		RequiresCondition: enable-ai-player && player.allies
 		IdleBaseUnitsMaximum: 0

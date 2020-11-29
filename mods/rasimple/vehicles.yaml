@@ -1285,10 +1285,14 @@ DTRK:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 14
-		Prerequisites: stek, ~vehicles.soviet, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~soviet.or.russia, ~techlevel.high
 		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted.\n Can disguise as enemy Supply Truck.
 	Valued:
 		Cost: 2400
+	Tooltip:
+		Name: Demolition Truck
+		GenericName: Vehicle
+	-Tooltip:
 	DisguiseTooltip@default:
 		Name: Demolition Truck
 		GenericName: Vehicle
@@ -1304,7 +1308,7 @@ DTRK:
 	Health:
 		HP: 5000
 	Targetable:
-		TargetTypes: Ground, Vehicle, DemoDisguise
+		TargetTypes: Ground, Vehicle, VehicleDisguise, DemoDisguise
 		RequiresCondition: !parachute
 	Armor:
 		Type: Light
@@ -1338,7 +1342,7 @@ DTRK:
 		Condition: triggered
 	GrantConditionOnDeploy:
 		DeployedCondition: triggered
-	KillsSelf:
+	KillsSelf@DETONATE:
 		RequiresCondition: invulnerability || triggered
 	Chronoshiftable:
 		ExplodeInstead: true

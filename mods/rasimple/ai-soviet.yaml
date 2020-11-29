@@ -162,7 +162,7 @@ Player:
 		SquadSizeRandomBonus: 6
 		RushInterval: 400
 		AttackScanRadius: 16
-		ExcludeFromSquadsTypes: e6, thf, dog, ftrk.scout, harv.soviet, harv.soviet.crate, mcv, mcv.ai, ss, msub, nsub, yak.ai, mig, hind
+		ExcludeFromSquadsTypes: e6, thf, dog, ftrk.scout, harv.soviet, harv.soviet.crate, mcv, mcv.ai, ss, msub, msub.aa, fsub, nsub, yak.ai, mig, hind
 		ConstructionYardTypes: fact
 	SquadManagerBotModule@soviet.sea:
 		RequiresCondition: enable-ai-player && player.soviet && !global-disablenavy
@@ -171,7 +171,7 @@ Player:
 		RushInterval: 400
 		AttackScanRadius: 24
 		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, e6, thf, volk, shok, ftrk, ftrk.scout, apc.soviet, 3tnk.1b, 3tnk, 4tnk, 5tnk, v2rl, ttnk, yak.ai, mig, hind
-		NavalUnitsTypes: ss,msub,msub.aa,nsub
+		NavalUnitsTypes: ss,msub,msub.aa,fsub,nsub
 		ConstructionYardTypes: fact
 		NavalProductionTypes: spen
 	SquadManagerBotModule@soviet.air:
@@ -180,7 +180,7 @@ Player:
 		SquadSizeRandomBonus: 2
 		RushInterval: 400
 		AttackScanRadius: 48
-		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, e6, thf, volk, shok, ftrk, ftrk.scout, apc.soviet, 3tnk.1b, 3tnk, 4tnk, 5tnk, v2rl, ttnk, ss, msub, msub.aa, nsub
+		ExcludeFromSquadsTypes: harv.soviet, harv.soviet.crate, mcv, mcv.ai, dog, e1, e2, e3, e4, e6, thf, volk, shok, ftrk, ftrk.scout, apc.soviet, 3tnk.1b, 3tnk, 4tnk, 5tnk, v2rl, ttnk, ss, msub, msub.aa, fsub, nsub
 		ConstructionYardTypes: fact
 	UnitBuilderBotModule@soviet:
 		RequiresCondition: enable-ai-player && player.soviet
@@ -213,7 +213,6 @@ Player:
 			volk: 1
 			e6: 2
 			thf: 2
-			snip: 2
 			mcv.ai: 1
 	UnitBuilderBotModule@soviet.sea:
 		RequiresCondition: enable-ai-player && player.soviet && !global-disablenavy
@@ -224,10 +223,12 @@ Player:
 			msub: 20
 			msub.aa: 20
 			nsub: 1
+			fsub: 15
 		UnitLimits:
 			ss: 4
 			msub: 4
 			msub.aa: 2
+			fsub: 2
 			nsub: 1
 	UnitBuilderBotModule@soviet.air:
 		RequiresCondition: enable-ai-player && player.soviet

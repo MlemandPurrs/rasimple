@@ -288,6 +288,92 @@ DD:
 			PointA: 0, -448
 			PointB: 0, 448
 
+BSHP:
+	Inherits: ^Ship
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 6
+		Prerequisites: ~syrd, fix, dome, ~ships.allies, ~techlevel.medium
+		Description: Artillery ship, with extra Depthcharges.\nCan detect submarines.\n  Strong vs Buildings, Ships\n  Weak vs Aircraft, Infantry
+	Valued:
+		Cost: 1150
+	Tooltip:
+		Name: Battleship
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 5
+		Speed: 56
+	RevealsShroud:
+		Range: 6c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+	Turreted@PRIMARY:
+		Turret: primary
+		TurnSpeed: 3
+		Offset: 469,0,128
+	Turreted@SECONDARY:
+		Turret: secondary
+		TurnSpeed: 5
+		Offset: -761,0,128
+	Armament@PRIMARY:
+		Turret: primary
+		Weapon: 8Inch.singular
+		LocalOffset: 480,0,40
+		Recoil: 85
+		RecoilRecovery: 34
+		PauseOnCondition: empdisable
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Turret: secondary
+		Weapon: DepthCharge
+		PauseOnCondition: empdisable
+	Armament@TERTIARY:
+		Name: tertiary
+		Turret: secondary
+		Weapon: M1Carbine.Vehicle
+		LocalOffset: 128,0,43
+		MuzzleSequence: mg-muzzle
+	AttackTurreted:
+		Armaments: primary, secondary, tertiary
+		Turrets: primary, secondary
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		PauseOnCondition: empdisable
+	WithSpriteTurret@PRIMARY:
+		Turret: primary
+		Sequence: turret
+	WithSpriteTurret@SECONDARY:
+		Turret: secondary
+		Sequence: turret-dc
+	WithMuzzleOverlay:
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 38,38
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 320
+			PointA: 0, -448
+			PointB: 0, 448
+	ReloadArmamentsBar:
+		Armaments: primary
+		Color: FFFF00
+	RenderRangeCircle:
+		FallbackRange: 20c0
+
 CA:
 	Inherits: ^Ship
 	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
@@ -369,7 +455,7 @@ CARR:
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Submarine
-		BuildPaletteOrder: 6
+		BuildPaletteOrder: 7
 		Prerequisites: ~spen, dome, stek, ~ships.soviet, ~techlevel.high
 		Description: Nautical Support vessel.\nCan be deployed, becoming immobile\nto Produce, Rearm and Repair\nHelicopters at Sea.\nRepairs Ships when deployed.\n  Unarmed
 	Valued:
@@ -779,6 +865,69 @@ NSUB:
 		Range: 5c0
 	GpsDot:
 		String: Nuke
+
+FSUB:
+	Inherits: ^Submarine
+	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
+	-Cloak:
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Submarine
+		BuildPaletteOrder: 6
+		Prerequisites: ~spen, ftur, dome, ~ships.soviet, ~techlevel.medium
+		Description: Submerged anti-ship unit\narmed with fireball launcher.\n Strong vs Ships and Infantry.\n Weak vs Aircraft and Defenses.\n  Special Ability: Submerge\nCan dive underwater to become invisible\nmove unseen and avoid damage of most weapons.\nCan be manually ordered to surface for Repairs.\nMovespeed increase by 20% when on surface\nunless the Submarine is heavily damaged.
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Flame Submarine
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 25000
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 3
+		Speed: 56
+	Armament:
+		Weapon: FireballLauncher.Single
+		LocalOffset: 512,0,88
+		PauseOnCondition: empdisable
+	Turreted:
+		TurnSpeed: 255
+		Offset: 525,0,-46
+	WithSpriteTurret:
+		RequiresCondition: !underwater
+	AttackFrontal:
+		PauseOnCondition: empdisable
+	SelectionDecorations:
+	Selectable:
+		DecorationBounds: 38,38
+	AutoTarget:
+		InitialStance: ReturnFire
+		InitialStanceAI: ReturnFire
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 0
+		CloakDelay: 50
+		CloakSound: subshow1.aud
+		UncloakSound: subshow1.aud
+		CloakedCondition: underwater
+		Palette: submerged
+		IsPlayerPalette: false
+		UncloakOn: Attack, Heal, Unload, Dock, SelfHeal, Demolish
+		PauseOnCondition: cloak-force-disabled || shallowcrossing || empdisable || minehit || is-shooting
+		RequiresCondition: !deployed
+	GrantConditionOnAttack@UNCLOAK:
+		Condition: is-shooting
+		ArmamentNames: secondary
+		RevokeDelay: 50
+	HitShape:
+		TargetableOffsets: 448,0,0, -448,0,0
+		Type: Capsule
+			Radius: 320
+			PointA: 0, -448
+			PointB: 0, 448
 
 MINS:
 	Inherits: ^Mine

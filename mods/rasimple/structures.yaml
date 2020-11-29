@@ -1632,14 +1632,6 @@ AFLD:
 	RenderSprites:
 		Image: afld
 
-AFLD.Ukraine:
-	Inherits: AFLD
-	Buildable:
-		Prerequisites: ~disabled
-	RenderSprites:
-		Image: afld
-	-MapEditorData:
-
 HPAD:
 	Inherits: ^Building
 	Inherits@shape: ^2x2Shape

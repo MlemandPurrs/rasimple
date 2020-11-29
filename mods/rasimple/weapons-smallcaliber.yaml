@@ -207,6 +207,10 @@ Vulcan:
 		InvalidTargets: Ship, Structure, Bridge
 		Delay: 10
 
+Vulcan.ship:
+	Inherits: Vulcan
+	ReloadDelay: 45
+
 ChainGun:
 	Inherits: ^HeavyMG
 	ReloadDelay: 12

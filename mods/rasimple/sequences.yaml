@@ -490,6 +490,15 @@ msub:
 		UseClassicFacingFudge: True
 	icon: ssubicon
 
+fsub:
+	Inherits: emp-overlay
+	idle:
+		Facings: 16
+	turret: flame-tur
+		Facings: 32
+		UseClassicFacingFudge: True
+	icon: fsubicon
+
 advmsub:
     Inherits: emp-overlay
 	idle:
@@ -535,6 +544,21 @@ dd:
 		Length: 6
 		Facings: 8
 	icon: ddicon
+
+bshp:
+    Inherits: emp-overlay
+	idle: dd
+		Facings: 16
+	turret: pttur
+		Facings: 32
+	muzzle: gunfire2
+		Length: 5
+	turret-dc: mgun
+		Facings: 32
+	mg-muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: bshpicon
 
 ca:
     Inherits: emp-overlay
