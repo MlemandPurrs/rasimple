@@ -2,11 +2,6 @@ MINV:
 	Inherits: ^Mine
 	RenderSprites:
 		Image: minv
-		FactionImages:
-			soviet: minp
-			russia: minp
-			ukraine: minp
-			belarus: minp
 	Explodes:
 		Weapon: ATMine
 

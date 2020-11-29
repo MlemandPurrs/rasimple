@@ -608,7 +608,9 @@ VOLK:
 	Tooltip:
 		Name: Volkov
 	Mobile:
+		Speed: 62
 		Locomotor: foot
+		Voice: Move
 	Health:
 		HP: 12000
 	Armor:
@@ -618,9 +620,6 @@ VOLK:
 	Demolition:
 		DetonationDelay: 45
 		Voice: Demolish
-	Mobile:
-		Speed: 62
-		Voice: Move
 	Guard:
 		Voice: Move
 	Passenger:

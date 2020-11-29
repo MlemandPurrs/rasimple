@@ -291,27 +291,22 @@ World:
 		GameSpeedDropdownDisplayOrder: 3
 		GameSpeed: fast
 	CreateMPPlayers:
+	MPStartUnits@cratehunters:
+		Class: mhq
+		ClassName: Crate Hunters
+		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
+		BaseActor: MHQ.Start
 	MPStartUnits@mcvonly:
 		Class: mcv
 		ClassName: MCV Only
 		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
 		BaseActor: mcv
-	MPStartUnits@deployedallies:
-		Class: none
-		ClassName: Conyard + Scout
-		Factions: allies, england, france, germany
-		BaseActor: fact
-		SupportActors: jeep.scout
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
-	MPStartUnits@deployedsoviet:
-		Class: none
-		ClassName: Conyard + Scout
-		Factions: soviet, russia, ukraine, belarus
-		BaseActor: fact
-		SupportActors: ftrk.scout
-		InnerSupportRadius: 3
-		OuterSupportRadius: 5
+	MPStartUnits@doublemcv:
+		Class: doublemcv
+		ClassName: Double MCV
+		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
+		BaseActor: mcv
+		SupportActors: mcv
 	MPStartUnits@lightalliesa:
 		Class: light
 		ClassName: Light Support
@@ -376,11 +371,22 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,apc.soviet,ftrk,3tnk,3tnk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@cratehunters:
-		Class: mhq
-		ClassName: Crate Hunters
-		Factions: allies, england, france, germany, soviet, russia, ukraine, belarus
-		BaseActor: MHQ.Start
+	MPStartUnits@deployedallies:
+		Class: none
+		ClassName: Conyard + Scout
+		Factions: allies, england, france, germany
+		BaseActor: fact
+		SupportActors: jeep.scout
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@deployedsoviet:
+		Class: none
+		ClassName: Conyard + Scout
+		Factions: soviet, russia, ukraine, belarus
+		BaseActor: fact
+		SupportActors: ftrk.scout
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
 	MPStartLocations:
 		SeparateTeamSpawnsCheckboxDisplayOrder: 6
 		SeparateTeamSpawnsCheckboxVisible: False

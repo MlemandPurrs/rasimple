@@ -1,6 +1,6 @@
 MapFormat: 11
 
-RequiresMod: cncall
+RequiresMod: rasimple
 
 Title: Snow Shellmap
 
@@ -2268,6 +2268,6 @@ Actors:
 		Location: 34,12
 		Facing: 159
 
-Rules: cncall|rules/campaign-palettes.yaml, rules.yaml
+Rules: rasimple|rules/campaign-palettes.yaml, rules.yaml
 
 Weapons: weapons.yaml

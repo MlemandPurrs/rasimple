@@ -25,9 +25,13 @@ AFLD.Ukraine:
 	-MapEditorData:
 
 Sniper:
-	Inherits: SNIP
+	Inherits: E1
 	Buildable:
 		Prerequisites: ~disabled
+	Armament:
+		Weapon: Sniper
+	Armament@GARRISONED:
+		Weapon: Sniper
 	RenderSprites:
 		Image: e1
 	-MapEditorData:

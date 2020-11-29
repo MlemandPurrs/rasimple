@@ -163,7 +163,7 @@ JEEP:
 	Mobile:
 		TurnSpeed: 10
 		Speed: 170
-		PauseOnCondition: notmobile || being-captured
+		PauseOnCondition: notmobile || being-captured || empdisable
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 8c0
@@ -1285,7 +1285,7 @@ DTRK:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 14
-		Prerequisites: stek, ~vehicles.soviet, ~soviet.or.russia, ~techlevel.high
+		Prerequisites: stek, ~vehicles.soviet, ~techlevel.high
 		Description: Truck with actively armed nuclear\nexplosives. Has very weak armor.\n  Detonates when Iron Curtained or Chronoshifted.\n Can disguise as enemy Supply Truck.
 	Valued:
 		Cost: 2400

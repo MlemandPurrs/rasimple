@@ -418,22 +418,10 @@ laserfire:
 		Length: *
 		ZOffset: 511
 
-discus:
-	idle:
-		Length: *
-		Reverses: true
-		ZOffset: 1023
-		Offset: 0, 0, 12
-
 ionsfx:
 	idle:
 		Length: *
 		Offset: 0, -78
-		ZOffset: 1023
-
-hjm:
-	idle:
-		Facings: 32
 		ZOffset: 1023
 
 patriot:
