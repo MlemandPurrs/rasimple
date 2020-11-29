@@ -274,7 +274,7 @@ ColorValidator:
 	TeamColorPresets: C4B060, EC0000, 702C24, FC8800, F7BB06, F861A4, A800A8, AB7B84, 00C400, A0F08C, D1987C, 253D8C, 4494E4, 7EBFF1, 44907C, 00A8A8
 
 ModContent:
-	InstallPromptMessage: C&C All requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2008 Red Alert freeware release.\n\nAdvanced Install includes options for downloading the music and for\ncopying the videos and other content from an original game disc.
+	InstallPromptMessage: RA Simple requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2008 Red Alert freeware release.\n\nAdvanced Install includes options for downloading the music and for\ncopying the videos and other content from an original game disc.
 	QuickDownload: quickinstall
 	HeaderMessage: Game content may be extracted from the original game discs or an\nexisting digital install. OpenRA can also download the base game\nfiles from an online mirror of the 2008 freeware release of RA.
 	Packages:
