@@ -2255,11 +2255,11 @@ Actors:
 		Location: 90,47
 		TurretFacing: 179
 		Facing: 179
-	Actor844: msub.aa
+	Actor844: ssam
 		Owner: Soviets
 		Location: 75,40
 		Facing: 236
-	Actor845: msub.aa
+	Actor845: ssam
 		Owner: Soviets
 		Location: 77,41
 		Facing: 233

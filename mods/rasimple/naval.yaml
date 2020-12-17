@@ -13,7 +13,7 @@ LST:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 35000
+		HP: 350
 	Armor:
 		Type: Heavy
 	SelectionDecorations:
@@ -59,7 +59,7 @@ PT:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 20000
+		HP: 200
 	Armor:
 		Type: Heavy
 	SelectionDecorations:
@@ -140,7 +140,7 @@ RSHP:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 20000
+		HP: 200
 	Armor:
 		Type: Heavy
 	SelectionDecorations:
@@ -224,7 +224,7 @@ DD:
 	Selectable:
 		DecorationBounds: 38,38
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Heavy
 	Mobile:
@@ -304,7 +304,7 @@ BSHP:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Heavy
 	Mobile:
@@ -393,7 +393,7 @@ CA:
 	Selectable:
 		DecorationBounds: 44,44
 	Health:
-		HP: 80000
+		HP: 800
 	Armor:
 		Type: Heavy
 	Mobile:
@@ -463,7 +463,7 @@ CARR:
 	Tooltip:
 		Name: Helicarrier
 	Health:
-		HP: 32500
+		HP: 325
 	Armor:
 		Type: Heavy
 	Mobile:
@@ -518,7 +518,7 @@ CARR.Deployed:
 		TerrainTypes: Water
 		RequiresBaseProvider: False
 	Health:
-		HP: 32500
+		HP: 325
 	Armor:
 		Type: Heavy
 	RevealsShroud:
@@ -622,7 +622,7 @@ SS:
 		DecorationBounds: 38,38
 	SelectionDecorations:
 	Health:
-		HP: 25000
+		HP: 250
 	Armor:
 		Type: Light
 	Mobile:
@@ -700,7 +700,7 @@ MSUB:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Light
 	Mobile:
@@ -749,7 +749,7 @@ MSUB:
 			PointA: 0, -576
 			PointB: 0, 576
 
-MSUB.AA:
+SSAM:
 	Inherits: MSUB
 	Inherits@AUTOTARGET: ^AutoTargetNavalAssaultMove
 	Buildable:
@@ -761,7 +761,7 @@ MSUB.AA:
 	Valued:
 		Cost: 950
 	Health:
-		HP: 25000
+		HP: 250
 	Mobile:
 		TurnSpeed: 4
 		Speed: 68
@@ -809,7 +809,7 @@ NSUB:
 	Tooltip:
 		Name: Nuclear Submarine
 	Health:
-		HP: 75000
+		HP: 750
 	Armor:
 		Type: Light
 	Mobile:
@@ -883,7 +883,7 @@ FSUB:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 25000
+		HP: 250
 	Armor:
 		Type: Light
 	Mobile:
@@ -934,7 +934,7 @@ MINS:
 	Tooltip:
 		Name: Sea Mine
 	Health:
-		HP: 5000
+		HP: 50
 		NotifyAppliedDamage: false
 	Cloak:
 		CloakTypes: Underwater

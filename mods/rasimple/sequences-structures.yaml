@@ -371,9 +371,11 @@ barr:
     damaged-idle:
 		Start: 10
 		Length: 10
+		Offset: 0,-6
         Tick: 100
 	place: barrmake
 		Start: 12
+		Offset: 0,-6
 	make: barrmake
 		Length: *
 		Offset: 0,-6
@@ -386,6 +388,7 @@ barr:
 	dead:
 		Start: 10
 		Length: 1
+		Offset: 0,-6
 		Tick: 800
 	icon: barricon
     fake-icon: barficon

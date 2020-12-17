@@ -26,7 +26,7 @@ E1:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 5000
+		HP: 50
 	Armament@PRIMARY:
 		Weapon: M1Carbine
 	WithInfantryBody:
@@ -73,7 +73,7 @@ E2:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 4500
+		HP: 45
 	Mobile:
 		Speed: 71
 	Armament@PRIMARY:
@@ -134,12 +134,12 @@ E3:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 4500
-	Armament@AntiGround:
+		HP: 45
+	Armament@AntiAir:
 		Weapon: RedEye
 		LocalOffset: 0,0,555
 		PauseOnCondition: !ammo
-	Armament@AntiAir:
+	Armament@AntiGround:
 		Name: secondary
 		Weapon: Dragon
 		LocalOffset: 0,0,555
@@ -197,7 +197,7 @@ E4:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 4000
+		HP: 40
 	Targetable:
 		RequiresCondition: !parachute
 		TargetTypes: Ground, Infantry, Disguise, Flamer
@@ -294,7 +294,7 @@ MEDI:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 6000
+		HP: 60
 	Mobile:
 		Speed: 50
 	RevealsShroud:
@@ -345,7 +345,7 @@ MECH:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 6000
+		HP: 60
 	Mobile:
 		Speed: 50
 		Voice: Move
@@ -360,6 +360,13 @@ MECH:
 		OutsideRangeCursor: repair
 		TargetStances: Ally
 		ForceTargetStances: None
+	Armament@AI:
+		Weapon: ai.targeting.helper.noattack
+		LocalOffset: 0,0,0
+		RequiresCondition: enable-helper
+	GrantConditionOnBotOwner@aiplayer:
+		Condition: enable-helper
+		Bots: normal
 	AttackFrontal:
 		Voice: Action
 	CaptureManager:
@@ -470,7 +477,7 @@ THF:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 4500
+		HP: 45
 	RevealsShroud:
 		Range: 5c0
 	CaptureManager:
@@ -532,7 +539,7 @@ E7:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 5000
+		HP: 50
 	Targetable:
 		RequiresCondition: !parachute && !swimming
 	Targetable@SEA:
@@ -612,7 +619,7 @@ VOLK:
 		Locomotor: foot
 		Voice: Move
 	Health:
-		HP: 12000
+		HP: 120
 	Armor:
 		Type: Heavy
 	RevealsShroud:
@@ -677,7 +684,7 @@ SHOK:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 7000
+		HP: 70
 	Mobile:
 		Voice: Move
 	RevealsShroud:
@@ -868,7 +875,7 @@ DOG:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 4
 		Prerequisites: proc, ~techlevel.infonly
-		Description: Anti-infantry detection unit.\nCan detect Spies and Saboteurs.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+		Description: Anti-infantry detection unit.\nGains lost life back whenever Eating.\nCan detect Spies and Saboteurs.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
 	Tooltip:
 		Name: Attack Dog
 		GenericName: Dog
@@ -881,7 +888,7 @@ DOG:
 		Bounds: 12,17,-1,-4
 		DecorationBounds: 12,17,-1,-4
 	Health:
-		HP: 2000
+		HP: 25
 	Mobile:
 		Speed: 99
 		Voice: Move
@@ -931,6 +938,12 @@ DOG:
 		Payload: 50
 		Type: InfantryRefund
 		Voice: Move
+	SelfHealing@DAYUM:
+		Step: 5
+		Delay: 45
+		HealIfBelow: 101
+		DamageCooldown: 0
+		RequiresCondition: eating
 
 Zombie:
 	Inherits: DOG
@@ -961,7 +974,7 @@ Ant:
 		DecorationBounds: 30,30,0,-2
 	SelectionDecorations:
 	Health:
-		HP: 75000
+		HP: 75
 	Mobile:
 		Speed: 99
 		TurnSpeed: 12
@@ -999,7 +1012,7 @@ FireAnt:
 	Armament:
 		Weapon: AntFireball
 	Health:
-		HP: 7500
+		HP: 75
 	Armor:
 		Type: Heavy
 	Buildable:
@@ -1011,7 +1024,7 @@ ScoutAnt:
 		Name: Scout Ant
 		GenericVisibility: none
 	Health:
-		HP: 8500
+		HP: 85
 	Armor:
 		Type: Light
 	AutoTarget:
@@ -1027,7 +1040,7 @@ WarriorAnt:
 	Mobile:
 		Speed: 65
 	Health:
-		HP: 12500
+		HP: 125
 	Armor:
 		Type: Heavy
 	Armament:

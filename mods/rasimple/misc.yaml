@@ -131,8 +131,8 @@ CRATE:
 		Prerequisites: techlevel.high, techcenter, fix
 	GiveUnitCrateAction@mrj:
 		SelectionShares: 2
-		Units: mrj.crate
-		Prerequisites: techcenter, techlevel.high
+		Units: mrj
+		Prerequisites: techlevel.high, techcenter
 	GiveUnitCrateAction@supertank:
 		SelectionShares: 1
 		Units: 5tnk

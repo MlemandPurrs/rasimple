@@ -15,12 +15,12 @@
 		RangeLimit: 6c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 5000
+		Damage: 50
 		ValidTargets: Ground, Water, Air
 		Versus:
 			None: 10
-			Wood: 74
-			Light: 34
+			Wood: 75
+			Light: 35
 			Heavy: 100
 			Concrete: 50
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
@@ -57,7 +57,7 @@ Maverick:
 		CruiseAltitude: 2c0
 		RangeLimit: 14c410
 	Warhead@1Dam: SpreadDamage
-		Damage: 7000
+		Damage: 70
 		Versus:
 			None: 30
 			Wood: 90
@@ -84,7 +84,7 @@ MaverickAA:
 		RangeLimit: 14c410
 		CruiseAltitude: 2c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 30
 			Wood: 90
@@ -117,7 +117,7 @@ HellfireAG:
 		HorizontalRateOfTurn: 10
 		RangeLimit: 8c512
 	Warhead@1Dam: SpreadDamage
-		Damage: 6000
+		Damage: 60
 		Versus:
 			None: 30
 			Wood: 90
@@ -138,7 +138,7 @@ HellfireAA:
 		RangeLimit: 7c0
 		CloseEnough: 0c600
 	Warhead@1Dam: SpreadDamage
-		Damage: 4000
+		Damage: 40
 		ValidTargets: Air
 		Versus:
 			Wood: 75
@@ -166,7 +166,7 @@ MammothTusk:
 		RangeLimit: 6c256
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 5000
+		Damage: 50
 		Versus:
 			None: 100
 			Light: 60
@@ -194,7 +194,7 @@ Nike:
 		RangeLimit: 9c0
 		Speed: 341
 	Warhead@1Dam: SpreadDamage
-		Damage: 5000
+		Damage: 50
 		ValidTargets: Air
 		Versus:
 			Light: 90
@@ -216,10 +216,21 @@ RedEye:
 		HorizontalRateOfTurn: 20
 		Speed: 298
 	Warhead@1Dam: SpreadDamage
-		Damage: 4000
+		Damage: 40
 		ValidTargets: Air
 		Versus:
 			Light: 60
+
+RedEye.2shot:
+	Inherits: RedEye
+	Burst: 2
+	BurstDelays: 7
+	Range: 11c0	
+	MinRange: 3c0
+	Projectile: Missile
+		Speed: 304
+		Inaccuracy: 512
+		RangeLimit: 14c410
 
 Stinger:
 	Inherits: ^AntiGroundMissile
@@ -236,7 +247,7 @@ Stinger:
 		Speed: 170
 		CloseEnough: 149
 	Warhead@1Dam: SpreadDamage
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 36
 			Wood: 88
@@ -258,6 +269,7 @@ APTusk:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 64
 	Burst: 2
+	BurstDelays: 7
 	Range: 6c0
 	Projectile: Missile
 		Speed: 298
@@ -275,6 +287,8 @@ APTusk:
 APTusk.stnk:
 	Inherits: APTusk
 	ReloadDelay: 96
+	Warhead@1Dam: SpreadDamage
+		Damage: 75
 
 TorpTube:
 	ReloadDelay: 100
@@ -296,7 +310,7 @@ TorpTube:
 		CruiseAltitude: 0
 	Warhead@1Dam: SpreadDamage
 		Spread: 426
-		Damage: 12000
+		Damage: 120
 		ValidTargets: Water, Underwater, Bridge
 		Versus:
 			Wood: 50
@@ -329,7 +343,7 @@ TorpTube:
 		ContrailLength: 30
 	Warhead@1Dam: SpreadDamage
 		Spread: 426
-		Damage: 2500
+		Damage: 25
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		Versus:
 			None: 40
@@ -365,7 +379,7 @@ SubMissileAA:
 	ValidTargets: Air
 	TargetActorCenter: false
 	Warhead@1Dam: SpreadDamage
-		Damage: 1500
+		Damage: 15
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion_air
 		ImpactSounds: kaboom25.aud
@@ -398,7 +412,7 @@ SubMissile.barrage:
 	BurstDelays: 12
 	Warhead@1Dam: SpreadDamage
 		Spread: 683
-		Damage: 2500
+		Damage: 25
 		ValidTargets: Ground
 		Versus:
 			None: 25
@@ -432,7 +446,7 @@ SCUD:
 		LaunchAngle: 62
 	Warhead@1Dam: SpreadDamage
 		Spread: 341
-		Damage: 4500
+		Damage: 45
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		ValidTargets: Ground, Water, Trees
 		Versus:

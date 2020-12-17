@@ -3,8 +3,9 @@
 
 SPY.England:
 	Inherits: SPY
-	Buildable:
-		Prerequisites: ~disabled
+	-Buildable:
+	#	Buildable:
+	#	Prerequisites: ~disabled
 	ProducibleWithLevel:
 		Prerequisites: techlevel.infonly
 		InitialLevels: 1
@@ -16,8 +17,9 @@ SPY.England:
 
 AFLD.Ukraine:
 	Inherits: AFLD
-	Buildable:
-		Prerequisites: ~disabled
+	-Buildable:
+	#	Buildable:
+	#	Prerequisites: ~disabled
 	ProvidesPrerequisite@clone:
 		Prerequisite: afld
 	RenderSprites:
@@ -26,8 +28,9 @@ AFLD.Ukraine:
 
 Sniper:
 	Inherits: E1
-	Buildable:
-		Prerequisites: ~disabled
+	-Buildable:
+	#	Buildable:
+	#	Prerequisites: ~disabled
 	Armament:
 		Weapon: Sniper
 	Armament@GARRISONED:

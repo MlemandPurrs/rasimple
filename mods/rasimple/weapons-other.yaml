@@ -4,7 +4,7 @@
 	Range: 5c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: 15000
+		Damage: 150
 		ValidTargets: Ground, Water, Trees
 		Versus:
 			None: 90
@@ -62,7 +62,7 @@ Flamer:
 		Inaccuracy: 853
 	Warhead@1Dam: SpreadDamage
 		Spread: 341
-		Damage: 1000
+		Damage: 40
 		Versus:
 			None: 70
 			Wood: 80
@@ -86,7 +86,7 @@ BigFlamer:
 	BurstDelays: 25
 	Warhead@1Dam: SpreadDamage
 		Spread: 400
-		Damage: 8000
+		Damage: 80
 		Versus:
 			None: 80
 			Wood: 75
@@ -112,7 +112,7 @@ Napalm:
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Spread: 170
-		Damage: 6000
+		Damage: 60
 		Versus:
 			Wood: 100
 			Concrete: 50
@@ -132,7 +132,7 @@ Napalm.bomber:
 		Shadow: true
 	Warhead@1Dam: SpreadDamage
 		Spread: 341
-		Damage: 3000
+		Damage: 30
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		Versus:
 			Wood: 35
@@ -154,7 +154,7 @@ Flamespray:
 	Report: flamer2.aud
 	Warhead@1Dam: SpreadDamage
 		Spread: 468
-		Damage: 4000
+		Damage: 40
 		ValidTargets: Ground, Water, Trees
 		InvalidTargets: Wall, Flamer
 		Versus:
@@ -193,7 +193,7 @@ Flamespray.dual:
 	Report: flamer2.aud
 	Warhead@1Dam: SpreadDamage
 		Spread: 468
-		Damage: 4000
+		Damage: 40
 		ValidTargets: Ground, Water, Trees
 		Versus:
 			None: 120
@@ -220,12 +220,12 @@ Flamespray.dual:
 
 ^TeslaWeapon:
 	ReloadDelay: 3
-	Range: 8c0
+	Range: 8c256
 	Report: tesla1.aud
 	Projectile: TeslaZap
 	Warhead@1Dam: SpreadDamage
 		Spread: 42
-		Damage: 10000
+		Damage: 100
 		Versus:
 			None: 1000
 		DamageTypes: Prone50Percent, TriggerProne, ElectricityDeath
@@ -248,7 +248,7 @@ PortaTesla:
 	ReloadDelay: 70
 	Range: 6c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 4500
+		Damage: 50
 		Versus:
 			Wood: 60
 			Heavy: 80
@@ -285,7 +285,7 @@ DogJaw:
 	TargetActorCenter: true
 	Projectile: InstantHit
 	Warhead@1Dam: TargetDamage
-		Damage: 100000
+		Damage: 1000
 		ValidTargets: Infantry
 		InvalidTargets: Ant
 		DamageTypes: DefaultDeath
@@ -299,7 +299,7 @@ Heal:
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: -5000
+		Damage: -50
 		ValidStances: Ally
 		ValidTargets: Heal
 		DebugOverlayColor: 00FF00
@@ -309,7 +309,7 @@ Repair:
 	Report: fixit1.aud
 	ValidTargets: Repair
 	Warhead@1Dam: SpreadDamage
-		Damage: -2500
+		Damage: -25
 		ValidTargets: Repair
 
 Demolish:
@@ -326,7 +326,7 @@ Claw:
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: 3000
+		Damage: 30
 		Versus:
 			None: 97
 			Wood: 10
@@ -342,7 +342,7 @@ Mandible:
 	BurstDelays: 14
 	StartBurstReport: antbite.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 6000
+		Damage: 60
 		Versus:
 			None: 90
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
@@ -354,7 +354,7 @@ MandibleHeavy:
 	BurstDelays: 20
 	StartBurstReport: antbite.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 10000
+		Damage: 100
 		Versus:
 			None: 100
 			Light: 90
@@ -373,7 +373,7 @@ AntFireball:
 		Speed: 200
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: 4000
+		Damage: 40
 		Versus:
 			None: 80
 			Wood: 85
@@ -447,7 +447,7 @@ BombingRun.ag:
 		Shadow: true
 	Warhead@1Dam: SpreadDamage
 		Spread: 512
-		Damage: 9000
+		Damage: 90
 		Versus:
 			None: 90
 			Wood: 75
@@ -481,7 +481,7 @@ BombingRun.dc:
 		Shadow: true
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 8000
+		Damage: 80
 		ValidTargets: Submarine
 		Versus:
 			Light: 75
@@ -511,7 +511,7 @@ PrismLaser:
 		SecondaryBeamColor: ECFCFE
 	Warhead@1Dam: SpreadDamage
 		Spread: 512
-		Damage: 13000
+		Damage: 130
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 		Versus:
 			None: 100
@@ -538,7 +538,7 @@ PrisTLaser:
 	Projectile: LaserZap
 		Blockable: true
 	Warhead@1Dam: SpreadDamage
-		Damage: 3875
+		Damage: 32
 		Versus:
 			None: 150
 			Wood: 90
@@ -556,7 +556,7 @@ PrisBurst:
 		-HitAnim:
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 6500
+		Damage: 65
 	-Warhead@Burst:
 	Warhead@3Eff: CreateEffect
 		Explosions: small_explosion
@@ -566,7 +566,7 @@ PrisBurst:
 PrisTBurst:
 	Inherits: PrisBurst
 	Warhead@1Dam: SpreadDamage
-		Damage: 2100
+		Damage: 21
 
 ai.targeting.helper:
 	ReloadDelay: 1
@@ -599,3 +599,11 @@ DropDummy:
 	Warhead: SpreadDamage
 		Spread: 56
 		Damage: 1
+
+Ammopoolfixer:
+	ReloadDelay: 50
+	Range: 9c0
+	ValidTargets: Harambe
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Damage: 0

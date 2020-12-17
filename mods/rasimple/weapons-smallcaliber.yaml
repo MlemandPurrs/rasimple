@@ -8,13 +8,13 @@
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: 2000
+		Damage: 20
 		ValidTargets: Air
 		Versus:
 			None: 40
 			Wood: 10
 			Light: 60
-			Heavy: 10
+			Heavy: 30
 			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 	Warhead@2Eff: CreateEffect
@@ -31,7 +31,7 @@ ZSU-23:
 		Speed: 3c340
 		Inaccuracy: 1c938
 	Warhead@1Dam: SpreadDamage
-		Damage: 1200
+		Damage: 12
 		Versus:
 			None: 25
 			Wood: 75
@@ -68,7 +68,7 @@ FLAK-23-AG:
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 120
 			Wood: 60
@@ -87,7 +87,7 @@ FLAK-23-AG:
 ^LightMG:
 	Inherits: ^HeavyMG
 	Warhead@1Dam: SpreadDamage
-		Damage: 1000
+		Damage: 10
 		Versus:
 			None: 150
 			Wood: 10
@@ -99,7 +99,7 @@ FLAK-23-AG:
 Vulcan:
 	Inherits: ^HeavyMG
 	Warhead@1Dam: SpreadDamage
-		Damage: 1000
+		Damage: 10
 		Versus:
 			None: 200
 			Wood: 50
@@ -108,7 +108,7 @@ Vulcan:
 			Concrete: 20
 	Warhead@4Dam_2: SpreadDamage
 		Spread: 128
-		Damage: 1000
+		Damage: 10
 		Delay: 2
 		Versus:
 			None: 200
@@ -128,7 +128,7 @@ Vulcan:
 		Delay: 2
 	Warhead@5Dam_3: SpreadDamage
 		Spread: 128
-		Damage: 1000
+		Damage: 10
 		Delay: 4
 		Versus:
 			None: 200
@@ -148,7 +148,7 @@ Vulcan:
 		Delay: 4
 	Warhead@7Dam_4: SpreadDamage
 		Spread: 128
-		Damage: 1000
+		Damage: 10
 		Delay: 6
 		Versus:
 			None: 200
@@ -168,7 +168,7 @@ Vulcan:
 		Delay: 6
 	Warhead@9Dam_5: SpreadDamage
 		Spread: 128
-		Damage: 1000
+		Damage: 10
 		Delay: 8
 		Versus:
 			None: 200
@@ -188,7 +188,7 @@ Vulcan:
 		Delay: 8
 	Warhead@11Dam_6: SpreadDamage
 		Spread: 128
-		Damage: 1000
+		Damage: 10
 		Delay: 10
 		Versus:
 			None: 200
@@ -225,16 +225,16 @@ ChainGun:
 ChainGun.AA:
 	Inherits: ChainGun
 	Range: 5c0
-	ValidTargets: Air
+	ValidTargets: Helicopter
 	MinRange: 1c256
 	Projectile: Bullet
 		Blockable: false
 		Inaccuracy: 0c768
 	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Damage: 1250
+		ValidTargets: Helicopter
+		Damage: 12
 	Warhead@2Eff: CreateEffect
-		ValidTargets: Air
+		ValidTargets: Helicopter
 		ImpactActors: false
 
 Chaingun.5tnk:
@@ -255,7 +255,7 @@ ChainGun.Yak:
 	Projectile: InstantHit
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
-		Damage: 4000
+		Damage: 40
 		Versus:
 			None: 100
 			Wood: 50
@@ -288,7 +288,7 @@ ChainGun.Yak.AA.Right:
 	BurstDelays: 1
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Air
-		Damage: 625
+		Damage: 31
 	Warhead@2Eff: CreateEffect
 		ValidTargets: Air
 		ImpactActors: false
@@ -311,7 +311,7 @@ HeliAGGun:
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 2000
+		Damage: 20
 		Versus:
 			None: 100
 			Wood: 50
@@ -321,12 +321,12 @@ HeliAGGun:
 
 HeliAAGun:
 	Inherits: HeliAGGun
-	ValidTargets: Air
+	ValidTargets: Helicopter
 	Projectile: Bullet
 		Inaccuracy: 0c768
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		ValidTargets: Air
+		ValidTargets: Helicopter
 		Versus:
 			Light: 50
 
@@ -336,7 +336,7 @@ Pistol:
 	Range: 3c0
 	Report: gun27.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 750
+		Damage: 7
 		Versus:
 			None: 100
 	Warhead@2Eff: CreateEffect
@@ -378,7 +378,7 @@ M60mg.Inf:
 	Report: mguninf1.aud
 	BurstDelays: 5
 	Warhead@1Dam: SpreadDamage
-		Damage: 2500
+		Damage: 25
 	FirstBurstTargetOffset: -64,0,0
 	FollowingBurstTargetOffset: 256,0,0
 	Projectile: Bullet
@@ -394,7 +394,7 @@ M60mg.Inf:
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 42
-		Damage: 15000
+		Damage: 150
 		ValidTargets: Barrel, Infantry
 		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 
@@ -411,18 +411,16 @@ SilencedPPK:
 		ValidTargets: Water, Underwater
 		InvalidTargets: Ship, Structure, Bridge
 
-SilencedPPK.rmbo:
-	Inherits: SilencedPPK
-	Range: 7c0
-
 Colt45:
 	Inherits: ^SnipeWeapon
 	ReloadDelay: 15
 	Range: 7c0
 	BurstDelays: 2
-	Burst: 10
+	Burst: 5
+	Projectile: Bullet
+		Inaccuracy: 424
 	Warhead@1Dam: SpreadDamage
-		Damage: 5000
+		Damage: 50
 	Warhead@2Eff: CreateEffect
 		Explosions: piff
 		ValidTargets: Ground, Ship, Air, Trees
@@ -440,7 +438,7 @@ VolkovGun:
 	InvalidTargets: Air, Bridge, Structure
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 10500
+		Damage: 105
 		Versus:
 			None: 90
 			Wood: 75
@@ -466,11 +464,11 @@ Sniper:
 	ReloadDelay: 70
 	Range: 9c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 7000
+		Damage: 70
 		InvalidTargets: Cyborg
 	Warhead@4Dam: SpreadDamage
 		Spread: 42
-		Damage: 5000
+		Damage: 50
 		ValidTargets: Cyborg
 		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 
@@ -485,7 +483,7 @@ Vulcan.bomber:
 	Report: gun5TD.aud
 	Warhead@1Dam: SpreadDamage
 		Spread: 426
-		Damage: 5000
+		Damage: 50
 		Versus:
 			Wood: 25
 			Light: 100
@@ -502,7 +500,7 @@ Autocannon:
 	Projectile: Bullet
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
-		Damage: 5000
+		Damage: 50
 		Versus:
 			Wood: 25
 			Light: 100

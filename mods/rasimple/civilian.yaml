@@ -374,7 +374,7 @@ BARL:
 	SelectionDecorations:
 		RenderSelectionBars: False
 	Health:
-		HP: 1000
+		HP: 10
 	Explodes:
 		Weapon: BarrelExplode
 	Tooltip:
@@ -398,7 +398,7 @@ BRL3:
 	SelectionDecorations:
 		RenderSelectionBars: False
 	Health:
-		HP: 1000
+		HP: 10
 	Explodes:
 		Weapon: BarrelExplode
 	Tooltip:

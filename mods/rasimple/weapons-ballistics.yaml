@@ -8,7 +8,7 @@
 		Shadow: True
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 4000
+		Damage: 40
 		Versus:
 			None: 30
 			Wood: 75
@@ -37,7 +37,7 @@
 		Speed: 853
 		Image: 50CAL
 	Warhead@1Dam: SpreadDamage
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 32
 			Wood: 52
@@ -65,7 +65,7 @@
 	Projectile: Bullet
 		Speed: 853
 	Warhead@1Dam: SpreadDamage
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 25
 			Wood: 70
@@ -105,7 +105,7 @@
 	Range: 5c768
 	InvalidTargets: Air, Infantry
 	Warhead@1Dam: SpreadDamage
-		Damage: 6000
+		Damage: 60
 		Versus:
 			Heavy: 115
 		InvalidTargets: Air
@@ -120,7 +120,7 @@ TurretGun:
 	Range: 7c512
 	Report: turret1.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 6000
+		Damage: 60
 		Versus:
 			None: 20
 			Wood: 50
@@ -136,7 +136,7 @@ TurretGun:
 		Inaccuracy: 1c938
 	Warhead@1Dam: SpreadDamage
 		Spread: 426
-		Damage: 23000
+		Damage: 230
 		Versus:
 			None: 90
 			Wood: 40
@@ -196,7 +196,7 @@ TurretGun:
 	Warhead@1Dam: SpreadDamage
 		InvalidTargets: Air
 		Spread: 626
-		Damage: 12000
+		Damage: 120
 		Versus:
 			None: 60
 			Wood: 65
@@ -221,7 +221,7 @@ TurretGun:
 	Inherits: 203mm
 	ReloadDelay: 105
 	Burst: 2
-	BurstDelays: 35
+	BurstDelays: 52
 
 8Inch:
 	Inherits: ^Artillery
@@ -236,7 +236,7 @@ TurretGun:
 		ContrailLength: 30
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: 2500
+		Damage: 25
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		Versus:
 			None: 60
@@ -261,7 +261,7 @@ TurretGun:
 	Projectile: Bullet
 		Speed: 724
 	Warhead@1Dam: SpreadDamage
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 28
 			Wood: 72
@@ -288,7 +288,7 @@ Grenade:
 		Image: BOMB
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 6000
+		Damage: 60
 		Versus:
 			None: 60
 			Wood: 100
@@ -325,7 +325,7 @@ DepthCharge:
 		Inaccuracy: 128
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 4000
+		Damage: 40
 		ValidTargets: Submarine
 		Versus:
 			Light: 100
@@ -359,7 +359,7 @@ APCGun:
 		Speed: 900
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 2500
+		Damage: 25
 		Versus:
 			None: 30
 			Wood: 25

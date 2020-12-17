@@ -7,7 +7,7 @@ BADR:
 		DropRange: 4c0
 		ChuteSound: chute1.aud
 	Health:
-		HP: 20000
+		HP: 200
 	Aircraft:
 		CruiseAltitude: 2560
 		TurnSpeed: 5
@@ -58,7 +58,7 @@ BADR.Bomber:
 	Armament:
 		Weapon: ParaBomb
 	Health:
-		HP: 30000
+		HP: 300
 	Aircraft:
 		CruiseAltitude: 2560
 		TurnSpeed: 5
@@ -125,7 +125,7 @@ BADR.buildable:
 	Valued:
 		Cost: 3000
 	Health:
-		HP: 20000
+		HP: 200
 	SelectionDecorations:
 	Selectable:
 		Bounds: 36,28,0,2
@@ -258,7 +258,7 @@ B52.buildable:
 	Valued:
 		Cost: 3000
 	Health:
-		HP: 20000
+		HP: 200
 	SelectionDecorations:
 	Selectable:
 		Bounds: 36,28,0,2
@@ -381,7 +381,7 @@ TRAN:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 20000
+		HP: 150
 	SelectionDecorations:
 	Selectable:
 		DecorationBounds: 40,36
@@ -433,9 +433,9 @@ TRAN.Allies:
 	Buildable:
 		BuildPaletteOrder: 4
 		Prerequisites: ~hpad, ~aircraft.allies, ~techlevel.medium
-		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry light vehicles, one at a time.\n  Unarmed
+		Description: Fast Infantry Transport Helicopter.\n  Special Ability: Carryall\nCan carry one at a time of those:\nJeep, APC, Light Tank, Minelayer,\nSupply Truck, Phase APC\n  Unarmed
 	Carryall:
-		LocalOffset: 0, 0, -128
+		LocalOffset: 0, 0, -256
 	RenderSprites:
 		Image: tran
 	-MapEditorData:
@@ -484,7 +484,7 @@ IROQ:
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 2
 		Prerequisites: ~hpad, ~aircraft.allies, ~!aitoodumb, ~techlevel.medium
-		Description: Light helicopter armed with dual chainguns.\nCan use Depthcharges against Submarines.\n  Strong vs Infantry, Light vehicles\n  Weak vs Tanks, Aircraft
+		Description: Light helicopter armed with dual chainguns.\nCan use Depthcharges against Submarines.\nCan attack enemy Helicopters.\n  Strong vs Infantry, Light vehicles\n  Weak vs Tanks, Aircraft
 	Tooltip:
 		Name: Iroquois
 	Valued:
@@ -495,7 +495,7 @@ IROQ:
 	Selectable:
 		DecorationBounds: 38,32
 	Health:
-		HP: 8000
+		HP: 80
 	RevealsShroud:
 		Range: 10c0
 		Type: GroundPosition
@@ -603,7 +603,7 @@ HELI:
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 3
 		Prerequisites: ~hpad, atek, ~aircraft.allies, ~techlevel.high
-		Description: Helicopter gunship with multi-purpose\nChainguns and Missiles.\n  Strong vs Everything\n  Weak vs Anti-Air, Aircraft
+		Description: Helicopter gunship with multi-purpose\nChainguns and Missiles.\nCan attack enemy Aircraft.\n  Strong vs Everything\n  Weak vs Anti-Air, Aircraft
 	Tooltip:
 		Name: Apache
 	Valued:
@@ -614,7 +614,7 @@ HELI:
 	Selectable:
 		DecorationBounds: 36,28
 	Health:
-		HP: 12000
+		HP: 120
 	RevealsShroud:
 		MinRange: 10c0
 		Range: 12c0
@@ -635,22 +635,30 @@ HELI:
 	Armament@PRIMARY:
 		Weapon: HellfireAA
 		LocalOffset: 0,-213,-85, 0,213,-85
+		#	ReloadingCondition: reload-air
+		#	PauseOnCondition: !(!reload-ground && !ammo)
 		PauseOnCondition: !ammo
 	Armament@SECONDARY:
 		Weapon: HellfireAG
 		LocalOffset: 0,213,-85, 0,-213,-85
+		#	ReloadingCondition: reload-ground
+		#	PauseOnCondition: !(!reload-air && !ammo)
 		PauseOnCondition: !ammo
 	Armament@TERTIARY:
 		Name: tertiary
 		Weapon: HeliAGGun
 		LocalOffset: 128,-213,-85, 128,213,-85
 		MuzzleSequence: muzzle
+		#	ReloadingCondition: reload-ag-gun
+		#	PauseOnCondition: !(!reload-aa-gun && !ammogun)
 		PauseOnCondition: !ammogun
 	Armament@QUARTENARY:
 		Name: quartenary
 		Weapon: HeliAAGun
 		LocalOffset: 128,-213,-85, 128,213,-85
 		MuzzleSequence: muzzle
+		#	ReloadingCondition: reload-aa-gun
+		#	PauseOnCondition: !(!reload-ag-gun && !ammogun)
 		PauseOnCondition: !ammogun
 	WithMuzzleOverlay:
 	WithIdleOverlay@ROTORAIR:
@@ -696,7 +704,7 @@ HIND:
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 6
 		Prerequisites: ~hpad, stek, ~aircraft.soviet, ~techlevel.high
-		Description: Slow helicopter gunship armed with dual chainguns\nand anti-ground rockets.\n  Strong vs Infantry, Tanks\n  Weak vs fast Units, Aircraft
+		Description: Slow helicopter gunship armed with dual chainguns\nand anti-ground rockets.\nCan attack enemy Helicopters.\n  Strong vs Infantry, Tanks\n  Weak vs fast Units, Aircraft
 	Tooltip:
 		Name: Hind
 	Valued:
@@ -707,7 +715,7 @@ HIND:
 	Selectable:
 		DecorationBounds: 38,32
 	Health:
-		HP: 12000
+		HP: 120
 	RevealsShroud:
 		MinRange: 8c0
 		Range: 10c0
@@ -731,12 +739,16 @@ HIND:
 		Weapon: ChainGun.Hind
 		LocalOffset: 85,-213,-85, 85,213,-85
 		MuzzleSequence: muzzle
+		#	ReloadingCondition: reload-ag
+		#	PauseOnCondition: !(!reload-aa && !ammo)
 		PauseOnCondition: !ammo
 	Armament@SECONDARY:
 		Name: secondary
 		Weapon: ChainGun.Hind
 		LocalOffset: 85,213,-85, 85,-213,-85
 		MuzzleSequence: muzzle
+		#	ReloadingCondition: reload-ag
+		#	PauseOnCondition: !(!reload-aa && !ammo)
 		PauseOnCondition: !ammo
 	Armament@TERTIARY:
 		Name: tertiary
@@ -749,12 +761,16 @@ HIND:
 		Weapon: ChainGun.AA
 		LocalOffset: 85,-213,-85, 85,213,-85
 		MuzzleSequence: muzzle
+		#	ReloadingCondition: reload-aa
+		#	PauseOnCondition: !(!reload-ag && !ammo)
 		PauseOnCondition: !ammo
 	Armament@FIFTH:
 		Name: fifth
 		Weapon: ChainGun.AA
 		LocalOffset: 85,213,-85, 85,-213,-85
 		MuzzleSequence: muzzle
+		#	ReloadingCondition: reload-aa
+		#	PauseOnCondition: !(!reload-ag && !ammo)
 		PauseOnCondition: !ammo
 	WithMuzzleOverlay:
 	AmmoPool@GUNS:
@@ -797,7 +813,7 @@ U2:
 	Tooltip:
 		Name: Spy Plane
 	Health:
-		HP: 15000
+		HP: 150
 	SelectionDecorations:
 		RenderSelectionBars: False
 	RejectsOrders:
@@ -853,7 +869,7 @@ YAK:
 	Selectable:
 		DecorationBounds: 30,28,0,2
 	Health:
-		HP: 8000
+		HP: 80
 	RevealsShroud:
 		MinRange: 9c0
 		Range: 11c0
@@ -975,7 +991,7 @@ SPIT:
 	Selectable:
 		DecorationBounds: 30,28,0,2
 	Health:
-		HP: 6000
+		HP: 60
 	RevealsShroud:
 		MinRange: 9c0
 		Range: 11c0
@@ -1028,6 +1044,8 @@ SPIT:
 	RenderSprites:
 		Image: ally-yak
 
+#	Ammo ceases reloading upon toggle
+#	while on Airfield
 MIG:
 	Inherits: ^Plane
 	Inherits@AUTOTARGET: ^AutoTargetGroundAntiTankandAir
@@ -1037,7 +1055,8 @@ MIG:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 2
 		Prerequisites: ~afld, stek, ~aircraft.soviet, ~techlevel.high
-		Description: Fast Multi-Role Attack Plane.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+		#	Description: Fast Multi-Role Attack Plane.\nCan be toggled while on Airfield\nto engage Air or Ground targets.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+		Description: Fast Multi-Role Attack Plane.\nCan engage Air and Ground targets.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: MiG Attack Plane
 	Valued:
@@ -1049,7 +1068,7 @@ MIG:
 		Bounds: 36,28,0,2
 		DecorationBounds: 40,29,0,1
 	Health:
-		HP: 10000
+		HP: 100
 	RevealsShroud:
 		MinRange: 11c0
 		Range: 13c0
@@ -1068,21 +1087,49 @@ MIG:
 		TakeoffSounds: migtoff1.aud
 	AttackAircraft:
 		FacingTolerance: 20
+		Armaments: primary, secondary, tertiary
 		PersistentTargeting: false
 		OpportunityFire: False
 	Armament@PRIMARY:
 		Weapon: Maverick
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
-		PauseOnCondition: !ammo
+		PauseOnCondition: switch-ammo || !ammo
 	Armament@SECONDARY:
 		Name: secondary
 		LocalOffset: 0,-640,0, 0,640,0
-		Weapon: MaverickAA
-		PauseOnCondition: !ammo
+		Weapon: RedEye.2shot
+		PauseOnCondition: !switch-ammo || !ammo
+	#	it loses rearm activity on deploy order
+	#	irrevelant of which armament is active
+	#	Armament@TERTIARY:
+	#	Name: tertiary
+	#	Weapon: Ammopoolfixer
+	#	PauseOnCondition: !ammo
+	#	GrantConditionOnDeploy@PURPOSESWITCH:
+	#	DeployedCondition: switch-ammo
+	#	PauseOnCondition: !onground
+	#	ExternalCondition@PURPOSESWITCHI:
+	#	Condition: onground
+	#	WithDecoration@AG:
+	#	RequiresSelection: false
+	#	Image: pips
+	#	Sequence: tag-ag
+	#	ReferencePoint: Top
+	#	ZOffset: 256
+	#	RequiresCondition: !switch-ammo
+	#	WithDecoration@AA:
+	#	RequiresSelection: false
+	#	Image: pips
+	#	Sequence: tag-aa
+	#	ReferencePoint: Top
+	#	ZOffset: 256
+	#	RequiresCondition: switch-ammo
 	AmmoPool:
 		Ammo: 8
 		AmmoCondition: ammo
+		#	Armaments: primary, secondary, tertiary
+		Armaments: primary, secondary
 	Rearmable:
 		RearmActors: afld, afld.ukraine
 	Contrail@1:
@@ -1106,6 +1153,12 @@ MIG:
 	SpawnActorOnDeath@EMP:
 		Actor: MIG.Husk.EMP
 		RequiresCondition: airborne && empdisable
+	#	Jams all missiles below its flight position,
+	#	unfeasible for not being able to filter out.
+	#	JamsMissiles:
+	#	Range: 0c938
+	#	DeflectionStances: Neutral, Enemy
+	#	Chance: 33
 
 TORN:
 	Inherits: ^Plane
@@ -1119,7 +1172,7 @@ TORN:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 5
 		Prerequisites: ~afld, atek, ~aircraft.allies, ~techlevel.high
-		Description: Fast Interceptor Plane\nwith Anti-air missiles.\nCannot attack Ground units.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+		Description: Fast Interceptor Plane\nwith Anti-air missiles.\nCan attack Aircraft only.\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
 	Tooltip:
 		Name: Tornado Interceptor
 	Valued:
@@ -1131,7 +1184,7 @@ TORN:
 		Bounds: 36,28,0,2
 		DecorationBounds: 40,29,0,1
 	Health:
-		HP: 10000
+		HP: 100
 	RevealsShroud:
 		MinRange: 11c0
 		Range: 13c0
@@ -1152,12 +1205,13 @@ TORN:
 		PersistentTargeting: false
 		OpportunityFire: False
 	Armament:
-		Weapon: HellfireAA.rapid
+		Weapon: RedEye.2shot
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
 		PauseOnCondition: !ammo
 	AmmoPool:
-		Ammo: 6
+		Ammo: 8
+		PipCount: 4
 		AmmoCondition: ammo
 	Rearmable:
 		RearmActors: afld, afld.ukraine
@@ -1184,6 +1238,10 @@ TORN:
 	SpawnActorOnDeath@EMP:
 		Actor: TORN.Husk.EMP
 		RequiresCondition: airborne && empdisable
+	#	JamsMissiles:
+	#	Range: 0c938
+	#	DeflectionStances: Neutral, Enemy
+	#	Chance: 33
 
 NEBR:
 	Inherits: ^Plane
@@ -1205,7 +1263,7 @@ NEBR:
 		Bounds: 36,28,0,2
 		DecorationBounds: 40,29,0,1
 	Health:
-		HP: 6000
+		HP: 60
 	Armor:
 		Type: Light
 	RevealsShroud:
@@ -1235,7 +1293,7 @@ NEBR:
 		Ammo: 1
 		PipType: red
 		AmmoCondition: ammo
-		ReloadDelay: 750
+		ReloadDelay: 624
 	Rearmable:
 		RearmActors: afld, afld.ukraine
 	Contrail@1:
@@ -1259,3 +1317,7 @@ NEBR:
 	SpawnActorOnDeath@EMP:
 		Actor: NEBR.Husk.EMP
 		RequiresCondition: airborne && empdisable
+	#	JamsMissiles:
+	#	Range: 0c938
+	#	DeflectionStances: Neutral, Enemy
+	#	Chance: 33

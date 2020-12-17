@@ -324,6 +324,11 @@ pips:
 		Length: *
     tag-cloner: tag-cloner
         Offset: 0, 2
+    tag-ag: tag-mig
+        Offset: 0, 2
+    tag-aa: tag-mig
+		Start: 1
+        Offset: 0, 2
 
 pip-ammored:
 	oneshot:

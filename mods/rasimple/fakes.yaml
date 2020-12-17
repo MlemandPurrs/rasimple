@@ -24,7 +24,7 @@ FPWR:
 		Dimensions: 2,2
 		LocalCenterOffset: 0,-512,0
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Wood
 	WithBuildingBib:
@@ -75,7 +75,7 @@ FAPW:
 		Dimensions: 3,2
 		LocalCenterOffset: 0,-512,0
 	Health:
-		HP: 70000
+		HP: 700
 	Armor:
 		Type: Wood
 	WithBuildingBib:
@@ -136,7 +136,7 @@ TENF:
 	Valued:
 		Cost: 125
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Wood
 	SequencePlaceBuildingPreview:
@@ -182,7 +182,7 @@ BARF:
 	Valued:
 		Cost: 125
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Wood
 	SequencePlaceBuildingPreview:
@@ -227,7 +227,7 @@ KENF:
 	Valued:
 		Cost: 50
 	Health:
-		HP: 15000
+		HP: 150
 	Armor:
 		Type: Wood
 
@@ -270,7 +270,7 @@ PROF:
 	Valued:
 		Cost: 375
 	Health:
-		HP: 90000
+		HP: 900
 	Armor:
 		Type: Wood
 	Targetable:
@@ -313,7 +313,7 @@ WEAF:
 	Valued:
 		Cost: 500
 	Health:
-		HP: 150000
+		HP: 1500
 	Armor:
 		Type: Wood
 	SequencePlaceBuildingPreview:
@@ -352,7 +352,7 @@ FIXF:
 		Footprint: === xxx ===
 		Dimensions: 3,3
 	Health:
-		HP: 80000
+		HP: 800
 	Armor:
 		Type: Wood
 	WithBuildingBib:
@@ -394,7 +394,7 @@ SYRF:
 	Valued:
 		Cost: 185
 	Health:
-		HP: 100000
+		HP: 1000
 	Armor:
 		Type: Light
 	MapEditorData:
@@ -438,7 +438,7 @@ SPEF:
 	Valued:
 		Cost: 185
 	Health:
-		HP: 100000
+		HP: 1000
 	Armor:
 		Type: Light
 	MapEditorData:
@@ -477,7 +477,7 @@ AFLF:
 	Valued:
 		Cost: 187
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Wood
 	Targetable:
@@ -518,7 +518,7 @@ HPAF:
 	Valued:
 		Cost: 125
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Wood
 	Targetable:
@@ -564,7 +564,7 @@ DOMF:
 	Valued:
 		Cost: 250
 	Health:
-		HP: 100000
+		HP: 1000
 	Armor:
 		Type: Wood
 	Targetable:
@@ -605,7 +605,7 @@ SPRF:
 	Valued:
 		Cost: 375
 	Health:
-		HP: 60000
+		HP: 600
 	Armor:
 		Type: Wood
 	Targetable:
@@ -651,7 +651,7 @@ ATEF:
 	Valued:
 		Cost: 500
 	Health:
-		HP: 80000
+		HP: 800
 	Armor:
 		Type: Wood
 	Targetable:
@@ -693,7 +693,7 @@ STEF:
 	Valued:
 		Cost: 500
 	Health:
-		HP: 40000
+		HP: 400
 	Armor:
 		Type: Wood
 	Targetable:
@@ -734,7 +734,7 @@ PDOF:
 	Valued:
 		Cost: 375
 	Health:
-		HP: 100000
+		HP: 1000
 	Armor:
 		Type: Wood
 	Explodes:
@@ -769,7 +769,7 @@ IROF:
 	Valued:
 		Cost: 375
 	Health:
-		HP: 100000
+		HP: 1000
 	Armor:
 		Type: Wood
 	Explodes:
@@ -801,7 +801,7 @@ MSLF:
 	Valued:
 		Cost: 625
 	Health:
-		HP: 100000
+		HP: 1000
 	Armor:
 		Type: Wood
 	Cloak:
@@ -868,7 +868,7 @@ FACF:
 	Valued:
 		Cost: 750
 	Health:
-		HP: 150000
+		HP: 1500
 	Armor:
 		Type: Wood
 	HitShape:
@@ -906,7 +906,7 @@ FGAP:
 		DecorationBounds: 24,48,0,-12
 	SelectionDecorations:
 	Health:
-		HP: 50000
+		HP: 500
 	Armor:
 		Type: Wood
 	WithBuildingBib:
